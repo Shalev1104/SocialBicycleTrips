@@ -1662,11 +1662,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTripsProject\\SocialBicycleTrips\\Dal\\Dal.csproj",
+      "projectUniqueName": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTrips\\Dal\\Dal.csproj",
       "projectName": "Dal",
-      "projectPath": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTripsProject\\SocialBicycleTrips\\Dal\\Dal.csproj",
+      "projectPath": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTrips\\Dal\\Dal.csproj",
       "packagesPath": "C:\\Users\\shale\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTripsProject\\SocialBicycleTrips\\Dal\\obj\\",
+      "outputPath": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTrips\\Dal\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [

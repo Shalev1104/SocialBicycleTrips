@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTripsProject\\SocialBicycleTrips\\Model\\Model.csproj": {}
+    "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTrips\\Model\\Model.csproj": {}
   },
   "projects": {
-    "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTripsProject\\SocialBicycleTrips\\Dal\\Dal.csproj": {
+    "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTrips\\Dal\\Dal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTripsProject\\SocialBicycleTrips\\Dal\\Dal.csproj",
+        "projectUniqueName": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTrips\\Dal\\Dal.csproj",
         "projectName": "Dal",
-        "projectPath": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTripsProject\\SocialBicycleTrips\\Dal\\Dal.csproj",
+        "projectPath": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTrips\\Dal\\Dal.csproj",
         "packagesPath": "C:\\Users\\shale\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTripsProject\\SocialBicycleTrips\\Dal\\obj\\",
+        "outputPath": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTrips\\Dal\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
@@ -62,14 +62,14 @@
         }
       }
     },
-    "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTripsProject\\SocialBicycleTrips\\Helper\\Helper.csproj": {
+    "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTrips\\Helper\\Helper.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTripsProject\\SocialBicycleTrips\\Helper\\Helper.csproj",
+        "projectUniqueName": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTrips\\Helper\\Helper.csproj",
         "projectName": "Helper",
-        "projectPath": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTripsProject\\SocialBicycleTrips\\Helper\\Helper.csproj",
+        "projectPath": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTrips\\Helper\\Helper.csproj",
         "packagesPath": "C:\\Users\\shale\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTripsProject\\SocialBicycleTrips\\Helper\\obj\\",
+        "outputPath": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTrips\\Helper\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
@@ -120,14 +120,14 @@
         }
       }
     },
-    "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTripsProject\\SocialBicycleTrips\\Model\\Model.csproj": {
+    "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTrips\\Model\\Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTripsProject\\SocialBicycleTrips\\Model\\Model.csproj",
+        "projectUniqueName": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTrips\\Model\\Model.csproj",
         "projectName": "Model",
-        "projectPath": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTripsProject\\SocialBicycleTrips\\Model\\Model.csproj",
+        "projectPath": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTrips\\Model\\Model.csproj",
         "packagesPath": "C:\\Users\\shale\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTripsProject\\SocialBicycleTrips\\Model\\obj\\",
+        "outputPath": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTrips\\Model\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
@@ -148,11 +148,11 @@
         "frameworks": {
           "monoandroid90": {
             "projectReferences": {
-              "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTripsProject\\SocialBicycleTrips\\Dal\\Dal.csproj": {
-                "projectPath": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTripsProject\\SocialBicycleTrips\\Dal\\Dal.csproj"
+              "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTrips\\Dal\\Dal.csproj": {
+                "projectPath": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTrips\\Dal\\Dal.csproj"
               },
-              "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTripsProject\\SocialBicycleTrips\\Helper\\Helper.csproj": {
-                "projectPath": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTripsProject\\SocialBicycleTrips\\Helper\\Helper.csproj"
+              "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTrips\\Helper\\Helper.csproj": {
+                "projectPath": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTrips\\Helper\\Helper.csproj"
               }
             }
           }

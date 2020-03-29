@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "x8YMhspY0NpSNGvGzR3iWDCs+xl6t1cntRc0QjkyrN1PbOkOO8KK/L1FYAu0lCOzRpyO2qcA3/olb4rXctQI3w==",
+  "dgSpecHash": "Xuc+AKM3JfWJ1pd/f29MJ+V0Z/8ty8ZnaHANM/NkbQaavrYI4o76HjqhbhmkNbTtLNTJa6bEJm6Kjgzv1gbdUA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTripsProject\\SocialBicycleTrips\\Model\\Model.csproj",
+  "projectFilePath": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTrips\\Model\\Model.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\shale\\.nuget\\packages\\sqlite-net-pcl\\1.6.292\\sqlite-net-pcl.1.6.292.nupkg.sha512",
     "C:\\Users\\shale\\.nuget\\packages\\sqlitepclraw.bundle_green\\1.1.13\\sqlitepclraw.bundle_green.1.1.13.nupkg.sha512",

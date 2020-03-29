@@ -1662,11 +1662,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTripsProject\\SocialBicycleTrips\\Helper\\Helper.csproj",
+      "projectUniqueName": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTrips\\Helper\\Helper.csproj",
       "projectName": "Helper",
-      "projectPath": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTripsProject\\SocialBicycleTrips\\Helper\\Helper.csproj",
+      "projectPath": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTrips\\Helper\\Helper.csproj",
       "packagesPath": "C:\\Users\\shale\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTripsProject\\SocialBicycleTrips\\Helper\\obj\\",
+      "outputPath": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTrips\\Helper\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zC+Dp4F4M503DG6QwF0n2rHmcxJNvdbTs0pPj/lXLdNd7jgzjt172MXBoY3GtTsRp8l8GHsPyocSQCNWtbWQAQ==",
+  "dgSpecHash": "jMrHF84NKXu8C7kA18FVdjqdElJuxInknDRzAYTbIEJ8G83Hz2OHyofHVKDU3yra2K9TLOqN1dVOZqebXZjZdQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTripsProject\\SocialBicycleTrips\\SocialBicycleTrips\\SocialBicycleTrips.csproj",
+  "projectFilePath": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTrips\\SocialBicycleTrips\\SocialBicycleTrips.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\shale\\.nuget\\packages\\refractored.controls.circleimageview\\1.0.1\\refractored.controls.circleimageview.1.0.1.nupkg.sha512",
     "C:\\Users\\shale\\.nuget\\packages\\sqlite-net-pcl\\1.6.292\\sqlite-net-pcl.1.6.292.nupkg.sha512",

@@ -1756,11 +1756,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTripsProject\\SocialBicycleTrips\\SocialBicycleTrips\\SocialBicycleTrips.csproj",
+      "projectUniqueName": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTrips\\SocialBicycleTrips\\SocialBicycleTrips.csproj",
       "projectName": "SocialBicycleTrips",
-      "projectPath": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTripsProject\\SocialBicycleTrips\\SocialBicycleTrips\\SocialBicycleTrips.csproj",
+      "projectPath": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTrips\\SocialBicycleTrips\\SocialBicycleTrips.csproj",
       "packagesPath": "C:\\Users\\shale\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTripsProject\\SocialBicycleTrips\\SocialBicycleTrips\\obj\\",
+      "outputPath": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTrips\\SocialBicycleTrips\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
@@ -1781,14 +1781,14 @@
       "frameworks": {
         "monoandroid90": {
           "projectReferences": {
-            "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTripsProject\\SocialBicycleTrips\\Dal\\Dal.csproj": {
-              "projectPath": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTripsProject\\SocialBicycleTrips\\Dal\\Dal.csproj"
+            "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTrips\\Dal\\Dal.csproj": {
+              "projectPath": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTrips\\Dal\\Dal.csproj"
             },
-            "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTripsProject\\SocialBicycleTrips\\Helper\\Helper.csproj": {
-              "projectPath": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTripsProject\\SocialBicycleTrips\\Helper\\Helper.csproj"
+            "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTrips\\Helper\\Helper.csproj": {
+              "projectPath": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTrips\\Helper\\Helper.csproj"
             },
-            "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTripsProject\\SocialBicycleTrips\\Model\\Model.csproj": {
-              "projectPath": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTripsProject\\SocialBicycleTrips\\Model\\Model.csproj"
+            "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTrips\\Model\\Model.csproj": {
+              "projectPath": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTrips\\Model\\Model.csproj"
             }
           }
         }
