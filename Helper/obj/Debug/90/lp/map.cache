@@ -39,3 +39,11 @@ SQLitePCLRaw.batteries_v2
 SQLitePCLRaw.core
 SQLitePCLRaw.lib.e_sqlite3
 SQLitePCLRaw.provider.e_sqlite3
+Xamarin.Android.Support.Media.Compat
+Xamarin.Android.Support.v4
+Xamarin.GooglePlayServices.Auth.Api.Phone
+Xamarin.GooglePlayServices.Auth.Base
+Xamarin.GooglePlayServices.Auth
+Xamarin.GooglePlayServices.Base
+Xamarin.GooglePlayServices.Basement
+Xamarin.GooglePlayServices.Tasks
