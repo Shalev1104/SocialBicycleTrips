@@ -16,37 +16,33 @@ namespace Model
     {
         private string     startingLocation;
         private string     finalLocation;
-        private DateTime   date;
-        private TimeSpan   time;
+        private DateTime   dateTime;
         private string     about;
-        private List<User> participants;
+        private Participants participants;
 
-        public Trip(string startingLocation, string finalLocation, DateTime date, TimeSpan time, string about, User tripCreator)
+        public Trip(string startingLocation, string finalLocation, DateTime date, string about, User tripCreator)
         {
             this.startingLocation = startingLocation;
             this.finalLocation    = finalLocation;
-            this.date             = date;
-            this.time             = time;
+            this.dateTime         = date;
             this.about            = about;
 
-            participants.Add(tripCreator);
         }
 
         public string StartingLocation { get => startingLocation; set => startingLocation = value; }
         public string FinalLocation { get => finalLocation; set => finalLocation = value; }
-        public DateTime DateTime { get => date; set => date = value; }
+        public DateTime DateTime { get => dateTime; set => dateTime = value; }
         public string About { get => about; set => about = value; }
-        public List<User> Participants { get => participants; set => participants = value; }
+        public Participants Participants { get => participants; set => participants = value; }
 
         public void AddParticipant(User user)
         {
-            participants.Add(user);
+            //participants.Add(user);
         }
 
-        public void ChangeDateAndTime(DateTime dateTime, TimeSpan time)
+        public void ChangeDateAndTime(DateTime dateTime)
         {
-            date      = dateTime;
-            this.time = time;
+            this.dateTime = dateTime;
         }
 
         public void UpdateDetails(string updatedDetails)

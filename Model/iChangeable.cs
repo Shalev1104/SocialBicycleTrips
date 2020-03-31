@@ -17,7 +17,7 @@ namespace Model
         public interface TripChangeable
         {
             public void UpdateLocation(string startup,string endup);
-            public void ChangeDateAndTime(DateTime dateTime, TimeSpan time);
+            public void ChangeDateAndTime(DateTime dateTime);
             public void UpdateDetails(string updatedDetails);
         }
 

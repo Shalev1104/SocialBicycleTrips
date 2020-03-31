@@ -21,10 +21,8 @@ namespace Model
         private string        password;
         private DateTime      dateTime;
         private string        image;
-        private List<User>    myFriends;
-        private List<Trip>    myTrips;
-        private Queue<User>   pendingFriends;
-        private Queue<Trip>   pendingTrips;
+        private MyFriends myFriends;
+        private MyTrips myTrips;
 
         public User()
         {
@@ -55,14 +53,12 @@ namespace Model
         public string Email { get => email; set => email = value; }
         public string Password { get => password; set => password = value; }
         public string Image { get => image; set => image = value; }
-        public List<User> MyFriends { get => myFriends; set => myFriends = value; }
-        public List<Trip> MyTrips { get => myTrips; set => myTrips = value; }
-        public Queue<User> PendingFriends { get => pendingFriends; set => pendingFriends = value; }
-        public Queue<Trip> PendingTrips { get => pendingTrips; set => pendingTrips = value; }
+        public MyFriends MyFriends { get => myFriends; set => myFriends = value; }
+        public MyTrips MyTrips { get => myTrips; set => myTrips = value; }
 
         public void AddFriend(User friend)
         {
-            myFriends.Add(friend);
+            //myFriends.Add(friend);
         }
 
         public void InviteFriendToTrip(Trip trip, User user)
