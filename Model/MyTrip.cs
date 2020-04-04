@@ -14,6 +14,6 @@ namespace Model
 {
     public class MyTrip : BaseEntity
     {
-
+        
     }
 }
