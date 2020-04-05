@@ -14,7 +14,7 @@ namespace Model
 {
     public class MyTrips : BaseList<MyTrip>
     {
-        public override bool Exists(MyTrip t, bool forChange = false)
+        public override bool Exists(MyTrip myTrip, bool forChange = false)
         {
             throw new NotImplementedException();
         }

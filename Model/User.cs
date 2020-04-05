@@ -16,32 +16,29 @@ namespace Model
     public class User : BaseEntity,Inviteable,iChangeable.UserChangeable
     {
         private string        name;
-        private string        userName;
         private string        email;
         private string        password;
         private DateTime      dateTime;
         private string        image;
-        private MyFriends myFriends;
-        private MyTrips myTrips;
+        private MyFriends     myFriends;
+        private MyTrips       myTrips;
 
         public User()
         {
 
         }
 
-        public User(string name, string userName, string email, string password, string image)
+        public User(string name, string email, string password, string image)
         {
             this.name     = name;
-            this.userName = userName;
             this.email    = email;
             this.password = password;
             this.image    = image;
         }
 
-        public User(string name, string userName, string email, string password)
+        public User(string name, string email, string password)
         {
             this.name     = name;
-            this.userName = userName;
             this.email    = email;
             this.password = password;
 
@@ -49,7 +46,6 @@ namespace Model
         }
 
         public string Name { get => name; set => name = value; }
-        public string UserName { get => userName; set => userName = value; }
         public string Email { get => email; set => email = value; }
         public string Password { get => password; set => password = value; }
         public string Image { get => image; set => image = value; }

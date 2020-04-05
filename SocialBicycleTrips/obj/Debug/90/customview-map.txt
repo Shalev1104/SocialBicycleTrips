@@ -12,12 +12,14 @@ corners;obj\Debug\90\res\drawable\cornerlayer2.xml
 corners;obj\Debug\90\res\drawable\logincorners.xml
 declare-styleable;C:\Users\shale\Desktop\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\lp\0\jl\res\values\values.xml
 EditText;obj\Debug\90\res\layout\activity_login.xml
+EditText;obj\Debug\90\res\layout\activity_signup.xml
 external-cache-path;C:\Users\shale\Desktop\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\lp\36\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
 external-path;C:\Users\shale\Desktop\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\lp\36\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
 foreground;obj\Debug\90\res\mipmap-anydpi-v26\ic_launcher.xml
 foreground;obj\Debug\90\res\mipmap-anydpi-v26\ic_launcher_round.xml
 ImageButton;obj\Debug\90\res\layout\activity_login.xml
 ImageButton;obj\Debug\90\res\layout\activity_profile.xml
+ImageView;obj\Debug\90\res\layout\activity_signup.xml
 item;obj\Debug\90\res\values\styles.xml
 LinearLayout;obj\Debug\90\res\layout\activity_login.xml
 LinearLayout;obj\Debug\90\res\layout\activity_profile.xml
@@ -40,3 +42,4 @@ string;obj\Debug\90\res\values\strings.xml
 style;obj\Debug\90\res\values\styles.xml
 TextView;obj\Debug\90\res\layout\activity_login.xml
 TextView;obj\Debug\90\res\layout\activity_profile.xml
+TextView;obj\Debug\90\res\layout\activity_signup.xml

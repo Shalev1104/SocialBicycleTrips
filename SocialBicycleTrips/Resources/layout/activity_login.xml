@@ -21,7 +21,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:hint="Username or Email Address"
+        android:hint="Email Address"
         android:maxLines="3"
         android:id="@+id/edtUnameEmail"/>
     <EditText
@@ -44,7 +44,7 @@
         android:fontFamily="casual"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:text="Log In"
+        android:text="LogIn"
         android:id="@+id/btnLogin"/>
     <TextView
         android:layout_width="wrap_content"
@@ -64,7 +64,6 @@
         android:fontFamily="casual"
         android:text="Or Login Using"
         android:textSize="16sp"/>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
