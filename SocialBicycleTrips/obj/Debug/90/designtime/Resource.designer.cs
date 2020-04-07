@@ -4034,13 +4034,13 @@ namespace SocialBicycleTrips
 			public const int transition_transform = 2131230933;
 			
 			// aapt resource value: 0x7F0800D6
-			public const int txtCloseTourNum = 2131230934;
+			public const int txtAge = 2131230934;
 			
 			// aapt resource value: 0x7F0800D7
-			public const int txtCompletedTourNum = 2131230935;
+			public const int txtCloseTourNum = 2131230935;
 			
 			// aapt resource value: 0x7F0800D8
-			public const int txtEmail = 2131230936;
+			public const int txtCompletedTourNum = 2131230936;
 			
 			// aapt resource value: 0x7F0800D9
 			public const int txtName = 2131230937;

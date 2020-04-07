@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:text="Join The Community"
         android:layout_gravity="center"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:fontFamily="casual"
         android:textSize="20dp"/>
     <EditText
@@ -33,7 +33,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:hint="Password"
-        android:maxLines="3"
+        android:maxLines="1"
         android:id="@+id/edtPW"/>
     <Button
         android:layout_width="match_parent"
@@ -44,7 +44,7 @@
         android:fontFamily="casual"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:text="LogIn"
+        android:text="LOGIN"
         android:id="@+id/btnLogin"/>
     <TextView
         android:layout_width="wrap_content"
