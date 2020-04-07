@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -13,83 +13,107 @@
         android:layout_marginTop="15dp"
         android:fontFamily="casual"
         android:textSize="20dp"/>
+    <ImageButton
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:src="@drawable/addProfileImage"
+        android:id="@+id/imgbtnProfile"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="5dp">
-        <ImageView
-             android:layout_width="0dp"
-             android:layout_height="50dp"
-             android:src="@drawable/NameIcon"
-             android:layout_weight="1"/>
+        <Refractored.Controls.CircleImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:src="@drawable/nameicon"/>
         <EditText
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="5"
-            android:hint="Full Name"
-            android:fontFamily="casual"
-            android:maxLines="1"
-            />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Full Name"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="5dp">
-        <ImageView
-             android:layout_width="0dp"
-             android:layout_height="50dp"
-             android:layout_weight="1"
-             android:src="@drawable/EmailIcon"/>
+        <Refractored.Controls.CircleImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:src="@drawable/emailicon"/>
         <EditText
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="5"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
-            android:fontFamily="casual"
-            android:maxLines="1"
-            />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="5dp">
-        <ImageView
-             android:layout_width="0dp"
-             android:layout_height="50dp"
-             android:layout_weight="1"
-             android:src="@drawable/PasswordIcon"/>
+        <Refractored.Controls.CircleImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:src="@drawable/passwordicon"/>
         <EditText
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="5"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:fontFamily="casual"
-            android:maxLines="1"
-            />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="5dp">
-        <ImageView
-             android:layout_width="0dp"
-             android:layout_height="50dp"
-             android:layout_weight="1"
-             android:src="@drawable/PasswordIcon"/>
+        <Refractored.Controls.CircleImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:src="@drawable/passwordicon"/>
         <EditText
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="5"
-            android:hint="Re-type Password"
-            android:inputType="textPassword"
-            android:maxLines="1"
-            android:fontFamily="casual"
-            />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Re-type Password"/>
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp">
+        <Refractored.Controls.CircleImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:src="@drawable/dateIcon"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Date Of Birth"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp">
+        <Refractored.Controls.CircleImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:src="@drawable/phoneIcon"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Phone Number"/>
+    </LinearLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="register"
+        android:background="@drawable/logincorners"/>
 </LinearLayout>

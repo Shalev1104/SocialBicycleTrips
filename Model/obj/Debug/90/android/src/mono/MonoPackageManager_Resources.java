@@ -3,6 +3,14 @@ public class MonoPackageManager_Resources {
 	public static String[] Assemblies = new String[]{
 		/* We need to ensure that "Model.dll" comes first in this list. */
 		"Model.dll",
+		"Dal.dll",
+		"Helper.dll",
+		"SQLite-net.dll",
+		"SQLitePCLRaw.batteries_green.dll",
+		"SQLitePCLRaw.batteries_v2.dll",
+		"SQLitePCLRaw.core.dll",
+		"SQLitePCLRaw.lib.e_sqlite3.dll",
+		"SQLitePCLRaw.provider.e_sqlite3.dll",
 		"Xamarin.Android.Arch.Core.Common.dll",
 		"Xamarin.Android.Arch.Core.Runtime.dll",
 		"Xamarin.Android.Arch.Lifecycle.Common.dll",
@@ -28,10 +36,12 @@ public class MonoPackageManager_Resources {
 		"Xamarin.Android.Support.Interpolator.dll",
 		"Xamarin.Android.Support.Loader.dll",
 		"Xamarin.Android.Support.LocalBroadcastManager.dll",
+		"Xamarin.Android.Support.Media.Compat.dll",
 		"Xamarin.Android.Support.Print.dll",
 		"Xamarin.Android.Support.SlidingPaneLayout.dll",
 		"Xamarin.Android.Support.SwipeRefreshLayout.dll",
 		"Xamarin.Android.Support.Transition.dll",
+		"Xamarin.Android.Support.v4.dll",
 		"Xamarin.Android.Support.v7.AppCompat.dll",
 		"Xamarin.Android.Support.v7.CardView.dll",
 		"Xamarin.Android.Support.v7.RecyclerView.dll",
@@ -39,6 +49,12 @@ public class MonoPackageManager_Resources {
 		"Xamarin.Android.Support.VersionedParcelable.dll",
 		"Xamarin.Android.Support.ViewPager.dll",
 		"Xamarin.Essentials.dll",
+		"Xamarin.GooglePlayServices.Auth.Api.Phone.dll",
+		"Xamarin.GooglePlayServices.Auth.Base.dll",
+		"Xamarin.GooglePlayServices.Auth.dll",
+		"Xamarin.GooglePlayServices.Base.dll",
+		"Xamarin.GooglePlayServices.Basement.dll",
+		"Xamarin.GooglePlayServices.Tasks.dll",
 	};
 	public static String[] Dependencies = new String[]{
 	};

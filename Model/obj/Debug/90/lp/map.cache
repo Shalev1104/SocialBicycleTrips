@@ -1,3 +1,10 @@
+Dal
+Helper
+SQLitePCLRaw.batteries_green
+SQLitePCLRaw.batteries_v2
+SQLitePCLRaw.core
+SQLitePCLRaw.lib.e_sqlite3
+SQLitePCLRaw.provider.e_sqlite3
 Xamarin.Android.Arch.Core.Common
 Xamarin.Android.Arch.Core.Runtime
 Xamarin.Android.Arch.Lifecycle.Common
@@ -23,10 +30,12 @@ Xamarin.Android.Support.Fragment
 Xamarin.Android.Support.Interpolator
 Xamarin.Android.Support.Loader
 Xamarin.Android.Support.LocalBroadcastManager
+Xamarin.Android.Support.Media.Compat
 Xamarin.Android.Support.Print
 Xamarin.Android.Support.SlidingPaneLayout
 Xamarin.Android.Support.SwipeRefreshLayout
 Xamarin.Android.Support.Transition
+Xamarin.Android.Support.v4
 Xamarin.Android.Support.v7.AppCompat
 Xamarin.Android.Support.v7.CardView
 Xamarin.Android.Support.v7.RecyclerView
@@ -34,13 +43,6 @@ Xamarin.Android.Support.Vector.Drawable
 Xamarin.Android.Support.VersionedParcelable
 Xamarin.Android.Support.ViewPager
 Xamarin.Essentials
-SQLitePCLRaw.batteries_green
-SQLitePCLRaw.batteries_v2
-SQLitePCLRaw.core
-SQLitePCLRaw.lib.e_sqlite3
-SQLitePCLRaw.provider.e_sqlite3
-Xamarin.Android.Support.Media.Compat
-Xamarin.Android.Support.v4
 Xamarin.GooglePlayServices.Auth.Api.Phone
 Xamarin.GooglePlayServices.Auth.Base
 Xamarin.GooglePlayServices.Auth

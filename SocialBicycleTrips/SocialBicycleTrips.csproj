@@ -61,6 +61,7 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Activities\ProfileActivity.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -133,7 +134,6 @@
     <AndroidResource Include="Resources\drawable\AddFriend.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Activities\" />
     <Folder Include="Adapters\" />
     <Folder Include="Broadcast\" />
     <Folder Include="Notifications\" />
@@ -172,10 +172,19 @@
     <AndroidResource Include="Resources\drawable\NameIcon.png" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidResource Include="Resources\drawable\PasswordIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\addProfileImage.png" />
+  </ItemGroup>
+  <ItemGroup>
     <AndroidResource Include="Resources\drawable\EmailIcon.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\PasswordIcon.png" />
+    <AndroidResource Include="Resources\drawable\dateIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\phoneIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
