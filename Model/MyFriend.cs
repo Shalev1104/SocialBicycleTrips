@@ -14,23 +14,17 @@ namespace Model
 {
     public class MyFriend : BaseEntity
     {
-        int userID;
         int friendID;
-        bool isFriends;
 
         public MyFriend()
         {
 
         }
-        public MyFriend(int userID, int friendID, bool isFriends)
+        public MyFriend(int friendID)
         {
-            this.userID = userID;
             this.friendID = friendID;
-            this.isFriends = isFriends;
         }
 
-        public int UserID { get => userID; set => userID = value; }
         public int FriendID { get => friendID; set => friendID = value; }
-        public bool IsFriends { get => isFriends; set => isFriends = value; }
     }
 }

@@ -14,14 +14,23 @@ namespace Model
 {
     public class Participants : BaseList<Participant>
     {
-        public override bool Exists(Participant t, bool forChange = false)
+        public override bool Exists(Participant participant, bool forChange = false)
         {
-            throw new NotImplementedException();
+            bool isAlreadyJoinedToTrip;
+            if(!forChange)
+            {
+                isAlreadyJoinedToTrip = base.Exists(item => item.UserID.Equals(participant.UserID) && item.TripID.Equals(participant.TripID));
+            }
+            else
+            {
+                isAlreadyJoinedToTrip = base.Exists(item => item.UserID.Equals(participant.UserID) && item.TripID.Equals(participant.TripID) && item.Id != participant.Id);
+            }
+            return isAlreadyJoinedToTrip;
         }
 
         public override void Sort()
         {
-            throw new NotImplementedException();
+            base.Sort((item1, item2) => item1.UserID.CompareTo(item2.UserID));
         }
     }
 }

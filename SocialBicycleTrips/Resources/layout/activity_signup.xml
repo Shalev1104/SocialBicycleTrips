@@ -20,7 +20,7 @@
         android:padding="5dp">
         <ImageView
              android:layout_width="0dp"
-             android:layout_height="match_parent"
+             android:layout_height="50dp"
              android:src="@drawable/NameIcon"
              android:layout_weight="1"/>
         <EditText
@@ -39,7 +39,7 @@
         android:padding="5dp">
         <ImageView
              android:layout_width="0dp"
-             android:layout_height="match_parent"
+             android:layout_height="50dp"
              android:layout_weight="1"
              android:src="@drawable/EmailIcon"/>
         <EditText
@@ -47,6 +47,7 @@
             android:layout_height="match_parent"
             android:layout_weight="5"
             android:hint="Email"
+            android:inputType="textEmailAddress"
             android:fontFamily="casual"
             android:maxLines="1"
             />
@@ -58,7 +59,7 @@
         android:padding="5dp">
         <ImageView
              android:layout_width="0dp"
-             android:layout_height="match_parent"
+             android:layout_height="50dp"
              android:layout_weight="1"
              android:src="@drawable/PasswordIcon"/>
         <EditText
@@ -66,6 +67,7 @@
             android:layout_height="match_parent"
             android:layout_weight="5"
             android:hint="Password"
+            android:inputType="textPassword"
             android:fontFamily="casual"
             android:maxLines="1"
             />
@@ -77,7 +79,7 @@
         android:padding="5dp">
         <ImageView
              android:layout_width="0dp"
-             android:layout_height="match_parent"
+             android:layout_height="50dp"
              android:layout_weight="1"
              android:src="@drawable/PasswordIcon"/>
         <EditText
@@ -85,6 +87,7 @@
             android:layout_height="match_parent"
             android:layout_weight="5"
             android:hint="Re-type Password"
+            android:inputType="textPassword"
             android:maxLines="1"
             android:fontFamily="casual"
             />

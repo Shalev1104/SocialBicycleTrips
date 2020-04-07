@@ -14,6 +14,18 @@ namespace Model
 {
     public class MyTrip : BaseEntity
     {
-        
+        private int tripID;
+
+        public MyTrip()
+        {
+            
+        }
+
+        public MyTrip(int tripID)
+        {
+            this.tripID = tripID;
+        }
+
+        public int TripID { get => tripID; set => tripID = value; }
     }
 }

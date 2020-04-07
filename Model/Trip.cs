@@ -12,14 +12,18 @@ using Android.Widget;
 
 namespace Model
 {
-    public class Trip : iChangeable.TripChangeable
+    public class Trip : BaseEntity,iChangeable.TripChangeable
     {
-        private string     startingLocation;
-        private string     finalLocation;
-        private DateTime   dateTime;
-        private string     about;
+        private string       startingLocation;
+        private string       finalLocation;
+        private DateTime     dateTime;
+        private string       about;
         private Participants participants;
 
+        public Trip()
+        {
+
+        }
         public Trip(string startingLocation, string finalLocation, DateTime date, string about, User tripCreator)
         {
             this.startingLocation = startingLocation;

@@ -20,11 +20,11 @@ namespace Model
 
             if (!forChange)
             {
-                isFriendExists = base.Exists(item => item.UserID.Equals(friend.UserID) && item.FriendID.Equals(friend.FriendID));
+                isFriendExists = base.Exists(item => item.FriendID.Equals(friend.FriendID));
             }
             else
             {
-                isFriendExists = base.Exists(item => item.UserID.Equals(friend.UserID) && item.FriendID.Equals(friend.FriendID) && item.Id != friend.Id);
+                isFriendExists = base.Exists(item => item.FriendID.Equals(friend.FriendID) && item.Id != friend.Id);
             }
             return isFriendExists;
         }

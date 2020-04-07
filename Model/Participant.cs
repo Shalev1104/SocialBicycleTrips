@@ -14,6 +14,21 @@ namespace Model
 {
     public class Participant : BaseEntity
     {
+        private int userID;
+        private int tripID;
 
+        public Participant()
+        {
+
+        }
+
+        public Participant(int userID, int tripID)
+        {
+            this.userID = userID;
+            this.tripID = tripID;
+        }
+
+        public int UserID { get => userID; set => userID = value; }
+        public int TripID { get => tripID; set => tripID = value; }
     }
 }
