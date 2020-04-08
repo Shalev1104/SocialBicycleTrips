@@ -124,7 +124,7 @@
             android:textSize="20sp"
             android:textColor="@android:color/darker_gray"
             android:maxLines="1"
-            android:id="@id/txtPhoneNumber"
+            android:id="@+id/txtPhoneNumber"
             />
         <TextView
             android:layout_width="match_parent"
