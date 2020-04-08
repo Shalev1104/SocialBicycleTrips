@@ -829,6 +829,86 @@
           "lib/monoandroid90/Xamarin.Essentials.dll": {}
         }
       },
+      "Xamarin.Firebase.Auth/71.1605.0": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Build.Download": "0.4.11",
+          "Xamarin.Firebase.Auth.Interop": "71.1601.0",
+          "Xamarin.Firebase.Common": "71.1610.0",
+          "Xamarin.GooglePlayServices.Base": "71.1610.0",
+          "Xamarin.GooglePlayServices.Basement": "71.1620.0",
+          "Xamarin.GooglePlayServices.Flags": "71.1601.0",
+          "Xamarin.GooglePlayServices.Tasks": "71.1601.0"
+        },
+        "frameworkAssemblies": [
+          "Java.Interop"
+        ],
+        "compile": {
+          "lib/monoandroid90/Xamarin.Firebase.Auth.dll": {}
+        },
+        "runtime": {
+          "lib/monoandroid90/Xamarin.Firebase.Auth.dll": {}
+        },
+        "build": {
+          "build/MonoAndroid90/Xamarin.Firebase.Auth.targets": {}
+        }
+      },
+      "Xamarin.Firebase.Auth.Interop/71.1601.0": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Build.Download": "0.4.11",
+          "Xamarin.Firebase.Common": "71.1610.0",
+          "Xamarin.GooglePlayServices.Base": "71.1610.0",
+          "Xamarin.GooglePlayServices.Basement": "71.1620.0",
+          "Xamarin.GooglePlayServices.Tasks": "71.1601.0"
+        },
+        "frameworkAssemblies": [
+          "Java.Interop"
+        ],
+        "compile": {
+          "lib/monoandroid90/Xamarin.Firebase.Auth.Interop.dll": {}
+        },
+        "runtime": {
+          "lib/monoandroid90/Xamarin.Firebase.Auth.Interop.dll": {}
+        },
+        "build": {
+          "build/MonoAndroid90/Xamarin.Firebase.Auth.Interop.targets": {}
+        }
+      },
+      "Xamarin.Firebase.Common/71.1610.0": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Build.Download": "0.4.11",
+          "Xamarin.Google.AutoValue.Annotations": "1.6.5",
+          "Xamarin.GooglePlayServices.Basement": "71.1620.0",
+          "Xamarin.GooglePlayServices.Tasks": "71.1601.0"
+        },
+        "frameworkAssemblies": [
+          "Java.Interop"
+        ],
+        "compile": {
+          "lib/monoandroid90/Xamarin.Firebase.Common.dll": {}
+        },
+        "runtime": {
+          "lib/monoandroid90/Xamarin.Firebase.Common.dll": {}
+        },
+        "build": {
+          "build/MonoAndroid90/Xamarin.Firebase.Common.targets": {}
+        }
+      },
+      "Xamarin.Google.AutoValue.Annotations/1.6.5": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Java.Interop",
+          "Mono.Android"
+        ],
+        "compile": {
+          "lib/monoandroid80/Xamarin.Google.AutoValue.Annotations.dll": {}
+        },
+        "runtime": {
+          "lib/monoandroid80/Xamarin.Google.AutoValue.Annotations.dll": {}
+        }
+      },
       "Xamarin.GooglePlayServices.Auth/71.1600.0": {
         "type": "package",
         "dependencies": {
@@ -933,6 +1013,26 @@
           "build/MonoAndroid90/Xamarin.GooglePlayServices.Basement.targets": {}
         }
       },
+      "Xamarin.GooglePlayServices.Flags/71.1601.0": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Build.Download": "0.4.11",
+          "Xamarin.GooglePlayServices.Base": "71.1610.0",
+          "Xamarin.GooglePlayServices.Basement": "71.1620.0"
+        },
+        "frameworkAssemblies": [
+          "Java.Interop"
+        ],
+        "compile": {
+          "lib/monoandroid90/Xamarin.GooglePlayServices.Flags.dll": {}
+        },
+        "runtime": {
+          "lib/monoandroid90/Xamarin.GooglePlayServices.Flags.dll": {}
+        },
+        "build": {
+          "build/MonoAndroid90/Xamarin.GooglePlayServices.Flags.targets": {}
+        }
+      },
       "Xamarin.GooglePlayServices.Tasks/71.1601.0": {
         "type": "package",
         "dependencies": {
@@ -961,6 +1061,7 @@
           "Xamarin.Android.Support.Design": "28.0.0.3",
           "Xamarin.Android.Support.v4": "28.0.0.3",
           "Xamarin.Essentials": "1.5.2",
+          "Xamarin.Firebase.Auth": "71.1605.0",
           "Xamarin.GooglePlayServices.Auth": "71.1600.0",
           "sqlite-net-pcl": "1.6.292"
         },
@@ -980,6 +1081,7 @@
           "Xamarin.Android.Support.Design": "28.0.0.3",
           "Xamarin.Android.Support.v4": "28.0.0.3",
           "Xamarin.Essentials": "1.5.2",
+          "Xamarin.Firebase.Auth": "71.1605.0",
           "Xamarin.GooglePlayServices.Auth": "71.1600.0",
           "sqlite-net-pcl": "1.6.292"
         },
@@ -1001,6 +1103,7 @@
           "Xamarin.Android.Support.Design": "28.0.0.3",
           "Xamarin.Android.Support.v4": "28.0.0.3",
           "Xamarin.Essentials": "1.5.2",
+          "Xamarin.Firebase.Auth": "71.1605.0",
           "Xamarin.GooglePlayServices.Auth": "71.1600.0",
           "sqlite-net-pcl": "1.6.292"
         },
@@ -1960,6 +2063,60 @@
         "xamarin.essentials.nuspec"
       ]
     },
+    "Xamarin.Firebase.Auth/71.1605.0": {
+      "sha512": "5hISFNoigbuSN0ZvksupFUaKy1xJhnMYV6FCYruXXpPZzwtJg2ONENoq//j9BIDJkUte+vuhX1dxKjrq1sUB4g==",
+      "type": "package",
+      "path": "xamarin.firebase.auth/71.1605.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/MonoAndroid90/Xamarin.Firebase.Auth.targets",
+        "lib/monoandroid90/Xamarin.Firebase.Auth.dll",
+        "proguard/MonoAndroid90/proguard.txt",
+        "xamarin.firebase.auth.71.1605.0.nupkg.sha512",
+        "xamarin.firebase.auth.nuspec"
+      ]
+    },
+    "Xamarin.Firebase.Auth.Interop/71.1601.0": {
+      "sha512": "tC+z9j84UcW1tQjgembjNfnOBeoLIPCJBnzzJrZeluPc9RI00twERiv2BEU97TiIb9YKB2/vj9Oem512V3l84g==",
+      "type": "package",
+      "path": "xamarin.firebase.auth.interop/71.1601.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/MonoAndroid90/Xamarin.Firebase.Auth.Interop.targets",
+        "lib/monoandroid90/Xamarin.Firebase.Auth.Interop.dll",
+        "xamarin.firebase.auth.interop.71.1601.0.nupkg.sha512",
+        "xamarin.firebase.auth.interop.nuspec"
+      ]
+    },
+    "Xamarin.Firebase.Common/71.1610.0": {
+      "sha512": "aJdDzG5JPXDb82ROgsrwN3e8HKLWPJhKZEuz1FxRTM7XhW1DbUp+gcjCtSU3wP5ZUg0SB+g7V9hoaT5Oen1bdw==",
+      "type": "package",
+      "path": "xamarin.firebase.common/71.1610.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/MonoAndroid90/Xamarin.Firebase.Common.targets",
+        "lib/monoandroid90/Xamarin.Firebase.Common.dll",
+        "proguard/MonoAndroid90/proguard.txt",
+        "xamarin.firebase.common.71.1610.0.nupkg.sha512",
+        "xamarin.firebase.common.nuspec"
+      ]
+    },
+    "Xamarin.Google.AutoValue.Annotations/1.6.5": {
+      "sha512": "4TMqHEr5vYjyj81sr43aCrrEyPIvCmXGI788kKQMsTct/D30tNpUy4kaw7ZuPiEWBE62iqt5dXnSNtU66Ydwtg==",
+      "type": "package",
+      "path": "xamarin.google.autovalue.annotations/1.6.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "THIRD-PARTY-NOTICES.txt",
+        "lib/monoandroid80/Xamarin.Google.AutoValue.Annotations.dll",
+        "xamarin.google.autovalue.annotations.1.6.5.nupkg.sha512",
+        "xamarin.google.autovalue.annotations.nuspec"
+      ]
+    },
     "Xamarin.GooglePlayServices.Auth/71.1600.0": {
       "sha512": "Il9/TBa99dCZj7JFvg4/PIqt3A5TWH5H0IbgxtxbTJJPIkpR5hDA5DSWCbgVBBwTHoGAYoyiI1Bh3HTEeutMzQ==",
       "type": "package",
@@ -2028,6 +2185,19 @@
         "xamarin.googleplayservices.basement.nuspec"
       ]
     },
+    "Xamarin.GooglePlayServices.Flags/71.1601.0": {
+      "sha512": "YnX6mi/rKXjkCn6Rh6xdPwoPRfM5VTtBvEM9xDlbhAwbVPC7v7P/ALPUKQ4UyX/DRDAdLdrL2BCRG6BpFbzp1A==",
+      "type": "package",
+      "path": "xamarin.googleplayservices.flags/71.1601.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/MonoAndroid90/Xamarin.GooglePlayServices.Flags.targets",
+        "lib/monoandroid90/Xamarin.GooglePlayServices.Flags.dll",
+        "xamarin.googleplayservices.flags.71.1601.0.nupkg.sha512",
+        "xamarin.googleplayservices.flags.nuspec"
+      ]
+    },
     "Xamarin.GooglePlayServices.Tasks/71.1601.0": {
       "sha512": "1+vlOECCQhcIhnuzBW72sXTWdsR9hvNqa/jre61R7IuG+UkqREnL+Zm9jaG1i/dLBV9hUlzAikbxvM+wYqLjpQ==",
       "type": "package",
@@ -2068,6 +2238,7 @@
       "Xamarin.Android.Support.Design >= 28.0.0.3",
       "Xamarin.Android.Support.v4 >= 28.0.0.3",
       "Xamarin.Essentials >= 1.5.2",
+      "Xamarin.Firebase.Auth >= 71.1605.0",
       "Xamarin.GooglePlayServices.Auth >= 71.1600.0",
       "sqlite-net-pcl >= 1.6.292"
     ]
@@ -2143,6 +2314,10 @@
           "Xamarin.Essentials": {
             "target": "Package",
             "version": "[1.5.2, )"
+          },
+          "Xamarin.Firebase.Auth": {
+            "target": "Package",
+            "version": "[71.1605.0, )"
           },
           "Xamarin.GooglePlayServices.Auth": {
             "target": "Package",

@@ -49,3 +49,8 @@ Xamarin.GooglePlayServices.Auth
 Xamarin.GooglePlayServices.Base
 Xamarin.GooglePlayServices.Basement
 Xamarin.GooglePlayServices.Tasks
+Xamarin.Firebase.Auth
+Xamarin.Firebase.Auth.Interop
+Xamarin.Firebase.Common
+Xamarin.Google.AutoValue.Annotations
+Xamarin.GooglePlayServices.Flags

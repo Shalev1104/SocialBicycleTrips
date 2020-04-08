@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "hV+j3QGcecrrjPPvW3P0MitRRp3qPcOoKhVexOJ8zKnU8EK50n1flTNWM31luZh+CNaCv5AYAMS9mNkDyiiOlg==",
+  "dgSpecHash": "imRLrRPWv4MNT9Dd5QIydW25gYavhObUR2QdbRk7W1tNi36Iq4BaLNgh8IAI8z8ImLjEheTvHre+LGHsCadXXw==",
   "success": true,
   "projectFilePath": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTrips\\Model\\Model.csproj",
   "expectedPackageFiles": [
@@ -48,11 +48,16 @@
     "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.support.viewpager\\28.0.0.3\\xamarin.android.support.viewpager.28.0.0.3.nupkg.sha512",
     "C:\\Users\\shale\\.nuget\\packages\\xamarin.build.download\\0.4.11\\xamarin.build.download.0.4.11.nupkg.sha512",
     "C:\\Users\\shale\\.nuget\\packages\\xamarin.essentials\\1.5.2\\xamarin.essentials.1.5.2.nupkg.sha512",
+    "C:\\Users\\shale\\.nuget\\packages\\xamarin.firebase.auth\\71.1605.0\\xamarin.firebase.auth.71.1605.0.nupkg.sha512",
+    "C:\\Users\\shale\\.nuget\\packages\\xamarin.firebase.auth.interop\\71.1601.0\\xamarin.firebase.auth.interop.71.1601.0.nupkg.sha512",
+    "C:\\Users\\shale\\.nuget\\packages\\xamarin.firebase.common\\71.1610.0\\xamarin.firebase.common.71.1610.0.nupkg.sha512",
+    "C:\\Users\\shale\\.nuget\\packages\\xamarin.google.autovalue.annotations\\1.6.5\\xamarin.google.autovalue.annotations.1.6.5.nupkg.sha512",
     "C:\\Users\\shale\\.nuget\\packages\\xamarin.googleplayservices.auth\\71.1600.0\\xamarin.googleplayservices.auth.71.1600.0.nupkg.sha512",
     "C:\\Users\\shale\\.nuget\\packages\\xamarin.googleplayservices.auth.api.phone\\71.1600.0\\xamarin.googleplayservices.auth.api.phone.71.1600.0.nupkg.sha512",
     "C:\\Users\\shale\\.nuget\\packages\\xamarin.googleplayservices.auth.base\\71.1600.0\\xamarin.googleplayservices.auth.base.71.1600.0.nupkg.sha512",
     "C:\\Users\\shale\\.nuget\\packages\\xamarin.googleplayservices.base\\71.1610.0\\xamarin.googleplayservices.base.71.1610.0.nupkg.sha512",
     "C:\\Users\\shale\\.nuget\\packages\\xamarin.googleplayservices.basement\\71.1620.0\\xamarin.googleplayservices.basement.71.1620.0.nupkg.sha512",
+    "C:\\Users\\shale\\.nuget\\packages\\xamarin.googleplayservices.flags\\71.1601.0\\xamarin.googleplayservices.flags.71.1601.0.nupkg.sha512",
     "C:\\Users\\shale\\.nuget\\packages\\xamarin.googleplayservices.tasks\\71.1601.0\\xamarin.googleplayservices.tasks.71.1601.0.nupkg.sha512"
   ],
   "logs": []

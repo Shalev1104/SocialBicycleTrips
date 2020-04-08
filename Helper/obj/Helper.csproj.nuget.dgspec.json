@@ -58,6 +58,10 @@
               "target": "Package",
               "version": "[1.5.2, )"
             },
+            "Xamarin.Firebase.Auth": {
+              "target": "Package",
+              "version": "[71.1605.0, )"
+            },
             "Xamarin.GooglePlayServices.Auth": {
               "target": "Package",
               "version": "[71.1600.0, )"

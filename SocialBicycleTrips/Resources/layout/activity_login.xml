@@ -23,7 +23,7 @@
         android:layout_marginRight="20dp"
         android:hint="Email Address"
         android:maxLines="3"
-        android:id="@+id/edtUnameEmail"/>
+        android:id="@+id/edtLoginEmail"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,7 +34,7 @@
         android:layout_marginRight="20dp"
         android:hint="Password"
         android:maxLines="1"
-        android:id="@+id/edtPW"/>
+        android:id="@+id/edtLoginPW"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
