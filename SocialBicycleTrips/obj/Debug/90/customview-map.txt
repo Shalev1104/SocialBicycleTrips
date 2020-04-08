@@ -12,6 +12,7 @@ color;obj\Debug\90\res\values\ic_launcher_background.xml
 corners;obj\Debug\90\res\drawable\cornerlayer1.xml
 corners;obj\Debug\90\res\drawable\cornerlayer2.xml
 corners;obj\Debug\90\res\drawable\logincorners.xml
+de.hdodenhof.circleimageview.CircleImageView;obj\Debug\90\res\layout\activity_singleitem.xml
 declare-styleable;C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\lp\3\jl\res\values\values.xml
 EditText;obj\Debug\90\res\layout\activity_login.xml
 EditText;obj\Debug\90\res\layout\activity_signup.xml
@@ -26,12 +27,15 @@ ImageButton;obj\Debug\90\res\layout\activity_profile.xml
 ImageButton;obj\Debug\90\res\layout\activity_signup.xml
 item;obj\Debug\90\res\values\styles.xml
 LinearLayout;obj\Debug\90\res\layout\activity_login.xml
+LinearLayout;obj\Debug\90\res\layout\activity_main.xml
 LinearLayout;obj\Debug\90\res\layout\activity_profile.xml
 LinearLayout;obj\Debug\90\res\layout\activity_signup.xml
+LinearLayout;obj\Debug\90\res\layout\activity_singleitem.xml
 paths;C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\lp\42\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
 paths;C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\lp\46\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
 refractored.controls.CircleImageView;obj\Debug\90\res\layout\activity_profile.xml
 Refractored.Controls.CircleImageView;obj\Debug\90\res\layout\activity_signup.xml
+Refractored.Controls.CircleImageView;obj\Debug\90\res\layout\activity_singleitem.xml
 RelativeLayout;obj\Debug\90\res\layout\activity_main.xml
 resources;C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\lp\3\jl\res\values\values.xml
 resources;obj\Debug\90\res\values\colors.xml
@@ -49,3 +53,4 @@ style;obj\Debug\90\res\values\styles.xml
 TextView;obj\Debug\90\res\layout\activity_login.xml
 TextView;obj\Debug\90\res\layout\activity_profile.xml
 TextView;obj\Debug\90\res\layout\activity_signup.xml
+TextView;obj\Debug\90\res\layout\activity_singleitem.xml

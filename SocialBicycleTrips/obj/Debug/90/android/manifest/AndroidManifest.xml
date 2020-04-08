@@ -12,7 +12,9 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
+    <activity android:label="LoginActivity" android:name="crc646d513817d643a16d.LoginActivity" />
     <activity android:label="ProfileActivity" android:name="crc646d513817d643a16d.ProfileActivity" />
+    <activity android:label="RegisterActivity" android:name="crc646d513817d643a16d.RegisterActivity" />
     <service android:name="crc64a98abb514ffad9f1.KeepAliveService" />
     <receiver android:enabled="true" android:exported="false" android:label="Essentials Battery Broadcast Receiver" android:name="crc64a0e0a82d0db9a07d.BatteryBroadcastReceiver" />
     <receiver android:enabled="true" android:exported="false" android:label="Essentials Energy Saver Broadcast Receiver" android:name="crc64a0e0a82d0db9a07d.EnergySaverBroadcastReceiver" />
@@ -28,6 +30,11 @@
         <category android:name="mono.android.intent.category.SEPPUKU.com.companyname.socialbicycletrips" />
       </intent-filter>
     </receiver>
+    <activity android:name="com.google.firebase.auth.internal.FederatedSignInActivity" android:excludeFromRecents="true" android:exported="true" android:launchMode="singleTask" android:permission="com.google.firebase.auth.api.gms.permission.LAUNCH_FEDERATED_SIGN_IN" android:theme="@android:style/Theme.Translucent.NoTitleBar" p6:replace="android:launchMode" xmlns:p6="http://schemas.android.com/tools" />
+    <service android:name="com.google.firebase.components.ComponentDiscoveryService" android:exported="false">
+      <meta-data android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar" android:value="com.google.firebase.components.ComponentRegistrar" />
+    </service>
+    <provider android:name="com.google.firebase.provider.FirebaseInitProvider" android:authorities="com.companyname.socialbicycletrips.firebaseinitprovider" android:exported="false" android:initOrder="100" />
     <activity android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity" android:excludeFromRecents="true" android:exported="false" android:theme="@android:style/Theme.Translucent.NoTitleBar" />
     <!--
             Service handling Google Sign-In user revocation. For apps that do not integrate with

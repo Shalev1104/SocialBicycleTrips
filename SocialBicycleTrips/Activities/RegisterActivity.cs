@@ -93,7 +93,7 @@ namespace SocialBicycleTrips.Activities
             }
         }
 
-        public bool IsTyped()
+        public bool IsVaild()
         {
             if(!(name != null && !name.Text.Equals("")))
             {

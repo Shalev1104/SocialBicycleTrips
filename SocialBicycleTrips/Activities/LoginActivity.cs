@@ -182,12 +182,12 @@ namespace SocialBicycleTrips.Activities
             user.PhoneNumber = firebaseAuth.CurrentUser.PhoneNumber;
             user.Image = firebaseAuth.CurrentUser.PhotoUrl.Path;
             //user.DateTime = firebaseAuth.CurrentUser;
-            Toast.MakeText(this, "login succesfull", ToastLength.Long);
+            Toast.MakeText(this, "login succesfull", ToastLength.Long).Show();
         }
 
         public void OnFailure(Java.Lang.Exception e)
         {
-            Toast.MakeText(this, "login failed", ToastLength.Long);
+            Toast.MakeText(this, "login failed", ToastLength.Long).Show();
         }
     }
 }

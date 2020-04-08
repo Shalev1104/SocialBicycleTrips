@@ -51,11 +51,16 @@ public class MonoPackageManager_Resources {
 		"Xamarin.Android.Support.VersionedParcelable.dll",
 		"Xamarin.Android.Support.ViewPager.dll",
 		"Xamarin.Essentials.dll",
+		"Xamarin.Firebase.Auth.dll",
+		"Xamarin.Firebase.Auth.Interop.dll",
+		"Xamarin.Firebase.Common.dll",
+		"Xamarin.Google.AutoValue.Annotations.dll",
 		"Xamarin.GooglePlayServices.Auth.Api.Phone.dll",
 		"Xamarin.GooglePlayServices.Auth.Base.dll",
 		"Xamarin.GooglePlayServices.Auth.dll",
 		"Xamarin.GooglePlayServices.Base.dll",
 		"Xamarin.GooglePlayServices.Basement.dll",
+		"Xamarin.GooglePlayServices.Flags.dll",
 		"Xamarin.GooglePlayServices.Tasks.dll",
 	};
 	public static String[] Dependencies = new String[]{
