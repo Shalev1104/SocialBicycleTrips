@@ -18,7 +18,7 @@
         android:layout_height="70dp"
         android:layout_marginTop="10dp"
         android:layout_gravity="center"
-        android:src="@drawable/addProfileImage"
+        android:background="@drawable/addProfileImage"
         android:id="@+id/imgbtnProfile"/>
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,7 +33,9 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Full Name"/>
+            android:hint="Full Name"
+            android:id="@+id/edtName"
+        />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -48,7 +50,8 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email"/>
+            android:hint="Email"
+            android:id="@+id/edtEmail"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -63,7 +66,8 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password"/>
+            android:hint="Password"
+            android:id="@+id/edtPW"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -78,7 +82,8 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Re-type Password"/>
+            android:hint="Re-type Password"
+            android:id="@+id/edtPWConfirmation"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -93,7 +98,8 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Date Of Birth"/>
+            android:hint="Date Of Birth"
+            android:id="@+id/edtBirthday"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -108,12 +114,14 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Phone Number"/>
+            android:hint="Phone Number"
+            android:id="@+id/edtPhoneNumber"/>
     </LinearLayout>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="register"
-        android:background="@drawable/logincorners"/>
+        android:background="@drawable/logincorners"
+        android:id="@+id/btnRegister"/>
 </LinearLayout>
