@@ -45,7 +45,8 @@ namespace SocialBicycleTrips.Activities
             password             = FindViewById<EditText>(Resource.Id.edtPW);
             passwordConfirmation = FindViewById<EditText>(Resource.Id.edtPWConfirmation);
             birthday             = FindViewById<EditText>(Resource.Id.edtBirthday);
-            phoneNumber          = FindViewById<EditText>(Resource.Id.btnRegister);
+            phoneNumber          = FindViewById<EditText>(Resource.Id.edtPhoneNumber);
+            register             = FindViewById<Button>(Resource.Id.btnRegister);
 
             profile.Click += Profile_Click;
             register.Click += Register_Click;

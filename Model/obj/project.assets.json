@@ -2,6 +2,15 @@
   "version": 3,
   "targets": {
     "MonoAndroid,Version=v9.0": {
+      "Refractored.Controls.CircleImageView/1.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/MonoAndroid10/Refractored.Controls.CircleImageView.dll": {}
+        },
+        "runtime": {
+          "lib/MonoAndroid10/Refractored.Controls.CircleImageView.dll": {}
+        }
+      },
       "sqlite-net-pcl/1.6.292": {
         "type": "package",
         "dependencies": {
@@ -1086,6 +1095,19 @@
     }
   },
   "libraries": {
+    "Refractored.Controls.CircleImageView/1.0.1": {
+      "sha512": "0859oKAXBdJIRtS3c6uFD550LtZQfm7xNn+auZTkrHhnJPKp0df6lB7Fdrwjbi+l3R4BbHJsj9qCSlw8e6GdSw==",
+      "type": "package",
+      "path": "refractored.controls.circleimageview/1.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/MonoAndroid10/Refractored.Controls.CircleImageView.dll",
+        "lib/MonoAndroid10/Refractored.Controls.CircleImageView.xml",
+        "refractored.controls.circleimageview.1.0.1.nupkg.sha512",
+        "refractored.controls.circleimageview.nuspec"
+      ]
+    },
     "sqlite-net-pcl/1.6.292": {
       "sha512": "TZPs206/ZZXhDAgCzxE5Dmw1enkRmtpd1RKt+dLJA6Kvml4RxwkasRs4js2kijtGxik1SLCs39rh9nl9YFwrYg==",
       "type": "package",
@@ -2182,6 +2204,7 @@
     "MonoAndroid,Version=v9.0": [
       "Dal >= 1.0.0",
       "Helper >= 1.0.0",
+      "Refractored.Controls.CircleImageView >= 1.0.1",
       "Xamarin.Android.Support.Core.Utils >= 28.0.0.3",
       "Xamarin.Android.Support.CustomTabs >= 28.0.0.3",
       "Xamarin.Android.Support.Design >= 28.0.0.3",
@@ -2237,6 +2260,10 @@
     "frameworks": {
       "monoandroid90": {
         "dependencies": {
+          "Refractored.Controls.CircleImageView": {
+            "target": "Package",
+            "version": "[1.0.1, )"
+          },
           "Xamarin.Android.Support.Core.Utils": {
             "target": "Package",
             "version": "[28.0.0.3, )"

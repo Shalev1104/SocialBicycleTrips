@@ -12,37 +12,35 @@ using Android.Widget;
 
 namespace Model
 {
-    public class Trip : BaseEntity,iChangeable.TripChangeable
+    public class Trip : BaseEntity, iChangeable.TripChangeable
     {
         private string       startingLocation;
         private string       finalLocation;
         private DateTime     dateTime;
-        private string       about;
+        private string       notes; // (stops,regroup points, direction hints, etc)
         private Participants participants;
+        private TripManager tripManager;
 
         public Trip()
         {
 
         }
-        public Trip(string startingLocation, string finalLocation, DateTime date, string about, User tripCreator)
+        public Trip(string startingLocation, string finalLocation, DateTime date, string notes, TripManager tripManager)
         {
             this.startingLocation = startingLocation;
             this.finalLocation    = finalLocation;
             this.dateTime         = date;
-            this.about            = about;
+            this.notes            = notes;
+            this.tripManager      = tripManager;
 
         }
 
         public string StartingLocation { get => startingLocation; set => startingLocation = value; }
         public string FinalLocation { get => finalLocation; set => finalLocation = value; }
         public DateTime DateTime { get => dateTime; set => dateTime = value; }
-        public string About { get => about; set => about = value; }
+        public string Notes { get => notes; set => notes = value; }
         public Participants Participants { get => participants; set => participants = value; }
-
-        public void AddParticipant(User user)
-        {
-            //participants.Add(user);
-        }
+        public TripManager TripManager { get => tripManager; set => tripManager = value; }
 
         public void ChangeDateAndTime(DateTime dateTime)
         {
@@ -51,7 +49,7 @@ namespace Model
 
         public void UpdateDetails(string updatedDetails)
         {
-            about = updatedDetails;
+            notes = updatedDetails;
         }
 
         public void UpdateLocation(string startup, string endup)

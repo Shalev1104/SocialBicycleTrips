@@ -10,11 +10,12 @@
         android:layout_height="wrap_content"
         android:padding="5dp"
         android:orientation="horizontal">
-        <de.hdodenhof.circleimageview.CircleImageView
+        <refractored.controls.CircleImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_margin="10dp"
-            android:src="@drawable/standardprofileimage"/>
+            android:src="@drawable/standardprofileimage"
+            android:id="@+id/imgProfile"/>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -29,13 +30,15 @@
                 android:gravity="center"
                 android:textSize="17dp"
                 android:textColor="@android:color/black"
-                android:maxLines="1"/>
+                android:maxLines="1"
+                android:id="@+id/txtName"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Your Notes"
-                android:maxLines="1"/>
+                android:text="Heading to a long trip"
+                android:maxLines="2"
+                android:id="@+id/txtNotes"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -50,14 +53,16 @@
                 android:text="Sunday 16:00"
                 android:gravity="center"
                 android:textColor="@android:color/black"
-                android:textSize="14dp"/>
+                android:textSize="14dp"
+                android:id="@+id/txtDayTime"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="1.1.2020"
                 android:textColor="@android:color/black"
-                android:textSize="14dp"/>
+                android:textSize="14dp"
+                android:id="@+id/txtDate"/>
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
@@ -88,12 +93,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Rishon Lezion..."/>
+                android:text="Rishon Lezion..."
+                android:id="@+id/txtStartup"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Tel Aviv..."/>
+                android:text="Tel Aviv..."
+                android:id="@+id/txtEndup"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -110,7 +117,8 @@
                 android:layout_height="match_parent"
                 android:text="7"
                 android:textColor="@android:color/black"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:id="@+id/txtParticipants"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

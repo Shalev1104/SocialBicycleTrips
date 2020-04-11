@@ -28,7 +28,7 @@ namespace Dal
 
         static DbTable()
         {
-            db = DataBase.Instance.Connection;
+            db = BaseDB.Instance.Connection;
         }
 
         public static int CreateTable()

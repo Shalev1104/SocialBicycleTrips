@@ -1098,6 +1098,7 @@
         "dependencies": {
           "Dal": "1.0.0",
           "Helper": "1.0.0",
+          "Refractored.Controls.CircleImageView": "1.0.1",
           "Xamarin.Android.Support.Core.Utils": "28.0.0.3",
           "Xamarin.Android.Support.CustomTabs": "28.0.0.3",
           "Xamarin.Android.Support.Design": "28.0.0.3",
