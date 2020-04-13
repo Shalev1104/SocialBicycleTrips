@@ -13,7 +13,7 @@ using Android.Widget;
 namespace SocialBicycleTrips.Activities
 {
 
-    [Activity(Theme ="@style/Theme.Splash", MainLauncher = true, NoHistory = true)]
+    [Activity(Theme ="@style/Theme.Splash", MainLauncher = true, NoHistory = true, Icon = "@drawable/ProjectIcon")]
     public class ActivitySplash : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)

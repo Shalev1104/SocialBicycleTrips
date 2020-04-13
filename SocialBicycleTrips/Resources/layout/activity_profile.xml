@@ -40,7 +40,7 @@
                     android:text="Israel Israeli"
                     android:textColor="@android:color/black"
                     android:layout_gravity="center"
-                    android:id="@+id/txtName"/>
+                    android:id="@+id/txtProfileName"/>
                 </LinearLayout>
     </LinearLayout>
     <LinearLayout

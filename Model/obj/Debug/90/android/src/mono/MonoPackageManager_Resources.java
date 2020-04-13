@@ -5,6 +5,7 @@ public class MonoPackageManager_Resources {
 		"Model.dll",
 		"Dal.dll",
 		"Helper.dll",
+		"Refractored.Controls.CircleImageView.dll",
 		"SQLite-net.dll",
 		"SQLitePCLRaw.batteries_green.dll",
 		"SQLitePCLRaw.batteries_v2.dll",

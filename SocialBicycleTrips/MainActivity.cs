@@ -29,13 +29,86 @@ namespace SocialBicycleTrips
             SetViews();
             tripDB = new TripsDB();
             trips = tripDB.GetAll();
+            GenerateTrips();
             UploadUpdatedList();
+        }
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.dots, menu);
+            return base.OnCreateOptionsMenu(menu);
+        }
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            Intent intent;
+            switch (item.ItemId)
+            {
+                case Resource.Id.mnuBrowseTrips:
+                    {
+                        intent = new Intent(this, typeof(MainActivity));
+                        StartActivity(intent);
+                        item.SetChecked(true);
+                        break;
+                    }
+
+                case Resource.Id.mnuMyTrips:
+                    {
+                        intent = new Intent(this, typeof(MainActivity));
+                        StartActivity(intent);
+                        item.SetChecked(true);
+                        break;
+                    }
+
+                case Resource.Id.mnuCreateTrip:
+                    {
+                        intent = new Intent(this, typeof(MainActivity));
+                        StartActivity(intent);
+                        item.SetChecked(true);
+                        break;
+                    }
+
+                case Resource.Id.mnuMyFriends:
+                    {
+                        intent = new Intent(this, typeof(MainActivity));
+                        StartActivity(intent);
+                        item.SetChecked(true);
+                        break;
+                    }
+
+                case Resource.Id.mnuUpdateProfile:
+                    {
+                        intent = new Intent(this, typeof(MainActivity));
+                        StartActivity(intent);
+                        item.SetChecked(true);
+                        break;
+                    }
+
+                case Resource.Id.mnuChangePassword:
+                    {
+                        intent = new Intent(this, typeof(MainActivity));
+                        StartActivity(intent);
+                        item.SetChecked(true);
+                        break;
+                    }
+
+                case Resource.Id.mnuSettings:
+                    {
+                        intent = new Intent(this, typeof(MainActivity));
+                        StartActivity(intent);
+                        item.SetChecked(true);
+                        break;
+                    }
+            }
+            return base.OnOptionsItemSelected(item);
+        }
+        private void GenerateTrips()
+        {
+            //trips.Add(new Trip("Rishon Lezion", "Tel Aviv", new DateTime(), "Heading to a long trip", new TripManager("http://www.mac-wallpapers.com/bulkupload/wallpapers/Apple%20Wallpapers/apple-black-logo-wallpaper.jpg","Albert Jax")));
         }
 
         private void UploadUpdatedList()
         {
             trips.Sort();
-            tripsAdapter = new TripsAdapter(this, Resource.Layout.activity_singleItem, trips);
+            tripsAdapter = new TripsAdapter(this, Resource.Layout.activity_tripListDesigner, trips);
             lvTrips.Adapter = tripsAdapter;
         }
 
@@ -51,7 +124,6 @@ namespace SocialBicycleTrips
             lvTrips = FindViewById<ListView>(Resource.Id.lvTrips);
             lvTrips.ItemClick += LvTrips_ItemClick;
         }
-
         private void LvTrips_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
             throw new NotImplementedException();

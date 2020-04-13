@@ -46,11 +46,11 @@ namespace Model
                 viewHolder.profileImage = convertView.FindViewById<Refractored.Controls.CircleImageView>(Resource.Id.imgProfile);
                 viewHolder.txtName = convertView.FindViewById<TextView>(Resource.Id.txtName);
                 viewHolder.txtNotes = convertView.FindViewById<TextView>(Resource.Id.txtNotes);
-                viewHolder.dayTime = convertView.FindViewById<ImageView>(Resource.Id.txtDayTime);
-                viewHolder.date = convertView.FindViewById<ImageView>(Resource.Id.txtDate);
-                viewHolder.txtStartup = convertView.FindViewById<ImageView>(Resource.Id.txtStartup);
-                viewHolder.txtEndup = convertView.FindViewById<ImageView>(Resource.Id.txtEndup);
-                viewHolder.txtParticipants = convertView.FindViewById<ImageView>(Resource.Id.txtParticipants);
+                viewHolder.dayTime = convertView.FindViewById<TextView>(Resource.Id.txtDayTime);
+                viewHolder.date = convertView.FindViewById<TextView>(Resource.Id.txtDate);
+                viewHolder.txtStartup = convertView.FindViewById<TextView>(Resource.Id.txtStartup);
+                viewHolder.txtEndup = convertView.FindViewById<TextView>(Resource.Id.txtEndup);
+                viewHolder.txtParticipants = convertView.FindViewById<TextView>(Resource.Id.txtParticipants);
 
                 convertView.Tag = viewHolder;
             }

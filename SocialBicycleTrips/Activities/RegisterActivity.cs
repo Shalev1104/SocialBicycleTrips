@@ -96,39 +96,53 @@ namespace SocialBicycleTrips.Activities
 
         public bool IsVaild()
         {
-            if(!(name != null && !name.Text.Equals("")))
+            name.Background.ClearColorFilter();
+            email.Background.ClearColorFilter();
+            password.Background.ClearColorFilter();
+            passwordConfirmation.Background.ClearColorFilter();
+            birthday.Background.ClearColorFilter();
+            phoneNumber.Background.ClearColorFilter();
+
+            if (!(name != null && !name.Text.Equals("")))
             {
                 Toast.MakeText(this, "Type your name", ToastLength.Long).Show();
+                name.Background.SetColorFilter(new Color(Color.Red), PorterDuff.Mode.SrcIn);
                 return false;
             }
             if (!(email != null && !email.Text.Equals("")))
             {
                 Toast.MakeText(this, "Type your email", ToastLength.Long).Show();
+                email.Background.SetColorFilter(new Color(Color.Red), PorterDuff.Mode.SrcIn);
                 return false;
             }
             if (!(password != null && !password.Text.Equals("")))
             {
                 Toast.MakeText(this, "Type your password", ToastLength.Long).Show();
+                password.Background.SetColorFilter(new Color(Color.Red), PorterDuff.Mode.SrcIn);
                 return false;
             }
             if (!(passwordConfirmation != null && !passwordConfirmation.Text.Equals("")))
             {
                 Toast.MakeText(this, "Re-type Password", ToastLength.Long).Show();
+                passwordConfirmation.Background.SetColorFilter(new Color(Color.Red), PorterDuff.Mode.SrcIn);
                 return false;
             }
             if (!(birthday != null && !birthday.Text.Equals("")))
             {
                 Toast.MakeText(this, "Type your birthday", ToastLength.Long).Show();
+                birthday.Background.SetColorFilter(new Color(Color.Red), PorterDuff.Mode.SrcIn);
                 return false;
             }
             if (!(phoneNumber != null && !phoneNumber.Text.Equals("")))
             {
                 Toast.MakeText(this, "Type your phone number", ToastLength.Long).Show();
+                phoneNumber.Background.SetColorFilter(new Color(Color.Red), PorterDuff.Mode.SrcIn);
                 return false;
             }
             if (!password.Text.Equals(passwordConfirmation.Text))
             {
                 Toast.MakeText(this, "passwords does not match", ToastLength.Long).Show();
+                passwordConfirmation.Background.SetColorFilter(new Color(Color.Red), PorterDuff.Mode.SrcIn);
                 return false;
             }
             return true;
