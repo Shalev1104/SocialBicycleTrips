@@ -66,7 +66,7 @@
     <Compile Include="Activities\LoginActivity.cs" />
     <Compile Include="Activities\ProfileActivity.cs" />
     <Compile Include="Activities\RegisterActivity.cs" />
-    <Compile Include="Adapters\TripsAdapter.cs" />
+    <Compile Include="Adapters\TripAdapter.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -235,7 +235,7 @@
     <AndroidResource Include="Resources\layout\activity_createTrip.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\activity_tripListDesigner.xml" />
+    <AndroidResource Include="Resources\layout\activity_singleItemTripDesign.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

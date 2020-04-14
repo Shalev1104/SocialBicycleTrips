@@ -5,11 +5,13 @@ using System.Text;
 
 using Android.App;
 using Android.Content;
+using Android.Graphics;
 using Android.Graphics.Drawables;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Helper;
 
 namespace Model
 {
@@ -50,9 +52,10 @@ namespace Model
             this.name     = name;
             this.email    = email;
             this.password = password;
-            /* image - .. ByDrawableResource */
             this.phoneNumber = phoneNumber;
             this.birthday = birthday;
+
+            image = BitMapHelper.BitMapToBase64(((BitmapDrawable) Resource.Drawable.standardprofileimage).Bitmap);
 
             completedTrips = 0;
             upcomingTrips = 0;

@@ -18,7 +18,7 @@ namespace SocialBicycleTrips
     {
         private ListView lvTrips;
         private Trips trips;
-        private TripsAdapter tripsAdapter;
+        private Adapters.TripAdapter tripAdapter;
         private TripsDB tripDB;
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -39,61 +39,60 @@ namespace SocialBicycleTrips
         }
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            Intent intent;
             switch (item.ItemId)
             {
                 case Resource.Id.mnuBrowseTrips:
                     {
-                        intent = new Intent(this, typeof(MainActivity));
-                        StartActivity(intent);
+                        StartActivity(new Intent(this, typeof(MainActivity)));
                         item.SetChecked(true);
                         break;
                     }
 
                 case Resource.Id.mnuMyTrips:
                     {
-                        intent = new Intent(this, typeof(MainActivity));
-                        StartActivity(intent);
+                        StartActivity(new Intent(this, typeof(MainActivity)));
                         item.SetChecked(true);
                         break;
                     }
 
                 case Resource.Id.mnuCreateTrip:
                     {
-                        intent = new Intent(this, typeof(MainActivity));
-                        StartActivity(intent);
+                        StartActivity(new Intent(this, typeof(MainActivity)));
                         item.SetChecked(true);
                         break;
                     }
 
                 case Resource.Id.mnuMyFriends:
                     {
-                        intent = new Intent(this, typeof(MainActivity));
-                        StartActivity(intent);
+                        StartActivity(new Intent(this, typeof(MainActivity)));
+                        item.SetChecked(true);
+                        break;
+                    }
+
+                case Resource.Id.mnuMyProfile:
+                    {
+                        StartActivity(new Intent(this, typeof(Activities.ProfileActivity)));
                         item.SetChecked(true);
                         break;
                     }
 
                 case Resource.Id.mnuUpdateProfile:
                     {
-                        intent = new Intent(this, typeof(MainActivity));
-                        StartActivity(intent);
+                        StartActivity(new Intent(this, typeof(MainActivity)));
                         item.SetChecked(true);
                         break;
                     }
 
                 case Resource.Id.mnuChangePassword:
                     {
-                        intent = new Intent(this, typeof(MainActivity));
-                        StartActivity(intent);
+                        StartActivity(new Intent(this, typeof(MainActivity)));
                         item.SetChecked(true);
                         break;
                     }
 
                 case Resource.Id.mnuSettings:
                     {
-                        intent = new Intent(this, typeof(MainActivity));
-                        StartActivity(intent);
+                        StartActivity(new Intent(this, typeof(MainActivity)));
                         item.SetChecked(true);
                         break;
                     }
@@ -102,14 +101,14 @@ namespace SocialBicycleTrips
         }
         private void GenerateTrips()
         {
-            //trips.Add(new Trip("Rishon Lezion", "Tel Aviv", new DateTime(), "Heading to a long trip", new TripManager("http://www.mac-wallpapers.com/bulkupload/wallpapers/Apple%20Wallpapers/apple-black-logo-wallpaper.jpg","Albert Jax")));
+
         }
 
         private void UploadUpdatedList()
         {
             trips.Sort();
-            tripsAdapter = new TripsAdapter(this, Resource.Layout.activity_tripListDesigner, trips);
-            lvTrips.Adapter = tripsAdapter;
+            tripAdapter = new Adapters.TripAdapter(this, Resource.Layout.activity_singleItemTripDesign, trips);
+            lvTrips.Adapter = tripAdapter;
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)

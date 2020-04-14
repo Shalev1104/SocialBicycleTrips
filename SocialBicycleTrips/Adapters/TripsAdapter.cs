@@ -23,7 +23,7 @@ namespace Model
         private LayoutInflater inflater;
 
         // ViewHolder הכרזה על אובייקט
-        private ViewHolder viewHolder;
+        private TripsHolder tripsHolder;
 
         private Trip trip;
 
@@ -41,42 +41,42 @@ namespace Model
             {
                 convertView = inflater.Inflate(resource, parent, false);
 
-                viewHolder = new ViewHolder();
+                tripsHolder = new TripsHolder();
 
-                viewHolder.profileImage = convertView.FindViewById<Refractored.Controls.CircleImageView>(Resource.Id.imgProfile);
+                /*viewHolder.profileImage = convertView.FindViewById<Refractored.Controls.CircleImageView>(Resource.Id.imgProfile);
                 viewHolder.txtName = convertView.FindViewById<TextView>(Resource.Id.txtName);
                 viewHolder.txtNotes = convertView.FindViewById<TextView>(Resource.Id.txtNotes);
                 viewHolder.dayTime = convertView.FindViewById<TextView>(Resource.Id.txtDayTime);
                 viewHolder.date = convertView.FindViewById<TextView>(Resource.Id.txtDate);
                 viewHolder.txtStartup = convertView.FindViewById<TextView>(Resource.Id.txtStartup);
                 viewHolder.txtEndup = convertView.FindViewById<TextView>(Resource.Id.txtEndup);
-                viewHolder.txtParticipants = convertView.FindViewById<TextView>(Resource.Id.txtParticipants);
+                viewHolder.txtParticipants = convertView.FindViewById<TextView>(Resource.Id.txtParticipants);*/
 
-                convertView.Tag = viewHolder;
+                convertView.Tag = tripsHolder;
             }
             else
             {
-                viewHolder = (ViewHolder)convertView.Tag;
+                tripsHolder = (TripsHolder)convertView.Tag;
             }
 
             trip = GetItem(position);
 
             if (trip != null)
             {
-                viewHolder.txtName.Text = trip.TripManager.Name;
-                viewHolder.profileImage.SetImageBitmap(BitMapHelper.Base64ToBitMap(trip.TripManager.Image));
-                viewHolder.txtNotes.Text = trip.Notes;
-                viewHolder.dayTime.Text = trip.DateTime.DayOfWeek.ToString() + " " + trip.DateTime.TimeOfDay.ToString();
-                viewHolder.date.Text = trip.DateTime.Date.ToString();
-                viewHolder.txtStartup.Text = trip.StartingLocation;
-                viewHolder.txtEndup.Text = trip.FinalLocation;
-                viewHolder.txtParticipants.Text = trip.Participants.Capacity.ToString();
+                tripsHolder.txtName.Text = trip.TripManager.Name;
+                tripsHolder.profileImage.SetImageBitmap(BitMapHelper.Base64ToBitMap(trip.TripManager.Image));
+                tripsHolder.txtNotes.Text = trip.Notes;
+                tripsHolder.dayTime.Text = trip.DateTime.DayOfWeek.ToString() + " " + trip.DateTime.TimeOfDay.ToString();
+                tripsHolder.date.Text = trip.DateTime.Date.ToString();
+                tripsHolder.txtStartup.Text = trip.StartingLocation;
+                tripsHolder.txtEndup.Text = trip.FinalLocation;
+                tripsHolder.txtParticipants.Text = trip.Participants.Capacity.ToString();
             }
 
             return convertView;
         }
 
-        private class ViewHolder : Java.Lang.Object
+        private class TripsHolder : Java.Lang.Object
         {
             public Refractored.Controls.CircleImageView profileImage;
             public TextView txtName;

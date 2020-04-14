@@ -36,7 +36,7 @@ namespace SocialBicycleTrips.Activities
         }
         public void SetViews()
         {
-            name           = FindViewById<TextView> (Resource.Id.txtName);
+            name           = FindViewById<TextView> (Resource.Id.txtProfileName);
             addFriend      = FindViewById<ImageButton> (Resource.Id.imgbtnAddFriend);
             profileImage   = FindViewById<Refractored.Controls.CircleImageView> (Resource.Id.imgProfile);
             completedTrips = FindViewById<TextView> (Resource.Id.txtCompletedTourNum);
