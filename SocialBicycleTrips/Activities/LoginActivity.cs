@@ -155,9 +155,10 @@ namespace SocialBicycleTrips.Activities
         {
             if (IsTyped())
             {
-                if (IsExist())
+                User user = IsLogin();
+                if (user != null)
                 {
-
+                    Navigate(user);
                 }
                 else
                 {
@@ -169,22 +170,36 @@ namespace SocialBicycleTrips.Activities
         {
             return email.Text != null && password.Text != null && !email.Text.Equals("") && !password.Text.Equals("");
         }
-        public bool IsExist()
-        {
-            return false;
-        }
-
         public void OnSuccess(Java.Lang.Object result)
         {
-            User user = new User();
-            user.Name = firebaseAuth.CurrentUser.DisplayName;
-            user.Email = firebaseAuth.CurrentUser.Email;
-            user.PhoneNumber = firebaseAuth.CurrentUser.PhoneNumber;
-            user.Image = firebaseAuth.CurrentUser.PhotoUrl.Path;
-            //user.DateTime = firebaseAuth.CurrentUser;
-            Toast.MakeText(this, "login succesfull", ToastLength.Long).Show();
+            User user = IsLogin();
+            if(user == null)
+            {
+                user = new User(firebaseAuth.CurrentUser.DisplayName, firebaseAuth.CurrentUser.Email, firebaseAuth.CurrentUser.PhotoUrl.Path, firebaseAuth.CurrentUser.PhoneNumber);
+                users.Add(user);
+            }
+            Navigate(user);
         }
-
+        public User IsLogin() // first condition for social media login and the second for the form login
+        {
+            User user = null;
+            foreach (User found in users)
+            {
+                if ((found.Password == null &&  found.Email.Equals(firebaseAuth.CurrentUser.Email)) || (found.Password != null && found.Email.Equals(email.Text) && found.Password.Equals(password.Text)))
+                {
+                    user = found;
+                    break;
+                }
+            }
+            return user;
+        }
+        public void Navigate(User user)
+        {
+            Intent intent = new Intent();
+            intent.PutExtra("user", Serializer.ObjectToByteArray(user));
+            Toast.MakeText(this, "login succesfull", ToastLength.Long).Show();
+            StartActivity(new Intent(this, typeof(MainActivity)));
+        }
         public void OnFailure(Java.Lang.Exception e)
         {
             Toast.MakeText(this, "login failed", ToastLength.Long).Show();

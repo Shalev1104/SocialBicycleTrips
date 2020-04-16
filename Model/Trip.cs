@@ -17,7 +17,7 @@ namespace Model
         private string       startingLocation;
         private string       finalLocation;
         private DateTime     dateTime;
-        private string       notes; // (stops,regroup points, direction hints, etc)
+        private string       notes;
         private Participants participants;
         private TripManager tripManager;
 
@@ -25,14 +25,16 @@ namespace Model
         {
 
         }
-        public Trip(string startingLocation, string finalLocation, DateTime date, string notes, TripManager tripManager)
+        public Trip(string startingLocation, string finalLocation, DateTime dateTime, string notes, TripManager tripManager)
         {
             this.startingLocation = startingLocation;
             this.finalLocation    = finalLocation;
-            this.dateTime         = date;
+            this.dateTime         = dateTime;
             this.notes            = notes;
             this.tripManager      = tripManager;
 
+            participants = new Participants(); 
+            participants.Add(new Participant(tripManager.Id, this.Id));
         }
 
         public string StartingLocation { get => startingLocation; set => startingLocation = value; }

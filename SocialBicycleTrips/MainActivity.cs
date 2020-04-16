@@ -19,7 +19,7 @@ namespace SocialBicycleTrips
         private ListView lvTrips;
         private Trips trips;
         private Adapters.TripAdapter tripAdapter;
-        private TripsDB tripDB;
+        private TripsDB tripsDB;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -27,11 +27,12 @@ namespace SocialBicycleTrips
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
             SetViews();
-            tripDB = new TripsDB();
-            trips = tripDB.GetAll();
+            tripsDB = new TripsDB();
+            trips = tripsDB.GetAll();
             GenerateTrips();
             UploadUpdatedList();
         }
+
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
             MenuInflater.Inflate(Resource.Menu.dots, menu);
@@ -50,7 +51,7 @@ namespace SocialBicycleTrips
 
                 case Resource.Id.mnuMyTrips:
                     {
-                        StartActivity(new Intent(this, typeof(MainActivity)));
+                        StartActivity(new Intent(this, typeof(Activities.MyTripsActivity)));
                         item.SetChecked(true);
                         break;
                     }
@@ -101,7 +102,8 @@ namespace SocialBicycleTrips
         }
         private void GenerateTrips()
         {
-
+            User user = new User("avi", "bbb@gmail.com", "121212ss", new DateTime(2002, 11, 4), "0123456789");
+            trips.Add(new Trip("somethere", "somewhere", new DateTime(2020, 12, 1,16,5,25), "Checker", new TripManager(user.Image, user.Name)));
         }
 
         private void UploadUpdatedList()
@@ -125,7 +127,7 @@ namespace SocialBicycleTrips
         }
         private void LvTrips_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

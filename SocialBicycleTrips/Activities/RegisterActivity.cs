@@ -58,10 +58,10 @@ namespace SocialBicycleTrips.Activities
             {
                 string[] dateParts = birthday.Text.Split(new char[] { '/', '.', '-', ' ' });
                 DateTime dateTime = new DateTime(Convert.ToInt32((dateParts[2])), Convert.ToInt32((dateParts[1])), Convert.ToInt32((dateParts[0])));
-                string image = BitMapHelper.BitMapToBase64(bitmap);
 
-                if (profile.Background != null)
+                if (bitmap != null)
                 {
+                    string image = BitMapHelper.BitMapToBase64(bitmap);
                     user = new User(name.Text, email.Text, password.Text, image, dateTime, phoneNumber.Text);
                 }
                 else

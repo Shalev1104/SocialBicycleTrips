@@ -44,11 +44,12 @@ namespace SocialBicycleTrips.Activities
             phoneNumber    = FindViewById<TextView> (Resource.Id.txtPhoneNumber);
             age            = FindViewById<TextView> (Resource.Id.txtAge);
 
+            addFriend.Visibility = ViewStates.Visible;
             addFriend.Click += AddFriend_Click;
 
             GenerateUser();
             UploadUserDetails();
-            if(!isFriend())
+            if(isFriend())
             {
                 addFriend.Visibility = ViewStates.Invisible;
             }
@@ -57,7 +58,7 @@ namespace SocialBicycleTrips.Activities
         public void UploadUserDetails()
         {
             name.Text = profile.Name;
-            //profileImage = user.Image;
+            profileImage.SetImageBitmap(BitMapHelper.Base64ToBitMap(profile.Image));
             completedTrips.Text = profile.CompletedTrips.ToString();
             upcomingTrips.Text = profile.UpcomingTrips.ToString();
             phoneNumber.Text = profile.PhoneNumber;

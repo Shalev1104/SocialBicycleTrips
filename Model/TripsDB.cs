@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using Android.Support.V7.App;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -57,7 +57,6 @@ namespace Model
             try
             {
                 List<Trip> tripsList = new List<Trip>();
-
                 if (sorted)
                 {
                     string sql = "SELECT * FROM Trips ORDER BY ID";

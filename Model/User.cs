@@ -16,13 +16,11 @@ using Helper;
 namespace Model
 {
     [Serializable]
-    public class User : BaseEntity,iChangeable.UserChangeable
+    public class User : TripManager,iChangeable.UserChangeable
     {
-        private string        name;
         private string        email;
         private string        password;
         private DateTime      birthday;
-        private string        image;
         private string        phoneNumber;
         private int           completedTrips;
         private int           upcomingTrips;
@@ -55,16 +53,24 @@ namespace Model
             this.phoneNumber = phoneNumber;
             this.birthday = birthday;
 
-            image = BitMapHelper.BitMapToBase64(((BitmapDrawable) Resource.Drawable.standardprofileimage).Bitmap);
+            //image = BitMapHelper.BitMapToBase64(((BitmapDrawable) Resource.Drawable.abc_ic_star_black_16dp).Bitmap);
+            image = "";
 
             completedTrips = 0;
             upcomingTrips = 0;
         }
+        public User(string name, string email,  string image, string phoneNumber) //Social Media Login
+        {
+            this.name = name;
+            this.email = email;
+            this.image = image;
+            this.phoneNumber = phoneNumber;
 
-        public string Name { get => name; set => name = value; }
+            completedTrips = 0;
+            upcomingTrips = 0;
+        }
         public string Email { get => email; set => email = value; }
         public string Password { get => password; set => password = value; }
-        public string Image { get => image; set => image = value; }
         public MyFriends MyFriends { get => myFriends; set => myFriends = value; }
         public MyTrips MyTrips { get => myTrips; set => myTrips = value; }
         public int CompletedTrips { get => completedTrips; set => completedTrips = value; }

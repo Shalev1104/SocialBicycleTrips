@@ -13,10 +13,10 @@ using Refractored.Controls;
 
 namespace Model
 {
-    public class TripManager
+    public class TripManager : BaseEntity
     {
-        private string image;
-        private string name;
+        protected string image;
+        protected string name;
 
         public TripManager()
         {
