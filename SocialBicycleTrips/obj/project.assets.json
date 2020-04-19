@@ -2,6 +2,17 @@
   "version": 3,
   "targets": {
     "MonoAndroid,Version=v9.0": {
+      "Bolts/1.4.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/MonoAndroid403/Bolts.AppLinks.dll": {},
+          "lib/MonoAndroid403/Bolts.Tasks.dll": {}
+        },
+        "runtime": {
+          "lib/MonoAndroid403/Bolts.AppLinks.dll": {},
+          "lib/MonoAndroid403/Bolts.Tasks.dll": {}
+        }
+      },
       "Refractored.Controls.CircleImageView/1.0.1": {
         "type": "package",
         "compile": {
@@ -829,6 +840,60 @@
           "lib/monoandroid90/Xamarin.Essentials.dll": {}
         }
       },
+      "Xamarin.Facebook.Common.Android/5.11.2": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Android.Support.CustomTabs": "28.0.0.3",
+          "Xamarin.Android.Support.v4": "28.0.0.3",
+          "Xamarin.Android.Support.v7.AppCompat": "28.0.0.3",
+          "Xamarin.Android.Support.v7.CardView": "28.0.0.3",
+          "Xamarin.Facebook.Core.Android": "5.11.2",
+          "Xamarin.Google.ZXing.Core": "3.3.3"
+        },
+        "frameworkAssemblies": [
+          "Java.Interop"
+        ],
+        "compile": {
+          "lib/monoandroid90/Xamarin.Facebook.Common.Android.dll": {}
+        },
+        "runtime": {
+          "lib/monoandroid90/Xamarin.Facebook.Common.Android.dll": {}
+        }
+      },
+      "Xamarin.Facebook.Core.Android/5.11.2": {
+        "type": "package",
+        "dependencies": {
+          "Bolts": "1.4.0.1",
+          "Xamarin.Android.Support.Annotations": "28.0.0.3",
+          "Xamarin.Android.Support.Core.Utils": "28.0.0.3"
+        },
+        "frameworkAssemblies": [
+          "Java.Interop"
+        ],
+        "compile": {
+          "lib/monoandroid90/Xamarin.Facebook.Core.Android.dll": {}
+        },
+        "runtime": {
+          "lib/monoandroid90/Xamarin.Facebook.Core.Android.dll": {}
+        }
+      },
+      "Xamarin.Facebook.Login.Android/5.11.2": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Android.Support.v7.AppCompat": "28.0.0.3",
+          "Xamarin.Facebook.Common.Android": "5.11.2",
+          "Xamarin.Facebook.Core.Android": "5.11.2"
+        },
+        "frameworkAssemblies": [
+          "Java.Interop"
+        ],
+        "compile": {
+          "lib/monoandroid90/Xamarin.Facebook.Login.Android.dll": {}
+        },
+        "runtime": {
+          "lib/monoandroid90/Xamarin.Facebook.Login.Android.dll": {}
+        }
+      },
       "Xamarin.Firebase.Auth/71.1605.0": {
         "type": "package",
         "dependencies": {
@@ -907,6 +972,19 @@
         },
         "runtime": {
           "lib/monoandroid80/Xamarin.Google.AutoValue.Annotations.dll": {}
+        }
+      },
+      "Xamarin.Google.ZXing.Core/3.3.3": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Java.Interop",
+          "Mono.Android"
+        ],
+        "compile": {
+          "lib/monoandroid90/Google.ZXing.Core.dll": {}
+        },
+        "runtime": {
+          "lib/monoandroid90/Google.ZXing.Core.dll": {}
         }
       },
       "Xamarin.GooglePlayServices.Auth/71.1600.0": {
@@ -1061,6 +1139,7 @@
           "Xamarin.Android.Support.Design": "28.0.0.3",
           "Xamarin.Android.Support.v4": "28.0.0.3",
           "Xamarin.Essentials": "1.5.2",
+          "Xamarin.Facebook.Login.Android": "5.11.2",
           "Xamarin.Firebase.Auth": "71.1605.0",
           "Xamarin.GooglePlayServices.Auth": "71.1600.0",
           "sqlite-net-pcl": "1.6.292"
@@ -1081,6 +1160,7 @@
           "Xamarin.Android.Support.Design": "28.0.0.3",
           "Xamarin.Android.Support.v4": "28.0.0.3",
           "Xamarin.Essentials": "1.5.2",
+          "Xamarin.Facebook.Login.Android": "5.11.2",
           "Xamarin.Firebase.Auth": "71.1605.0",
           "Xamarin.GooglePlayServices.Auth": "71.1600.0",
           "sqlite-net-pcl": "1.6.292"
@@ -1104,6 +1184,7 @@
           "Xamarin.Android.Support.Design": "28.0.0.3",
           "Xamarin.Android.Support.v4": "28.0.0.3",
           "Xamarin.Essentials": "1.5.2",
+          "Xamarin.Facebook.Login.Android": "5.11.2",
           "Xamarin.Firebase.Auth": "71.1605.0",
           "Xamarin.GooglePlayServices.Auth": "71.1600.0",
           "sqlite-net-pcl": "1.6.292"
@@ -1118,6 +1199,19 @@
     }
   },
   "libraries": {
+    "Bolts/1.4.0.1": {
+      "sha512": "jP+DKZRTd/3+S7eN25bHhYrl+f5xh/gHtx9D6Z947bADQyPWrOY2FWtY7qrIlHNOwUaFFsljN1M4irI9sBpz1Q==",
+      "type": "package",
+      "path": "bolts/1.4.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "bolts.1.4.0.1.nupkg.sha512",
+        "bolts.nuspec",
+        "lib/MonoAndroid403/Bolts.AppLinks.dll",
+        "lib/MonoAndroid403/Bolts.Tasks.dll"
+      ]
+    },
     "Refractored.Controls.CircleImageView/1.0.1": {
       "sha512": "0859oKAXBdJIRtS3c6uFD550LtZQfm7xNn+auZTkrHhnJPKp0df6lB7Fdrwjbi+l3R4BbHJsj9qCSlw8e6GdSw==",
       "type": "package",
@@ -2064,6 +2158,45 @@
         "xamarin.essentials.nuspec"
       ]
     },
+    "Xamarin.Facebook.Common.Android/5.11.2": {
+      "sha512": "a0zxT37tI5eTDGSGAPnDA0LkmAnnrjpKBvBM7pW4PSJxwRKQpFe+bnVNKuWi9Kp14ZyMwlMDQb1VWpb2KSDGuA==",
+      "type": "package",
+      "path": "xamarin.facebook.common.android/5.11.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "THIRD-PARTY-NOTICES.txt",
+        "lib/monoandroid90/Xamarin.Facebook.Common.Android.dll",
+        "xamarin.facebook.common.android.5.11.2.nupkg.sha512",
+        "xamarin.facebook.common.android.nuspec"
+      ]
+    },
+    "Xamarin.Facebook.Core.Android/5.11.2": {
+      "sha512": "4KyGGp/7I4QG/M//OqbTWSM58WoM1MKeMtTTZi6bYp7z1HXXE2RDTUhLDzNGqFMJSTweyzIdO8yanD/hgn6/Iw==",
+      "type": "package",
+      "path": "xamarin.facebook.core.android/5.11.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "THIRD-PARTY-NOTICES.txt",
+        "lib/monoandroid90/Xamarin.Facebook.Core.Android.dll",
+        "xamarin.facebook.core.android.5.11.2.nupkg.sha512",
+        "xamarin.facebook.core.android.nuspec"
+      ]
+    },
+    "Xamarin.Facebook.Login.Android/5.11.2": {
+      "sha512": "sxeFFD9IowXPPGt6v3ePFx0P9Ra1S6gOBEXGgUMtbiSriTpMSVh+K9cabzAErnevutZZbyTpm9buyT09Ei/Mkg==",
+      "type": "package",
+      "path": "xamarin.facebook.login.android/5.11.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "THIRD-PARTY-NOTICES.txt",
+        "lib/monoandroid90/Xamarin.Facebook.Login.Android.dll",
+        "xamarin.facebook.login.android.5.11.2.nupkg.sha512",
+        "xamarin.facebook.login.android.nuspec"
+      ]
+    },
     "Xamarin.Firebase.Auth/71.1605.0": {
       "sha512": "5hISFNoigbuSN0ZvksupFUaKy1xJhnMYV6FCYruXXpPZzwtJg2ONENoq//j9BIDJkUte+vuhX1dxKjrq1sUB4g==",
       "type": "package",
@@ -2116,6 +2249,20 @@
         "lib/monoandroid80/Xamarin.Google.AutoValue.Annotations.dll",
         "xamarin.google.autovalue.annotations.1.6.5.nupkg.sha512",
         "xamarin.google.autovalue.annotations.nuspec"
+      ]
+    },
+    "Xamarin.Google.ZXing.Core/3.3.3": {
+      "sha512": "vxTn3kBeZVM4TE4PtE42ZAOv4zxq+wyTIZHtmtLPU5Xc8EOI9MBnvhLjn9fIns0QZ++eW4Yu34gvdvQLuIt8ig==",
+      "type": "package",
+      "path": "xamarin.google.zxing.core/3.3.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "THIRD-PARTY-NOTICES.txt",
+        "lib/monoandroid90/Google.ZXing.Core.dll",
+        "xamarin.google.zxing.core.3.3.3.nupkg.sha512",
+        "xamarin.google.zxing.core.nuspec"
       ]
     },
     "Xamarin.GooglePlayServices.Auth/71.1600.0": {
@@ -2239,6 +2386,7 @@
       "Xamarin.Android.Support.Design >= 28.0.0.3",
       "Xamarin.Android.Support.v4 >= 28.0.0.3",
       "Xamarin.Essentials >= 1.5.2",
+      "Xamarin.Facebook.Login.Android >= 5.11.2",
       "Xamarin.Firebase.Auth >= 71.1605.0",
       "Xamarin.GooglePlayServices.Auth >= 71.1600.0",
       "sqlite-net-pcl >= 1.6.292"
@@ -2315,6 +2463,10 @@
           "Xamarin.Essentials": {
             "target": "Package",
             "version": "[1.5.2, )"
+          },
+          "Xamarin.Facebook.Login.Android": {
+            "target": "Package",
+            "version": "[5.11.2, )"
           },
           "Xamarin.Firebase.Auth": {
             "target": "Package",

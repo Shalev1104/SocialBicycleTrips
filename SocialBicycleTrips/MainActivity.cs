@@ -20,6 +20,8 @@ namespace SocialBicycleTrips
         private Trips trips;
         private Adapters.TripAdapter tripAdapter;
         private TripsDB tripsDB;
+        private int position = -1;
+        private User user;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -35,7 +37,22 @@ namespace SocialBicycleTrips
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            MenuInflater.Inflate(Resource.Menu.dots, menu);
+            if(Intent.HasExtra("user"))
+            {
+                user = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("user")) as User;
+                if (user.IsSocialMediaLogon())
+                {
+                    MenuInflater.Inflate(Resource.Menu.socialMediaMenu, menu);
+                }
+                else
+                {
+                    MenuInflater.Inflate(Resource.Menu.userMenu, menu);
+                }
+            }
+            else
+            {
+                MenuInflater.Inflate(Resource.Menu.guestMenu, menu);
+            }
             return base.OnCreateOptionsMenu(menu);
         }
         public override bool OnOptionsItemSelected(IMenuItem item)
@@ -97,6 +114,24 @@ namespace SocialBicycleTrips
                         item.SetChecked(true);
                         break;
                     }
+                case Resource.Id.mnuDisconnect:
+                    {
+                        StartActivity(new Intent(this, typeof(MainActivity)));
+                        item.SetChecked(true);
+                        break;
+                    }
+                case Resource.Id.mnuLogin:
+                    {
+                        StartActivity(new Intent(this, typeof(Activities.LoginActivity)));
+                        item.SetChecked(true);
+                        break;
+                    }
+                case Resource.Id.mnuAddDate:
+                    {
+                        StartActivity(new Intent(this, typeof(MainActivity)));
+                        item.SetChecked(true);
+                        break;
+                    }
             }
             return base.OnOptionsItemSelected(item);
         }
@@ -127,7 +162,13 @@ namespace SocialBicycleTrips
         }
         private void LvTrips_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
-            
+            position = e.Position;
+
+            Intent intent = new Intent(this, typeof(Activities.TripDetailsActivity));
+
+            intent.PutExtra("trip", Serializer.ObjectToByteArray(trips[e.Position]));
+
+            StartActivity(intent);
         }
     }
 }

@@ -12,6 +12,7 @@ using Android.Widget;
 
 namespace Model
 {
+    [Serializable]
     public class Trip : BaseEntity, iChangeable.TripChangeable
     {
         private string       startingLocation;

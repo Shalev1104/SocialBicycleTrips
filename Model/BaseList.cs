@@ -12,6 +12,7 @@ using Android.Widget;
 
 namespace Model
 {
+    [Serializable]
     public abstract class BaseList<T> : List<T> where T : new()
     {
         public List<T> InsertList { get; set; }

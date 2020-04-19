@@ -32,12 +32,10 @@ namespace Model
 
         }
 
-        public User(string name, string email, string password, string image, DateTime birthday, string phoneNumber)
+        public User(string name, string email, string password, string image, DateTime birthday, string phoneNumber) : base(image,name)
         {
-            this.name     = name;
             this.email    = email;
             this.password = password;
-            this.image    = image;
             this.phoneNumber = phoneNumber;
             this.birthday = birthday;
 
@@ -45,25 +43,21 @@ namespace Model
             upcomingTrips = 0;
         }
 
-        public User(string name, string email, string password, DateTime birthday, string phoneNumber)
+        public User(string name, string email, string password, DateTime birthday, string phoneNumber) : base("",name)
         {
-            this.name     = name;
             this.email    = email;
             this.password = password;
             this.phoneNumber = phoneNumber;
             this.birthday = birthday;
 
             //image = BitMapHelper.BitMapToBase64(((BitmapDrawable) Resource.Drawable.abc_ic_star_black_16dp).Bitmap);
-            image = "";
 
             completedTrips = 0;
             upcomingTrips = 0;
         }
-        public User(string name, string email,  string image, string phoneNumber) //Social Media Login
+        public User(string name, string email,  string image, string phoneNumber) : base(image,name) //Social Media Login
         {
-            this.name = name;
             this.email = email;
-            this.image = image;
             this.phoneNumber = phoneNumber;
 
             completedTrips = 0;
@@ -92,7 +86,11 @@ namespace Model
         {
             //myFriends.Add(friend);
         }
-
+        
+        public bool IsSocialMediaLogon()
+        {
+            return password == null;
+        }
         public void InviteFriendToTrip(MyFriend myFriend)
         {
             //

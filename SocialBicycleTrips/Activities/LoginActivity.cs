@@ -18,6 +18,8 @@ using Android.Gms.Auth.Api;
 using Firebase.Auth;
 using Firebase;
 using Android.Gms.Tasks;
+using Xamarin.Facebook.Login.Widget;
+using Android.Gms.Common;
 
 namespace SocialBicycleTrips.Activities
 {
@@ -28,9 +30,10 @@ namespace SocialBicycleTrips.Activities
         private EditText password;
         private Button login;
         private Button signup;
-        private ImageButton googleLogin;
-        private ImageButton facebookLogin;
+        private SignInButton googleLogin;
+        private LoginButton facebookLogin;
         private Users users;
+        private UsersDB usersDB;
 
         GoogleSignInOptions gso;
         GoogleApiClient googleApiClient;
@@ -38,9 +41,11 @@ namespace SocialBicycleTrips.Activities
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.activity_login);
+            SetContentView(Resource.Layout.activity_signin);
             SetViews();
             // Create your application here
+            usersDB = new UsersDB();
+            users = usersDB.GetAll();
         }
         public void SetViews()
         {
@@ -48,8 +53,8 @@ namespace SocialBicycleTrips.Activities
             password = FindViewById<EditText>(Resource.Id.edtLoginPW);
             login = FindViewById<Button>(Resource.Id.btnLogin);
             signup = FindViewById<Button>(Resource.Id.btnSignup);
-            googleLogin = FindViewById<ImageButton>(Resource.Id.btnGoogleLogin);
-            facebookLogin = FindViewById<ImageButton>(Resource.Id.btnFacebookLogin);
+            googleLogin = FindViewById<SignInButton>(Resource.Id.btnGoogleLogin);
+            facebookLogin = FindViewById<LoginButton>(Resource.Id.btnFacebookLogin);
 
             login.Click += Login_Click;
             signup.Click += Signup_Click;
@@ -64,7 +69,7 @@ namespace SocialBicycleTrips.Activities
 
         private void FacebookLogin_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            
         }
 
         private void GoogleLogin_Click(object sender, EventArgs e)
@@ -185,7 +190,7 @@ namespace SocialBicycleTrips.Activities
             User user = null;
             foreach (User found in users)
             {
-                if ((found.Password == null &&  found.Email.Equals(firebaseAuth.CurrentUser.Email)) || (found.Password != null && found.Email.Equals(email.Text) && found.Password.Equals(password.Text)))
+                if ((found.IsSocialMediaLogon() &&  found.Email.Equals(firebaseAuth.CurrentUser.Email)) || (!found.IsSocialMediaLogon() && found.Email.Equals(email.Text) && found.Password.Equals(password.Text)))
                 {
                     user = found;
                     break;

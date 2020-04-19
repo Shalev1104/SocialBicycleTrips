@@ -14,7 +14,7 @@ using SQLite;
 namespace Model
 {
     public enum EntityStatus { ADDED, MODIFIED, DELETED, UNCHANGED }
-
+    [Serializable]
     public abstract class BaseEntity
     {
         private int id;

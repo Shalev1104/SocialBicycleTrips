@@ -13,6 +13,7 @@ using Refractored.Controls;
 
 namespace Model
 {
+    [Serializable]
     public class TripManager : BaseEntity
     {
         protected string image;

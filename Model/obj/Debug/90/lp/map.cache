@@ -1,4 +1,7 @@
+Bolts.AppLinks
+Bolts.Tasks
 Dal
+Google.ZXing.Core
 Helper
 Refractored.Controls.CircleImageView
 SQLitePCLRaw.batteries_green
@@ -44,6 +47,9 @@ Xamarin.Android.Support.Vector.Drawable
 Xamarin.Android.Support.VersionedParcelable
 Xamarin.Android.Support.ViewPager
 Xamarin.Essentials
+Xamarin.Facebook.Common.Android
+Xamarin.Facebook.Core.Android
+Xamarin.Facebook.Login.Android
 Xamarin.Firebase.Auth
 Xamarin.Firebase.Auth.Interop
 Xamarin.Firebase.Common

@@ -14,6 +14,7 @@ using Helper;
 using Dal;
 using Android.Provider;
 using Android.Graphics;
+using Android.Graphics.Drawables;
 
 namespace SocialBicycleTrips.Activities
 {
@@ -30,6 +31,13 @@ namespace SocialBicycleTrips.Activities
         private Button register;
         private Bitmap bitmap;
         private User user;
+
+        private Dialog dialog;
+        private LinearLayout cameraFrame;
+        private ImageButton btnCamera;
+        private LinearLayout galleryFrame;
+        private ImageButton btnGallery;
+        private Button btnCancel;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -68,29 +76,81 @@ namespace SocialBicycleTrips.Activities
                 {
                     user = new User(name.Text, email.Text, password.Text, dateTime, phoneNumber.Text);
                 }
-                Intent intent = new Intent();
+                Intent intent = new Intent(this,typeof(MainActivity));
                 intent.PutExtra("user", Serializer.ObjectToByteArray(user));
-                SetResult(Result.Ok, intent);
-                Finish();
+                Toast.MakeText(this, "Registerated", ToastLength.Long);
+                StartActivity(intent);
             }
         }
 
         private void Profile_Click(object sender, EventArgs e)
         {
-            Intent intent = new Intent(MediaStore.ActionImageCapture);
-            StartActivityForResult(intent, 1);
+            PerformCustomDialog();
         }
+
+        public void PerformCustomDialog()
+        {
+            dialog = new Dialog(this);
+            dialog.SetContentView(Resource.Layout.activity_cameraOptions);
+            dialog.SetCancelable(true);
+
+            cameraFrame  = dialog.FindViewById<LinearLayout>(Resource.Id.frameCamera);
+            galleryFrame = dialog.FindViewById<LinearLayout>(Resource.Id.frameGallery);
+            btnCamera    = dialog.FindViewById<ImageButton>(Resource.Id.btnCameraProfile);
+            btnGallery   = dialog.FindViewById<ImageButton>(Resource.Id.btnGalleryProfile);
+            btnCancel    = dialog.FindViewById<Button>(Resource.Id.btnCancelImage);
+
+            cameraFrame.Click  += Camera_Click;
+            btnCamera.Click    += Camera_Click;
+
+            btnGallery.Click   += Gallery_Click;
+            galleryFrame.Click += Gallery_Click;
+
+            btnCancel.Click    += BtnCancel_Click;
+            dialog.Show();
+        }
+
+        private void BtnCancel_Click(object sender, EventArgs e)
+        {
+            dialog.Dismiss();
+        }
+
+        private void Gallery_Click(object sender, EventArgs e)
+        {
+            StartActivityForResult(new Intent(Intent.ActionPick, MediaStore.Images.Media.ExternalContentUri), 2);
+        }
+
+        private void Camera_Click(object sender, EventArgs e)
+        {
+            StartActivityForResult(new Intent(MediaStore.ActionImageCapture), 1);
+        }
+
         protected override void OnActivityResult(int requestCode,
         [GeneratedEnum] Result resultCode,
         Intent data)
         {
-            if (resultCode == Result.Ok)
+            base.OnActivityResult(requestCode, resultCode, data);
+            if (requestCode == 1)
             {
-                base.OnActivityResult(requestCode, resultCode, data);
+                if (resultCode == Result.Ok)
+                {
+                    bitmap = (Bitmap)data.Extras.Get("data");
 
-                bitmap = (Bitmap)data.Extras.Get("data");
+                    profile.SetImageBitmap(bitmap);
 
-                profile.SetImageBitmap(bitmap);
+                    dialog.Dismiss();
+                }
+            }
+            if (requestCode == 2)
+            {
+                if (resultCode == Result.Ok && data != null)
+                {
+                    bitmap = MediaStore.Images.Media.GetBitmap(ContentResolver, data.Data);
+
+                    profile.SetImageBitmap(bitmap);
+
+                    dialog.Dismiss();
+                }
             }
         }
 
@@ -109,12 +169,14 @@ namespace SocialBicycleTrips.Activities
                 name.Background.SetColorFilter(new Color(Color.Red), PorterDuff.Mode.SrcIn);
                 return false;
             }
-            if (!(email != null && !email.Text.Equals("")))
+
+            if (!IsValidEmail())
             {
-                Toast.MakeText(this, "Type your email", ToastLength.Long).Show();
+                Toast.MakeText(this, "email address wrote wrong", ToastLength.Long).Show();
                 email.Background.SetColorFilter(new Color(Color.Red), PorterDuff.Mode.SrcIn);
                 return false;
             }
+
             if (!(password != null && !password.Text.Equals("")))
             {
                 Toast.MakeText(this, "Type your password", ToastLength.Long).Show();
@@ -146,6 +208,18 @@ namespace SocialBicycleTrips.Activities
                 return false;
             }
             return true;
+        }
+        public bool IsValidEmail()
+        {
+            try
+            {
+                System.Net.Mail.MailAddress addr = new System.Net.Mail.MailAddress(email.Text);
+                return addr.Address == email.Text;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

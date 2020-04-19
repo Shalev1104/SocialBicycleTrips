@@ -31,7 +31,7 @@ namespace SocialBicycleTrips.Activities
         }
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            MenuInflater.Inflate(Resource.Menu.dots, menu);
+            MenuInflater.Inflate(Resource.Menu.userMenu, menu);
             return base.OnCreateOptionsMenu(menu);
         }
         public override bool OnOptionsItemSelected(IMenuItem item)

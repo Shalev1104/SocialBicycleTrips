@@ -58,6 +58,10 @@
               "target": "Package",
               "version": "[1.5.2, )"
             },
+            "Xamarin.Facebook.Login.Android": {
+              "target": "Package",
+              "version": "[5.11.2, )"
+            },
             "Xamarin.Firebase.Auth": {
               "target": "Package",
               "version": "[71.1605.0, )"
@@ -127,6 +131,10 @@
             "Xamarin.Essentials": {
               "target": "Package",
               "version": "[1.5.2, )"
+            },
+            "Xamarin.Facebook.Login.Android": {
+              "target": "Package",
+              "version": "[5.11.2, )"
             },
             "Xamarin.Firebase.Auth": {
               "target": "Package",
@@ -208,6 +216,10 @@
             "Xamarin.Essentials": {
               "target": "Package",
               "version": "[1.5.2, )"
+            },
+            "Xamarin.Facebook.Login.Android": {
+              "target": "Package",
+              "version": "[5.11.2, )"
             },
             "Xamarin.Firebase.Auth": {
               "target": "Package",
@@ -292,6 +304,10 @@
             "Xamarin.Essentials": {
               "target": "Package",
               "version": "[1.5.2, )"
+            },
+            "Xamarin.Facebook.Login.Android": {
+              "target": "Package",
+              "version": "[5.11.2, )"
             },
             "Xamarin.Firebase.Auth": {
               "target": "Package",

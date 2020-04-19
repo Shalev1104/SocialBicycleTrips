@@ -12,6 +12,7 @@ using Android.Widget;
 
 namespace Model
 {
+    [Serializable]
     public class MyTrip : BaseEntity
     {
         private int tripID;

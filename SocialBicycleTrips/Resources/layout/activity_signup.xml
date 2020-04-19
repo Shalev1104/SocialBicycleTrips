@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:text="Join The Community"
         android:layout_gravity="center"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="casual"
         android:textSize="20dp"/>
     <ImageButton
@@ -67,6 +67,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
+            android:password="true"
             android:id="@+id/edtPW"/>
     </LinearLayout>
     <LinearLayout
@@ -83,6 +84,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Re-type Password"
+            android:password="true"
             android:id="@+id/edtPWConfirmation"/>
     </LinearLayout>
     <LinearLayout
@@ -115,6 +117,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Phone Number"
+            android:phoneNumber="true"
             android:id="@+id/edtPhoneNumber"/>
     </LinearLayout>
     <Button

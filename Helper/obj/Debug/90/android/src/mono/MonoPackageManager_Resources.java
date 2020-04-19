@@ -3,6 +3,9 @@ public class MonoPackageManager_Resources {
 	public static String[] Assemblies = new String[]{
 		/* We need to ensure that "Helper.dll" comes first in this list. */
 		"Helper.dll",
+		"Bolts.AppLinks.dll",
+		"Bolts.Tasks.dll",
+		"Google.ZXing.Core.dll",
 		"SQLite-net.dll",
 		"SQLitePCLRaw.batteries_green.dll",
 		"SQLitePCLRaw.batteries_v2.dll",
@@ -47,6 +50,9 @@ public class MonoPackageManager_Resources {
 		"Xamarin.Android.Support.VersionedParcelable.dll",
 		"Xamarin.Android.Support.ViewPager.dll",
 		"Xamarin.Essentials.dll",
+		"Xamarin.Facebook.Common.Android.dll",
+		"Xamarin.Facebook.Core.Android.dll",
+		"Xamarin.Facebook.Login.Android.dll",
 		"Xamarin.Firebase.Auth.dll",
 		"Xamarin.Firebase.Auth.Interop.dll",
 		"Xamarin.Firebase.Common.dll",

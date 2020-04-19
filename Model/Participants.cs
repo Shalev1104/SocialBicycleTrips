@@ -12,6 +12,7 @@ using Android.Widget;
 
 namespace Model
 {
+    [Serializable]
     public class Participants : BaseList<Participant>
     {
         public override bool Exists(Participant participant, bool forChange = false)
