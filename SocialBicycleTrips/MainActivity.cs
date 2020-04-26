@@ -30,7 +30,7 @@ namespace SocialBicycleTrips
             SetContentView(Resource.Layout.activity_main);
             SetViews();
             tripsDB = new TripsDB();
-            trips = tripsDB.GetAll();
+            trips = tripsDB.GetAllTrips();
             GenerateTrips();
             UploadUpdatedList();
         }
@@ -138,7 +138,9 @@ namespace SocialBicycleTrips
         private void GenerateTrips()
         {
             User user = new User("avi", "bbb@gmail.com", "121212ss", new DateTime(2002, 11, 4), "0123456789");
-            trips.Add(new Trip("somethere", "somewhere", new DateTime(2020, 12, 1,16,5,25), "Checker", new TripManager(user.Image, user.Name)));
+            Trip trip = new Trip("somethere", "somewhere", new DateTime(2020, 12, 1, 16, 5, 25), "Checker", new TripManager(user.Image, user.Name));
+            trips.Add(trip);
+            tripsDB.Insert(trip);
         }
 
         private void UploadUpdatedList()

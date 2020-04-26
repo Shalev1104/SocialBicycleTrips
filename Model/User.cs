@@ -12,10 +12,12 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Helper;
+using SQLite;
 
 namespace Model
 {
     [Serializable]
+    [Table("Users")]
     public class User : TripManager,iChangeable.UserChangeable
     {
         private string        email;
@@ -24,8 +26,11 @@ namespace Model
         private string        phoneNumber;
         private int           completedTrips;
         private int           upcomingTrips;
-        private MyFriends     myFriends;
-        private MyTrips       myTrips;
+
+        [Ignore]
+        private MyFriends     myFriends { get; set; }
+        [Ignore]
+        private MyTrips       myTrips { get; set; }
 
         public User()
         {

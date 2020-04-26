@@ -76,10 +76,10 @@ namespace SocialBicycleTrips.Activities
                 {
                     user = new User(name.Text, email.Text, password.Text, dateTime, phoneNumber.Text);
                 }
-                Intent intent = new Intent(this,typeof(MainActivity));
+                Intent intent = new Intent();
                 intent.PutExtra("user", Serializer.ObjectToByteArray(user));
-                Toast.MakeText(this, "Registerated", ToastLength.Long);
-                StartActivity(intent);
+                SetResult(Result.Ok,intent);
+                Finish();
             }
         }
 

@@ -15,7 +15,7 @@ namespace Dal
 {
     public class BaseDB
     {
-        protected static string dbName = "AppDB.db";
+        protected string dbName;
         protected static string documentsPath;
         protected static string dbPath;
         protected static SQLiteConnection connection;
@@ -25,22 +25,21 @@ namespace Dal
 
         public BaseDB()
         {
+            dbName = "name.db";
+
             documentsPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
+
             dbPath = System.IO.Path.Combine(documentsPath, dbName);
 
             connection = new SQLiteConnection(dbPath);
-        }
 
-        public static string DbName
-        {
-            get { return dbName; }
-            set { if (value != null) dbName = value; }
         }
 
         public SQLiteConnection Connection
         {
             get { return connection; }
         }
+
         public static BaseDB Instance
         {
             get

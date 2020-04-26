@@ -10,6 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Refractored.Controls;
+using SQLite;
 
 namespace Model
 {

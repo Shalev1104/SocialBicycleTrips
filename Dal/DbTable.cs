@@ -46,7 +46,7 @@ namespace Dal
             }
         }
 
-        public static int Insert(T entity)
+        public int Insert(T entity)
         {
             try
             {
@@ -62,7 +62,7 @@ namespace Dal
             }
         }
 
-        public static int Update(T entity)
+        public int Update(T entity)
         {
             try
             {
@@ -77,7 +77,7 @@ namespace Dal
             }
         }
 
-        public static int Delete(T entity)
+        public int Delete(T entity)
         {
             try
             {
@@ -123,7 +123,7 @@ namespace Dal
         }
 
         // SQL - Insert / Update / Delete
-        public static int Execute(string sql)
+        public static int Execute(string sql) // להעביר שאילתה ע"פ תחביר sql
         {
             try
             {
@@ -137,49 +137,7 @@ namespace Dal
                 return -1;
             }
         }
-
-        public static List<T> SelectAll()
-        {
-            try
-            {
-                lock (locker)
-                {
-                    return db.Table<T>().ToList();
-                }
-            }
-            catch (SQLiteException e)
-            {
-                return null;
-            }
-        }
-
-        public static IEnumerable<T> SelectAll(bool isEnumerable)
-        {
-            try
-            {
-                lock (locker)
-                {
-                    return db.Table<T>();
-                }
-            }
-            catch (SQLiteException e)
-            {
-                return null;
-            }
-        }
-
-        public static int Count()
-        {
-            try
-            {
-                return SelectAll().Count;
-            }
-            catch (SQLiteException e)
-            {
-                return -1;
-            }
-        }
-
+        // SQL - לבחור מתוך מאגר בסיס הנתונים
         public static List<T> SelectQuery(string sql)
         {
             try
@@ -206,8 +164,32 @@ namespace Dal
                 return -1;
             }
         }
-
-        public static object Get(int id)
+        public static int Count()
+        {
+            try
+            {
+                return SelectAll().Count;
+            }
+            catch (SQLiteException e)
+            {
+                return -1;
+            }
+        }
+        public static List<T> SelectAll()
+        {
+            try
+            {
+                lock (locker)
+                {
+                    return db.Table<T>().ToList();
+                }
+            }
+            catch (SQLiteException e)
+            {
+                return null;
+            }
+        }
+        public static object GetObjectByID(int id)// מחזיר אובייקט מתוך הטבלה לפי המזהה
         {
             try
             {
@@ -220,19 +202,6 @@ namespace Dal
             {
                 return null;
             }
-        }
-
-        public List<T> Get<TValue>(Expression<Func<T, bool>> predicate = null, Expression<Func<T, TValue>> orderBy = null)
-        {
-            var query = db.Table<T>();
-
-            if (predicate != null)
-                query = query.Where(predicate);
-
-            if (orderBy != null)
-                query = query.OrderBy<TValue>(orderBy);
-
-            return query.ToList<T>();
         }
     }
 

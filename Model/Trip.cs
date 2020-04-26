@@ -9,18 +9,25 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using SQLite;
+using SQLiteNetExtensions.Attributes;
 
 namespace Model
 {
     [Serializable]
+    [Table("Trips")]
     public class Trip : BaseEntity, iChangeable.TripChangeable
     {
-        private string       startingLocation;
-        private string       finalLocation;
-        private DateTime     dateTime;
-        private string       notes;
-        private Participants participants;
-        private TripManager tripManager;
+
+        private string startingLocation;
+        private string finalLocation;
+        private DateTime dateTime;
+        private string notes;
+
+        [Ignore]
+        private Participants participants { get; set; }
+        [Ignore]
+        private TripManager tripManager { get; set; }
 
         public Trip()
         {

@@ -20,11 +20,13 @@ using Firebase;
 using Android.Gms.Tasks;
 using Xamarin.Facebook.Login.Widget;
 using Android.Gms.Common;
+using Xamarin.Facebook;
+using Xamarin.Facebook.Login;
 
 namespace SocialBicycleTrips.Activities
 {
     [Activity(Label = "LoginActivity")]
-    public class LoginActivity : Activity, IOnSuccessListener, IOnFailureListener
+    public class LoginActivity : Activity, IOnSuccessListener, IOnFailureListener,IFacebookCallback
     {
         private EditText email;
         private EditText password;
@@ -37,7 +39,12 @@ namespace SocialBicycleTrips.Activities
 
         GoogleSignInOptions gso;
         GoogleApiClient googleApiClient;
+
         FirebaseAuth firebaseAuth;
+        private bool usingFirebase;
+
+        ICallbackManager callbackManager;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -45,7 +52,7 @@ namespace SocialBicycleTrips.Activities
             SetViews();
             // Create your application here
             usersDB = new UsersDB();
-            users = usersDB.GetAll();
+            users = usersDB.GetAllUsers();
         }
         public void SetViews()
         {
@@ -59,17 +66,16 @@ namespace SocialBicycleTrips.Activities
             login.Click += Login_Click;
             signup.Click += Signup_Click;
             googleLogin.Click += GoogleLogin_Click;
-            facebookLogin.Click += FacebookLogin_Click;
 
             gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DefaultSignIn).RequestIdToken("994671586450-p7s56itpn9kcb2him4pf7cnkvkashhmf.apps.googleusercontent.com").RequestEmail().Build();
             googleApiClient = new GoogleApiClient.Builder(this).AddApi(Auth.GOOGLE_SIGN_IN_API, gso).Build();
             googleApiClient.Connect();
-            firebaseAuth = GetFirebaseAuth();
-        }
 
-        private void FacebookLogin_Click(object sender, EventArgs e)
-        {
-            
+            facebookLogin.SetReadPermissions(new List<string> { "public_profile", "email" });
+            callbackManager = CallbackManagerFactory.Create();
+            facebookLogin.RegisterCallback(callbackManager, this);
+            firebaseAuth = GetFirebaseAuth();
+
         }
 
         private void GoogleLogin_Click(object sender, EventArgs e)
@@ -106,7 +112,6 @@ namespace SocialBicycleTrips.Activities
             base.OnActivityResult(requestCode, resultCode, data);
             if(requestCode == 0)
             {
-                bool dataSetChanged = false;
 
                 if (resultCode == Result.Ok)
                 {
@@ -114,12 +119,8 @@ namespace SocialBicycleTrips.Activities
                     if (!users.Exists(user))
                     {
                         users.Add(user);
-                        dataSetChanged = true;
-                    }
-                    Intent transfer = new Intent(this, typeof(MainActivity));
-
-                    if (dataSetChanged)
-                    {
+                        usersDB.Insert(user);
+                        Toast.MakeText(this, "Registeration successfull", ToastLength.Long).Show();
                         users.Sort();
                     }
                     else
@@ -127,7 +128,7 @@ namespace SocialBicycleTrips.Activities
                         Android.Support.V7.App.AlertDialog.Builder alertDiag1 = new Android.Support.V7.App.AlertDialog.Builder(this);
 
                         alertDiag1.SetTitle("Exists");
-                        alertDiag1.SetMessage("Friend already exists");
+                        alertDiag1.SetMessage("User already exists");
 
                         alertDiag1.SetCancelable(true);
 
@@ -136,6 +137,8 @@ namespace SocialBicycleTrips.Activities
                         Dialog diagl = alertDiag1.Create();
                         diagl.Show();
                     }
+                    Intent transfer = new Intent(this, typeof(MainActivity));
+                    transfer.PutExtra("user", Serializer.ObjectToByteArray(user));
                     StartActivity(transfer);
                 }
             }
@@ -145,18 +148,28 @@ namespace SocialBicycleTrips.Activities
                 if(result.IsSuccess)
                 {
                     GoogleSignInAccount account = result.SignInAccount;
-                    LoginWithFirebase(account);
+                    LoginWithGoogleFirebase(account);
                 }
+            }
+            else
+            {
+                callbackManager.OnActivityResult(requestCode, (int)resultCode, data);
             }
         }
 
-        private void LoginWithFirebase(GoogleSignInAccount account)
+        private void LoginWithGoogleFirebase(GoogleSignInAccount account)
         {
             var credentials = GoogleAuthProvider.GetCredential(account.IdToken, null);
             firebaseAuth.SignInWithCredential(credentials).AddOnSuccessListener(this).AddOnFailureListener(this);
         }
 
-        private void Login_Click(object sender, EventArgs e)
+        private void LoginWithFacebookFirebase(LoginResult loginResult)
+        {
+            var credentials = FacebookAuthProvider.GetCredential(loginResult.AccessToken.Token);
+            firebaseAuth.SignInWithCredential(credentials).AddOnSuccessListener(this).AddOnFailureListener(this);
+        }
+
+        private void Login_Click(object sender, EventArgs e) 
         {
             if (IsTyped())
             {
@@ -175,16 +188,7 @@ namespace SocialBicycleTrips.Activities
         {
             return email.Text != null && password.Text != null && !email.Text.Equals("") && !password.Text.Equals("");
         }
-        public void OnSuccess(Java.Lang.Object result)
-        {
-            User user = IsLogin();
-            if(user == null)
-            {
-                user = new User(firebaseAuth.CurrentUser.DisplayName, firebaseAuth.CurrentUser.Email, firebaseAuth.CurrentUser.PhotoUrl.Path, firebaseAuth.CurrentUser.PhoneNumber);
-                users.Add(user);
-            }
-            Navigate(user);
-        }
+
         public User IsLogin() // first condition for social media login and the second for the form login
         {
             User user = null;
@@ -200,14 +204,64 @@ namespace SocialBicycleTrips.Activities
         }
         public void Navigate(User user)
         {
-            Intent intent = new Intent();
+            Intent intent = new Intent(this, typeof(MainActivity));
             intent.PutExtra("user", Serializer.ObjectToByteArray(user));
             Toast.MakeText(this, "login succesfull", ToastLength.Long).Show();
-            StartActivity(new Intent(this, typeof(MainActivity)));
+            StartActivity(intent);
+        }
+
+
+        // Google & Facebook
+        public void OnSuccess(Java.Lang.Object result)
+        {
+            if (result is LoginResult) // for facebook
+            {
+                if (!usingFirebase)
+                {
+                    usingFirebase = true;
+                    LoginResult loginResult = result as LoginResult;
+                    LoginWithFacebookFirebase(loginResult);
+                }
+                else
+                {
+                    usingFirebase = false;
+                    User user = IsLogin();
+                    if (user == null)
+                    {
+                        user = new User(firebaseAuth.CurrentUser.DisplayName, firebaseAuth.CurrentUser.Email, firebaseAuth.CurrentUser.PhotoUrl.Path, firebaseAuth.CurrentUser.PhoneNumber);
+                        users.Add(user);
+                        usersDB.Insert(user);
+                    }
+                    Navigate(user);
+                }
+            }
+
+            else // for google
+            {
+                User user = IsLogin();
+                if (user == null)
+                {
+                    user = new User(firebaseAuth.CurrentUser.DisplayName, firebaseAuth.CurrentUser.Email, firebaseAuth.CurrentUser.PhotoUrl.Path, firebaseAuth.CurrentUser.PhoneNumber);
+                    users.Add(user);
+                    usersDB.Insert(user);
+                }
+                Navigate(user);
+            }
         }
         public void OnFailure(Java.Lang.Exception e)
         {
             Toast.MakeText(this, "login failed", ToastLength.Long).Show();
+        }
+
+        // Facebook :
+        public void OnCancel()
+        {
+            
+        }
+
+        public void OnError(FacebookException error)
+        {
+            Toast.MakeText(this, "error,try again", ToastLength.Long);
         }
     }
 }

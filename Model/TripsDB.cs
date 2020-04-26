@@ -15,73 +15,19 @@ using SQLite;
 
 namespace Model
 {
-    public class TripsDB : BaseDB
+    public class TripsDB : DbTable<Trip>
     {
-        private int affectedRows;
-
-        public SQLite.CreateTableResult CreateTable()
-        {
-            result = connection.CreateTable<Trip>();
-            return result;
-        }
-
-        public int Insert(Trip trip)
-        {
-            CreateTable();
-            affectedRows = connection.Insert(trip);
-            return affectedRows;
-        }
-
-        public int Update(Trip trip)
-        {
-            affectedRows = connection.Update(trip);
-            return affectedRows;
-        }
-
-        public int Delete(Trip trip)
-        {
-            affectedRows = connection.Delete(trip);
-            return affectedRows;
-        }
-
-        public int Delete(int id)
-        {
-            affectedRows = connection.Delete(id);
-            return affectedRows;
-        }
-
-        public Trips GetAll(bool sorted = true)
+        public Trips GetAllTrips() // converts from list to a class(רבים)
         {
             Trips trips = new Trips();
+            List<Trip> tripsList = DbTable<Trip>.SelectAll();
 
-            try
+            if (tripsList != null)
             {
-                List<Trip> tripsList = new List<Trip>();
-                if (sorted)
-                {
-                    string sql = "SELECT * FROM Trips ORDER BY ID";
-                    tripsList = connection.Query<Trip>(sql).ToList();
-                }
-                else
-                {
-                    tripsList = connection.Table<Trip>().ToList();
-                }
-
-                foreach (Trip trip in tripsList)
-                    trips.Add(trip);
-
-            }
-            catch (SQLite.SQLiteException e)
-            {
-                return trips;
+                trips.AddRange(tripsList);
             }
 
             return trips;
-        }
-
-        public Trip GetTrip(int id)
-        {
-            return connection.Get<Trip>(id);
         }
     }
 }

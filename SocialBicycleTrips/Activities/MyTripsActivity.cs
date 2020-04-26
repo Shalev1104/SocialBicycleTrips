@@ -25,7 +25,7 @@ namespace SocialBicycleTrips.Activities
             base.OnCreate(savedInstanceState);
             SetViews();
             tripsDB = new TripsDB();
-            trips = tripsDB.GetAll();
+            trips = tripsDB.GetAllTrips();
             UploadUpdatedList();
             // Create your application here
         }

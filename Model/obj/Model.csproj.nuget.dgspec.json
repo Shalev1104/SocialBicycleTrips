@@ -31,13 +31,21 @@
         },
         "frameworks": {
           "monoandroid90": {
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTrips\\Helper\\Helper.csproj": {
+                "projectPath": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTrips\\Helper\\Helper.csproj"
+              }
+            }
           }
         }
       },
       "frameworks": {
         "monoandroid90": {
           "dependencies": {
+            "Microsoft.Azure.WebJobs.Extensions.Storage": {
+              "target": "Package",
+              "version": "[3.0.11, )"
+            },
             "Xamarin.Android.Support.Core.Utils": {
               "target": "Package",
               "version": "[28.0.0.3, )"
@@ -56,7 +64,7 @@
             },
             "Xamarin.Essentials": {
               "target": "Package",
-              "version": "[1.5.2, )"
+              "version": "[1.5.3.1, )"
             },
             "Xamarin.Facebook.Login.Android": {
               "target": "Package",
@@ -112,6 +120,10 @@
       "frameworks": {
         "monoandroid90": {
           "dependencies": {
+            "Microsoft.Azure.WebJobs.Extensions.Storage": {
+              "target": "Package",
+              "version": "[3.0.11, )"
+            },
             "Xamarin.Android.Support.Core.Utils": {
               "target": "Package",
               "version": "[28.0.0.3, )"
@@ -130,7 +142,7 @@
             },
             "Xamarin.Essentials": {
               "target": "Package",
-              "version": "[1.5.2, )"
+              "version": "[1.5.3.1, )"
             },
             "Xamarin.Facebook.Login.Android": {
               "target": "Package",
@@ -193,9 +205,17 @@
       "frameworks": {
         "monoandroid90": {
           "dependencies": {
+            "Microsoft.Azure.WebJobs.Extensions.Storage": {
+              "target": "Package",
+              "version": "[3.0.11, )"
+            },
             "Refractored.Controls.CircleImageView": {
               "target": "Package",
               "version": "[1.0.1, )"
+            },
+            "SQLiteNetExtensions": {
+              "target": "Package",
+              "version": "[2.1.0, )"
             },
             "Xamarin.Android.Support.Core.Utils": {
               "target": "Package",
@@ -215,7 +235,7 @@
             },
             "Xamarin.Essentials": {
               "target": "Package",
-              "version": "[1.5.2, )"
+              "version": "[1.5.3.1, )"
             },
             "Xamarin.Facebook.Login.Android": {
               "target": "Package",
