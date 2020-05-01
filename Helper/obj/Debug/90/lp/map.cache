@@ -1,6 +1,7 @@
 Bolts.AppLinks
 Bolts.Tasks
 Google.ZXing.Core
+GoogleGson
 SQLitePCLRaw.batteries_green
 SQLitePCLRaw.batteries_v2
 SQLitePCLRaw.core
@@ -13,6 +14,9 @@ Xamarin.Android.Arch.Lifecycle.LiveData.Core
 Xamarin.Android.Arch.Lifecycle.LiveData
 Xamarin.Android.Arch.Lifecycle.Runtime
 Xamarin.Android.Arch.Lifecycle.ViewModel
+Xamarin.Android.Glide.DiskLruCache
+Xamarin.Android.Glide
+Xamarin.Android.Glide.GifDecoder
 Xamarin.Android.Support.Animated.Vector.Drawable
 Xamarin.Android.Support.Annotations
 Xamarin.Android.Support.AsyncLayoutInflater
@@ -43,6 +47,7 @@ Xamarin.Android.Support.v7.RecyclerView
 Xamarin.Android.Support.Vector.Drawable
 Xamarin.Android.Support.VersionedParcelable
 Xamarin.Android.Support.ViewPager
+Xamarin.Android.Volley
 Xamarin.Essentials
 Xamarin.Facebook.Common.Android
 Xamarin.Facebook.Core.Android
@@ -51,10 +56,16 @@ Xamarin.Firebase.Auth
 Xamarin.Firebase.Auth.Interop
 Xamarin.Firebase.Common
 Xamarin.Google.AutoValue.Annotations
+Xamarin.Google.Places
 Xamarin.GooglePlayServices.Auth.Api.Phone
 Xamarin.GooglePlayServices.Auth.Base
 Xamarin.GooglePlayServices.Auth
 Xamarin.GooglePlayServices.Base
 Xamarin.GooglePlayServices.Basement
+Xamarin.GooglePlayServices.Clearcut
 Xamarin.GooglePlayServices.Flags
+Xamarin.GooglePlayServices.Location
+Xamarin.GooglePlayServices.Maps
+Xamarin.GooglePlayServices.Phenotype
+Xamarin.GooglePlayServices.Places.PlaceReport
 Xamarin.GooglePlayServices.Tasks

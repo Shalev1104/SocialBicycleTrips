@@ -67,16 +67,24 @@ namespace SocialBicycleTrips.Activities
 
         public void GenerateUser()
         {
-            profile = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("profile")) as User;
-            userlogon = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("user")) as User;
+            if (Intent.HasExtra("myself"))
+            {
+                profile = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("user")) as User; // profile = userlogon
+            }
+            else
+            {
+                profile = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("profile")) as User;
+                userlogon = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("user")) as User;
+            }
         }
 
         public bool isFriend()
         {
-            MyFriend isMyFriend = new MyFriend(profile.Id);
-            if(userlogon.MyFriends.Exists(isMyFriend) || profile.Equals(userlogon))
+            if (Intent.HasExtra("myself"))
                 return true;
-            return false;
+
+            MyFriend isMyFriend = new MyFriend(profile.Id);
+            return userlogon.MyFriends.Exists(isMyFriend);
         }
 
         private void AddFriend_Click(object sender, EventArgs e)

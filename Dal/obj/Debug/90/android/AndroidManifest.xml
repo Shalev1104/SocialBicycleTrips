@@ -48,6 +48,8 @@
       <meta-data android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar" android:value="com.google.firebase.components.ComponentRegistrar" />
     </service>
     <provider android:name="com.google.firebase.provider.FirebaseInitProvider" android:authorities="com.companyname.dal.firebaseinitprovider" android:exported="false" android:initOrder="100" />
+    <!-- Autocomplete -->
+    <activity android:name="com.google.android.libraries.places.widget.AutocompleteActivity" android:exported="false" android:hardwareAccelerated="true" android:label="@string/places_autocomplete_label" android:theme="@style/PlacesAutocompleteThemeOverlay" android:windowSoftInputMode="stateAlwaysVisible|adjustPan"></activity>
     <activity android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity" android:excludeFromRecents="true" android:exported="false" android:theme="@android:style/Theme.Translucent.NoTitleBar" />
     <!--
             Service handling Google Sign-In user revocation. For apps that do not integrate with
@@ -57,4 +59,7 @@
     <activity android:name="com.google.android.gms.common.api.GoogleApiActivity" android:exported="false" android:theme="@android:style/Theme.Translucent.NoTitleBar" />
     <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
   </application>
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+  <uses-feature android:glEsVersion="0x00020000" android:required="true" />
 </manifest>

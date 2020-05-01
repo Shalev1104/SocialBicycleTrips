@@ -58,6 +58,10 @@
               "target": "Package",
               "version": "[28.0.0.3, )"
             },
+            "Xamarin.Android.Volley": {
+              "target": "Package",
+              "version": "[1.1.1.1, )"
+            },
             "Xamarin.Essentials": {
               "target": "Package",
               "version": "[1.5.3.1, )"
@@ -69,6 +73,10 @@
             "Xamarin.Firebase.Auth": {
               "target": "Package",
               "version": "[71.1605.0, )"
+            },
+            "Xamarin.Google.Android.Places": {
+              "target": "Package",
+              "version": "[1.1.0.2, )"
             },
             "Xamarin.GooglePlayServices.Auth": {
               "target": "Package",

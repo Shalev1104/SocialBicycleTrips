@@ -119,7 +119,7 @@ namespace SocialBicycleTrips.Activities
                     if (!users.Exists(user))
                     {
                         users.Add(user);
-                        usersDB.Insert(user);
+                        //usersDB.Insert(user);
                         Toast.MakeText(this, "Registeration successfull", ToastLength.Long).Show();
                         users.Sort();
                     }
@@ -206,6 +206,10 @@ namespace SocialBicycleTrips.Activities
         {
             Intent intent = new Intent(this, typeof(MainActivity));
             intent.PutExtra("user", Serializer.ObjectToByteArray(user));
+            if (user.IsSocialMediaLogon())
+            {
+                //intent.PutExtra("firebase", Serializer.ObjectToByteArray(firebaseAuth));
+            }
             Toast.MakeText(this, "login succesfull", ToastLength.Long).Show();
             StartActivity(intent);
         }
@@ -230,7 +234,7 @@ namespace SocialBicycleTrips.Activities
                     {
                         user = new User(firebaseAuth.CurrentUser.DisplayName, firebaseAuth.CurrentUser.Email, firebaseAuth.CurrentUser.PhotoUrl.Path, firebaseAuth.CurrentUser.PhoneNumber);
                         users.Add(user);
-                        usersDB.Insert(user);
+                        //usersDB.Insert(user);
                     }
                     Navigate(user);
                 }
@@ -243,7 +247,7 @@ namespace SocialBicycleTrips.Activities
                 {
                     user = new User(firebaseAuth.CurrentUser.DisplayName, firebaseAuth.CurrentUser.Email, firebaseAuth.CurrentUser.PhotoUrl.Path, firebaseAuth.CurrentUser.PhoneNumber);
                     users.Add(user);
-                    usersDB.Insert(user);
+                    //usersDB.Insert(user);
                 }
                 Navigate(user);
             }

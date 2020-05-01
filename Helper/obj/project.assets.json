@@ -13,6 +13,18 @@
           "lib/MonoAndroid403/Bolts.Tasks.dll": {}
         }
       },
+      "GoogleGson/2.8.5": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Java.Interop"
+        ],
+        "compile": {
+          "lib/monoandroid44/GoogleGson.dll": {}
+        },
+        "runtime": {
+          "lib/monoandroid44/GoogleGson.dll": {}
+        }
+      },
       "Microsoft.Azure.WebJobs/3.0.16": {
         "type": "package",
         "dependencies": {
@@ -1087,6 +1099,47 @@
           "build/monoandroid90/Xamarin.Android.Arch.Lifecycle.ViewModel.targets": {}
         }
       },
+      "Xamarin.Android.Glide/4.9.0": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Android.Glide.DiskLruCache": "4.9.0",
+          "Xamarin.Android.Glide.GifDecoder": "4.9.0",
+          "Xamarin.Android.Support.v4": "28.0.0.1"
+        },
+        "frameworkAssemblies": [
+          "Java.Interop"
+        ],
+        "compile": {
+          "lib/monoandroid81/Xamarin.Android.Glide.dll": {}
+        },
+        "runtime": {
+          "lib/monoandroid81/Xamarin.Android.Glide.dll": {}
+        }
+      },
+      "Xamarin.Android.Glide.DiskLruCache/4.9.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Java.Interop"
+        ],
+        "compile": {
+          "lib/monoandroid81/Xamarin.Android.Glide.DiskLruCache.dll": {}
+        },
+        "runtime": {
+          "lib/monoandroid81/Xamarin.Android.Glide.DiskLruCache.dll": {}
+        }
+      },
+      "Xamarin.Android.Glide.GifDecoder/4.9.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Java.Interop"
+        ],
+        "compile": {
+          "lib/monoandroid81/Xamarin.Android.Glide.GifDecoder.dll": {}
+        },
+        "runtime": {
+          "lib/monoandroid81/Xamarin.Android.Glide.GifDecoder.dll": {}
+        }
+      },
       "Xamarin.Android.Support.Animated.Vector.Drawable/28.0.0.3": {
         "type": "package",
         "dependencies": {
@@ -1695,6 +1748,19 @@
           "build/monoandroid90/Xamarin.Android.Support.ViewPager.targets": {}
         }
       },
+      "Xamarin.Android.Volley/1.1.1.1": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Java.Interop",
+          "Mono.Android"
+        ],
+        "compile": {
+          "lib/monoandroid80/Xamarin.Android.Volley.dll": {}
+        },
+        "runtime": {
+          "lib/monoandroid80/Xamarin.Android.Volley.dll": {}
+        }
+      },
       "Xamarin.Build.Download/0.4.11": {
         "type": "package",
         "build": {
@@ -1835,6 +1901,34 @@
           "build/MonoAndroid90/Xamarin.Firebase.Common.targets": {}
         }
       },
+      "Xamarin.Google.Android.Places/1.1.0.2": {
+        "type": "package",
+        "dependencies": {
+          "GoogleGson": "2.8.5",
+          "Xamarin.Android.Glide": "4.9.0",
+          "Xamarin.Android.Support.v4": "28.0.0.1",
+          "Xamarin.Android.Support.v7.AppCompat": "28.0.0.1",
+          "Xamarin.Android.Support.v7.CardView": "28.0.0.1",
+          "Xamarin.Android.Support.v7.RecyclerView": "28.0.0.1",
+          "Xamarin.Android.Volley": "1.1.1.1",
+          "Xamarin.Google.AutoValue.Annotations": "1.6.5",
+          "Xamarin.GooglePlayServices.Base": "71.1601.0-preview3",
+          "Xamarin.GooglePlayServices.Basement": "71.1610.0-preview3",
+          "Xamarin.GooglePlayServices.Clearcut": "71.1600.0-preview3",
+          "Xamarin.GooglePlayServices.Location": "71.1600.0-preview3",
+          "Xamarin.GooglePlayServices.Maps": "71.1600.0-preview3",
+          "Xamarin.GooglePlayServices.Tasks": "71.1601.0-preview3"
+        },
+        "frameworkAssemblies": [
+          "Java.Interop"
+        ],
+        "compile": {
+          "lib/monoandroid90/Xamarin.Google.Places.dll": {}
+        },
+        "runtime": {
+          "lib/monoandroid90/Xamarin.Google.Places.dll": {}
+        }
+      },
       "Xamarin.Google.AutoValue.Annotations/1.6.5": {
         "type": "package",
         "frameworkAssemblies": [
@@ -1965,6 +2059,28 @@
           "build/MonoAndroid90/Xamarin.GooglePlayServices.Basement.targets": {}
         }
       },
+      "Xamarin.GooglePlayServices.Clearcut/71.1600.0-preview3": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Build.Download": "0.4.11",
+          "Xamarin.GooglePlayServices.Base": "71.1601.0-preview3",
+          "Xamarin.GooglePlayServices.Basement": "71.1610.0-preview3",
+          "Xamarin.GooglePlayServices.Phenotype": "71.1600.0-preview3",
+          "Xamarin.GooglePlayServices.Tasks": "71.1601.0-preview3"
+        },
+        "frameworkAssemblies": [
+          "Java.Interop"
+        ],
+        "compile": {
+          "lib/monoandroid90/Xamarin.GooglePlayServices.Clearcut.dll": {}
+        },
+        "runtime": {
+          "lib/monoandroid90/Xamarin.GooglePlayServices.Clearcut.dll": {}
+        },
+        "build": {
+          "build/MonoAndroid90/_._": {}
+        }
+      },
       "Xamarin.GooglePlayServices.Flags/71.1601.0": {
         "type": "package",
         "dependencies": {
@@ -1983,6 +2099,88 @@
         },
         "build": {
           "build/MonoAndroid90/Xamarin.GooglePlayServices.Flags.targets": {}
+        }
+      },
+      "Xamarin.GooglePlayServices.Location/71.1600.0-preview3": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Build.Download": "0.4.11",
+          "Xamarin.GooglePlayServices.Base": "71.1601.0-preview3",
+          "Xamarin.GooglePlayServices.Basement": "71.1610.0-preview3",
+          "Xamarin.GooglePlayServices.Places.PlaceReport": "71.1600.0-preview3",
+          "Xamarin.GooglePlayServices.Tasks": "71.1601.0-preview3"
+        },
+        "frameworkAssemblies": [
+          "Java.Interop"
+        ],
+        "compile": {
+          "lib/monoandroid90/Xamarin.GooglePlayServices.Location.dll": {}
+        },
+        "runtime": {
+          "lib/monoandroid90/Xamarin.GooglePlayServices.Location.dll": {}
+        },
+        "build": {
+          "build/MonoAndroid90/_._": {}
+        }
+      },
+      "Xamarin.GooglePlayServices.Maps/71.1600.0-preview3": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Build.Download": "0.4.11",
+          "Xamarin.GooglePlayServices.Base": "71.1601.0-preview3",
+          "Xamarin.GooglePlayServices.Basement": "71.1610.0-preview3"
+        },
+        "frameworkAssemblies": [
+          "Java.Interop"
+        ],
+        "compile": {
+          "lib/monoandroid90/Xamarin.GooglePlayServices.Maps.dll": {}
+        },
+        "runtime": {
+          "lib/monoandroid90/Xamarin.GooglePlayServices.Maps.dll": {}
+        },
+        "build": {
+          "build/MonoAndroid90/_._": {}
+        }
+      },
+      "Xamarin.GooglePlayServices.Phenotype/71.1600.0-preview3": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Build.Download": "0.4.11",
+          "Xamarin.GooglePlayServices.Base": "71.1601.0-preview3",
+          "Xamarin.GooglePlayServices.Basement": "71.1610.0-preview3",
+          "Xamarin.GooglePlayServices.Tasks": "71.1601.0-preview3"
+        },
+        "frameworkAssemblies": [
+          "Java.Interop"
+        ],
+        "compile": {
+          "lib/monoandroid90/Xamarin.GooglePlayServices.Phenotype.dll": {}
+        },
+        "runtime": {
+          "lib/monoandroid90/Xamarin.GooglePlayServices.Phenotype.dll": {}
+        },
+        "build": {
+          "build/MonoAndroid90/_._": {}
+        }
+      },
+      "Xamarin.GooglePlayServices.Places.PlaceReport/71.1600.0-preview3": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Build.Download": "0.4.11",
+          "Xamarin.GooglePlayServices.Basement": "71.1610.0-preview3"
+        },
+        "frameworkAssemblies": [
+          "Java.Interop"
+        ],
+        "compile": {
+          "lib/monoandroid90/Xamarin.GooglePlayServices.Places.PlaceReport.dll": {}
+        },
+        "runtime": {
+          "lib/monoandroid90/Xamarin.GooglePlayServices.Places.PlaceReport.dll": {}
+        },
+        "build": {
+          "build/MonoAndroid90/_._": {}
         }
       },
       "Xamarin.GooglePlayServices.Tasks/71.1601.0": {
@@ -2018,6 +2216,19 @@
         "bolts.nuspec",
         "lib/MonoAndroid403/Bolts.AppLinks.dll",
         "lib/MonoAndroid403/Bolts.Tasks.dll"
+      ]
+    },
+    "GoogleGson/2.8.5": {
+      "sha512": "tOIzPd8XBGHxT1kyvJ4kX+PpS0ZdO66rlncseCImY4MnVKY9QiA8Mz8qbaCf1AUuaGYr+Hwm51dLb04jmmab9Q==",
+      "type": "package",
+      "path": "googlegson/2.8.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "THIRD-PARTY-NOTICES.txt",
+        "googlegson.2.8.5.nupkg.sha512",
+        "googlegson.nuspec",
+        "lib/monoandroid44/GoogleGson.dll"
       ]
     },
     "Microsoft.Azure.WebJobs/3.0.16": {
@@ -5510,6 +5721,45 @@
         "xamarin.android.arch.lifecycle.viewmodel.nuspec"
       ]
     },
+    "Xamarin.Android.Glide/4.9.0": {
+      "sha512": "4UvRlvbboDKDgfDZoJZy8cOTR1Omv7ph15hcyn/Ru75VNSFZFcVCclbt3cCaUsBLbxIaM9IJR6mNKt+ybz5uzg==",
+      "type": "package",
+      "path": "xamarin.android.glide/4.9.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "THIRD-PARTY-NOTICES.txt",
+        "lib/monoandroid81/Xamarin.Android.Glide.dll",
+        "xamarin.android.glide.4.9.0.nupkg.sha512",
+        "xamarin.android.glide.nuspec"
+      ]
+    },
+    "Xamarin.Android.Glide.DiskLruCache/4.9.0": {
+      "sha512": "4YWjRAcwpYnLiqFHwI95fu6U1bvBDvPbNeV9NGalvEGD8IqLZBa/ZUzhxvrssej/7L6nq+9COn3mwiPUUNN7JA==",
+      "type": "package",
+      "path": "xamarin.android.glide.disklrucache/4.9.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "THIRD-PARTY-NOTICES.txt",
+        "lib/monoandroid81/Xamarin.Android.Glide.DiskLruCache.dll",
+        "xamarin.android.glide.disklrucache.4.9.0.nupkg.sha512",
+        "xamarin.android.glide.disklrucache.nuspec"
+      ]
+    },
+    "Xamarin.Android.Glide.GifDecoder/4.9.0": {
+      "sha512": "jwMmpjcKcrub+vnc2HU6amCDXLuKJmeCGogE9oJk9daFk8wRgme3DgnNH6gC5jOnOs7UIpfp8VglDaJnhH9QlA==",
+      "type": "package",
+      "path": "xamarin.android.glide.gifdecoder/4.9.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "THIRD-PARTY-NOTICES.txt",
+        "lib/monoandroid81/Xamarin.Android.Glide.GifDecoder.dll",
+        "xamarin.android.glide.gifdecoder.4.9.0.nupkg.sha512",
+        "xamarin.android.glide.gifdecoder.nuspec"
+      ]
+    },
     "Xamarin.Android.Support.Animated.Vector.Drawable/28.0.0.3": {
       "sha512": "sgR9ixZpaIx6oGNPEUlXDkNH6DUAwwJdS2xHkmJzarIuUHa07xjWlE1TW3pdjkdBjDx5jn0S9l9b8oUkKRMXNw==",
       "type": "package",
@@ -6127,6 +6377,19 @@
         "xamarin.android.support.viewpager.nuspec"
       ]
     },
+    "Xamarin.Android.Volley/1.1.1.1": {
+      "sha512": "Luuz+An+gKGYWUxK+dpnqbz3YJt3HJIhwTqx26j/R/rvgfg6zQIaZ7JlpLmhFmtJQB6DzAw2yPe40NQ4WWj8zg==",
+      "type": "package",
+      "path": "xamarin.android.volley/1.1.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "THIRD-PARTY-NOTICES.txt",
+        "lib/monoandroid80/Xamarin.Android.Volley.dll",
+        "xamarin.android.volley.1.1.1.1.nupkg.sha512",
+        "xamarin.android.volley.nuspec"
+      ]
+    },
     "Xamarin.Build.Download/0.4.11": {
       "sha512": "svGAoBnMVQwUbIv1+j7vDypY+2R7jruefJRmVsxhuvSFXMP8dV+yZK3UGuZa3zV5ThKimk9eqHuvRcl/JVipbA==",
       "type": "package",
@@ -6273,6 +6536,18 @@
         "xamarin.firebase.common.nuspec"
       ]
     },
+    "Xamarin.Google.Android.Places/1.1.0.2": {
+      "sha512": "u/UeQrZCuBc+D0Y7nROMT046x7O4GRyJaqslMd0jf8R2MB7MzBISle4Su6rN8iko21hVnDXKHo8jGT6rRn+jfA==",
+      "type": "package",
+      "path": "xamarin.google.android.places/1.1.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/monoandroid90/Xamarin.Google.Places.dll",
+        "xamarin.google.android.places.1.1.0.2.nupkg.sha512",
+        "xamarin.google.android.places.nuspec"
+      ]
+    },
     "Xamarin.Google.AutoValue.Annotations/1.6.5": {
       "sha512": "4TMqHEr5vYjyj81sr43aCrrEyPIvCmXGI788kKQMsTct/D30tNpUy4kaw7ZuPiEWBE62iqt5dXnSNtU66Ydwtg==",
       "type": "package",
@@ -6368,6 +6643,20 @@
         "xamarin.googleplayservices.basement.nuspec"
       ]
     },
+    "Xamarin.GooglePlayServices.Clearcut/71.1600.0-preview3": {
+      "sha512": "1zCiXtYjEBoAt0Xt3lby6Wm6l4z5lzyhPvD38NUcaQgb5BCTyLeYvT66v4APGquuQm2LqhL0X9crwtg155UR/w==",
+      "type": "package",
+      "path": "xamarin.googleplayservices.clearcut/71.1600.0-preview3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/MonoAndroid90/Xamarin.GooglePlayServices.Clearcut.targets",
+        "lib/monoandroid90/Xamarin.GooglePlayServices.Clearcut.dll",
+        "proguard/MonoAndroid90/proguard.txt",
+        "xamarin.googleplayservices.clearcut.71.1600.0-preview3.nupkg.sha512",
+        "xamarin.googleplayservices.clearcut.nuspec"
+      ]
+    },
     "Xamarin.GooglePlayServices.Flags/71.1601.0": {
       "sha512": "YnX6mi/rKXjkCn6Rh6xdPwoPRfM5VTtBvEM9xDlbhAwbVPC7v7P/ALPUKQ4UyX/DRDAdLdrL2BCRG6BpFbzp1A==",
       "type": "package",
@@ -6379,6 +6668,58 @@
         "lib/monoandroid90/Xamarin.GooglePlayServices.Flags.dll",
         "xamarin.googleplayservices.flags.71.1601.0.nupkg.sha512",
         "xamarin.googleplayservices.flags.nuspec"
+      ]
+    },
+    "Xamarin.GooglePlayServices.Location/71.1600.0-preview3": {
+      "sha512": "zWPtrM8VRsEZ1UOQMpVBWoPGXtU9MCYFxBpb/JWX59NKtgQhh7w0+Zk47VnnuFx41eFrP9zVdWoI1muby0CZ8g==",
+      "type": "package",
+      "path": "xamarin.googleplayservices.location/71.1600.0-preview3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/MonoAndroid90/Xamarin.GooglePlayServices.Location.targets",
+        "lib/monoandroid90/Xamarin.GooglePlayServices.Location.dll",
+        "xamarin.googleplayservices.location.71.1600.0-preview3.nupkg.sha512",
+        "xamarin.googleplayservices.location.nuspec"
+      ]
+    },
+    "Xamarin.GooglePlayServices.Maps/71.1600.0-preview3": {
+      "sha512": "IAM+BDnSjQ5gtmYYBTC3bh0H2vrlSy+RBjpQCNnryuc3YdVle+tziIawiG6JUy56IRvD7k+voVVd9x60QugFFw==",
+      "type": "package",
+      "path": "xamarin.googleplayservices.maps/71.1600.0-preview3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/MonoAndroid90/Xamarin.GooglePlayServices.Maps.targets",
+        "lib/monoandroid90/Xamarin.GooglePlayServices.Maps.dll",
+        "xamarin.googleplayservices.maps.71.1600.0-preview3.nupkg.sha512",
+        "xamarin.googleplayservices.maps.nuspec"
+      ]
+    },
+    "Xamarin.GooglePlayServices.Phenotype/71.1600.0-preview3": {
+      "sha512": "MhRrFCe1ty8B4xhdlidi6Xp3QdUFcu4FSml847hsHBwpOdYPLoh/ZHU3NAK4Y8kvPbm46q2UlDl9d+SYURQdZg==",
+      "type": "package",
+      "path": "xamarin.googleplayservices.phenotype/71.1600.0-preview3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/MonoAndroid90/Xamarin.GooglePlayServices.Phenotype.targets",
+        "lib/monoandroid90/Xamarin.GooglePlayServices.Phenotype.dll",
+        "xamarin.googleplayservices.phenotype.71.1600.0-preview3.nupkg.sha512",
+        "xamarin.googleplayservices.phenotype.nuspec"
+      ]
+    },
+    "Xamarin.GooglePlayServices.Places.PlaceReport/71.1600.0-preview3": {
+      "sha512": "EgnRLS8VqgIzotzJMlrYqpqNzchxusPQVslX5xrINaTUNzLnHAJ9iWSOzy8yELqo6qqPXYo0aU9L3iqg5RDDvQ==",
+      "type": "package",
+      "path": "xamarin.googleplayservices.places.placereport/71.1600.0-preview3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/MonoAndroid90/Xamarin.GooglePlayServices.Places.PlaceReport.targets",
+        "lib/monoandroid90/Xamarin.GooglePlayServices.Places.PlaceReport.dll",
+        "xamarin.googleplayservices.places.placereport.71.1600.0-preview3.nupkg.sha512",
+        "xamarin.googleplayservices.places.placereport.nuspec"
       ]
     },
     "Xamarin.GooglePlayServices.Tasks/71.1601.0": {
@@ -6402,9 +6743,11 @@
       "Xamarin.Android.Support.CustomTabs >= 28.0.0.3",
       "Xamarin.Android.Support.Design >= 28.0.0.3",
       "Xamarin.Android.Support.v4 >= 28.0.0.3",
+      "Xamarin.Android.Volley >= 1.1.1.1",
       "Xamarin.Essentials >= 1.5.3.1",
       "Xamarin.Facebook.Login.Android >= 5.11.2",
       "Xamarin.Firebase.Auth >= 71.1605.0",
+      "Xamarin.Google.Android.Places >= 1.1.0.2",
       "Xamarin.GooglePlayServices.Auth >= 71.1600.0",
       "sqlite-net-pcl >= 1.6.292"
     ]
@@ -6467,6 +6810,10 @@
             "target": "Package",
             "version": "[28.0.0.3, )"
           },
+          "Xamarin.Android.Volley": {
+            "target": "Package",
+            "version": "[1.1.1.1, )"
+          },
           "Xamarin.Essentials": {
             "target": "Package",
             "version": "[1.5.3.1, )"
@@ -6478,6 +6825,10 @@
           "Xamarin.Firebase.Auth": {
             "target": "Package",
             "version": "[71.1605.0, )"
+          },
+          "Xamarin.Google.Android.Places": {
+            "target": "Package",
+            "version": "[1.1.0.2, )"
           },
           "Xamarin.GooglePlayServices.Auth": {
             "target": "Package",

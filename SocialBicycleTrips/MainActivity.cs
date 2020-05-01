@@ -10,6 +10,7 @@ using System;
 using Model;
 using Dal;
 using Helper;
+using Firebase.Auth;
 
 namespace SocialBicycleTrips
 {
@@ -22,6 +23,7 @@ namespace SocialBicycleTrips
         private TripsDB tripsDB;
         private int position = -1;
         private User user;
+        //private FirebaseAuth firebaseAuth;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -42,6 +44,7 @@ namespace SocialBicycleTrips
                 user = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("user")) as User;
                 if (user.IsSocialMediaLogon())
                 {
+                    //firebaseAuth = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("firebase")) as FirebaseAuth;
                     MenuInflater.Inflate(Resource.Menu.socialMediaMenu, menu);
                 }
                 else
@@ -75,7 +78,9 @@ namespace SocialBicycleTrips
 
                 case Resource.Id.mnuCreateTrip:
                     {
-                        StartActivity(new Intent(this, typeof(MainActivity)));
+                        Intent intent = new Intent(this, typeof(Activities.CreateTripActivity));
+                        intent.PutExtra("user", Serializer.ObjectToByteArray(user));
+                        StartActivityForResult(intent,0);
                         item.SetChecked(true);
                         break;
                     }
@@ -89,7 +94,10 @@ namespace SocialBicycleTrips
 
                 case Resource.Id.mnuMyProfile:
                     {
-                        StartActivity(new Intent(this, typeof(Activities.ProfileActivity)));
+                        Intent intent = new Intent(this, typeof(Activities.ProfileActivity));
+                        intent.PutExtra("user", Serializer.ObjectToByteArray(user));
+                        intent.PutExtra("myself", true);
+                        StartActivity(intent);
                         item.SetChecked(true);
                         break;
                     }
@@ -116,6 +124,10 @@ namespace SocialBicycleTrips
                     }
                 case Resource.Id.mnuDisconnect:
                     {
+                        if (Intent.HasExtra("firebase"))
+                        {
+                            //firebaseAuth.SignOut();
+                        }
                         StartActivity(new Intent(this, typeof(MainActivity)));
                         item.SetChecked(true);
                         break;
@@ -135,12 +147,23 @@ namespace SocialBicycleTrips
             }
             return base.OnOptionsItemSelected(item);
         }
+
+        protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
+        {
+            base.OnActivityResult(requestCode, resultCode, data);
+            if(requestCode == 0)
+            {
+                Trip trip = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("trip")) as Trip;
+                trips.Add(trip);
+                //tripsDB.Insert(trip);
+            }
+        }
         private void GenerateTrips()
         {
             User user = new User("avi", "bbb@gmail.com", "121212ss", new DateTime(2002, 11, 4), "0123456789");
             Trip trip = new Trip("somethere", "somewhere", new DateTime(2020, 12, 1, 16, 5, 25), "Checker", new TripManager(user.Image, user.Name));
             trips.Add(trip);
-            tripsDB.Insert(trip);
+            //tripsDB.Insert(trip);
         }
 
         private void UploadUpdatedList()
