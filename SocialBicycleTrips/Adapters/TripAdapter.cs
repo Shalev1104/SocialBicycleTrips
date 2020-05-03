@@ -68,8 +68,8 @@ namespace SocialBicycleTrips.Adapters
                 tripsHolder.txtNotes.Text = trip.Notes;
                 tripsHolder.dayTime.Text = trip.DateTime.DayOfWeek.ToString() + " " + trip.DateTime.TimeOfDay.ToString();
                 tripsHolder.date.Text = trip.DateTime.Date.ToString();
-                tripsHolder.txtStartup.Text = trip.StartingLocation;
-                tripsHolder.txtEndup.Text = trip.FinalLocation;
+                tripsHolder.txtStartup.Text = trip.StartingLocation.Name;
+                tripsHolder.txtEndup.Text = trip.FinalLocation.Name;
                 tripsHolder.txtParticipants.Text = trip.Participants.Count().ToString();
             }
 

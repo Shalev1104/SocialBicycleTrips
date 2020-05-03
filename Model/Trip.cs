@@ -19,8 +19,8 @@ namespace Model
     public class Trip : BaseEntity, iChangeable.TripChangeable
     {
 
-        private string startingLocation;
-        private string finalLocation;
+        private Location startingLocation;
+        private Location finalLocation;
         private DateTime dateTime;
         private string notes;
 
@@ -33,7 +33,7 @@ namespace Model
         {
 
         }
-        public Trip(string startingLocation, string finalLocation, DateTime dateTime, string notes, TripManager tripManager)
+        public Trip(Location startingLocation, Location finalLocation, DateTime dateTime, string notes, TripManager tripManager)
         {
             this.startingLocation = startingLocation;
             this.finalLocation    = finalLocation;
@@ -45,8 +45,8 @@ namespace Model
             participants.Add(new Participant(tripManager.Id, this.Id));
         }
 
-        public string StartingLocation { get => startingLocation; set => startingLocation = value; }
-        public string FinalLocation { get => finalLocation; set => finalLocation = value; }
+        public Location StartingLocation { get => startingLocation; set => startingLocation = value; }
+        public Location FinalLocation { get => finalLocation; set => finalLocation = value; }
         public DateTime DateTime { get => dateTime; set => dateTime = value; }
         public string Notes { get => notes; set => notes = value; }
         public Participants Participants { get => participants; set => participants = value; }
@@ -64,8 +64,7 @@ namespace Model
 
         public void UpdateLocation(string startup, string endup)
         {
-            startingLocation = startup;
-            finalLocation    = endup;
+            
         }
     }
 }

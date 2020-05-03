@@ -78,7 +78,7 @@ namespace SocialBicycleTrips.Activities
                 }
                 Intent intent = new Intent();
                 intent.PutExtra("user", Serializer.ObjectToByteArray(user));
-                SetResult(Result.Ok,intent);
+                SetResult(Android.App.Result.Ok,intent);
                 Finish();
             }
         }
@@ -126,13 +126,13 @@ namespace SocialBicycleTrips.Activities
         }
 
         protected override void OnActivityResult(int requestCode,
-        [GeneratedEnum] Result resultCode,
+        [GeneratedEnum] Android.App.Result resultCode,
         Intent data)
         {
             base.OnActivityResult(requestCode, resultCode, data);
             if (requestCode == 1)
             {
-                if (resultCode == Result.Ok)
+                if (resultCode == Android.App.Result.Ok)
                 {
                     bitmap = (Bitmap)data.Extras.Get("data");
 
@@ -143,7 +143,7 @@ namespace SocialBicycleTrips.Activities
             }
             if (requestCode == 2)
             {
-                if (resultCode == Result.Ok && data != null)
+                if (resultCode == Android.App.Result.Ok && data != null)
                 {
                     bitmap = MediaStore.Images.Media.GetBitmap(ContentResolver, data.Data);
 

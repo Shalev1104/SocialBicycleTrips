@@ -27,6 +27,12 @@
         android:glEsVersion="0x00020000"
         android:required="true" />
 
-    <application />
+    <application>
+
+        <!-- Needs to be explicitly declared on P+ -->
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+    </application>
 
 </manifest>

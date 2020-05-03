@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "7JWWklPjshkV4p6PO8pAZy+FpJSHBj9vTnEBh1eAtUPKr8tN4zLYJ4IyRCBwYCNtkiByf45WHmuzmJLysWcZ5w==",
+  "dgSpecHash": "Nz0jL3CEpdzdt8rgDEEtFFM9HXoXim06d99AlYLBiLL8wWrD1nlsbBN/MXk6hAGTOOibQAX4oVCfXLB4uUwZ9g==",
   "success": true,
   "projectFilePath": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTrips\\Model\\Model.csproj",
   "expectedPackageFiles": [
@@ -31,7 +31,7 @@
     "C:\\Users\\shale\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\shale\\.nuget\\packages\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\shale\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
-    "C:\\Users\\shale\\.nuget\\packages\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",
+    "C:\\Users\\shale\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\shale\\.nuget\\packages\\refractored.controls.circleimageview\\1.0.1\\refractored.controls.circleimageview.1.0.1.nupkg.sha512",
     "C:\\Users\\shale\\.nuget\\packages\\sqlite-net-pcl\\1.6.292\\sqlite-net-pcl.1.6.292.nupkg.sha512",
     "C:\\Users\\shale\\.nuget\\packages\\sqlitenetextensions\\2.1.0\\sqlitenetextensions.2.1.0.nupkg.sha512",
@@ -146,10 +146,11 @@
     "C:\\Users\\shale\\.nuget\\packages\\xamarin.googleplayservices.basement\\71.1620.0\\xamarin.googleplayservices.basement.71.1620.0.nupkg.sha512",
     "C:\\Users\\shale\\.nuget\\packages\\xamarin.googleplayservices.clearcut\\71.1600.0-preview3\\xamarin.googleplayservices.clearcut.71.1600.0-preview3.nupkg.sha512",
     "C:\\Users\\shale\\.nuget\\packages\\xamarin.googleplayservices.flags\\71.1601.0\\xamarin.googleplayservices.flags.71.1601.0.nupkg.sha512",
-    "C:\\Users\\shale\\.nuget\\packages\\xamarin.googleplayservices.location\\71.1600.0-preview3\\xamarin.googleplayservices.location.71.1600.0-preview3.nupkg.sha512",
-    "C:\\Users\\shale\\.nuget\\packages\\xamarin.googleplayservices.maps\\71.1600.0-preview3\\xamarin.googleplayservices.maps.71.1600.0-preview3.nupkg.sha512",
+    "C:\\Users\\shale\\.nuget\\packages\\xamarin.googleplayservices.location\\71.1600.0\\xamarin.googleplayservices.location.71.1600.0.nupkg.sha512",
+    "C:\\Users\\shale\\.nuget\\packages\\xamarin.googleplayservices.maps\\71.1610.0\\xamarin.googleplayservices.maps.71.1610.0.nupkg.sha512",
     "C:\\Users\\shale\\.nuget\\packages\\xamarin.googleplayservices.phenotype\\71.1600.0-preview3\\xamarin.googleplayservices.phenotype.71.1600.0-preview3.nupkg.sha512",
-    "C:\\Users\\shale\\.nuget\\packages\\xamarin.googleplayservices.places.placereport\\71.1600.0-preview3\\xamarin.googleplayservices.places.placereport.71.1600.0-preview3.nupkg.sha512",
+    "C:\\Users\\shale\\.nuget\\packages\\xamarin.googleplayservices.places\\71.1600.0\\xamarin.googleplayservices.places.71.1600.0.nupkg.sha512",
+    "C:\\Users\\shale\\.nuget\\packages\\xamarin.googleplayservices.places.placereport\\71.1600.0\\xamarin.googleplayservices.places.placereport.71.1600.0.nupkg.sha512",
     "C:\\Users\\shale\\.nuget\\packages\\xamarin.googleplayservices.tasks\\71.1601.0\\xamarin.googleplayservices.tasks.71.1601.0.nupkg.sha512"
   ],
   "logs": []

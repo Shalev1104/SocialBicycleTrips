@@ -76,7 +76,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -84,30 +85,14 @@
             android:text="Where"
             android:textSize="16dp"
             android:gravity="center"/>
-        <LinearLayout
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="3"
-            android:orientation="vertical">
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="startup"
-                android:layout_marginBottom="5dp"
-                android:gravity="center"
-                android:textSize="14dp"
-                android:background="@android:color/transparent"
-                android:id="@+id/btnStartupTripCreator"/>
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="endup"
-                android:gravity="center"
-                android:background="@android:color/transparent"
-                android:id="@+id/btnEndUpTripCreator"/>
-        </LinearLayout>
+            android:text="Select Locations"
+            android:textAllCaps="false"
+            android:id="@+id/btnLocationChooser"
+            android:background="@drawable/edgescorners"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"

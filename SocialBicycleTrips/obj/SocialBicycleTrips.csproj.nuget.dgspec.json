@@ -86,6 +86,22 @@
               "target": "Package",
               "version": "[71.1600.0, )"
             },
+            "Xamarin.GooglePlayServices.Base": {
+              "target": "Package",
+              "version": "[71.1610.0, )"
+            },
+            "Xamarin.GooglePlayServices.Location": {
+              "target": "Package",
+              "version": "[71.1600.0, )"
+            },
+            "Xamarin.GooglePlayServices.Maps": {
+              "target": "Package",
+              "version": "[71.1610.0, )"
+            },
+            "Xamarin.GooglePlayServices.Places": {
+              "target": "Package",
+              "version": "[71.1600.0, )"
+            },
             "sqlite-net-pcl": {
               "target": "Package",
               "version": "[1.6.292, )"
@@ -132,6 +148,10 @@
               "target": "Package",
               "version": "[3.0.11, )"
             },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
+            },
             "Xamarin.Android.Support.Core.Utils": {
               "target": "Package",
               "version": "[28.0.0.3, )"
@@ -169,6 +189,22 @@
               "version": "[1.1.0.2, )"
             },
             "Xamarin.GooglePlayServices.Auth": {
+              "target": "Package",
+              "version": "[71.1600.0, )"
+            },
+            "Xamarin.GooglePlayServices.Base": {
+              "target": "Package",
+              "version": "[71.1610.0, )"
+            },
+            "Xamarin.GooglePlayServices.Location": {
+              "target": "Package",
+              "version": "[71.1600.0, )"
+            },
+            "Xamarin.GooglePlayServices.Maps": {
+              "target": "Package",
+              "version": "[71.1610.0, )"
+            },
+            "Xamarin.GooglePlayServices.Places": {
               "target": "Package",
               "version": "[71.1600.0, )"
             },
@@ -273,6 +309,22 @@
               "target": "Package",
               "version": "[71.1600.0, )"
             },
+            "Xamarin.GooglePlayServices.Base": {
+              "target": "Package",
+              "version": "[71.1610.0, )"
+            },
+            "Xamarin.GooglePlayServices.Location": {
+              "target": "Package",
+              "version": "[71.1600.0, )"
+            },
+            "Xamarin.GooglePlayServices.Maps": {
+              "target": "Package",
+              "version": "[71.1610.0, )"
+            },
+            "Xamarin.GooglePlayServices.Places": {
+              "target": "Package",
+              "version": "[71.1600.0, )"
+            },
             "sqlite-net-pcl": {
               "target": "Package",
               "version": "[1.6.292, )"
@@ -370,6 +422,22 @@
               "version": "[1.1.0.2, )"
             },
             "Xamarin.GooglePlayServices.Auth": {
+              "target": "Package",
+              "version": "[71.1600.0, )"
+            },
+            "Xamarin.GooglePlayServices.Base": {
+              "target": "Package",
+              "version": "[71.1610.0, )"
+            },
+            "Xamarin.GooglePlayServices.Location": {
+              "target": "Package",
+              "version": "[71.1600.0, )"
+            },
+            "Xamarin.GooglePlayServices.Maps": {
+              "target": "Package",
+              "version": "[71.1610.0, )"
+            },
+            "Xamarin.GooglePlayServices.Places": {
               "target": "Package",
               "version": "[71.1600.0, )"
             },

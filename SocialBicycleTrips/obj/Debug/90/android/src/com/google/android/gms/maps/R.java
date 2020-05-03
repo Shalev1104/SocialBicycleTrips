@@ -26,21 +26,22 @@ public final class R {
 		public static final int uiMapToolbar = 0x7f0301f5;
 		public static final int uiRotateGestures = 0x7f0301f6;
 		public static final int uiScrollGestures = 0x7f0301f7;
-		public static final int uiTiltGestures = 0x7f0301f8;
-		public static final int uiZoomControls = 0x7f0301f9;
-		public static final int uiZoomGestures = 0x7f0301fa;
-		public static final int useViewLifecycle = 0x7f0301fc;
-		public static final int zOrderOnTop = 0x7f030209;
+		public static final int uiScrollGesturesDuringRotateOrZoom = 0x7f0301f8;
+		public static final int uiTiltGestures = 0x7f0301f9;
+		public static final int uiZoomControls = 0x7f0301fa;
+		public static final int uiZoomGestures = 0x7f0301fb;
+		public static final int useViewLifecycle = 0x7f0301fd;
+		public static final int zOrderOnTop = 0x7f03020a;
 	}
 	public static final class id {
-		public static final int hybrid = 0x7f08007f;
-		public static final int none = 0x7f0800af;
-		public static final int normal = 0x7f0800b0;
-		public static final int satellite = 0x7f0800d4;
-		public static final int terrain = 0x7f080103;
+		public static final int hybrid = 0x7f080083;
+		public static final int none = 0x7f0800b6;
+		public static final int normal = 0x7f0800b7;
+		public static final int satellite = 0x7f0800e3;
+		public static final int terrain = 0x7f080113;
 	}
 	public static final class styleable {
-		public static final int[] MapAttrs = new int[] { 0x7f030029, 0x7f03005a, 0x7f03005b, 0x7f03005c, 0x7f03005d, 0x7f03005e, 0x7f03005f, 0x7f030060, 0x7f030126, 0x7f030127, 0x7f030128, 0x7f030129, 0x7f030144, 0x7f030147, 0x7f0301f4, 0x7f0301f5, 0x7f0301f6, 0x7f0301f7, 0x7f0301f8, 0x7f0301f9, 0x7f0301fa, 0x7f0301fc, 0x7f030209 };
+		public static final int[] MapAttrs = new int[] { 0x7f030029, 0x7f03005a, 0x7f03005b, 0x7f03005c, 0x7f03005d, 0x7f03005e, 0x7f03005f, 0x7f030060, 0x7f030126, 0x7f030127, 0x7f030128, 0x7f030129, 0x7f030144, 0x7f030147, 0x7f0301f4, 0x7f0301f5, 0x7f0301f6, 0x7f0301f7, 0x7f0301f8, 0x7f0301f9, 0x7f0301fa, 0x7f0301fb, 0x7f0301fd, 0x7f03020a };
 		public static final int MapAttrs_ambientEnabled = 0;
 		public static final int MapAttrs_cameraBearing = 1;
 		public static final int MapAttrs_cameraMaxZoomPreference = 2;
@@ -59,10 +60,11 @@ public final class R {
 		public static final int MapAttrs_uiMapToolbar = 15;
 		public static final int MapAttrs_uiRotateGestures = 16;
 		public static final int MapAttrs_uiScrollGestures = 17;
-		public static final int MapAttrs_uiTiltGestures = 18;
-		public static final int MapAttrs_uiZoomControls = 19;
-		public static final int MapAttrs_uiZoomGestures = 20;
-		public static final int MapAttrs_useViewLifecycle = 21;
-		public static final int MapAttrs_zOrderOnTop = 22;
+		public static final int MapAttrs_uiScrollGesturesDuringRotateOrZoom = 18;
+		public static final int MapAttrs_uiTiltGestures = 19;
+		public static final int MapAttrs_uiZoomControls = 20;
+		public static final int MapAttrs_uiZoomGestures = 21;
+		public static final int MapAttrs_useViewLifecycle = 22;
+		public static final int MapAttrs_zOrderOnTop = 23;
 	}
 }

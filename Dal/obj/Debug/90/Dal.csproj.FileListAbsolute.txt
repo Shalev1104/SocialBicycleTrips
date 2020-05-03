@@ -30,6 +30,7 @@ C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\flata\183704
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\flata\5C736BCCD070F989.stamp
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\flata\80AE67B2B970AA21.stamp
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\flata\DB0E378413566F2A.stamp
+C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\flata\344B3C602052A4DE.stamp
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\flata\A7C187437BBA0976.flata
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\flata\107CFC6D82FB425C.flata
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\flata\543893A497FB5F64.flata
@@ -48,6 +49,7 @@ C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\flata\183704
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\flata\5C736BCCD070F989.flata
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\flata\80AE67B2B970AA21.flata
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\flata\DB0E378413566F2A.flata
+C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\flata\344B3C602052A4DE.flata
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\flata\compiled.flata
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\R.txt
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\R.cs.flag
@@ -257,6 +259,7 @@ C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\android\asse
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\android\assets\Xamarin.GooglePlayServices.Location.dll
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\android\assets\Xamarin.GooglePlayServices.Maps.dll
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\android\assets\Xamarin.GooglePlayServices.Phenotype.dll
+C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\android\assets\Xamarin.GooglePlayServices.Places.dll
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\android\assets\Xamarin.GooglePlayServices.Places.PlaceReport.dll
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\android\assets\Xamarin.GooglePlayServices.Tasks.dll
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\android\typemap.jm.arm64-v8a.s
@@ -299,6 +302,7 @@ C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\android\src\
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\android\src\com\google\android\gms\auth\api\R.java
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\android\src\com\google\android\gms\base\R.java
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\android\src\com\google\android\gms\common\R.java
+C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\android\src\com\google\android\gms\location\places\R.java
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\android\src\com\google\android\gms\maps\R.java
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\android\src\com\google\android\libraries\places\R.java
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\android\src\crc6434af9c19aa01b597\GoogleApiClientConnectionCallbacksImpl.java
@@ -324,6 +328,7 @@ C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\android\src\
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\android\src\crc64a0e0a82d0db9a07d\WebAuthenticatorCallbackActivity.java
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\android\src\crc64a98abb514ffad9f1\CustomTabsServiceConnectionImpl.java
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\android\src\crc64a98abb514ffad9f1\KeepAliveService.java
+C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\android\src\crc64ac215617748f9b25\LocationCallbackHelper.java
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\android\src\crc64e95e69e34d869711\LocationCallback.java
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\android\src\crc64e95e69e34d869711\LocationListener.java
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\android\src\mono\android\app\ApplicationRegistration.java
@@ -395,6 +400,7 @@ C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\android\src\
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\android\src\mono\com\google\android\gms\common\images\ImageManager_OnImageLoadedListenerImplementor.java
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\android\src\mono\com\google\android\gms\dynamic\OnDelegateCreatedListenerImplementor.java
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\android\src\mono\com\google\android\gms\location\LocationListenerImplementor.java
+C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\android\src\mono\com\google\android\gms\location\places\ui\PlaceSelectionListenerImplementor.java
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\android\src\mono\com\google\android\gms\maps\GoogleMap_OnCameraChangeListenerImplementor.java
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\android\src\mono\com\google\android\gms\maps\GoogleMap_OnCameraIdleListenerImplementor.java
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\android\src\mono\com\google\android\gms\maps\GoogleMap_OnCameraMoveCanceledListenerImplementor.java

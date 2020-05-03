@@ -70,5 +70,6 @@ Xamarin.GooglePlayServices.Flags
 Xamarin.GooglePlayServices.Location
 Xamarin.GooglePlayServices.Maps
 Xamarin.GooglePlayServices.Phenotype
+Xamarin.GooglePlayServices.Places
 Xamarin.GooglePlayServices.Places.PlaceReport
 Xamarin.GooglePlayServices.Tasks

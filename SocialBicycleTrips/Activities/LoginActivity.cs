@@ -107,13 +107,13 @@ namespace SocialBicycleTrips.Activities
             Intent intent = new Intent(this, typeof(RegisterActivity));
             StartActivityForResult(intent, 0);
         }
-        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+        protected override void OnActivityResult(int requestCode, Android.App.Result resultCode, Intent data)
         {
             base.OnActivityResult(requestCode, resultCode, data);
             if(requestCode == 0)
             {
 
-                if (resultCode == Result.Ok)
+                if (resultCode == Android.App.Result.Ok)
                 {
                     User user = Serializer.ByteArrayToObject(data.GetByteArrayExtra("user")) as User;
                     if (!users.Exists(user))

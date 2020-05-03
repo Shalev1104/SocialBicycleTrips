@@ -148,7 +148,7 @@ namespace SocialBicycleTrips
             return base.OnOptionsItemSelected(item);
         }
 
-        protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
+        protected override void OnActivityResult(int requestCode, [GeneratedEnum] Android.App.Result resultCode, Intent data)
         {
             base.OnActivityResult(requestCode, resultCode, data);
             if(requestCode == 0)
@@ -160,9 +160,9 @@ namespace SocialBicycleTrips
         }
         private void GenerateTrips()
         {
-            User user = new User("avi", "bbb@gmail.com", "121212ss", new DateTime(2002, 11, 4), "0123456789");
+            /*User user = new User("avi", "bbb@gmail.com", "121212ss", new DateTime(2002, 11, 4), "0123456789");
             Trip trip = new Trip("somethere", "somewhere", new DateTime(2020, 12, 1, 16, 5, 25), "Checker", new TripManager(user.Image, user.Name));
-            trips.Add(trip);
+            trips.Add(trip);*/
             //tripsDB.Insert(trip);
         }
 

@@ -379,7 +379,7 @@
           "System.Xml.XDocument": "4.3.0"
         }
       },
-      "Newtonsoft.Json/11.0.2": {
+      "Newtonsoft.Json/12.0.3": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
@@ -2101,14 +2101,14 @@
           "build/MonoAndroid90/Xamarin.GooglePlayServices.Flags.targets": {}
         }
       },
-      "Xamarin.GooglePlayServices.Location/71.1600.0-preview3": {
+      "Xamarin.GooglePlayServices.Location/71.1600.0": {
         "type": "package",
         "dependencies": {
           "Xamarin.Build.Download": "0.4.11",
-          "Xamarin.GooglePlayServices.Base": "71.1601.0-preview3",
-          "Xamarin.GooglePlayServices.Basement": "71.1610.0-preview3",
-          "Xamarin.GooglePlayServices.Places.PlaceReport": "71.1600.0-preview3",
-          "Xamarin.GooglePlayServices.Tasks": "71.1601.0-preview3"
+          "Xamarin.GooglePlayServices.Base": "71.1610.0",
+          "Xamarin.GooglePlayServices.Basement": "71.1620.0",
+          "Xamarin.GooglePlayServices.Places.PlaceReport": "71.1600.0",
+          "Xamarin.GooglePlayServices.Tasks": "71.1601.0"
         },
         "frameworkAssemblies": [
           "Java.Interop"
@@ -2120,15 +2120,15 @@
           "lib/monoandroid90/Xamarin.GooglePlayServices.Location.dll": {}
         },
         "build": {
-          "build/MonoAndroid90/_._": {}
+          "build/MonoAndroid90/Xamarin.GooglePlayServices.Location.targets": {}
         }
       },
-      "Xamarin.GooglePlayServices.Maps/71.1600.0-preview3": {
+      "Xamarin.GooglePlayServices.Maps/71.1610.0": {
         "type": "package",
         "dependencies": {
           "Xamarin.Build.Download": "0.4.11",
-          "Xamarin.GooglePlayServices.Base": "71.1601.0-preview3",
-          "Xamarin.GooglePlayServices.Basement": "71.1610.0-preview3"
+          "Xamarin.GooglePlayServices.Base": "71.1610.0",
+          "Xamarin.GooglePlayServices.Basement": "71.1620.0"
         },
         "frameworkAssemblies": [
           "Java.Interop"
@@ -2140,7 +2140,7 @@
           "lib/monoandroid90/Xamarin.GooglePlayServices.Maps.dll": {}
         },
         "build": {
-          "build/MonoAndroid90/_._": {}
+          "build/MonoAndroid90/Xamarin.GooglePlayServices.Maps.targets": {}
         }
       },
       "Xamarin.GooglePlayServices.Phenotype/71.1600.0-preview3": {
@@ -2164,11 +2164,34 @@
           "build/MonoAndroid90/_._": {}
         }
       },
-      "Xamarin.GooglePlayServices.Places.PlaceReport/71.1600.0-preview3": {
+      "Xamarin.GooglePlayServices.Places/71.1600.0": {
         "type": "package",
         "dependencies": {
           "Xamarin.Build.Download": "0.4.11",
-          "Xamarin.GooglePlayServices.Basement": "71.1610.0-preview3"
+          "Xamarin.GooglePlayServices.Base": "71.1610.0",
+          "Xamarin.GooglePlayServices.Basement": "71.1620.0",
+          "Xamarin.GooglePlayServices.Maps": "71.1600.0",
+          "Xamarin.GooglePlayServices.Places.PlaceReport": "71.1600.0",
+          "Xamarin.GooglePlayServices.Tasks": "71.1601.0"
+        },
+        "frameworkAssemblies": [
+          "Java.Interop"
+        ],
+        "compile": {
+          "lib/monoandroid90/Xamarin.GooglePlayServices.Places.dll": {}
+        },
+        "runtime": {
+          "lib/monoandroid90/Xamarin.GooglePlayServices.Places.dll": {}
+        },
+        "build": {
+          "build/MonoAndroid90/Xamarin.GooglePlayServices.Places.targets": {}
+        }
+      },
+      "Xamarin.GooglePlayServices.Places.PlaceReport/71.1600.0": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Build.Download": "0.4.11",
+          "Xamarin.GooglePlayServices.Basement": "71.1620.0"
         },
         "frameworkAssemblies": [
           "Java.Interop"
@@ -2180,7 +2203,7 @@
           "lib/monoandroid90/Xamarin.GooglePlayServices.Places.PlaceReport.dll": {}
         },
         "build": {
-          "build/MonoAndroid90/_._": {}
+          "build/MonoAndroid90/Xamarin.GooglePlayServices.Places.PlaceReport.targets": {}
         }
       },
       "Xamarin.GooglePlayServices.Tasks/71.1601.0": {
@@ -2584,10 +2607,10 @@
         "netstandard.library.nuspec"
       ]
     },
-    "Newtonsoft.Json/11.0.2": {
-      "sha512": "IvJe1pj7JHEsP8B8J8DwlMEx8UInrs/x+9oVY+oCD13jpLu4JbJU2WCIsMRn5C4yW9+DgkaO8uiVE5VHKjpmdQ==",
+    "Newtonsoft.Json/12.0.3": {
+      "sha512": "6mgjfnRB4jKMlzHSl+VD+oUc1IebOZabkbyWj2RiTgWwYPPuaK1H97G1sHqGwPlS5npiF5Q0OrxN1wni2n5QWg==",
       "type": "package",
-      "path": "newtonsoft.json/11.0.2",
+      "path": "newtonsoft.json/12.0.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2610,8 +2633,9 @@
         "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
         "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
         "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
-        "newtonsoft.json.11.0.2.nupkg.sha512",
-        "newtonsoft.json.nuspec"
+        "newtonsoft.json.12.0.3.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "packageIcon.png"
       ]
     },
     "sqlite-net-pcl/1.6.292": {
@@ -6670,29 +6694,29 @@
         "xamarin.googleplayservices.flags.nuspec"
       ]
     },
-    "Xamarin.GooglePlayServices.Location/71.1600.0-preview3": {
-      "sha512": "zWPtrM8VRsEZ1UOQMpVBWoPGXtU9MCYFxBpb/JWX59NKtgQhh7w0+Zk47VnnuFx41eFrP9zVdWoI1muby0CZ8g==",
+    "Xamarin.GooglePlayServices.Location/71.1600.0": {
+      "sha512": "Jd6ia/fwFkylhyG5WTgTeNIkHuS1ITnkRxqrpk1S8Yc2zAWHWcz/7IguCeVfP33YQmPbjH4jMtKZCKUznsPUjw==",
       "type": "package",
-      "path": "xamarin.googleplayservices.location/71.1600.0-preview3",
+      "path": "xamarin.googleplayservices.location/71.1600.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "build/MonoAndroid90/Xamarin.GooglePlayServices.Location.targets",
         "lib/monoandroid90/Xamarin.GooglePlayServices.Location.dll",
-        "xamarin.googleplayservices.location.71.1600.0-preview3.nupkg.sha512",
+        "xamarin.googleplayservices.location.71.1600.0.nupkg.sha512",
         "xamarin.googleplayservices.location.nuspec"
       ]
     },
-    "Xamarin.GooglePlayServices.Maps/71.1600.0-preview3": {
-      "sha512": "IAM+BDnSjQ5gtmYYBTC3bh0H2vrlSy+RBjpQCNnryuc3YdVle+tziIawiG6JUy56IRvD7k+voVVd9x60QugFFw==",
+    "Xamarin.GooglePlayServices.Maps/71.1610.0": {
+      "sha512": "zU0haiLNzg++mDqVMg36yhHVBiRYM9u3O7vgTLEp+fgDN3Nh133k5SJtjHBhooXxZ/2tFvaYWakHvF4kzqIw1A==",
       "type": "package",
-      "path": "xamarin.googleplayservices.maps/71.1600.0-preview3",
+      "path": "xamarin.googleplayservices.maps/71.1610.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "build/MonoAndroid90/Xamarin.GooglePlayServices.Maps.targets",
         "lib/monoandroid90/Xamarin.GooglePlayServices.Maps.dll",
-        "xamarin.googleplayservices.maps.71.1600.0-preview3.nupkg.sha512",
+        "xamarin.googleplayservices.maps.71.1610.0.nupkg.sha512",
         "xamarin.googleplayservices.maps.nuspec"
       ]
     },
@@ -6709,16 +6733,30 @@
         "xamarin.googleplayservices.phenotype.nuspec"
       ]
     },
-    "Xamarin.GooglePlayServices.Places.PlaceReport/71.1600.0-preview3": {
-      "sha512": "EgnRLS8VqgIzotzJMlrYqpqNzchxusPQVslX5xrINaTUNzLnHAJ9iWSOzy8yELqo6qqPXYo0aU9L3iqg5RDDvQ==",
+    "Xamarin.GooglePlayServices.Places/71.1600.0": {
+      "sha512": "EZr7YCsALt5/cpE4+a8LT5RzZBAG9QT9SHpa92Wg4A9nSG/XTxqKQPQ+PhH+PwxzqCVG6cB8nC8JJ/SmIXwxkw==",
       "type": "package",
-      "path": "xamarin.googleplayservices.places.placereport/71.1600.0-preview3",
+      "path": "xamarin.googleplayservices.places/71.1600.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/MonoAndroid90/Xamarin.GooglePlayServices.Places.targets",
+        "lib/monoandroid90/Xamarin.GooglePlayServices.Places.dll",
+        "proguard/MonoAndroid90/proguard.txt",
+        "xamarin.googleplayservices.places.71.1600.0.nupkg.sha512",
+        "xamarin.googleplayservices.places.nuspec"
+      ]
+    },
+    "Xamarin.GooglePlayServices.Places.PlaceReport/71.1600.0": {
+      "sha512": "SiWXLdSCVCk8cJ+Vn6WjyQNUx13ztRHQeHv2Kz5Kb433DUSjq/qmvu6Guv0Fuf292I5hXZb5TL0VuuzXOQM6Zw==",
+      "type": "package",
+      "path": "xamarin.googleplayservices.places.placereport/71.1600.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "build/MonoAndroid90/Xamarin.GooglePlayServices.Places.PlaceReport.targets",
         "lib/monoandroid90/Xamarin.GooglePlayServices.Places.PlaceReport.dll",
-        "xamarin.googleplayservices.places.placereport.71.1600.0-preview3.nupkg.sha512",
+        "xamarin.googleplayservices.places.placereport.71.1600.0.nupkg.sha512",
         "xamarin.googleplayservices.places.placereport.nuspec"
       ]
     },
@@ -6739,6 +6777,7 @@
   "projectFileDependencyGroups": {
     "MonoAndroid,Version=v9.0": [
       "Microsoft.Azure.WebJobs.Extensions.Storage >= 3.0.11",
+      "Newtonsoft.Json >= 12.0.3",
       "Xamarin.Android.Support.Core.Utils >= 28.0.0.3",
       "Xamarin.Android.Support.CustomTabs >= 28.0.0.3",
       "Xamarin.Android.Support.Design >= 28.0.0.3",
@@ -6749,6 +6788,10 @@
       "Xamarin.Firebase.Auth >= 71.1605.0",
       "Xamarin.Google.Android.Places >= 1.1.0.2",
       "Xamarin.GooglePlayServices.Auth >= 71.1600.0",
+      "Xamarin.GooglePlayServices.Base >= 71.1610.0",
+      "Xamarin.GooglePlayServices.Location >= 71.1600.0",
+      "Xamarin.GooglePlayServices.Maps >= 71.1610.0",
+      "Xamarin.GooglePlayServices.Places >= 71.1600.0",
       "sqlite-net-pcl >= 1.6.292"
     ]
   },
@@ -6794,6 +6837,10 @@
             "target": "Package",
             "version": "[3.0.11, )"
           },
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "[12.0.3, )"
+          },
           "Xamarin.Android.Support.Core.Utils": {
             "target": "Package",
             "version": "[28.0.0.3, )"
@@ -6831,6 +6878,22 @@
             "version": "[1.1.0.2, )"
           },
           "Xamarin.GooglePlayServices.Auth": {
+            "target": "Package",
+            "version": "[71.1600.0, )"
+          },
+          "Xamarin.GooglePlayServices.Base": {
+            "target": "Package",
+            "version": "[71.1610.0, )"
+          },
+          "Xamarin.GooglePlayServices.Location": {
+            "target": "Package",
+            "version": "[71.1600.0, )"
+          },
+          "Xamarin.GooglePlayServices.Maps": {
+            "target": "Package",
+            "version": "[71.1610.0, )"
+          },
+          "Xamarin.GooglePlayServices.Places": {
             "target": "Package",
             "version": "[71.1600.0, )"
           },
