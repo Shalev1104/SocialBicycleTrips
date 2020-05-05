@@ -36,6 +36,7 @@ namespace SocialBicycleTrips.Activities
         private LoginButton facebookLogin;
         private Users users;
         private UsersDB usersDB;
+        private User user;
 
         GoogleSignInOptions gso;
         GoogleApiClient googleApiClient;
@@ -50,6 +51,7 @@ namespace SocialBicycleTrips.Activities
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_signin);
             SetViews();
+            FacebookSdk.SdkInitialize(ApplicationContext);
             // Create your application here
             usersDB = new UsersDB();
             users = usersDB.GetAllUsers();
@@ -75,9 +77,29 @@ namespace SocialBicycleTrips.Activities
             callbackManager = CallbackManagerFactory.Create();
             facebookLogin.RegisterCallback(callbackManager, this);
             firebaseAuth = GetFirebaseAuth();
+            if (IsHereToDisconnect())
+            {
+                firebaseAuth.SignOut();
+                if (IsFacebookLogin())
+                {
+                    LoginManager.Instance.LogOut();
+                }
+                Finish();
+            }
 
         }
 
+        public bool IsFacebookLogin()
+        {
+            AccessToken accessToken = AccessToken.CurrentAccessToken;
+            bool isLoggedIn = accessToken != null && !accessToken.IsExpired;
+            return isLoggedIn;
+        }
+
+        public bool IsHereToDisconnect()
+        {
+            return Intent.HasExtra("social media disconnect");
+        }
         private void GoogleLogin_Click(object sender, EventArgs e)
         {
             Intent intent = Auth.GoogleSignInApi.GetSignInIntent(googleApiClient);
@@ -115,7 +137,7 @@ namespace SocialBicycleTrips.Activities
 
                 if (resultCode == Android.App.Result.Ok)
                 {
-                    User user = Serializer.ByteArrayToObject(data.GetByteArrayExtra("user")) as User;
+                    user = Serializer.ByteArrayToObject(data.GetByteArrayExtra("user")) as User;
                     if (!users.Exists(user))
                     {
                         users.Add(user);
@@ -173,7 +195,7 @@ namespace SocialBicycleTrips.Activities
         {
             if (IsTyped())
             {
-                User user = IsLogin();
+                user = IsLogin();
                 if (user != null)
                 {
                     Navigate(user);
@@ -191,7 +213,7 @@ namespace SocialBicycleTrips.Activities
 
         public User IsLogin() // first condition for social media login and the second for the form login
         {
-            User user = null;
+            user = null;
             foreach (User found in users)
             {
                 if ((found.IsSocialMediaLogon() &&  found.Email.Equals(firebaseAuth.CurrentUser.Email)) || (!found.IsSocialMediaLogon() && found.Email.Equals(email.Text) && found.Password.Equals(password.Text)))
@@ -229,7 +251,7 @@ namespace SocialBicycleTrips.Activities
                 else
                 {
                     usingFirebase = false;
-                    User user = IsLogin();
+                    user = IsLogin();
                     if (user == null)
                     {
                         user = new User(firebaseAuth.CurrentUser.DisplayName, firebaseAuth.CurrentUser.Email, firebaseAuth.CurrentUser.PhotoUrl.Path, firebaseAuth.CurrentUser.PhoneNumber);
@@ -242,7 +264,7 @@ namespace SocialBicycleTrips.Activities
 
             else // for google
             {
-                User user = IsLogin();
+                user = IsLogin();
                 if (user == null)
                 {
                     user = new User(firebaseAuth.CurrentUser.DisplayName, firebaseAuth.CurrentUser.Email, firebaseAuth.CurrentUser.PhotoUrl.Path, firebaseAuth.CurrentUser.PhoneNumber);

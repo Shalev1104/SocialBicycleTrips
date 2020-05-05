@@ -33,5 +33,19 @@ namespace Model
         {
             base.Sort((item1, item2) => item1.Name.CompareTo(item2.Name));
         }
+
+        public User GetUserByID(int id)
+        {
+            User user = null;
+            foreach (User found in this)
+            {
+                if (found.Id.Equals(id))
+                {
+                    user = found;
+                    break;
+                }
+            }
+            return user;
+        }
     }
 }

@@ -3,6 +3,7 @@ Bolts.Tasks
 Dal
 Google.ZXing.Core
 GoogleGson
+GoogleMapsUtilityBinding
 Helper
 Refractored.Controls.CircleImageView
 SQLitePCLRaw.batteries_green

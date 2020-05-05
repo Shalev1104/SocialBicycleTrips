@@ -3,6 +3,7 @@ Bolts.Tasks
 Dal
 Google.ZXing.Core
 GoogleGson
+GoogleMapsUtilityBinding
 Helper
 Model
 Refractored.Controls.CircleImageView

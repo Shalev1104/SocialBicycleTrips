@@ -33,6 +33,12 @@ namespace SocialBicycleTrips.Activities
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_profile);
             SetViews();
+            GenerateUser();
+            UploadUserDetails();
+            if (isFriend())
+            {
+                addFriend.Visibility = ViewStates.Invisible;
+            }
         }
         public void SetViews()
         {
@@ -46,23 +52,23 @@ namespace SocialBicycleTrips.Activities
 
             addFriend.Visibility = ViewStates.Visible;
             addFriend.Click += AddFriend_Click;
-
-            GenerateUser();
-            UploadUserDetails();
-            if(isFriend())
-            {
-                addFriend.Visibility = ViewStates.Invisible;
-            }
         }
 
         public void UploadUserDetails()
         {
             name.Text = profile.Name;
-            profileImage.SetImageBitmap(BitMapHelper.Base64ToBitMap(profile.Image));
+            profileImage.SetImageBitmap(BitMapHelper.TransferMediaImages(profile.Image));
             completedTrips.Text = profile.CompletedTrips.ToString();
             upcomingTrips.Text = profile.UpcomingTrips.ToString();
             phoneNumber.Text = profile.PhoneNumber;
-            age.Text = profile.CalculateAge().ToString();
+            try
+            {
+                age.Text = profile.CalculateAge().ToString();
+            }
+            catch(Exception ex) // birthday = null
+            {
+                age.Text = "unknown";
+            }
         }
 
         public void GenerateUser()

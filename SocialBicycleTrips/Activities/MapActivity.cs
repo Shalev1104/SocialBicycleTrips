@@ -30,7 +30,7 @@ namespace SocialBicycleTrips.Activities
         LocationRequest locationRequest;
         FusedLocationProviderClient locationClient;
         Android.Locations.Location lastLocation;
-        LocationCallbackHelper mLocationCallback;
+        LocationCallbackHelper locationCallback;
         private TextView txtStart;
         private TextView txtEnd;
         private RelativeLayout layoutStart;
@@ -39,6 +39,7 @@ namespace SocialBicycleTrips.Activities
         private RadioButton endRadio;
         private ImageView centerMarker;
         private Button btnDone;
+        private RelativeLayout returnToMyLocation;
 
         static int update_interval = 5;//seconds
         static int fastest_interval = 5;
@@ -76,12 +77,19 @@ namespace SocialBicycleTrips.Activities
             endRadio = FindViewById<RadioButton>(Resource.Id.endRadio);
             centerMarker = FindViewById<ImageView>(Resource.Id.centerMarker);
             btnDone = FindViewById<Button>(Resource.Id.btnFinished);
+            returnToMyLocation = FindViewById<RelativeLayout>(Resource.Id.currentLocation);
 
+            returnToMyLocation.Click += ReturnToMyLocation_Click;
             btnDone.Click += BtnDone_Click;
             startRadio.Click += StartRadio_Click;
             endRadio.Click += EndRadio_Click;
             layoutStart.Click += LayoutStart_Click;
             layoutEnd.Click += LayoutEnd_Click;
+        }
+
+        private void ReturnToMyLocation_Click(object sender, EventArgs e)
+        {
+            GetMyLocation();
         }
 
         private void BtnDone_Click(object sender, EventArgs e)
@@ -124,14 +132,6 @@ namespace SocialBicycleTrips.Activities
             StartActivityForResult(intent, 1);
         }
 
-        void IOnMapReadyCallback.OnMapReady(GoogleMap googleMap)
-        {
-            mainMap = googleMap;
-            mainMap.CameraIdle += MainMap_CameraIdle;
-            string mapkey = "AIzaSyAH6n6XJq3ZCQSAKBSBNvQ12cBXltlOKvU";
-            mapHelper = new MapFunctionHelper(mapkey);
-        }
-
         private async void MainMap_CameraIdle(object sender, EventArgs e)
         {
             if (!takeAddressFromSearch)
@@ -141,15 +141,16 @@ namespace SocialBicycleTrips.Activities
                     startLocationLatLng = mainMap.CameraPosition.Target;
                     string address = await mapHelper.FindCordinateAddress(startLocationLatLng);
                     txtStart.Text = address;
-                    first = new Model.Location(mapHelper.getCityNameFromAddress(address), address, startLocationLatLng);
+                    first = new Model.Location(address, startLocationLatLng);
+                    
                 }
                 else if (addressRequest == 2)
                 {
                     endLocationLatLng = mainMap.CameraPosition.Target;
                     string address = await mapHelper.FindCordinateAddress(startLocationLatLng);
                     txtEnd.Text = address;
-                    last = new Model.Location(mapHelper.getCityNameFromAddress(address),address, endLocationLatLng);
                     btnDone.Visibility = ViewStates.Visible;
+                    last = new Model.Location(address, endLocationLatLng);
                 }
             }
         }
@@ -171,6 +172,14 @@ namespace SocialBicycleTrips.Activities
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            if(grantResults.Length > 1)
+            {
+                return;
+            }
+            if(grantResults[0] == (int)Permission.Granted)
+            {
+                StartLocationUpdates();
+            }
         }
         protected override void OnActivityResult(int requestCode, [GeneratedEnum] Android.App.Result resultCode, Intent data)
         {
@@ -185,6 +194,7 @@ namespace SocialBicycleTrips.Activities
                     endRadio.Checked = false;
 
                     var place = PlaceAutocomplete.GetPlace(this, data);
+                    startLocationLatLng = place.LatLng;
                     txtStart.Text = place.NameFormatted.ToString();
                     mainMap.AnimateCamera(CameraUpdateFactory.NewLatLngZoom(place.LatLng, 15));
                     centerMarker.SetColorFilter(Android.Graphics.Color.Green);
@@ -200,6 +210,7 @@ namespace SocialBicycleTrips.Activities
                     endRadio.Checked = false;
 
                     var place = PlaceAutocomplete.GetPlace(this, data);
+                    endLocationLatLng = place.LatLng;
                     txtEnd.Text = place.NameFormatted.ToString();
                     mainMap.AnimateCamera(CameraUpdateFactory.NewLatLngZoom(place.LatLng, 15));
                     centerMarker.SetColorFilter(Android.Graphics.Color.Red);
@@ -215,18 +226,18 @@ namespace SocialBicycleTrips.Activities
             locationRequest.SetSmallestDisplacement(displacement);
             locationRequest.SetPriority(LocationRequest.PriorityHighAccuracy);
             locationClient = LocationServices.GetFusedLocationProviderClient(this);
-            mLocationCallback = new LocationCallbackHelper();
-            mLocationCallback.MyLocation += MLocationCallback_MyLocation;
+            locationCallback = new LocationCallbackHelper();
+            locationCallback.MyLocation += LocationCallback_MyLocation;
         }
 
-        void MLocationCallback_MyLocation(object sender, LocationCallbackHelper.OnLocationCaturedEventArgs e)
+        private void LocationCallback_MyLocation(object sender, LocationCallbackHelper.OnLocationCapturedEventArgs e)
         {
             lastLocation = e.Location;
             LatLng myPosition = new LatLng(lastLocation.Latitude, lastLocation.Longitude);
-            mainMap.AnimateCamera(CameraUpdateFactory.NewLatLngZoom(myPosition, 30));
+            mainMap.AnimateCamera(CameraUpdateFactory.NewLatLngZoom(myPosition, 12));
         }
 
-        async void GetMyLocation()
+        private async void GetMyLocation()
         {
             if (!CheckLocationPermission())
             {
@@ -236,22 +247,30 @@ namespace SocialBicycleTrips.Activities
             if(lastLocation != null)
             {
                 LatLng myPosition = new LatLng(lastLocation.Latitude, lastLocation.Longitude);
-                mainMap.MoveCamera(CameraUpdateFactory.NewLatLngZoom(myPosition, 30));
+                mainMap.MoveCamera(CameraUpdateFactory.NewLatLngZoom(myPosition, 17));
             }
         }
         void StartLocationUpdates()
         {
             if (CheckLocationPermission())
             {
-                locationClient.RequestLocationUpdates(locationRequest, mLocationCallback,null);
+                locationClient.RequestLocationUpdates(locationRequest, locationCallback,null);
             }
         }
         void StopLocationUpdates()
         {
-            if(locationClient != null  && mLocationCallback != null)
+            if(locationClient != null  && locationCallback != null)
             {
-                locationClient.RemoveLocationUpdates(mLocationCallback);
+                locationClient.RemoveLocationUpdates(locationCallback);
             }
+        }
+
+        public void OnMapReady(GoogleMap googleMap)
+        {
+            mainMap = googleMap;
+            mainMap.CameraIdle += MainMap_CameraIdle;
+            string mapkey = "AIzaSyAH6n6XJq3ZCQSAKBSBNvQ12cBXltlOKvU";
+            mapHelper = new MapFunctionHelper(mapkey, mainMap);
         }
     }
 }

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "UJWECXLtfruVwAobuwA/nnq1btxA3yHq2n9Df1ICJHYspDALFXWLBkoUrAyRb8GVPkaYgCqxIjLltAPU8fbDKQ==",
+  "dgSpecHash": "mzytW347FJ0xNT/1g+WijGvv2lcSZ5PFwoc8cNkfyN9VZjAPi48KY/0AshctMTvQvmEwRmvXNx98OE1B95C96g==",
   "success": true,
   "projectFilePath": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTrips\\Helper\\Helper.csproj",
   "expectedPackageFiles": [
@@ -95,6 +95,7 @@
     "C:\\Users\\shale\\.nuget\\packages\\xamarin.android.glide\\4.9.0\\xamarin.android.glide.4.9.0.nupkg.sha512",
     "C:\\Users\\shale\\.nuget\\packages\\xamarin.android.glide.disklrucache\\4.9.0\\xamarin.android.glide.disklrucache.4.9.0.nupkg.sha512",
     "C:\\Users\\shale\\.nuget\\packages\\xamarin.android.glide.gifdecoder\\4.9.0\\xamarin.android.glide.gifdecoder.4.9.0.nupkg.sha512",
+    "C:\\Users\\shale\\.nuget\\packages\\xamarin.android.maps.utils\\0.5.0\\xamarin.android.maps.utils.0.5.0.nupkg.sha512",
     "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.support.animated.vector.drawable\\28.0.0.3\\xamarin.android.support.animated.vector.drawable.28.0.0.3.nupkg.sha512",
     "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.support.annotations\\28.0.0.3\\xamarin.android.support.annotations.28.0.0.3.nupkg.sha512",
     "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.support.asynclayoutinflater\\28.0.0.3\\xamarin.android.support.asynclayoutinflater.28.0.0.3.nupkg.sha512",

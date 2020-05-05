@@ -44,7 +44,7 @@
                                 android:layout_height="8dp"
                                 android:layout_centerVertical="true"
                                 android:layout_marginLeft="10dp"
-                                android:src="@drawable/quantum_ic_cloud_off_vd_theme_24"/>
+                                android:src="@drawable/greendot"/>
                             <TextView
                                 android:id="@+id/txtStartLocation"
                                 android:layout_width="match_parent"
@@ -83,7 +83,7 @@
                                 android:layout_height="8dp"
                                 android:layout_centerVertical="true"
                                 android:layout_marginLeft="10dp"
-                                android:src="@drawable/quantum_ic_cloud_off_vd_theme_24"/>
+                                android:src="@drawable/reddot"/>
                             <TextView
                                 android:id="@+id/txtEndLocation"
                                 android:layout_width="match_parent"
@@ -122,12 +122,12 @@
             android:layout_gravity="center|right"
             android:background="@android:color/white"
             android:layout_marginRight="16dp">
-            <ImageView
+            <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:src="@android:drawable/ic_menu_mylocation"
-                android:tint="@android:color/holo_orange_dark"/>
+                android:background="@android:drawable/ic_menu_mylocation"
+               android:backgroundTint="@android:color/holo_orange_dark"/>
         </RelativeLayout>
         <Button
             android:layout_width="wrap_content"

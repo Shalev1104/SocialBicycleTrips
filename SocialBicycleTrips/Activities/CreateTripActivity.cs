@@ -86,6 +86,10 @@ namespace SocialBicycleTrips.Activities
                 SetResult(Android.App.Result.Ok, intent);
                 Finish();
             }
+            else
+            {
+                Toast.MakeText(this, "please tyoe all the requested fields", ToastLength.Long).Show();
+            }
         }
 
         private bool IsValid()

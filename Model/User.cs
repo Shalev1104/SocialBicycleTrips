@@ -46,6 +46,8 @@ namespace Model
 
             completedTrips = 0;
             upcomingTrips = 0;
+            myFriends = new MyFriends();
+            myTrips = new MyTrips();
         }
 
         public User(string name, string email, string password, DateTime birthday, string phoneNumber) : base("",name)
@@ -59,6 +61,8 @@ namespace Model
 
             completedTrips = 0;
             upcomingTrips = 0;
+            myFriends = new MyFriends();
+            myTrips = new MyTrips();
         }
         public User(string name, string email,  string image, string phoneNumber) : base(image,name) //Social Media Login
         {
@@ -67,6 +71,8 @@ namespace Model
 
             completedTrips = 0;
             upcomingTrips = 0;
+            myFriends = new MyFriends();
+            myTrips = new MyTrips();
         }
         public string Email { get => email; set => email = value; }
         public string Password { get => password; set => password = value; }

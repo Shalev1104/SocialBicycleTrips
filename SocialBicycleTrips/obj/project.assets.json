@@ -1162,6 +1162,18 @@
           "lib/monoandroid81/Xamarin.Android.Glide.GifDecoder.dll": {}
         }
       },
+      "Xamarin.Android.Maps.Utils/0.5.0": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.GooglePlayServices.Maps": "32.961.0"
+        },
+        "compile": {
+          "lib/MonoAndroid10/GoogleMapsUtilityBinding.dll": {}
+        },
+        "runtime": {
+          "lib/MonoAndroid10/GoogleMapsUtilityBinding.dll": {}
+        }
+      },
       "Xamarin.Android.Support.Animated.Vector.Drawable/28.0.0.3": {
         "type": "package",
         "dependencies": {
@@ -2253,6 +2265,7 @@
         "dependencies": {
           "Helper": "1.0.0",
           "Microsoft.Azure.WebJobs.Extensions.Storage": "3.0.11",
+          "Xamarin.Android.Maps.Utils": "0.5.0",
           "Xamarin.Android.Support.Core.Utils": "28.0.0.3",
           "Xamarin.Android.Support.CustomTabs": "28.0.0.3",
           "Xamarin.Android.Support.Design": "28.0.0.3",
@@ -2282,6 +2295,7 @@
         "dependencies": {
           "Microsoft.Azure.WebJobs.Extensions.Storage": "3.0.11",
           "Newtonsoft.Json": "12.0.3",
+          "Xamarin.Android.Maps.Utils": "0.5.0",
           "Xamarin.Android.Support.Core.Utils": "28.0.0.3",
           "Xamarin.Android.Support.CustomTabs": "28.0.0.3",
           "Xamarin.Android.Support.Design": "28.0.0.3",
@@ -2314,6 +2328,7 @@
           "Microsoft.Azure.WebJobs.Extensions.Storage": "3.0.11",
           "Refractored.Controls.CircleImageView": "1.0.1",
           "SQLiteNetExtensions": "2.1.0",
+          "Xamarin.Android.Maps.Utils": "0.5.0",
           "Xamarin.Android.Support.Core.Utils": "28.0.0.3",
           "Xamarin.Android.Support.CustomTabs": "28.0.0.3",
           "Xamarin.Android.Support.Design": "28.0.0.3",
@@ -5938,6 +5953,18 @@
         "xamarin.android.glide.gifdecoder.nuspec"
       ]
     },
+    "Xamarin.Android.Maps.Utils/0.5.0": {
+      "sha512": "1d8c1UUAeQKgtfC5jcjtF58meHtwu7gKQCgciUbs9mbr1ivQOk0pSV5mIBrZzzWBUUyPbHAXqRZY9x7AjzVR/Q==",
+      "type": "package",
+      "path": "xamarin.android.maps.utils/0.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/MonoAndroid10/GoogleMapsUtilityBinding.dll",
+        "xamarin.android.maps.utils.0.5.0.nupkg.sha512",
+        "xamarin.android.maps.utils.nuspec"
+      ]
+    },
     "Xamarin.Android.Support.Animated.Vector.Drawable/28.0.0.3": {
       "sha512": "sgR9ixZpaIx6oGNPEUlXDkNH6DUAwwJdS2xHkmJzarIuUHa07xjWlE1TW3pdjkdBjDx5jn0S9l9b8oUkKRMXNw==",
       "type": "package",
@@ -6950,6 +6977,7 @@
       "Microsoft.Azure.WebJobs.Extensions.Storage >= 3.0.11",
       "Model >= 1.0.0",
       "Refractored.Controls.CircleImageView >= 1.0.1",
+      "Xamarin.Android.Maps.Utils >= 0.5.0",
       "Xamarin.Android.Support.Core.Utils >= 28.0.0.3",
       "Xamarin.Android.Support.CustomTabs >= 28.0.0.3",
       "Xamarin.Android.Support.Design >= 28.0.0.3",
@@ -7022,6 +7050,10 @@
           "Refractored.Controls.CircleImageView": {
             "target": "Package",
             "version": "[1.0.1, )"
+          },
+          "Xamarin.Android.Maps.Utils": {
+            "target": "Package",
+            "version": "[0.5.0, )"
           },
           "Xamarin.Android.Support.Core.Utils": {
             "target": "Package",

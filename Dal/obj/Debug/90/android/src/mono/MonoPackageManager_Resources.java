@@ -7,6 +7,7 @@ public class MonoPackageManager_Resources {
 		"Bolts.Tasks.dll",
 		"Google.ZXing.Core.dll",
 		"GoogleGson.dll",
+		"GoogleMapsUtilityBinding.dll",
 		"Helper.dll",
 		"Microsoft.Azure.WebJobs.dll",
 		"Microsoft.Azure.WebJobs.Extensions.Storage.dll",

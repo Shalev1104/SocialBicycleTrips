@@ -11,6 +11,7 @@ using Model;
 using Dal;
 using Helper;
 using Firebase.Auth;
+using Xamarin.Facebook;
 
 namespace SocialBicycleTrips
 {
@@ -30,6 +31,7 @@ namespace SocialBicycleTrips
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
+            FacebookSdk.SdkInitialize(ApplicationContext);
             SetViews();
             tripsDB = new TripsDB();
             trips = tripsDB.GetAllTrips();
@@ -124,9 +126,11 @@ namespace SocialBicycleTrips
                     }
                 case Resource.Id.mnuDisconnect:
                     {
-                        if (Intent.HasExtra("firebase"))
+                        if (user.IsSocialMediaLogon())
                         {
-                            //firebaseAuth.SignOut();
+                            Intent intent = new Intent(this, typeof(Activities.LoginActivity));
+                            intent.PutExtra("social media disconnect", true);
+                            StartActivityForResult(intent, 1);
                         }
                         StartActivity(new Intent(this, typeof(MainActivity)));
                         item.SetChecked(true);
@@ -153,9 +157,13 @@ namespace SocialBicycleTrips
             base.OnActivityResult(requestCode, resultCode, data);
             if(requestCode == 0)
             {
-                Trip trip = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("trip")) as Trip;
-                trips.Add(trip);
-                //tripsDB.Insert(trip);
+                if(resultCode == Android.App.Result.Ok)
+                {
+                    Trip trip = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("trip")) as Trip;
+                    trips.Add(trip);
+                    //tripsDB.Insert(trip);
+                    UploadUpdatedList();
+                }
             }
         }
         private void GenerateTrips()

@@ -18,27 +18,33 @@ namespace Model
     {
         private string address;
         private string name;
-        private double latitude;
-        private double longitude;
+        private LatLng coordinate;
 
         public string Address { get => address; set => address = value; }
         public string Name { get => name; set => name = value; }
-        public double Latitude { get => latitude; set => latitude = value; }
-        public double Longitude { get => longitude; set => longitude = value; }
+        public LatLng Coordinate { get => coordinate; set => coordinate = value; }
 
         public Location(string name, string address, double latitude, double longitude)
         {
             this.name = name;
             this.address = address;
-            this.latitude = latitude;
-            this.longitude = longitude;
+            coordinate = new LatLng(latitude, longitude);
         }
         public Location(string name, string address, LatLng lat)
         {
             this.name = name;
             this.address = address;
-            latitude = lat.Latitude;
-            longitude = lat.Longitude;
+            coordinate = new LatLng(lat.Latitude, lat.Longitude);
+        }
+        public Location(string address, double latitude, double longitude)
+        {
+            this.address = address;
+            coordinate = new LatLng(latitude, longitude);
+        }
+        public Location(string address, LatLng lat)
+        {
+            this.address = address;
+            coordinate = new LatLng(lat.Latitude, lat.Longitude);
         }
     }
 }

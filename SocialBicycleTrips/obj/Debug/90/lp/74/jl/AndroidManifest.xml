@@ -15,7 +15,7 @@
      limitations under the License.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.google.android.gms.places_placereport" >
+    package="com.google.android.gms.location.places" >
 
     <uses-sdk android:minSdkVersion="14" />
 

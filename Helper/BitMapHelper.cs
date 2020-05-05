@@ -12,6 +12,7 @@ using Android.Runtime;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
+using Java.IO;
 
 namespace Helper
 {
@@ -40,6 +41,19 @@ namespace Helper
             0,
             imageBytes.Length);
             return decodedImage;
+        }
+        public static Bitmap TransferMediaImages(string url)
+        {
+            Bitmap mIcon11 = null;
+            try
+            {
+                mIcon11 = BitmapFactory.DecodeStream(new Java.Net.URL(url).OpenStream());
+            }
+            catch (Exception e)
+            {
+                
+            }
+            return mIcon11;
         }
     }
 }

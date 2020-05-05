@@ -16,20 +16,23 @@ namespace Helper
 {
     public class LocationCallbackHelper : LocationCallback
     {
-        public EventHandler<OnLocationCaturedEventArgs> MyLocation;
-        public class OnLocationCaturedEventArgs : EventArgs
+        public EventHandler<OnLocationCapturedEventArgs> MyLocation;
+
+        public class OnLocationCapturedEventArgs : EventArgs
         {
             public Android.Locations.Location Location { get; set; }
         }
+
         public override void OnLocationAvailability(LocationAvailability locationAvailability)
         {
-            Log.Debug("map", "IsLocationAvailable: {0}", locationAvailability.IsLocationAvailable);
+            Log.Debug("socialbicycletrips", "IsLocationAvailable: {0}", locationAvailability.IsLocationAvailable);
         }
+
         public override void OnLocationResult(LocationResult result)
         {
-            if(result.Locations.Count != 0)
+            if (result.Locations.Count != 0)
             {
-                MyLocation?.Invoke(this, new OnLocationCaturedEventArgs { Location = result.Locations[0] });
+                MyLocation?.Invoke(this, new OnLocationCapturedEventArgs { Location = result.Locations[0] });
             }
         }
     }
