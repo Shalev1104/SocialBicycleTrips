@@ -9,6 +9,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Dal;
 
 namespace Model
 {
@@ -32,6 +33,48 @@ namespace Model
         public override void Sort()
         {
             base.Sort((item1, item2) => item1.DateTime.CompareTo(item2.DateTime));
+        }
+
+        public Trips GetAllTrips() // converts from list to a class(רבים)
+        {
+            Trips trips = new Trips();
+            List<Trip> tripsList = DbTable<Trip>.SelectAll();
+
+            if (tripsList != null)
+            {
+                trips.AddRange(tripsList);
+            }
+
+            return trips;
+        }
+
+        public int Insert(Trip trip)
+        {
+            return DbTable<Trip>.Insert(trip);
+        }
+
+        public int Update(Trip trip)
+        {
+            return DbTable<Trip>.Update(trip);
+        }
+
+        public int Delete(Trip trip)
+        {
+            return DbTable<Trip>.Delete(trip);
+        }
+
+        public Trip GetTripByID(int id)
+        {
+            Trip trip = null;
+            foreach (Trip found in this)
+            {
+                if (found.Id.Equals(id))
+                {
+                    trip = found;
+                    break;
+                }
+            }
+            return trip;
         }
     }
 }

@@ -12,6 +12,7 @@ using Dal;
 using Helper;
 using Firebase.Auth;
 using Xamarin.Facebook;
+using Org.Apache.Http.Conn;
 
 namespace SocialBicycleTrips
 {
@@ -21,9 +22,9 @@ namespace SocialBicycleTrips
         private ListView lvTrips;
         private Trips trips;
         private Adapters.TripAdapter tripAdapter;
-        private TripsDB tripsDB;
         private int position = -1;
         private User user;
+        private Users users;
         //private FirebaseAuth firebaseAuth;
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -33,8 +34,8 @@ namespace SocialBicycleTrips
             SetContentView(Resource.Layout.activity_main);
             FacebookSdk.SdkInitialize(ApplicationContext);
             SetViews();
-            tripsDB = new TripsDB();
-            trips = tripsDB.GetAllTrips();
+            trips = new Trips().GetAllTrips();
+            users = new Users().GetAllUsers();
             GenerateTrips();
             UploadUpdatedList();
         }
@@ -62,44 +63,49 @@ namespace SocialBicycleTrips
         }
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
+            Intent getUser = new Intent();
+            if(Intent.HasExtra("user"))
+                getUser.PutExtra("user", Serializer.ObjectToByteArray(user));
+
             switch (item.ItemId)
             {
                 case Resource.Id.mnuBrowseTrips:
                     {
-                        StartActivity(new Intent(this, typeof(MainActivity)));
+                        getUser.SetClass(this, typeof(MainActivity));
+                        StartActivity(getUser);
                         item.SetChecked(true);
                         break;
                     }
 
                 case Resource.Id.mnuMyTrips:
                     {
-                        StartActivity(new Intent(this, typeof(Activities.MyTripsActivity)));
+                        getUser.SetClass(this, typeof(Activities.MyTripsActivity));
+                        StartActivity(getUser);
                         item.SetChecked(true);
                         break;
                     }
 
                 case Resource.Id.mnuCreateTrip:
                     {
-                        Intent intent = new Intent(this, typeof(Activities.CreateTripActivity));
-                        intent.PutExtra("user", Serializer.ObjectToByteArray(user));
-                        StartActivityForResult(intent,0);
+                        getUser.SetClass(this, typeof(Activities.CreateTripActivity));
+                        StartActivityForResult(getUser,0);
                         item.SetChecked(true);
                         break;
                     }
 
                 case Resource.Id.mnuMyFriends:
                     {
-                        StartActivity(new Intent(this, typeof(MainActivity)));
+                        getUser.SetClass(this, typeof(MainActivity));
+                        StartActivity(getUser);
                         item.SetChecked(true);
                         break;
                     }
 
                 case Resource.Id.mnuMyProfile:
                     {
-                        Intent intent = new Intent(this, typeof(Activities.ProfileActivity));
-                        intent.PutExtra("user", Serializer.ObjectToByteArray(user));
-                        intent.PutExtra("myself", true);
-                        StartActivity(intent);
+                        getUser.SetClass(this, typeof(Activities.ProfileActivity));
+                        getUser.PutExtra("myself", true);
+                        StartActivity(getUser);
                         item.SetChecked(true);
                         break;
                     }

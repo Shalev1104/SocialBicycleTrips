@@ -100,7 +100,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Date Of Birth"
+            android:hint="Date Of Birth(day,month,year)"
             android:id="@+id/edtBirthday"/>
     </LinearLayout>
     <LinearLayout

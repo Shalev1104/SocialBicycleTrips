@@ -9,6 +9,10 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Dal;
+using SQLite;
+using SQLiteNetExtensions;
+using SQLiteNetExtensions.Attributes;
 
 namespace Model
 {
@@ -32,6 +36,33 @@ namespace Model
         public override void Sort()
         {
             base.Sort((item1, item2) => item1.Name.CompareTo(item2.Name));
+        }
+        public Users GetAllUsers()
+        {
+            Users users = new Users();
+            List<User> usersList = DbTable<User>.SelectAll();
+
+            if (usersList != null)
+            {
+                users.AddRange(usersList);
+            }
+
+            return users;
+        }
+
+        public int Insert(User user)
+        {
+            return DbTable<User>.Insert(user);
+        }
+
+        public int Update(User user)
+        {
+            return DbTable<User>.Update(user);
+        }
+
+        public int Delete(User user)
+        {
+            return DbTable<User>.Delete(user);
         }
 
         public User GetUserByID(int id)

@@ -15,6 +15,8 @@ using Dal;
 using Android.Provider;
 using Android.Graphics;
 using Android.Graphics.Drawables;
+using Java.Sql;
+using System.Net.Mail;
 
 namespace SocialBicycleTrips.Activities
 {
@@ -172,12 +174,21 @@ namespace SocialBicycleTrips.Activities
 
             if (!IsValidEmail())
             {
-                Toast.MakeText(this, "email address wrote wrong", ToastLength.Long).Show();
+                Toast.MakeText(this, "invalid email address", ToastLength.Long).Show();
                 email.Background.SetColorFilter(new Color(Color.Red), PorterDuff.Mode.SrcIn);
                 return false;
             }
 
-            if (!(password != null && !password.Text.Equals("")))
+            if (password != null && !password.Text.Equals(""))
+            {
+                if (password.Text.Length < 8)
+                {
+                    Toast.MakeText(this, "Password must be over 7 digits", ToastLength.Long).Show();
+                    password.Background.SetColorFilter(new Color(Color.Red), PorterDuff.Mode.SrcIn);
+                    return false;
+                }
+            }
+            else
             {
                 Toast.MakeText(this, "Type your password", ToastLength.Long).Show();
                 password.Background.SetColorFilter(new Color(Color.Red), PorterDuff.Mode.SrcIn);
@@ -189,22 +200,22 @@ namespace SocialBicycleTrips.Activities
                 passwordConfirmation.Background.SetColorFilter(new Color(Color.Red), PorterDuff.Mode.SrcIn);
                 return false;
             }
-            if (!(birthday != null && !birthday.Text.Equals("")))
-            {
-                Toast.MakeText(this, "Type your birthday", ToastLength.Long).Show();
-                birthday.Background.SetColorFilter(new Color(Color.Red), PorterDuff.Mode.SrcIn);
-                return false;
-            }
-            if (!(phoneNumber != null && !phoneNumber.Text.Equals("")))
-            {
-                Toast.MakeText(this, "Type your phone number", ToastLength.Long).Show();
-                phoneNumber.Background.SetColorFilter(new Color(Color.Red), PorterDuff.Mode.SrcIn);
-                return false;
-            }
             if (!password.Text.Equals(passwordConfirmation.Text))
             {
                 Toast.MakeText(this, "passwords does not match", ToastLength.Long).Show();
                 passwordConfirmation.Background.SetColorFilter(new Color(Color.Red), PorterDuff.Mode.SrcIn);
+                return false;
+            }
+            if (!(birthday != null && !birthday.Text.Equals("")))
+            {
+                Toast.MakeText(this, "Type a date", ToastLength.Long).Show();
+                birthday.Background.SetColorFilter(new Color(Color.Red), PorterDuff.Mode.SrcIn);
+                return false;
+            }
+            if (!(phoneNumber != null && !phoneNumber.Text.Equals("") && phoneNumber.Text.Length == 10))
+            {
+                Toast.MakeText(this, "invaild phone number", ToastLength.Long).Show();
+                phoneNumber.Background.SetColorFilter(new Color(Color.Red), PorterDuff.Mode.SrcIn);
                 return false;
             }
             return true;
@@ -213,7 +224,7 @@ namespace SocialBicycleTrips.Activities
         {
             try
             {
-                System.Net.Mail.MailAddress addr = new System.Net.Mail.MailAddress(email.Text);
+                MailAddress addr = new MailAddress(email.Text);
                 return addr.Address == email.Text;
             }
             catch

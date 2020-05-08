@@ -11,6 +11,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using SQLite;
+using SQLiteNetExtensions.Attributes;
+using SQLiteNetExtensions;
 
 /*
   https://docs.microsoft.com/en-us/xamarin/android/data-cloud/data-access/using-sqlite-orm
@@ -46,7 +48,7 @@ namespace Dal
             }
         }
 
-        public int Insert(T entity)
+        public static int Insert(T entity)
         {
             try
             {
@@ -62,7 +64,7 @@ namespace Dal
             }
         }
 
-        public int Update(T entity)
+        public static int Update(T entity)
         {
             try
             {
@@ -77,7 +79,7 @@ namespace Dal
             }
         }
 
-        public int Delete(T entity)
+        public static int Delete(T entity)
         {
             try
             {

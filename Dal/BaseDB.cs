@@ -9,6 +9,8 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using SQLiteNetExtensions;
+using SQLiteNetExtensions.Attributes;
 using SQLite;
 
 namespace Dal

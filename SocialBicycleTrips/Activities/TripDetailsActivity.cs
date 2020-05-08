@@ -34,11 +34,14 @@ namespace SocialBicycleTrips.Activities
         private Button btnJoinOrAddParticipant;
         private ListView lvParticipants;
         private Adapters.PeopleAdapter participantsAdapter;
+        private Users users;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_tripDetails);
             trip = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("trip")) as Trip;
+            users = new Users().GetAllUsers();
+
             SetViews();
             DrawTripOnMap();
             SetFields();
@@ -86,7 +89,7 @@ namespace SocialBicycleTrips.Activities
         private void UploadUpdatedList()
         {
             trip.Participants.Sort();
-            participantsAdapter = new Adapters.PeopleAdapter(this, Resource.Layout.activity_peopleList, trip.Participants);
+            participantsAdapter = new Adapters.PeopleAdapter(this, Resource.Layout.activity_peopleList, trip.Participants,users);
             lvParticipants.Adapter = participantsAdapter;
         }
         private void BtnJoinOrAddParticipant_Click(object sender, EventArgs e)

@@ -26,20 +26,17 @@ namespace SocialBicycleTrips.Adapters
         private PeopleHolder peopleHolder;
 
         private Participant participant;
+
         private Users users;
-        private UsersDB usersDB;
 
 
-        public PeopleAdapter(Context context, int resource, Participants participants) : base(context, resource, participants)
+        public PeopleAdapter(Context context, int resource, Participants participants,Users users) : base(context, resource, participants)
         {
             this.context = context;
             this.resource = resource;
             this.participants = participants;
+            this.users = users;
             inflater = ((Activity)context).LayoutInflater;
-
-            /*usersDB = new UsersDB();
-            users = usersDB.GetAllUsers();*/
-            users = new Users();
         }
         public override View GetView(int position, View convertView, ViewGroup parent)
         {

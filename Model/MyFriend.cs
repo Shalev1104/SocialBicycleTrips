@@ -9,10 +9,12 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using SQLite;
 
 namespace Model
 {
     [Serializable]
+    [Table("myFriend")]
     public class MyFriend : BaseEntity
     {
         int friendID;

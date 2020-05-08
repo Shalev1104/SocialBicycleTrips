@@ -299,11 +299,11 @@
           "lib/netstandard2.0/Microsoft.Extensions.Options.ConfigurationExtensions.dll": {}
         }
       },
-      "Microsoft.Extensions.Primitives/2.1.0": {
+      "Microsoft.Extensions.Primitives/3.1.3": {
         "type": "package",
         "dependencies": {
-          "System.Memory": "4.5.0",
-          "System.Runtime.CompilerServices.Unsafe": "4.5.0"
+          "System.Memory": "4.5.2",
+          "System.Runtime.CompilerServices.Unsafe": "4.7.1"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.Extensions.Primitives.dll": {}
@@ -409,17 +409,17 @@
           "lib/netstandard1.1/SQLite-net.dll": {}
         }
       },
-      "SQLiteNetExtensions/2.1.0": {
+      "SQLiteNetExtensions/2.0.0": {
         "type": "package",
         "dependencies": {
           "Newtonsoft.Json": "9.0.1",
           "sqlite-net-pcl": "1.4.118"
         },
         "compile": {
-          "lib/netstandard1.1/SQLiteNetExtensions.dll": {}
+          "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/SQLiteNetExtensions.dll": {}
         },
         "runtime": {
-          "lib/netstandard1.1/SQLiteNetExtensions.dll": {}
+          "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/SQLiteNetExtensions.dll": {}
         }
       },
       "SQLitePCLRaw.bundle_green/1.1.13": {
@@ -475,6 +475,15 @@
         },
         "runtime": {
           "lib/MonoAndroid10/_._": {}
+        }
+      },
+      "System.Buffers/4.4.0": {
+        "type": "package",
+        "compile": {
+          "ref/netstandard2.0/System.Buffers.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Buffers.dll": {}
         }
       },
       "System.Collections/4.3.0": {
@@ -653,13 +662,17 @@
           "lib/MonoAndroid10/_._": {}
         }
       },
-      "System.Memory/4.5.0": {
+      "System.Memory/4.5.2": {
         "type": "package",
+        "dependencies": {
+          "System.Buffers": "4.4.0",
+          "System.Runtime.CompilerServices.Unsafe": "4.5.2"
+        },
         "compile": {
-          "ref/MonoAndroid10/_._": {}
+          "lib/netstandard2.0/System.Memory.dll": {}
         },
         "runtime": {
-          "lib/MonoAndroid10/_._": {}
+          "lib/netstandard2.0/System.Memory.dll": {}
         }
       },
       "System.Net.Http/4.3.0": {
@@ -756,7 +769,7 @@
           "lib/MonoAndroid10/_._": {}
         }
       },
-      "System.Runtime.CompilerServices.Unsafe/4.5.0": {
+      "System.Runtime.CompilerServices.Unsafe/4.7.1": {
         "type": "package",
         "compile": {
           "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
@@ -2265,6 +2278,8 @@
         "dependencies": {
           "Helper": "1.0.0",
           "Microsoft.Azure.WebJobs.Extensions.Storage": "3.0.11",
+          "Microsoft.Extensions.Primitives": "3.1.3",
+          "SQLiteNetExtensions": "2.0.0",
           "Xamarin.Android.Maps.Utils": "0.5.0",
           "Xamarin.Android.Support.Core.Utils": "28.0.0.3",
           "Xamarin.Android.Support.CustomTabs": "28.0.0.3",
@@ -2294,7 +2309,9 @@
         "framework": "MonoAndroid,Version=v9.0",
         "dependencies": {
           "Microsoft.Azure.WebJobs.Extensions.Storage": "3.0.11",
+          "Microsoft.Extensions.Primitives": "3.1.3",
           "Newtonsoft.Json": "12.0.3",
+          "SQLiteNetExtensions": "2.0.0",
           "Xamarin.Android.Maps.Utils": "0.5.0",
           "Xamarin.Android.Support.Core.Utils": "28.0.0.3",
           "Xamarin.Android.Support.CustomTabs": "28.0.0.3",
@@ -2622,16 +2639,19 @@
         "microsoft.extensions.options.configurationextensions.nuspec"
       ]
     },
-    "Microsoft.Extensions.Primitives/2.1.0": {
-      "sha512": "gMwH6wgWOPfyfLfMLEP+ZF7/MSJq35e0xxKEYUjt8veEznY45nBVqdfI876+9SFQq2ChcqKf2UyYc2XYj2v27w==",
+    "Microsoft.Extensions.Primitives/3.1.3": {
+      "sha512": "5gK6qeq9CBCHBfB3Tim3jCJTLafT9FXFBAZZq39rC8adz8mxcjVAuQSw3jGgHqoRk0jwtXKFhXJUVur8vfeuFg==",
       "type": "package",
-      "path": "microsoft.extensions.primitives/2.1.0",
+      "path": "microsoft.extensions.primitives/3.1.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "Icon.png",
+        "lib/netcoreapp3.1/Microsoft.Extensions.Primitives.dll",
+        "lib/netcoreapp3.1/Microsoft.Extensions.Primitives.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Primitives.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Primitives.xml",
-        "microsoft.extensions.primitives.2.1.0.nupkg.sha512",
+        "microsoft.extensions.primitives.3.1.3.nupkg.sha512",
         "microsoft.extensions.primitives.nuspec"
       ]
     },
@@ -2761,16 +2781,16 @@
         "sqlite-net-pcl.nuspec"
       ]
     },
-    "SQLiteNetExtensions/2.1.0": {
-      "sha512": "oiyhVxCi7M2nr3tI6h05jdHGT0HKW6GxMNKUiO04zWAxv42MHtX12c4tW67w6VqGwcnXj1bwyTpq9P0W8QoGYQ==",
+    "SQLiteNetExtensions/2.0.0": {
+      "sha512": "wwLvVi4RyNu9VWFwgiKQOaHtzFpTmt2RE7WHz5EKABopbe6NW+jQF7rwKbtoNK+mQHqxqOwlNP9dDGjz89fFAQ==",
       "type": "package",
-      "path": "sqlitenetextensions/2.1.0",
+      "path": "sqlitenetextensions/2.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "lib/netstandard1.1/SQLiteNetExtensions.dll",
-        "lib/netstandard1.1/SQLiteNetExtensions.pdb",
-        "sqlitenetextensions.2.1.0.nupkg.sha512",
+        "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/SQLiteNetExtensions.dll",
+        "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/SQLiteNetExtensions.pdb",
+        "sqlitenetextensions.2.0.0.nupkg.sha512",
         "sqlitenetextensions.nuspec",
         "src/SQLiteNetExtensions/Attributes/CascadeOperation.cs",
         "src/SQLiteNetExtensions/Attributes/ForeignKeyAttribute.cs",
@@ -2940,6 +2960,31 @@
         "runtimes/aot/lib/netcore50/System.AppContext.dll",
         "system.appcontext.4.3.0.nupkg.sha512",
         "system.appcontext.nuspec"
+      ]
+    },
+    "System.Buffers/4.4.0": {
+      "sha512": "AwarXzzoDwX6BgrhjoJsk6tUezZEozOT5Y9QKF94Gl4JK91I4PIIBkBco9068Y9/Dra8Dkbie99kXB8+1BaYKw==",
+      "type": "package",
+      "path": "system.buffers/4.4.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/netcoreapp2.0/_._",
+        "lib/netstandard1.1/System.Buffers.dll",
+        "lib/netstandard1.1/System.Buffers.xml",
+        "lib/netstandard2.0/System.Buffers.dll",
+        "lib/netstandard2.0/System.Buffers.xml",
+        "ref/netcoreapp2.0/_._",
+        "ref/netstandard1.1/System.Buffers.dll",
+        "ref/netstandard1.1/System.Buffers.xml",
+        "ref/netstandard2.0/System.Buffers.dll",
+        "ref/netstandard2.0/System.Buffers.xml",
+        "system.buffers.4.4.0.nupkg.sha512",
+        "system.buffers.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
       ]
     },
     "System.Collections/4.3.0": {
@@ -3989,40 +4034,22 @@
         "system.linq.expressions.nuspec"
       ]
     },
-    "System.Memory/4.5.0": {
-      "sha512": "m0psCSpUxTGfvwyO0i03ajXVhgBqyXlibXz0Mo1dtKGjaHrXFLnuQ8rNBTmWRqbfRjr4eC6Wah4X5FfuFDu5og==",
+    "System.Memory/4.5.2": {
+      "sha512": "fvq1GNmUFwbKv+aLVYYdgu/+gc8Nu9oFujOxIjPrsf+meis9JBzTPDL6aP/eeGOz9yPj6rRLUbOjKMpsMEWpNg==",
       "type": "package",
-      "path": "system.memory/4.5.0",
+      "path": "system.memory/4.5.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
         "lib/netcoreapp2.1/_._",
         "lib/netstandard1.1/System.Memory.dll",
         "lib/netstandard1.1/System.Memory.xml",
         "lib/netstandard2.0/System.Memory.dll",
         "lib/netstandard2.0/System.Memory.xml",
-        "lib/uap10.0.16300/_._",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "lib/xamarintvos10/_._",
-        "lib/xamarinwatchos10/_._",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
         "ref/netcoreapp2.1/_._",
-        "ref/netstandard1.1/System.Memory.dll",
-        "ref/netstandard1.1/System.Memory.xml",
-        "ref/netstandard2.0/System.Memory.dll",
-        "ref/netstandard2.0/System.Memory.xml",
-        "ref/uap10.0.16300/_._",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "ref/xamarintvos10/_._",
-        "ref/xamarinwatchos10/_._",
-        "system.memory.4.5.0.nupkg.sha512",
+        "system.memory.4.5.2.nupkg.sha512",
         "system.memory.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -4641,28 +4668,31 @@
         "system.runtime.nuspec"
       ]
     },
-    "System.Runtime.CompilerServices.Unsafe/4.5.0": {
-      "sha512": "YrzNWduCDHhUaSRBxHxL11UkM2fD6y8hITHis4/LbQZ6vj3vdRjoH3IoPWWC9uDXK2wHIqn+b5gv1Np/VKyM1g==",
+    "System.Runtime.CompilerServices.Unsafe/4.7.1": {
+      "sha512": "zOHkQmzPCn5zm/BH+cxC1XbUS3P4Yoi3xzW7eRgVpDR2tPGSzyMZ17Ig1iRkfJuY0nhxkQQde8pgePNiA7z7TQ==",
       "type": "package",
-      "path": "system.runtime.compilerservices.unsafe/4.5.0",
+      "path": "system.runtime.compilerservices.unsafe/4.7.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "Icon.png",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/net461/System.Runtime.CompilerServices.Unsafe.xml",
         "lib/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.dll",
         "lib/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.xml",
         "lib/netstandard1.0/System.Runtime.CompilerServices.Unsafe.dll",
         "lib/netstandard1.0/System.Runtime.CompilerServices.Unsafe.xml",
         "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll",
         "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml",
-        "lib/uap10.0.16300/_._",
+        "ref/net461/System.Runtime.CompilerServices.Unsafe.dll",
+        "ref/net461/System.Runtime.CompilerServices.Unsafe.xml",
         "ref/netstandard1.0/System.Runtime.CompilerServices.Unsafe.dll",
         "ref/netstandard1.0/System.Runtime.CompilerServices.Unsafe.xml",
         "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll",
         "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml",
-        "ref/uap10.0.16300/_._",
-        "system.runtime.compilerservices.unsafe.4.5.0.nupkg.sha512",
+        "system.runtime.compilerservices.unsafe.4.7.1.nupkg.sha512",
         "system.runtime.compilerservices.unsafe.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -6937,8 +6967,9 @@
       "Dal >= 1.0.0",
       "Helper >= 1.0.0",
       "Microsoft.Azure.WebJobs.Extensions.Storage >= 3.0.11",
+      "Microsoft.Extensions.Primitives >= 3.1.3",
       "Refractored.Controls.CircleImageView >= 1.0.1",
-      "SQLiteNetExtensions >= 2.1.0",
+      "SQLiteNetExtensions >= 2.0.0",
       "Xamarin.Android.Maps.Utils >= 0.5.0",
       "Xamarin.Android.Support.Core.Utils >= 28.0.0.3",
       "Xamarin.Android.Support.CustomTabs >= 28.0.0.3",
@@ -7006,13 +7037,17 @@
             "target": "Package",
             "version": "[3.0.11, )"
           },
+          "Microsoft.Extensions.Primitives": {
+            "target": "Package",
+            "version": "[3.1.3, )"
+          },
           "Refractored.Controls.CircleImageView": {
             "target": "Package",
             "version": "[1.0.1, )"
           },
           "SQLiteNetExtensions": {
             "target": "Package",
-            "version": "[2.1.0, )"
+            "version": "[2.0.0, )"
           },
           "Xamarin.Android.Maps.Utils": {
             "target": "Package",

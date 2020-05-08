@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 
 using Android.App;
@@ -13,24 +14,24 @@ using Android.Views;
 using Android.Widget;
 using Helper;
 using SQLite;
+using Dal;
+using SQLiteNetExtensions.Attributes;
+using SQLiteNetExtensions;
 
 namespace Model
 {
     [Serializable]
     [Table("Users")]
-    public class User : TripManager,iChangeable.UserChangeable
+    public class User : TripManager, iChangeable.UserChangeable
     {
-        private string        email;
-        private string        password;
-        private DateTime      birthday;
-        private string        phoneNumber;
-        private int           completedTrips;
-        private int           upcomingTrips;
-
-        [Ignore]
-        private MyFriends     myFriends { get; set; }
-        [Ignore]
-        private MyTrips       myTrips { get; set; }
+        private string email;
+        private string password;
+        private DateTime birthday;
+        private string phoneNumber;
+        private int completedTrips;
+        private int upcomingTrips;
+        private MyFriends myFriends { get; set; }
+        private MyTrips myTrips { get; set; }
 
         public User()
         {
@@ -76,7 +77,9 @@ namespace Model
         }
         public string Email { get => email; set => email = value; }
         public string Password { get => password; set => password = value; }
+        [Ignore]
         public MyFriends MyFriends { get => myFriends; set => myFriends = value; }
+        [Ignore]
         public MyTrips MyTrips { get => myTrips; set => myTrips = value; }
         public int CompletedTrips { get => completedTrips; set => completedTrips = value; }
         public int UpcomingTrips { get => upcomingTrips; set => upcomingTrips = value; }

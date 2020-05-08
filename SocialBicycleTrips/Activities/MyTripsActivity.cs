@@ -10,6 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Model;
+using Helper;
 
 namespace SocialBicycleTrips.Activities
 {
@@ -18,14 +19,15 @@ namespace SocialBicycleTrips.Activities
     {
         private ListView lvTrips;
         private Trips trips;
-        private Adapters.TripAdapter tripAdapter;
-        private TripsDB tripsDB;
+        private Adapters.MyTripsAdapter myTripsAdapter;
+        private User user;
+        int position = -1;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetViews();
-            tripsDB = new TripsDB();
-            trips = tripsDB.GetAllTrips();
+            user = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("user")) as User;
+            trips = new Trips().GetAllTrips();
             UploadUpdatedList();
             // Create your application here
         }
@@ -99,8 +101,8 @@ namespace SocialBicycleTrips.Activities
         private void UploadUpdatedList()
         {
             trips.Sort();
-            tripAdapter = new Adapters.TripAdapter(this, Resource.Layout.activity_singleItemTripDesign, trips);
-            lvTrips.Adapter = tripAdapter;
+            myTripsAdapter = new Adapters.MyTripsAdapter(this, Resource.Layout.activity_singleItemTripDesign, user.MyTrips,trips);
+            lvTrips.Adapter = myTripsAdapter;
         }
         public void SetViews()
         {
@@ -109,7 +111,13 @@ namespace SocialBicycleTrips.Activities
         }
         private void LvTrips_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
+            position = e.Position;
 
+            Intent intent = new Intent(this, typeof(Activities.TripDetailsActivity));
+
+            intent.PutExtra("trip", Serializer.ObjectToByteArray(trips[e.Position]));
+
+            StartActivity(intent);
         }
     }
 }

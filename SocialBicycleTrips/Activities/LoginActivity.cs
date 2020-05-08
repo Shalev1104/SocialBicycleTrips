@@ -35,7 +35,6 @@ namespace SocialBicycleTrips.Activities
         private SignInButton googleLogin;
         private LoginButton facebookLogin;
         private Users users;
-        private UsersDB usersDB;
         private User user;
 
         GoogleSignInOptions gso;
@@ -53,8 +52,7 @@ namespace SocialBicycleTrips.Activities
             SetViews();
             FacebookSdk.SdkInitialize(ApplicationContext);
             // Create your application here
-            usersDB = new UsersDB();
-            users = usersDB.GetAllUsers();
+            users = new Users().GetAllUsers();
         }
         public void SetViews()
         {
@@ -86,7 +84,6 @@ namespace SocialBicycleTrips.Activities
                 }
                 Finish();
             }
-
         }
 
         public bool IsFacebookLogin()
@@ -140,8 +137,7 @@ namespace SocialBicycleTrips.Activities
                     user = Serializer.ByteArrayToObject(data.GetByteArrayExtra("user")) as User;
                     if (!users.Exists(user))
                     {
-                        users.Add(user);
-                        //usersDB.Insert(user);
+                        users.Insert(user);
                         Toast.MakeText(this, "Registeration successfull", ToastLength.Long).Show();
                         users.Sort();
                     }
@@ -205,18 +201,35 @@ namespace SocialBicycleTrips.Activities
                     Toast.MakeText(this, "email or password incorrect", ToastLength.Long).Show();
                 }
             }
+            else
+            {
+                Toast.MakeText(this, "Type fields", ToastLength.Long).Show();
+            }
         }
         public bool IsTyped()
         {
             return email.Text != null && password.Text != null && !email.Text.Equals("") && !password.Text.Equals("");
         }
 
-        public User IsLogin() // first condition for social media login and the second for the form login
+        public User IsLogin()
         {
             user = null;
             foreach (User found in users)
             {
-                if ((found.IsSocialMediaLogon() &&  found.Email.Equals(firebaseAuth.CurrentUser.Email)) || (!found.IsSocialMediaLogon() && found.Email.Equals(email.Text) && found.Password.Equals(password.Text)))
+                if (found.Email.Equals(email.Text) && found.Password.Equals(password.Text))
+                {
+                    user = found;
+                    break;
+                }
+            }
+            return user;
+        }
+        public User IsSocialLogin()
+        {
+            user = null;
+            foreach (User found in users)
+            {
+                if (found.Email.Equals(firebaseAuth.CurrentUser.Email))
                 {
                     user = found;
                     break;
@@ -228,10 +241,6 @@ namespace SocialBicycleTrips.Activities
         {
             Intent intent = new Intent(this, typeof(MainActivity));
             intent.PutExtra("user", Serializer.ObjectToByteArray(user));
-            if (user.IsSocialMediaLogon())
-            {
-                //intent.PutExtra("firebase", Serializer.ObjectToByteArray(firebaseAuth));
-            }
             Toast.MakeText(this, "login succesfull", ToastLength.Long).Show();
             StartActivity(intent);
         }
@@ -251,12 +260,11 @@ namespace SocialBicycleTrips.Activities
                 else
                 {
                     usingFirebase = false;
-                    user = IsLogin();
+                    user = IsSocialLogin();
                     if (user == null)
                     {
                         user = new User(firebaseAuth.CurrentUser.DisplayName, firebaseAuth.CurrentUser.Email, firebaseAuth.CurrentUser.PhotoUrl.Path, firebaseAuth.CurrentUser.PhoneNumber);
-                        users.Add(user);
-                        //usersDB.Insert(user);
+                        users.Insert(user);
                     }
                     Navigate(user);
                 }
@@ -264,12 +272,11 @@ namespace SocialBicycleTrips.Activities
 
             else // for google
             {
-                user = IsLogin();
+                user = IsSocialLogin();
                 if (user == null)
                 {
                     user = new User(firebaseAuth.CurrentUser.DisplayName, firebaseAuth.CurrentUser.Email, firebaseAuth.CurrentUser.PhotoUrl.Path, firebaseAuth.CurrentUser.PhoneNumber);
-                    users.Add(user);
-                    //usersDB.Insert(user);
+                    users.Insert(user);
                 }
                 Navigate(user);
             }

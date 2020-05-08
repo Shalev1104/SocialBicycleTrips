@@ -9,6 +9,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Dal;
 using SQLite;
 
 namespace Model
@@ -34,6 +35,34 @@ namespace Model
         public override void Sort()
         {
             base.Sort((item1, item2) => item1.FriendID.CompareTo(item2.FriendID));
+        }
+
+        public MyFriends GetAllMyFriends()
+        {
+            MyFriends myFriends = new MyFriends();
+            List<MyFriend> myFriendsList = DbTable<MyFriend>.SelectAll();
+
+            if (myFriendsList != null)
+            {
+                myFriends.AddRange(myFriendsList);
+            }
+
+            return myFriends;
+        }
+
+        public int Insert(MyFriend myFriend)
+        {
+            return DbTable<MyFriend>.Insert(myFriend);
+        }
+
+        public int Update(MyFriend myFriend)
+        {
+            return DbTable<MyFriend>.Update(myFriend);
+        }
+
+        public int Delete(MyFriend myFriend)
+        {
+            return DbTable<MyFriend>.Delete(myFriend);
         }
     }
 }
