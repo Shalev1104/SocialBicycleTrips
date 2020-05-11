@@ -1,0 +1,1 @@
+<!-- Template progress bar to be included in other layouts. --><ProgressBar android:padding="3dp" android:visibility="visible" android:indeterminate="true" android:indeterminateTint="#4184F3" android:indeterminateTintMode="src_atop" xmlns:android="http://schemas.android.com/apk/res/android" />

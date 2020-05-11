@@ -1,0 +1,21 @@
+# Proguard file to be exported as a proguard.txt in the 3P AAR release.
+
+# The Places Library has already been obfuscated. This prevent further obfuscation.
+-keep class com.google.android.libraries.places.** {
+    *;
+}
+
+# Included for Guava. This can be removed once Guava has consumerProguardFiles properly configured.
+# See https://github.com/google/guava/issues/3137.
+-dontwarn afu.org.checkerframework.**
+-dontwarn org.checkerframework.**
+-dontwarn java.lang.ClassValue
+-dontwarn com.google.errorprone.**
+
+# We keep all fields for every generated proto file as the runtime uses
+# reflection over them that ProGuard cannot detect. Without this keep
+# rule, fields may be removed that would cause runtime failures.
+-keepclassmembers class * extends com.google.android.libraries.places.internal.kv {
+  <fields>;
+}
+
