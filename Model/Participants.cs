@@ -35,5 +35,32 @@ namespace Model
         {
             base.Sort((item1, item2) => item1.UserID.CompareTo(item2.UserID));
         }
+        public Participants GetAllParticipants() // converts from list to a class(רבים)
+        {
+            Participants participants = new Participants();
+            List<Participant> participantsList = DbTable<Participant>.SelectAll();
+
+            if (participantsList != null)
+            {
+                participants.AddRange(participantsList);
+            }
+
+            return participants;
+        }
+
+        public int Insert(Participant participant)
+        {
+            return DbTable<Participant>.Insert(participant);
+        }
+
+        public int Update(Participant participant)
+        {
+            return DbTable<Participant>.Update(participant);
+        }
+
+        public int Delete(Participant participant)
+        {
+            return DbTable<Participant>.Delete(participant);
+        }
     }
 }

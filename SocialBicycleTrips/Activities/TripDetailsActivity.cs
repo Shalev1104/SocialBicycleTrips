@@ -13,7 +13,7 @@ using Android.Widget;
 using Helper;
 using Android.Support.V4.App;
 using Model;
-using SocialBicycleTrips.Adapters;
+using Android.Gms.Maps.Model;
 
 namespace SocialBicycleTrips.Activities
 {
@@ -35,6 +35,7 @@ namespace SocialBicycleTrips.Activities
         private ListView lvParticipants;
         private Adapters.PeopleAdapter participantsAdapter;
         private Users users;
+        private User user;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -45,6 +46,22 @@ namespace SocialBicycleTrips.Activities
             SetViews();
             DrawTripOnMap();
             SetFields();
+            if (Intent.HasExtra("user"))
+            {
+                user = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("user")) as User;
+                if (trip.TripManager.Id == user.Id)
+                {
+                    btnJoinOrAddParticipant.Text = "Add Participants";
+                }
+                else
+                {
+                    btnJoinOrAddParticipant.Visibility = ViewStates.Gone;
+                }
+            }
+            else
+            {
+                btnJoinOrAddParticipant.Visibility = ViewStates.Gone;
+            }
             UploadUpdatedList();
             // Create your application here
         }
@@ -52,7 +69,9 @@ namespace SocialBicycleTrips.Activities
         private async void DrawTripOnMap()
         {
             string json;
-            json = await mapHelper.GetDirectionJsonAsync(trip.StartingLocation.Coordinate, trip.FinalLocation.Coordinate);
+            LatLng firstCoordinate = new LatLng(trip.StartingLocation.Latitude, trip.StartingLocation.Longitude);
+            LatLng lastCoordinate = new LatLng(trip.FinalLocation.Latitude, trip.FinalLocation.Longitude);
+            json = await mapHelper.GetDirectionJsonAsync(firstCoordinate, lastCoordinate);
             if (!string.IsNullOrEmpty(json))
             {
                 mapHelper.DrawTripOnMap(json);
@@ -94,9 +113,19 @@ namespace SocialBicycleTrips.Activities
         }
         private void BtnJoinOrAddParticipant_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-        }
 
+        }
+        protected override void OnActivityResult(int requestCode, [GeneratedEnum] Android.App.Result resultCode, Intent data)
+        {
+            base.OnActivityResult(requestCode, resultCode, data);
+            if(requestCode == 1)
+            {
+                if(resultCode == Android.App.Result.Ok)
+                {
+
+                }
+            }
+        }
         private void Destination_Click(object sender, EventArgs e)
         {
             throw new NotImplementedException();

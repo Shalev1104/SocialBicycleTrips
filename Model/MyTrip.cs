@@ -14,6 +14,7 @@ using SQLite;
 namespace Model
 {
     [Serializable]
+    [Table("MyTrips")]
     public class MyTrip : BaseEntity
     {
         private int tripID;

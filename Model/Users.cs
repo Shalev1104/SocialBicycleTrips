@@ -37,7 +37,7 @@ namespace Model
         {
             base.Sort((item1, item2) => item1.Name.CompareTo(item2.Name));
         }
-        public Users GetAllUsers()
+        public Users GetAllUsers() // converts from list to manyClasses 
         {
             Users users = new Users();
             List<User> usersList = DbTable<User>.SelectAll();

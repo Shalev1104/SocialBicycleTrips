@@ -38,13 +38,13 @@ namespace Model
             this.tripManager      = tripManager;
 
             participants = new Participants(); 
-            participants.Add(new Participant(tripManager.Id, this.Id));
+            participants.Insert(new Participant(tripManager.Id, this.Id));
         }
-
         public Location StartingLocation { get => startingLocation; set => startingLocation = value; }
         public Location FinalLocation { get => finalLocation; set => finalLocation = value; }
         public DateTime DateTime { get => dateTime; set => dateTime = value; }
         public string Notes { get => notes; set => notes = value; }
+
         [Ignore]
         public Participants Participants { get => participants; set => participants = value; }
         public TripManager TripManager { get => tripManager; set => tripManager = value; }

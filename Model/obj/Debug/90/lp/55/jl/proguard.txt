@@ -48,4 +48,4 @@
 -keepnames class com.facebook.FacebookActivity
 -keepnames class com.facebook.CustomTabActivity
 
--keep class com.facebook.login.Login
+-keep class com.facebook.common.Common

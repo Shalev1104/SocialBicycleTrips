@@ -165,10 +165,10 @@ namespace SocialBicycleTrips
             {
                 if(resultCode == Android.App.Result.Ok)
                 {
-                    Trip trip = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("trip")) as Trip;
-                    trips.Add(trip);
-                    //tripsDB.Insert(trip);
-                    UploadUpdatedList();
+                    Trip trip = Serializer.ByteArrayToObject(data.GetByteArrayExtra("trip")) as Trip;
+                    user.MyTrips.Insert(new MyTrip(trip.Id));
+                    trips.Insert(trip);
+                    StartActivity(new Intent(this, typeof(MainActivity)));
                 }
             }
         }
@@ -206,6 +206,8 @@ namespace SocialBicycleTrips
             Intent intent = new Intent(this, typeof(Activities.TripDetailsActivity));
 
             intent.PutExtra("trip", Serializer.ObjectToByteArray(trips[e.Position]));
+            if (Intent.HasExtra("user"))
+                intent.PutExtra("user", Serializer.ObjectToByteArray(user));
 
             StartActivity(intent);
         }

@@ -95,7 +95,7 @@ namespace SocialBicycleTrips.Activities
 
         private void AddFriend_Click(object sender, EventArgs e)
         {
-            userlogon.MyFriends.Add(new MyFriend(profile.Id));
+            userlogon.MyFriends.Insert(new MyFriend(profile.Id));
             Toast.MakeText(this, "Friend has been added succesfully", ToastLength.Long).Show();
         }
     }

@@ -15,6 +15,7 @@ using Android.Runtime;
 using Android.Support.V4.App;
 using Android.Views;
 using Android.Widget;
+using Google.Places;
 using Helper;
 using Model;
 
@@ -85,6 +86,10 @@ namespace SocialBicycleTrips.Activities
             endRadio.Click += EndRadio_Click;
             layoutStart.Click += LayoutStart_Click;
             layoutEnd.Click += LayoutEnd_Click;
+            if (!PlacesApi.IsInitialized)
+            {
+                PlacesApi.Initialize(this, "AIzaSyAH6n6XJq3ZCQSAKBSBNvQ12cBXltlOKvU");
+            }
         }
 
         private void ReturnToMyLocation_Click(object sender, EventArgs e)
@@ -122,13 +127,23 @@ namespace SocialBicycleTrips.Activities
 
         private void LayoutEnd_Click(object sender, EventArgs e)
         {
-            Intent intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.ModeOverlay).Build(this);
+            List<Place.Field> fields = new List<Place.Field>();
+            fields.Add(Place.Field.Id);
+            fields.Add(Place.Field.Name);
+            fields.Add(Place.Field.LatLng);
+            fields.Add(Place.Field.Address);
+            Intent intent = new Autocomplete.IntentBuilder(AutocompleteActivityMode.Overlay, fields).Build(this);
             StartActivityForResult(intent, 2);
         }
 
         private void LayoutStart_Click(object sender, EventArgs e)
         {
-            Intent intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.ModeOverlay).Build(this);
+            List<Place.Field> fields = new List<Place.Field>();
+            fields.Add(Place.Field.Id);
+            fields.Add(Place.Field.Name);
+            fields.Add(Place.Field.LatLng);
+            fields.Add(Place.Field.Address);
+            Intent intent = new Autocomplete.IntentBuilder(AutocompleteActivityMode.Overlay, fields).Build(this);
             StartActivityForResult(intent, 1);
         }
 
@@ -147,7 +162,7 @@ namespace SocialBicycleTrips.Activities
                 else if (addressRequest == 2)
                 {
                     endLocationLatLng = mainMap.CameraPosition.Target;
-                    string address = await mapHelper.FindCordinateAddress(startLocationLatLng);
+                    string address = await mapHelper.FindCordinateAddress(endLocationLatLng);
                     txtEnd.Text = address;
                     btnDone.Visibility = ViewStates.Visible;
                     last = new Model.Location(address, endLocationLatLng);
@@ -183,22 +198,21 @@ namespace SocialBicycleTrips.Activities
         }
         protected override void OnActivityResult(int requestCode, [GeneratedEnum] Android.App.Result resultCode, Intent data)
         {
-            base.OnActivityResult(requestCode, resultCode, data);
-
-            if(requestCode == 1)
+            if (requestCode == 1)
             {
-                if(resultCode == Android.App.Result.Ok)
+                if (resultCode == Android.App.Result.Ok)
                 {
                     takeAddressFromSearch = true;
                     startRadio.Checked = false;
                     endRadio.Checked = false;
 
-                    var place = PlaceAutocomplete.GetPlace(this, data);
+                    var place = Autocomplete.GetPlaceFromIntent(data);
                     startLocationLatLng = place.LatLng;
-                    txtStart.Text = place.NameFormatted.ToString();
+                    txtStart.Text = place.Name;
+
                     mainMap.AnimateCamera(CameraUpdateFactory.NewLatLngZoom(place.LatLng, 15));
                     centerMarker.SetColorFilter(Android.Graphics.Color.Green);
-                    first = new Model.Location(place.NameFormatted.ToString(),place.AddressFormatted.ToString(),place.LatLng.Latitude,place.LatLng.Longitude);
+                    first = new Model.Location(place.Name, place.Address, place.LatLng.Latitude, place.LatLng.Longitude);
                 }
             }
             else if (requestCode == 2)
@@ -209,14 +223,16 @@ namespace SocialBicycleTrips.Activities
                     startRadio.Checked = false;
                     endRadio.Checked = false;
 
-                    var place = PlaceAutocomplete.GetPlace(this, data);
+                    var place = Autocomplete.GetPlaceFromIntent(data);
                     endLocationLatLng = place.LatLng;
-                    txtEnd.Text = place.NameFormatted.ToString();
+                    txtEnd.Text = place.Name;
+
                     mainMap.AnimateCamera(CameraUpdateFactory.NewLatLngZoom(place.LatLng, 15));
                     centerMarker.SetColorFilter(Android.Graphics.Color.Red);
-                    last = new Model.Location(place.NameFormatted.ToString(), place.AddressFormatted.ToString(), place.LatLng.Latitude, place.LatLng.Longitude);
+                    last = new Model.Location(place.Name, place.Address, place.LatLng.Latitude, place.LatLng.Longitude);
                 }
             }
+            base.OnActivityResult(requestCode, resultCode, data);
         }
         void CreateLocationRequest()
         {

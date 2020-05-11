@@ -16,6 +16,7 @@ using Android.Widget;
 using Com.Google.Maps.Android;
 using Java.Util;
 using Newtonsoft.Json;
+using static Android.OS.AsyncTask;
 
 namespace Helper
 {
@@ -51,9 +52,9 @@ namespace Helper
             if (!string.IsNullOrEmpty(json))
             {
                 var geoCodeData = JsonConvert.DeserializeObject<GeocodingParser>(json);
-                if (geoCodeData.status.Contains("ZERO"))
+                if(!geoCodeData.status.Contains("ZERO") && !geoCodeData.status.Contains("zero"))
                 {
-                    if(geoCodeData.results[0] != null)
+                    if (geoCodeData.results[0] != null)
                     {
                         placeAddress = geoCodeData.results[0].formatted_address;
                     }
