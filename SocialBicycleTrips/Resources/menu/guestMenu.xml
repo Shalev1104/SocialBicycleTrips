@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-  <item android:id="@id/mnuBrowseTrips"
-        android:title="browse trips"/>
-  <item android:id="@id/mnuSettings"
-        android:title="settings"/>
-  <item android:id="@+id/mnuLogin"
-        android:title="login"/>
-</menu>
