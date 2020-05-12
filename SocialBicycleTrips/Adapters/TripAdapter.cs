@@ -12,6 +12,7 @@ using Android.Widget;
 using Model;
 using Dal;
 using Helper;
+using System.Security.Cryptography;
 
 namespace SocialBicycleTrips.Adapters
 {
@@ -63,14 +64,46 @@ namespace SocialBicycleTrips.Adapters
 
             if (trip != null)
             {
-                tripsHolder.txtName.Text = trip.TripManager.Name;
-                tripsHolder.profileImage.SetImageBitmap(BitMapHelper.Base64ToBitMap(trip.TripManager.Image));
+                TripManager manager = Serializer.ByteArrayToObject(trip.TripManager) as TripManager;
+                Model.Location startingLocation = Serializer.ByteArrayToObject(trip.StartingLocation) as Model.Location;
+                Model.Location destination = Serializer.ByteArrayToObject(trip.FinalLocation) as Model.Location;
+                tripsHolder.txtName.Text = manager.Name;
+                try
+                {
+                    tripsHolder.profileImage.SetImageBitmap(BitMapHelper.Base64ToBitMap(manager.Image));
+                }
+                catch
+                {
+                    tripsHolder.profileImage.SetImageBitmap(BitMapHelper.TransferMediaImages(manager.Image));
+                }
                 tripsHolder.txtNotes.Text = trip.Notes;
                 tripsHolder.dayTime.Text = trip.DateTime.DayOfWeek.ToString() + " " + trip.DateTime.TimeOfDay.ToString();
                 tripsHolder.date.Text = trip.DateTime.Date.ToString();
-                tripsHolder.txtStartup.Text = trip.StartingLocation.Name;
-                tripsHolder.txtEndup.Text = trip.FinalLocation.Name;
-                tripsHolder.txtParticipants.Text = trip.Participants.Count().ToString();
+                if(startingLocation.Name != null)
+                {
+                    tripsHolder.txtStartup.Text = startingLocation.Name;
+                }
+                else
+                {
+                    tripsHolder.txtStartup.Text = startingLocation.Address;
+                }
+                if (destination.Name != null)
+                {
+                    tripsHolder.txtEndup.Text = destination.Name;
+                }
+                else
+                {
+                    tripsHolder.txtEndup.Text = destination.Address;
+                }
+                try
+                {
+                    tripsHolder.txtParticipants.Text = trip.Participants.Count().ToString();
+                }
+                catch
+                {
+                    tripsHolder.txtParticipants.Text = "0";
+                }
+                
             }
 
             return convertView;

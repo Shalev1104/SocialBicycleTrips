@@ -79,7 +79,10 @@ namespace SocialBicycleTrips.Activities
             if (IsValid())
             {
                 DateTime dateTime = new DateTime(date.Date.Year, date.Date.Month, date.Date.Day, time.Hour, time.Minute,0);
-                trip = new Trip(firstLocation, lastLocation, dateTime, edtNotes.Text, new TripManager(user.Image, user.Name));
+                byte[] first = Serializer.ObjectToByteArray(firstLocation);
+                byte[] last = Serializer.ObjectToByteArray(lastLocation);
+                byte[] manager = Serializer.ObjectToByteArray(new TripManager(user.Image, user.Name));
+                trip = new Trip(first, last, dateTime, edtNotes.Text, manager);
                 Toast.MakeText(this, "created successfully", ToastLength.Long);
                 Intent intent = new Intent();
                 intent.PutExtra("trip", Serializer.ObjectToByteArray(trip));

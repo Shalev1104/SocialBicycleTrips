@@ -54,6 +54,10 @@
               "target": "Package",
               "version": "[2.0.0, )"
             },
+            "Square.Picasso": {
+              "target": "Package",
+              "version": "[2.5.2.2, )"
+            },
             "Xamarin.Android.Maps.Utils": {
               "target": "Package",
               "version": "[0.5.0, )"
@@ -171,6 +175,10 @@
             "SQLiteNetExtensions": {
               "target": "Package",
               "version": "[2.0.0, )"
+            },
+            "Square.Picasso": {
+              "target": "Package",
+              "version": "[2.5.2.2, )"
             },
             "Xamarin.Android.Maps.Utils": {
               "target": "Package",
@@ -296,6 +304,10 @@
             "SQLiteNetExtensions": {
               "target": "Package",
               "version": "[2.0.0, )"
+            },
+            "Square.Picasso": {
+              "target": "Package",
+              "version": "[2.5.2.2, )"
             },
             "Xamarin.Android.Maps.Utils": {
               "target": "Package",
@@ -424,6 +436,10 @@
             "SQLiteNetExtensions": {
               "target": "Package",
               "version": "[2.0.0, )"
+            },
+            "Square.Picasso": {
+              "target": "Package",
+              "version": "[2.5.2.2, )"
             },
             "Xamarin.Android.Maps.Utils": {
               "target": "Package",

@@ -66,13 +66,30 @@ namespace SocialBicycleTrips.Adapters
             if (myTrip != null)
             {
                 Trip trip = trips.GetTripByID(myTrip.Id);
-                myTripsHolder.txtName.Text = trip.TripManager.Name;
-                myTripsHolder.profileImage.SetImageBitmap(BitMapHelper.Base64ToBitMap(trip.TripManager.Image));
+                TripManager manager = Serializer.ByteArrayToObject(trip.TripManager) as TripManager;
+                Model.Location startingLocation = Serializer.ByteArrayToObject(trip.StartingLocation) as Model.Location;
+                Model.Location destination = Serializer.ByteArrayToObject(trip.FinalLocation) as Model.Location;
+                myTripsHolder.txtName.Text = manager.Name;
+                myTripsHolder.profileImage.SetImageBitmap(BitMapHelper.Base64ToBitMap(manager.Image));
                 myTripsHolder.txtNotes.Text = trip.Notes;
                 myTripsHolder.dayTime.Text = trip.DateTime.DayOfWeek.ToString() + " " + trip.DateTime.TimeOfDay.ToString();
                 myTripsHolder.date.Text = trip.DateTime.Date.ToString();
-                myTripsHolder.txtStartup.Text = trip.StartingLocation.Name;
-                myTripsHolder.txtEndup.Text = trip.FinalLocation.Name;
+                if (startingLocation.Name != null)
+                {
+                    myTripsHolder.txtStartup.Text = startingLocation.Name;
+                }
+                else
+                {
+                    myTripsHolder.txtStartup.Text = startingLocation.Address;
+                }
+                if (destination.Name != null)
+                {
+                    myTripsHolder.txtEndup.Text = destination.Name;
+                }
+                else
+                {
+                    myTripsHolder.txtEndup.Text = destination.Address;
+                }
                 myTripsHolder.txtParticipants.Text = trip.Participants.Count().ToString();
             }
 

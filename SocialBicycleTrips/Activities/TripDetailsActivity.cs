@@ -36,20 +36,26 @@ namespace SocialBicycleTrips.Activities
         private Adapters.PeopleAdapter participantsAdapter;
         private Users users;
         private User user;
+        TripManager tripManager;
+        Model.Location start;
+        Model.Location end;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_tripDetails);
+            mapFragment = (SupportMapFragment)SupportFragmentManager.FindFragmentById(Resource.Id.mapDistanceCalculator);
+            mapFragment.GetMapAsync(this);
             trip = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("trip")) as Trip;
+            start = Serializer.ByteArrayToObject(trip.StartingLocation) as Model.Location;
+            end = Serializer.ByteArrayToObject(trip.FinalLocation) as Model.Location;
+            tripManager = Serializer.ByteArrayToObject(trip.TripManager) as TripManager;
             users = new Users().GetAllUsers();
-
             SetViews();
-            DrawTripOnMap();
             SetFields();
             if (Intent.HasExtra("user"))
             {
                 user = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("user")) as User;
-                if (trip.TripManager.Id == user.Id)
+                if (tripManager.Id == user.Id)
                 {
                     btnJoinOrAddParticipant.Text = "Add Participants";
                 }
@@ -69,12 +75,13 @@ namespace SocialBicycleTrips.Activities
         private async void DrawTripOnMap()
         {
             string json;
-            LatLng firstCoordinate = new LatLng(trip.StartingLocation.Latitude, trip.StartingLocation.Longitude);
-            LatLng lastCoordinate = new LatLng(trip.FinalLocation.Latitude, trip.FinalLocation.Longitude);
+            LatLng firstCoordinate = new LatLng(start.Latitude, start.Longitude);
+            LatLng lastCoordinate = new LatLng(end.Latitude, end.Longitude);
             json = await mapHelper.GetDirectionJsonAsync(firstCoordinate, lastCoordinate);
             if (!string.IsNullOrEmpty(json))
             {
                 mapHelper.DrawTripOnMap(json);
+                txtDistance.Text = mapHelper.distance.ToString();
             }
         }
 
@@ -82,9 +89,15 @@ namespace SocialBicycleTrips.Activities
         {
             tripNotes.Text = trip.Notes;
             dateTimeTrip.Text = trip.DateTime.Date.ToString() + trip.DateTime.Date.DayOfWeek + trip.DateTime.TimeOfDay;
-            tripManagerName.Text = trip.TripManager.Name;
-            tripManagerImage.SetImageBitmap(BitMapHelper.Base64ToBitMap(trip.TripManager.Image));
-            txtDistance.Text = mapHelper.distance.ToString();
+            tripManagerName.Text = tripManager.Name;
+            try
+            {
+                tripManagerImage.SetImageBitmap(BitMapHelper.Base64ToBitMap(tripManager.Image));
+            }
+            catch
+            {
+                tripManagerImage.SetImageBitmap(BitMapHelper.TransferMediaImages(tripManager.Image));
+            }
         }
         public void SetViews()
         {
@@ -98,15 +111,13 @@ namespace SocialBicycleTrips.Activities
             lvParticipants = FindViewById<ListView>(Resource.Id.lvParticipants);
             tripManagerImage = FindViewById<Refractored.Controls.CircleImageView>(Resource.Id.profileImageOfTripDetails);
 
-            mapFragment = (SupportMapFragment)SupportFragmentManager.FindFragmentById(Resource.Id.mapDistanceCalculator);
-            mapFragment.GetMapAsync(this);
-
             startingLocation.Click += StartingLocation_Click;
             destination.Click += Destination_Click;
             btnJoinOrAddParticipant.Click += BtnJoinOrAddParticipant_Click;
         }
         private void UploadUpdatedList()
         {
+            trip.Participants = new Participants();
             trip.Participants.Sort();
             participantsAdapter = new Adapters.PeopleAdapter(this, Resource.Layout.activity_peopleList, trip.Participants,users);
             lvParticipants.Adapter = participantsAdapter;
@@ -128,18 +139,19 @@ namespace SocialBicycleTrips.Activities
         }
         private void Destination_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+
         }
 
         private void StartingLocation_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+
         }
 
         public void OnMapReady(GoogleMap googleMap)
         {
             map = googleMap;
             mapHelper = new MapFunctionHelper("AIzaSyAH6n6XJq3ZCQSAKBSBNvQ12cBXltlOKvU", map);
+            DrawTripOnMap();
         }
     }
 }

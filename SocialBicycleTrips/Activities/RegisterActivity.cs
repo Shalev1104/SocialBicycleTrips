@@ -23,7 +23,7 @@ namespace SocialBicycleTrips.Activities
     [Activity(Label = "RegisterActivity")]
     public class RegisterActivity : Activity
     {
-        private ImageButton profile;
+        private Refractored.Controls.CircleImageView profile;
         private EditText name;
         private EditText email;
         private EditText password;
@@ -49,7 +49,7 @@ namespace SocialBicycleTrips.Activities
         }
         public void SetViews()
         {
-            profile              = FindViewById<ImageButton>(Resource.Id.imgbtnProfile);
+            profile              = FindViewById<Refractored.Controls.CircleImageView>(Resource.Id.imgbtnProfile);
             name                 = FindViewById<EditText>(Resource.Id.edtName);
             email                = FindViewById<EditText>(Resource.Id.edtEmail);
             password             = FindViewById<EditText>(Resource.Id.edtPW);

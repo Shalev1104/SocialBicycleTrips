@@ -18,18 +18,18 @@ namespace Model
     public class Trip : BaseEntity, iChangeable.TripChangeable
     {
 
-        private Location startingLocation;
-        private Location finalLocation;
+        private byte[] startingLocation;
+        private byte[] finalLocation;
         private DateTime dateTime;
         private string notes;
         private Participants participants;
-        private TripManager tripManager;
+        private byte[] tripManager;
 
         public Trip()
         {
 
         }
-        public Trip(Location startingLocation, Location finalLocation, DateTime dateTime, string notes, TripManager tripManager)
+        public Trip(byte[] startingLocation, byte[] finalLocation, DateTime dateTime, string notes, byte[] tripManager)
         {
             this.startingLocation = startingLocation;
             this.finalLocation    = finalLocation;
@@ -38,16 +38,15 @@ namespace Model
             this.tripManager      = tripManager;
 
             participants = new Participants(); 
-            participants.Insert(new Participant(tripManager.Id, this.Id));
         }
-        public Location StartingLocation { get => startingLocation; set => startingLocation = value; }
-        public Location FinalLocation { get => finalLocation; set => finalLocation = value; }
+        public byte[] StartingLocation { get => startingLocation; set => startingLocation = value; }
+        public byte[] FinalLocation { get => finalLocation; set => finalLocation = value; }
         public DateTime DateTime { get => dateTime; set => dateTime = value; }
         public string Notes { get => notes; set => notes = value; }
 
         [Ignore]
         public Participants Participants { get => participants; set => participants = value; }
-        public TripManager TripManager { get => tripManager; set => tripManager = value; }
+        public byte[] TripManager { get => tripManager; set => tripManager = value; }
 
         public void ChangeDateAndTime(DateTime dateTime)
         {

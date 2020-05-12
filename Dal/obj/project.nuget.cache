@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "e03iV+UyzZuqQtf5k6cDCICmll/xSCMMHCvswScKhEfXRKqtcFy2JnymljGy5P9aOL2pqlvf/FAqQ4QQRpnsIw==",
+  "dgSpecHash": "ejVLrQEyHGMx3wlCeo3nPKTxbeRo1Z5y5nL9TTJ3WiM7H0z7xMxDO+9rHZAFx4/8Hq17/dvstyl7DN+j4txMqw==",
   "success": true,
   "projectFilePath": "C:\\Users\\shale\\Documents\\GitHub\\SocialBicycleTrips\\Dal\\Dal.csproj",
   "expectedPackageFiles": [
@@ -38,6 +38,9 @@
     "C:\\Users\\shale\\.nuget\\packages\\sqlitepclraw.core\\1.1.13\\sqlitepclraw.core.1.1.13.nupkg.sha512",
     "C:\\Users\\shale\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3.android\\1.1.13\\sqlitepclraw.lib.e_sqlite3.android.1.1.13.nupkg.sha512",
     "C:\\Users\\shale\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3.android\\1.1.13\\sqlitepclraw.provider.e_sqlite3.android.1.1.13.nupkg.sha512",
+    "C:\\Users\\shale\\.nuget\\packages\\square.okhttp\\2.4.0\\square.okhttp.2.4.0.nupkg.sha512",
+    "C:\\Users\\shale\\.nuget\\packages\\square.okio\\1.5.0\\square.okio.1.5.0.nupkg.sha512",
+    "C:\\Users\\shale\\.nuget\\packages\\square.picasso\\2.5.2.2\\square.picasso.2.5.2.2.nupkg.sha512",
     "C:\\Users\\shale\\.nuget\\packages\\system.appcontext\\4.3.0\\system.appcontext.4.3.0.nupkg.sha512",
     "C:\\Users\\shale\\.nuget\\packages\\system.buffers\\4.4.0\\system.buffers.4.4.0.nupkg.sha512",
     "C:\\Users\\shale\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",

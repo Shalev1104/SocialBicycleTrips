@@ -12,6 +12,8 @@ using Android.Widget;
 using Model;
 using Dal;
 using Helper;
+using Bumptech.Glide;
+using Square.Picasso;
 
 namespace SocialBicycleTrips.Activities
 {
@@ -57,7 +59,15 @@ namespace SocialBicycleTrips.Activities
         public void UploadUserDetails()
         {
             name.Text = profile.Name;
-            profileImage.SetImageBitmap(BitMapHelper.TransferMediaImages(profile.Image));
+            try
+            {
+                profileImage.SetImageBitmap(BitMapHelper.Base64ToBitMap(profile.Image));
+            }
+            catch
+            {
+                profileImage.SetImageBitmap(BitMapHelper.TransferMediaImages(profile.Image));
+                //Picasso.With(this).Load(profile.Image).Into(profileImage);
+            }
             completedTrips.Text = profile.CompletedTrips.ToString();
             upcomingTrips.Text = profile.UpcomingTrips.ToString();
             phoneNumber.Text = profile.PhoneNumber;

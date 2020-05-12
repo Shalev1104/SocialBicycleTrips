@@ -459,6 +459,43 @@
           "lib/MonoAndroid/SQLitePCLRaw.provider.e_sqlite3.dll": {}
         }
       },
+      "Square.OkHttp/2.4.0": {
+        "type": "package",
+        "dependencies": {
+          "Square.OkIO": "1.5.0"
+        },
+        "compile": {
+          "lib/MonoAndroid/Square.OkHttp.dll": {}
+        },
+        "runtime": {
+          "lib/MonoAndroid/Square.OkHttp.dll": {}
+        }
+      },
+      "Square.OkIO/1.5.0": {
+        "type": "package",
+        "compile": {
+          "lib/MonoAndroid/Square.OkIO.dll": {}
+        },
+        "runtime": {
+          "lib/MonoAndroid/Square.OkIO.dll": {}
+        }
+      },
+      "Square.Picasso/2.5.2.2": {
+        "type": "package",
+        "dependencies": {
+          "Square.OkHttp": "2.4.0",
+          "Square.OkIO": "1.5.0"
+        },
+        "frameworkAssemblies": [
+          "Java.Interop"
+        ],
+        "compile": {
+          "lib/monoandroid44/Square.Picasso.dll": {}
+        },
+        "runtime": {
+          "lib/monoandroid44/Square.Picasso.dll": {}
+        }
+      },
       "System.AppContext/4.3.0": {
         "type": "package",
         "compile": {
@@ -2819,6 +2856,46 @@
         "lib/MonoAndroid/SQLitePCLRaw.provider.e_sqlite3.dll",
         "sqlitepclraw.provider.e_sqlite3.android.1.1.13.nupkg.sha512",
         "sqlitepclraw.provider.e_sqlite3.android.nuspec"
+      ]
+    },
+    "Square.OkHttp/2.4.0": {
+      "sha512": "FpY4C8TiZAkWYn4tVKnYETxjQyIpKbb3I4sNHHy+UU0F14r6zS1aNsuIBbSjBtMyvAoy1WQ6EsaWvCkLhvUHHg==",
+      "type": "package",
+      "path": "square.okhttp/2.4.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "README.md",
+        "lib/MonoAndroid/Square.OkHttp.dll",
+        "square.okhttp.2.4.0.nupkg.sha512",
+        "square.okhttp.nuspec"
+      ]
+    },
+    "Square.OkIO/1.5.0": {
+      "sha512": "bWpWvErRbWtqjfTj4nwFJhr9xK5enn6qCRPFI+92YoHm6jIF9i0Q2NJ3FQZ+Vbtxzrrb9i7oEwJJg+5ARyU7NA==",
+      "type": "package",
+      "path": "square.okio/1.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "README.md",
+        "lib/MonoAndroid/Square.OkIO.dll",
+        "square.okio.1.5.0.nupkg.sha512",
+        "square.okio.nuspec"
+      ]
+    },
+    "Square.Picasso/2.5.2.2": {
+      "sha512": "pVNdJcBxD7MkLQ4BX3daNxiXVpHd0xT0oAEKNK84oTtG8FpqRuNiFu6gaRDMNIh3LDSiekri8Iczk3hfimac5Q==",
+      "type": "package",
+      "path": "square.picasso/2.5.2.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/monoandroid44/Square.Picasso.dll",
+        "square.picasso.2.5.2.2.nupkg.sha512",
+        "square.picasso.nuspec"
       ]
     },
     "System.AppContext/4.3.0": {
@@ -6872,6 +6949,7 @@
       "Microsoft.Extensions.Primitives >= 3.1.3",
       "Newtonsoft.Json >= 12.0.3",
       "SQLiteNetExtensions >= 2.0.0",
+      "Square.Picasso >= 2.5.2.2",
       "Xamarin.Android.Maps.Utils >= 0.5.0",
       "Xamarin.Android.Support.Core.Utils >= 28.0.0.3",
       "Xamarin.Android.Support.CustomTabs >= 28.0.0.3",
@@ -6943,6 +7021,10 @@
           "SQLiteNetExtensions": {
             "target": "Package",
             "version": "[2.0.0, )"
+          },
+          "Square.Picasso": {
+            "target": "Package",
+            "version": "[2.5.2.2, )"
           },
           "Xamarin.Android.Maps.Utils": {
             "target": "Package",

@@ -62,12 +62,6 @@ namespace Helper
             }
             return placeAddress;
         }
-        public string getCityNameFromAddress(string address)
-        {
-            string[] value = address.Split(",");
-            int count = value.Length;
-            return value[count - 3];
-        }
         public async Task<string> GetDirectionJsonAsync(LatLng location,LatLng destination)
         {
             string str_origin = "origin=" + location.Latitude + "," + location.Longitude;
@@ -99,12 +93,12 @@ namespace Helper
 
             MarkerOptions firstLocationMarkerOptions = new MarkerOptions();
             firstLocationMarkerOptions.SetPosition(firstPoint);
-            firstLocationMarkerOptions.SetTitle("starting location");
+            firstLocationMarkerOptions.SetTitle("Starting Location");
             firstLocationMarkerOptions.SetIcon(BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueGreen));
 
             MarkerOptions lastLocationMarkerOptions = new MarkerOptions();
             lastLocationMarkerOptions.SetPosition(lastPoint);
-            lastLocationMarkerOptions.SetTitle("last location");
+            lastLocationMarkerOptions.SetTitle("Destination");
             lastLocationMarkerOptions.SetIcon(BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueRed));
 
             Marker firstLocationMarker = googleMap.AddMarker(firstLocationMarkerOptions);
@@ -119,8 +113,7 @@ namespace Helper
             LatLng northeast = new LatLng(northlat, northlng);
 
             LatLngBounds tripBound = new LatLngBounds(southwest, northeast);
-            googleMap.AnimateCamera(CameraUpdateFactory.NewLatLngBounds(tripBound, 470));
-            googleMap.SetPadding(40, 70, 40, 70);
+            googleMap.AnimateCamera(CameraUpdateFactory.NewLatLngBounds(tripBound,100));
             firstLocationMarker.ShowInfoWindow();
 
             double distanceMeters = directionData.routes[0].legs[0].distance.value;

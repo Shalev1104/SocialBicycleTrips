@@ -42,6 +42,7 @@ namespace SocialBicycleTrips.Activities
 
         FirebaseAuth firebaseAuth;
         private bool usingFirebase;
+        string facebookUserId;
 
         ICallbackManager callbackManager;
 
@@ -255,6 +256,7 @@ namespace SocialBicycleTrips.Activities
                 {
                     usingFirebase = true;
                     LoginResult loginResult = result as LoginResult;
+                    facebookUserId = loginResult.AccessToken.UserId;
                     LoginWithFacebookFirebase(loginResult);
                 }
                 else
@@ -263,7 +265,7 @@ namespace SocialBicycleTrips.Activities
                     user = IsSocialLogin();
                     if (user == null)
                     {
-                        user = new User(firebaseAuth.CurrentUser.DisplayName, firebaseAuth.CurrentUser.Email, firebaseAuth.CurrentUser.PhotoUrl.Path, firebaseAuth.CurrentUser.PhoneNumber);
+                        user = new User(firebaseAuth.CurrentUser.DisplayName, firebaseAuth.CurrentUser.Email, "https://graph.facebook.com/" + facebookUserId + "/picture?type=normal", firebaseAuth.CurrentUser.PhoneNumber);
                         users.Insert(user);
                     }
                     Navigate(user);
@@ -275,7 +277,7 @@ namespace SocialBicycleTrips.Activities
                 user = IsSocialLogin();
                 if (user == null)
                 {
-                    user = new User(firebaseAuth.CurrentUser.DisplayName, firebaseAuth.CurrentUser.Email, firebaseAuth.CurrentUser.PhotoUrl.Path, firebaseAuth.CurrentUser.PhoneNumber);
+                    user = new User(firebaseAuth.CurrentUser.DisplayName, firebaseAuth.CurrentUser.Email, "https://lh3.googleusercontent.com" + firebaseAuth.CurrentUser.PhotoUrl.Path, firebaseAuth.CurrentUser.PhoneNumber);
                     users.Insert(user);
                 }
                 Navigate(user);

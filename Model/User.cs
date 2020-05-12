@@ -35,7 +35,8 @@ namespace Model
 
         public User()
         {
-
+            myFriends = new MyFriends();
+            myTrips = new MyTrips();
         }
 
         public User(string name, string email, string password, string image, DateTime birthday, string phoneNumber) : base(image,name)
@@ -58,7 +59,7 @@ namespace Model
             this.phoneNumber = phoneNumber;
             this.birthday = birthday;
 
-            //image = BitMapHelper.BitMapToBase64(((BitmapDrawable) Resource.Drawable.abc_ic_star_black_16dp).Bitmap);
+            //image = BitMapHelper.BitMapToBase64(((BitmapDrawable) Resource.Drawable.common_google_signin_btn_icon_dark).Bitmap);
 
             completedTrips = 0;
             upcomingTrips = 0;

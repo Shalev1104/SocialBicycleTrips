@@ -13,6 +13,7 @@ using Helper;
 using Firebase.Auth;
 using Xamarin.Facebook;
 using Org.Apache.Http.Conn;
+using System.Runtime.CompilerServices;
 
 namespace SocialBicycleTrips
 {
@@ -36,7 +37,6 @@ namespace SocialBicycleTrips
             SetViews();
             trips = new Trips().GetAllTrips();
             users = new Users().GetAllUsers();
-            GenerateTrips();
             UploadUpdatedList();
         }
 
@@ -166,18 +166,12 @@ namespace SocialBicycleTrips
                 if(resultCode == Android.App.Result.Ok)
                 {
                     Trip trip = Serializer.ByteArrayToObject(data.GetByteArrayExtra("trip")) as Trip;
+                    user.MyTrips = new MyTrips();
                     user.MyTrips.Insert(new MyTrip(trip.Id));
                     trips.Insert(trip);
                     StartActivity(new Intent(this, typeof(MainActivity)));
                 }
             }
-        }
-        private void GenerateTrips()
-        {
-            /*User user = new User("avi", "bbb@gmail.com", "121212ss", new DateTime(2002, 11, 4), "0123456789");
-            Trip trip = new Trip("somethere", "somewhere", new DateTime(2020, 12, 1, 16, 5, 25), "Checker", new TripManager(user.Image, user.Name));
-            trips.Add(trip);*/
-            //tripsDB.Insert(trip);
         }
 
         private void UploadUpdatedList()
