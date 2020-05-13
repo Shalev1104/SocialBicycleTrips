@@ -65,7 +65,7 @@ namespace SocialBicycleTrips.Adapters
 
             if (myTrip != null)
             {
-                Trip trip = trips.GetTripByID(myTrip.Id);
+                Trip trip = trips.GetTripByID(myTrip.TripID);
                 TripManager manager = Serializer.ByteArrayToObject(trip.TripManager) as TripManager;
                 Model.Location startingLocation = Serializer.ByteArrayToObject(trip.StartingLocation) as Model.Location;
                 Model.Location destination = Serializer.ByteArrayToObject(trip.FinalLocation) as Model.Location;
@@ -90,12 +90,18 @@ namespace SocialBicycleTrips.Adapters
                 {
                     myTripsHolder.txtEndup.Text = destination.Address;
                 }
-                myTripsHolder.txtParticipants.Text = trip.Participants.Count().ToString();
+                try
+                {
+                    myTripsHolder.txtParticipants.Text = trip.Participants.Count().ToString();
+                }
+                catch
+                {
+                    myTripsHolder.txtParticipants.Text = "1";
+                }
             }
 
             return convertView;
         }
-
         private class MyTripsHolder : Java.Lang.Object
         {
             public Refractored.Controls.CircleImageView profileImage;

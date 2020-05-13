@@ -18,17 +18,20 @@ namespace Model
     public class MyTrip : BaseEntity
     {
         private int tripID;
+        private int userID;
 
         public MyTrip()
         {
             
         }
 
-        public MyTrip(int tripID)
+        public MyTrip(int tripID, int userID)
         {
             this.tripID = tripID;
+            this.userID = userID;
         }
 
         public int TripID { get => tripID; set => tripID = value; }
+        public int UserID { get => userID; set => userID = value; }
     }
 }

@@ -23,11 +23,11 @@ namespace Model
 
             if (!forChange)
             {
-                isFriendExists = base.Exists(item => item.FriendID.Equals(friend.FriendID));
+                isFriendExists = base.Exists(item => item.FriendID.Equals(friend.FriendID) && item.UserID.Equals(friend.UserID));
             }
             else
             {
-                isFriendExists = base.Exists(item => item.FriendID.Equals(friend.FriendID) && item.Id != friend.Id);
+                isFriendExists = base.Exists(item => item.FriendID.Equals(friend.FriendID) && item.UserID.Equals(friend.UserID) && item.Id != friend.Id);
             }
             return isFriendExists;
         }
@@ -37,10 +37,18 @@ namespace Model
             base.Sort((item1, item2) => item1.FriendID.CompareTo(item2.FriendID));
         }
 
-        public MyFriends GetAllMyFriends()
+        public MyFriends GetAllMyFriends(int userID)
         {
             MyFriends myFriends = new MyFriends();
             List<MyFriend> myFriendsList = DbTable<MyFriend>.SelectAll();
+
+            for (int i = 0; i < myFriendsList.Count; i++)
+            {
+                if (!myFriendsList[i].UserID.Equals(userID))
+                {
+                    myFriendsList.RemoveAt(i);
+                }
+            }
 
             if (myFriendsList != null)
             {

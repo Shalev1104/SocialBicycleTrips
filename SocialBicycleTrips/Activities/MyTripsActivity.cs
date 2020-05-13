@@ -17,14 +17,14 @@ namespace SocialBicycleTrips.Activities
     [Activity(Label = "MyTripsActivity")]
     public class MyTripsActivity : Activity
     {
-        private ListView lvTrips;
+        private ListView lvMyTrips;
         private Trips trips;
         private Adapters.MyTripsAdapter myTripsAdapter;
         private User user;
-        int position = -1;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+            SetContentView(Resource.Layout.activity_myTrips);
             SetViews();
             user = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("user")) as User;
             trips = new Trips().GetAllTrips();
@@ -38,39 +38,49 @@ namespace SocialBicycleTrips.Activities
         }
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
+            Intent getUser = new Intent();
+            if (Intent.HasExtra("user"))
+                getUser.PutExtra("user", Serializer.ObjectToByteArray(user));
+
             switch (item.ItemId)
             {
                 case Resource.Id.mnuBrowseTrips:
                     {
-                        StartActivity(new Intent(this, typeof(MainActivity)));
+                        getUser.SetClass(this, typeof(MainActivity));
+                        StartActivity(getUser);
                         item.SetChecked(true);
                         break;
                     }
 
                 case Resource.Id.mnuMyTrips:
                     {
-                        StartActivity(new Intent(this, typeof(Activities.MyTripsActivity)));
+                        getUser.SetClass(this, typeof(Activities.MyTripsActivity));
+                        StartActivity(getUser);
                         item.SetChecked(true);
                         break;
                     }
 
                 case Resource.Id.mnuCreateTrip:
                     {
-                        StartActivity(new Intent(this, typeof(MainActivity)));
+                        getUser.SetClass(this, typeof(Activities.CreateTripActivity));
+                        StartActivityForResult(getUser, 0);
                         item.SetChecked(true);
                         break;
                     }
 
                 case Resource.Id.mnuMyFriends:
                     {
-                        StartActivity(new Intent(this, typeof(MainActivity)));
+                        getUser.SetClass(this, typeof(MainActivity));
+                        StartActivity(getUser);
                         item.SetChecked(true);
                         break;
                     }
 
                 case Resource.Id.mnuMyProfile:
                     {
-                        StartActivity(new Intent(this, typeof(Activities.ProfileActivity)));
+                        getUser.SetClass(this, typeof(Activities.ProfileActivity));
+                        getUser.PutExtra("myself", true);
+                        StartActivity(getUser);
                         item.SetChecked(true);
                         break;
                     }
@@ -95,27 +105,51 @@ namespace SocialBicycleTrips.Activities
                         item.SetChecked(true);
                         break;
                     }
+                case Resource.Id.mnuDisconnect:
+                    {
+                        if (user.IsSocialMediaLogon())
+                        {
+                            Intent intent = new Intent(this, typeof(Activities.LoginActivity));
+                            intent.PutExtra("social media disconnect", true);
+                            StartActivityForResult(intent, 1);
+                        }
+                        StartActivity(new Intent(this, typeof(MainActivity)));
+                        item.SetChecked(true);
+                        break;
+                    }
+                case Resource.Id.mnuLogin:
+                    {
+                        StartActivity(new Intent(this, typeof(Activities.LoginActivity)));
+                        item.SetChecked(true);
+                        break;
+                    }
+                case Resource.Id.mnuAddDate:
+                    {
+                        StartActivity(new Intent(this, typeof(MainActivity)));
+                        item.SetChecked(true);
+                        break;
+                    }
             }
             return base.OnOptionsItemSelected(item);
         }
         private void UploadUpdatedList()
         {
             trips.Sort();
-            myTripsAdapter = new Adapters.MyTripsAdapter(this, Resource.Layout.activity_singleItemTripDesign, user.MyTrips,trips);
-            lvTrips.Adapter = myTripsAdapter;
+            myTripsAdapter = new Adapters.MyTripsAdapter(this, Resource.Layout.activity_singleItemTripDesign, user.MyTrips.GetAllMyTrips(user.Id),trips);
+            lvMyTrips.Adapter = myTripsAdapter;
         }
         public void SetViews()
         {
-            lvTrips = FindViewById<ListView>(Resource.Id.lvTrips);
-            lvTrips.ItemClick += LvTrips_ItemClick;
+            lvMyTrips = FindViewById<ListView>(Resource.Id.lvMyTrips);
+            lvMyTrips.ItemClick += LvTrips_ItemClick;
         }
         private void LvTrips_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
-            position = e.Position;
 
             Intent intent = new Intent(this, typeof(Activities.TripDetailsActivity));
 
             intent.PutExtra("trip", Serializer.ObjectToByteArray(trips[e.Position]));
+            intent.PutExtra("user", Serializer.ObjectToByteArray(user));
 
             StartActivity(intent);
         }

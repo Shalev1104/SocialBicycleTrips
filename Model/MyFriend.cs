@@ -18,16 +18,19 @@ namespace Model
     public class MyFriend : BaseEntity
     {
         int friendID;
+        int userID;
 
         public MyFriend()
         {
 
         }
-        public MyFriend(int friendID)
+        public MyFriend(int friendID, int userID)
         {
             this.friendID = friendID;
+            this.userID = userID;
         }
 
         public int FriendID { get => friendID; set => friendID = value; }
+        public int UserID { get => userID; set => userID = value; }
     }
 }

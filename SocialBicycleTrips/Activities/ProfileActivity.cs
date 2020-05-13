@@ -37,9 +37,12 @@ namespace SocialBicycleTrips.Activities
             SetViews();
             GenerateUser();
             UploadUserDetails();
-            if (isFriend())
+            if(userlogon != null)
             {
-                addFriend.Visibility = ViewStates.Invisible;
+                if (isFriend())
+                {
+                    addFriend.Visibility = ViewStates.Invisible;
+                }
             }
         }
         public void SetViews()
@@ -75,7 +78,7 @@ namespace SocialBicycleTrips.Activities
             {
                 age.Text = profile.CalculateAge().ToString();
             }
-            catch(Exception ex) // birthday = null
+            catch 
             {
                 age.Text = "unknown";
             }
@@ -85,12 +88,18 @@ namespace SocialBicycleTrips.Activities
         {
             if (Intent.HasExtra("myself"))
             {
-                profile = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("user")) as User; // profile = userlogon
+                profile = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("user")) as User;
+                userlogon = profile;
+            }
+            else if(Intent.HasExtra("user"))
+            {
+                profile = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("profile")) as User;
+                userlogon = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("user")) as User;
             }
             else
             {
                 profile = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("profile")) as User;
-                userlogon = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("user")) as User;
+                addFriend.Visibility = ViewStates.Invisible;
             }
         }
 
@@ -99,14 +108,15 @@ namespace SocialBicycleTrips.Activities
             if (Intent.HasExtra("myself"))
                 return true;
 
-            MyFriend isMyFriend = new MyFriend(profile.Id);
+            MyFriend isMyFriend = new MyFriend(profile.Id, userlogon.Id);
             return userlogon.MyFriends.Exists(isMyFriend);
         }
 
         private void AddFriend_Click(object sender, EventArgs e)
         {
-            userlogon.MyFriends.Insert(new MyFriend(profile.Id));
+            userlogon.MyFriends.Insert(new MyFriend(profile.Id,userlogon.Id));
             Toast.MakeText(this, "Friend has been added succesfully", ToastLength.Long).Show();
+            addFriend.Visibility = ViewStates.Invisible;
         }
     }
 }

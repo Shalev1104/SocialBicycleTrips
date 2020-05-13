@@ -645,6 +645,7 @@ LinearLayout;obj\Debug\90\res\layout\activity_createtrip.xml
 LinearLayout;obj\Debug\90\res\layout\activity_main.xml
 LinearLayout;obj\Debug\90\res\layout\activity_map.xml
 LinearLayout;obj\Debug\90\res\layout\activity_myfriends.xml
+LinearLayout;obj\Debug\90\res\layout\activity_mytrips.xml
 LinearLayout;obj\Debug\90\res\layout\activity_peoplelist.xml
 LinearLayout;obj\Debug\90\res\layout\activity_profile.xml
 LinearLayout;obj\Debug\90\res\layout\activity_signin.xml
@@ -653,6 +654,7 @@ LinearLayout;obj\Debug\90\res\layout\activity_singleitemtripdesign.xml
 LinearLayout;obj\Debug\90\res\layout\activity_tripdetails.xml
 ListView;obj\Debug\90\res\layout\activity_main.xml
 ListView;obj\Debug\90\res\layout\activity_myfriends.xml
+ListView;obj\Debug\90\res\layout\activity_mytrips.xml
 ListView;obj\Debug\90\res\layout\activity_tripdetails.xml
 menu;obj\Debug\90\res\menu\guestmenu.xml
 menu;obj\Debug\90\res\menu\socialmediamenu.xml
@@ -2259,6 +2261,7 @@ TextView;obj\Debug\90\res\layout\activity_cameraoptions.xml
 TextView;obj\Debug\90\res\layout\activity_createtrip.xml
 TextView;obj\Debug\90\res\layout\activity_main.xml
 TextView;obj\Debug\90\res\layout\activity_map.xml
+TextView;obj\Debug\90\res\layout\activity_mytrips.xml
 TextView;obj\Debug\90\res\layout\activity_peoplelist.xml
 TextView;obj\Debug\90\res\layout\activity_profile.xml
 TextView;obj\Debug\90\res\layout\activity_signin.xml

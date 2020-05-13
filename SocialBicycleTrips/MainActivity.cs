@@ -23,10 +23,8 @@ namespace SocialBicycleTrips
         private ListView lvTrips;
         private Trips trips;
         private Adapters.TripAdapter tripAdapter;
-        private int position = -1;
         private User user;
         private Users users;
-        //private FirebaseAuth firebaseAuth;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -37,14 +35,20 @@ namespace SocialBicycleTrips
             SetViews();
             trips = new Trips().GetAllTrips();
             users = new Users().GetAllUsers();
+            if (Intent.HasExtra("AddToMyTrips") && Intent.GetBooleanExtra("AddToMyTrips", false) == true)
+            {
+                user = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("user")) as User;
+                user.MyTrips.Insert(new MyTrip(trips[trips.Count - 1].Id, user.Id));
+            }
             UploadUpdatedList();
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            if(Intent.HasExtra("user"))
+            if (Intent.HasExtra("user"))
             {
                 user = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("user")) as User;
+                //user.MyTrips.Delete
                 if (user.IsSocialMediaLogon())
                 {
                     //firebaseAuth = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("firebase")) as FirebaseAuth;
@@ -166,10 +170,9 @@ namespace SocialBicycleTrips
                 if(resultCode == Android.App.Result.Ok)
                 {
                     Trip trip = Serializer.ByteArrayToObject(data.GetByteArrayExtra("trip")) as Trip;
-                    user.MyTrips = new MyTrips();
-                    user.MyTrips.Insert(new MyTrip(trip.Id));
+                    trip.Participants = new Participants().GetAllParticipants();
                     trips.Insert(trip);
-                    StartActivity(new Intent(this, typeof(MainActivity)));
+                    StartActivity(new Intent(this, typeof(MainActivity)).PutExtra("user", Serializer.ObjectToByteArray(user)).PutExtra("AddToMyTrips",true));
                 }
             }
         }
@@ -195,7 +198,6 @@ namespace SocialBicycleTrips
         }
         private void LvTrips_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
-            position = e.Position;
 
             Intent intent = new Intent(this, typeof(Activities.TripDetailsActivity));
 

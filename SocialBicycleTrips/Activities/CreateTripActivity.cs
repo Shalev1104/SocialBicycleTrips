@@ -81,9 +81,11 @@ namespace SocialBicycleTrips.Activities
                 DateTime dateTime = new DateTime(date.Date.Year, date.Date.Month, date.Date.Day, time.Hour, time.Minute,0);
                 byte[] first = Serializer.ObjectToByteArray(firstLocation);
                 byte[] last = Serializer.ObjectToByteArray(lastLocation);
-                byte[] manager = Serializer.ObjectToByteArray(new TripManager(user.Image, user.Name));
+                TripManager tripManager = new TripManager(user.Image, user.Name);
+                tripManager.Id = user.Id;
+                byte[] manager = Serializer.ObjectToByteArray(tripManager);
                 trip = new Trip(first, last, dateTime, edtNotes.Text, manager);
-                Toast.MakeText(this, "created successfully", ToastLength.Long);
+                Toast.MakeText(this, "successfully created", ToastLength.Long);
                 Intent intent = new Intent();
                 intent.PutExtra("trip", Serializer.ObjectToByteArray(trip));
                 SetResult(Android.App.Result.Ok, intent);
@@ -91,7 +93,7 @@ namespace SocialBicycleTrips.Activities
             }
             else
             {
-                Toast.MakeText(this, "please tyoe all the requested fields", ToastLength.Long).Show();
+                Toast.MakeText(this, "please type all the requested fields", ToastLength.Long).Show();
             }
         }
 

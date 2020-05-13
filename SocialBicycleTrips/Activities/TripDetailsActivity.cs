@@ -114,10 +114,25 @@ namespace SocialBicycleTrips.Activities
             startingLocation.Click += StartingLocation_Click;
             destination.Click += Destination_Click;
             btnJoinOrAddParticipant.Click += BtnJoinOrAddParticipant_Click;
+            tripManagerName.Click += ToProfileActivity_Click;
+            tripManagerImage.Click += ToProfileActivity_Click;
+
         }
+
+        private void ToProfileActivity_Click(object sender, EventArgs e)
+        {
+            Intent intent = new Intent(this, typeof(Activities.ProfileActivity));
+            intent.PutExtra("profile", Serializer.ObjectToByteArray(users.GetUserByID(tripManager.Id)));
+            if (Intent.HasExtra("user"))
+            {
+                intent.PutExtra("user", Serializer.ObjectToByteArray(user));
+            }
+            StartActivity(intent);
+        }
+
         private void UploadUpdatedList()
         {
-            trip.Participants = new Participants();
+            trip.Participants = new Participants().GetAllParticipants();
             trip.Participants.Sort();
             participantsAdapter = new Adapters.PeopleAdapter(this, Resource.Layout.activity_peopleList, trip.Participants,users);
             lvParticipants.Adapter = participantsAdapter;

@@ -76,22 +76,22 @@ public final class R {
 		public static final int hybrid = 0x7f08008a;
 		public static final int icon_only = 0x7f08008d;
 		public static final int light = 0x7f08009e;
-		public static final int none = 0x7f0800bf;
-		public static final int normal = 0x7f0800c0;
-		public static final int satellite = 0x7f0800ef;
-		public static final int standard = 0x7f080114;
-		public static final int terrain = 0x7f08011f;
-		public static final int webview = 0x7f08014e;
-		public static final int wide = 0x7f08014f;
-		public static final int window = 0x7f080150;
+		public static final int none = 0x7f0800c0;
+		public static final int normal = 0x7f0800c1;
+		public static final int satellite = 0x7f0800f0;
+		public static final int standard = 0x7f080115;
+		public static final int terrain = 0x7f080120;
+		public static final int webview = 0x7f08014f;
+		public static final int wide = 0x7f080150;
+		public static final int window = 0x7f080151;
 	}
 	public static final class integer {
 		public static final int google_play_services_version = 0x7f090008;
 	}
 	public static final class layout {
-		public static final int amu_info_window = 0x7f0b0028;
-		public static final int amu_text_bubble = 0x7f0b0029;
-		public static final int amu_webview = 0x7f0b002a;
+		public static final int amu_info_window = 0x7f0b0029;
+		public static final int amu_text_bubble = 0x7f0b002a;
+		public static final int amu_webview = 0x7f0b002b;
 	}
 	public static final class raw {
 		public static final int amu_ballon_gx_prefix = 0x7f0e0000;

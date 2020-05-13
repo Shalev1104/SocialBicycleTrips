@@ -82,6 +82,7 @@ namespace SocialBicycleTrips.Activities
                 if (IsFacebookLogin())
                 {
                     LoginManager.Instance.LogOut();
+                    //facebookLogin.UnregisterCallback(callbackManager);
                 }
                 Finish();
             }
@@ -217,10 +218,13 @@ namespace SocialBicycleTrips.Activities
             user = null;
             foreach (User found in users)
             {
-                if (found.Email.Equals(email.Text) && found.Password.Equals(password.Text))
+                if (!found.IsSocialMediaLogon())
                 {
-                    user = found;
-                    break;
+                    if (found.Email.Equals(email.Text) && found.Password.Equals(password.Text))
+                    {
+                        user = found;
+                        break;
+                    }
                 }
             }
             return user;
@@ -230,10 +234,13 @@ namespace SocialBicycleTrips.Activities
             user = null;
             foreach (User found in users)
             {
-                if (found.Email.Equals(firebaseAuth.CurrentUser.Email))
+                if (found.IsSocialMediaLogon())
                 {
-                    user = found;
-                    break;
+                    if (found.Email.Equals(firebaseAuth.CurrentUser.Email))
+                    {
+                        user = found;
+                        break;
+                    }
                 }
             }
             return user;

@@ -27,7 +27,9 @@ namespace SocialBicycleTrips.Adapters
         private TripsHolder tripsHolder;
 
         private Trip trip;
-
+        TripManager manager;
+        Model.Location startingLocation;
+        Model.Location destination;
 
         public TripAdapter(Context context, int resource, Trips trips) : base(context, resource, trips)
         {
@@ -52,7 +54,6 @@ namespace SocialBicycleTrips.Adapters
                 tripsHolder.txtStartup = convertView.FindViewById<TextView>(Resource.Id.txtStartupItem);
                 tripsHolder.txtEndup = convertView.FindViewById<TextView>(Resource.Id.txtEndupItem);
                 tripsHolder.txtParticipants = convertView.FindViewById<TextView>(Resource.Id.txtParticipantsItem);
-
                 convertView.Tag = tripsHolder;
             }
             else
@@ -64,9 +65,9 @@ namespace SocialBicycleTrips.Adapters
 
             if (trip != null)
             {
-                TripManager manager = Serializer.ByteArrayToObject(trip.TripManager) as TripManager;
-                Model.Location startingLocation = Serializer.ByteArrayToObject(trip.StartingLocation) as Model.Location;
-                Model.Location destination = Serializer.ByteArrayToObject(trip.FinalLocation) as Model.Location;
+                manager = Serializer.ByteArrayToObject(trip.TripManager) as TripManager;
+                startingLocation = Serializer.ByteArrayToObject(trip.StartingLocation) as Model.Location;
+                destination = Serializer.ByteArrayToObject(trip.FinalLocation) as Model.Location;
                 tripsHolder.txtName.Text = manager.Name;
                 try
                 {
@@ -101,7 +102,7 @@ namespace SocialBicycleTrips.Adapters
                 }
                 catch
                 {
-                    tripsHolder.txtParticipants.Text = "0";
+                    tripsHolder.txtParticipants.Text = "1";
                 }
                 
             }
