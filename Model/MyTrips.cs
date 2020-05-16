@@ -61,6 +61,18 @@ namespace Model
 
             return myTrips;
         }
+        public MyTrips GetAllMyTrips() // converts from list to a class(רבים)
+        {
+            MyTrips myTrips = new MyTrips();
+            List<MyTrip> myTripList = DbTable<MyTrip>.SelectAll();
+
+            if (myTripList != null)
+            {
+                myTrips.AddRange(myTripList);
+            }
+
+            return myTrips;
+        }
 
         public int Insert(MyTrip myTrip)
         {
@@ -75,19 +87,6 @@ namespace Model
         public int Delete(MyTrip myTrip)
         {
             return DbTable<MyTrip>.Delete(myTrip);
-        }
-
-        public MyTrips GetAllMyTrips() // converts from list to a class(רבים)
-        {
-            MyTrips myTrips = new MyTrips();
-            List<MyTrip> myTripList = DbTable<MyTrip>.SelectAll();
-
-            if (myTripList != null)
-            {
-                myTrips.AddRange(myTripList);
-            }
-
-            return myTrips;
         }
     }
 }

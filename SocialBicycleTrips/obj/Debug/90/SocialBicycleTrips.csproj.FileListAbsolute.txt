@@ -13,7 +13,6 @@ C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\bin\Debug\
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\MonoAndroid,Version=v9.0.AssemblyAttributes.cs
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\build.props
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\adb.props
-C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\SocialBicycleTrips.csprojAssemblyReference.cache
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\_VerifyXamarinAndroidSupportVersions.stamp
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\stamp\_BuildLibraryImportsCache.stamp
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\res.flag
@@ -149,6 +148,7 @@ C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\assets\Helper.dll
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\assets\Helper.pdb
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\assets\Java.Interop.dll
+C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\assets\machine.config
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\assets\Microsoft.Azure.WebJobs.dll
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\assets\Microsoft.Azure.WebJobs.Extensions.Storage.dll
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\assets\Microsoft.Azure.WebJobs.Host.dll
@@ -343,7 +343,6 @@ C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\AndroidManifest.xml
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\__environment__.txt
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\src\mono\MonoRuntimeProvider.java
-C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\assets\machine.config
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\bin\mono.android.jar
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\static.flag
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\buildid.txt
@@ -367,6 +366,7 @@ C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\src\android\support\v7\recyclerview\R.java
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\src\android\support\v7\widget\Toolbar_NavigationOnClickEventDispatcher.java
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\src\com\bumptech\glide\R.java
+C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\src\com\companyname\socialbicycletrips\R.java
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\src\com\facebook\common\R.java
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\src\com\facebook\login\R.java
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\src\com\google\android\gms\auth\api\R.java
@@ -541,7 +541,6 @@ C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\src\mono\MonoPackageManager_Resources.java
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\src\xamarin\essentials\fileProvider.java
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\bin\packaged_resources
-C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\src\com\companyname\socialbicycletrips\R.java
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\typemap.jm.arm64-v8a.o
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\typemap.mj.arm64-v8a.o
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\typemap.jm.armeabi-v7a.o
@@ -567,3 +566,16 @@ C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\stamp\_GenerateJavaStubs.stamp
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\stamp\_GeneratePackageManagerJava.stamp
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\stamp\_ResolveLibraryProjectImports.stamp
+C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\src\crc646d513817d643a16d\MyFriendsActivity.java
+C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\res\layout\activity_settings.xml
+C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\src\crc646d513817d643a16d\SettingsActivity.java
+C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\res\raw\silvermapstyle.json
+C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\res\raw\standardmapstyle.json
+C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\res\raw\retromapstyle.json
+C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\res\raw\darkmapstyle.json
+C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\res\raw\nightmapstyle.json
+C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\res\raw\auberginemapstyle.json
+C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\res\drawable\plusicon.png
+C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\res\layout\activity_addfriend.xml
+C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\src\crc646d513817d643a16d\AddFriendsActivity.java
+C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\SocialBicycleTrips.csprojAssemblyReference.cache

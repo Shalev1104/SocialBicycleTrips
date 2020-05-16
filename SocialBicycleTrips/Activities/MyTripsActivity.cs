@@ -39,8 +39,7 @@ namespace SocialBicycleTrips.Activities
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
             Intent getUser = new Intent();
-            if (Intent.HasExtra("user"))
-                getUser.PutExtra("user", Serializer.ObjectToByteArray(user));
+            getUser.PutExtra("user", Serializer.ObjectToByteArray(user));
 
             switch (item.ItemId)
             {

@@ -69,12 +69,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activities\ActivitySplash.cs" />
+    <Compile Include="Activities\AddFriendsActivity.cs" />
     <Compile Include="Activities\CreateTripActivity.cs" />
     <Compile Include="Activities\LoginActivity.cs" />
     <Compile Include="Activities\MapActivity.cs" />
+    <Compile Include="Activities\MyFriendsActivity.cs" />
     <Compile Include="Activities\MyTripsActivity.cs" />
     <Compile Include="Activities\ProfileActivity.cs" />
     <Compile Include="Activities\RegisterActivity.cs" />
+    <Compile Include="Activities\SettingsActivity.cs" />
     <Compile Include="Activities\TripDetailsActivity.cs" />
     <Compile Include="Adapters\MyFriendsAdapter.cs" />
     <Compile Include="Adapters\MyTripsAdapter.cs" />
@@ -91,6 +94,12 @@
     <None Include="Resources\AboutResources.txt" />
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="Assets\AboutAssets.txt" />
+    <AndroidResource Include="Resources\raw\SilverMapStyle.json" />
+    <AndroidResource Include="Resources\raw\StandardMapStyle.json" />
+    <AndroidResource Include="Resources\raw\RetroMapStyle.json" />
+    <AndroidResource Include="Resources\raw\DarkMapStyle.json" />
+    <AndroidResource Include="Resources\raw\NightMapStyle.json" />
+    <AndroidResource Include="Resources\raw\AubergineMapStyle.json" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\activity_main.xml">
@@ -263,9 +272,6 @@
     <AndroidResource Include="Resources\drawable\userSearchIcon.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\AddFriend.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\addProfileImage.png" />
   </ItemGroup>
   <ItemGroup>
@@ -330,6 +336,18 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\activity_myTrips.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\AddFriend.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\activity_settings.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\plusIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\activity_addFriend.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

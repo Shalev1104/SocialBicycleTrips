@@ -76,7 +76,7 @@ namespace SocialBicycleTrips.Activities
                 }
                 else
                 {
-                    user = new User(name.Text, email.Text, password.Text, dateTime, phoneNumber.Text);
+                    user = new User(name.Text, email.Text, password.Text, BitMapHelper.BitMapToBase64(BitmapFactory.DecodeResource(Resources, Resource.Drawable.StandardProfileImage)), dateTime, phoneNumber.Text); ;
                 }
                 Intent intent = new Intent();
                 intent.PutExtra("user", Serializer.ObjectToByteArray(user));

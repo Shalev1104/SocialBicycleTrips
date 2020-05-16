@@ -283,10 +283,36 @@ namespace SocialBicycleTrips.Activities
 
         public void OnMapReady(GoogleMap googleMap)
         {
+            SetMapStyle(googleMap);
             mainMap = googleMap;
             mainMap.CameraIdle += MainMap_CameraIdle;
             string mapkey = "AIzaSyAH6n6XJq3ZCQSAKBSBNvQ12cBXltlOKvU";
             mapHelper = new MapFunctionHelper(mapkey, mainMap);
+        }
+
+        public void SetMapStyle(GoogleMap googleMap)
+        {
+            switch (Settings.MapStyle)
+            {
+                case "Standard":
+                    googleMap.SetMapStyle(MapStyleOptions.LoadRawResourceStyle(this, Resource.Raw.StandardMapStyle));
+                    break;
+                case "Silver":
+                    googleMap.SetMapStyle(MapStyleOptions.LoadRawResourceStyle(this, Resource.Raw.SilverMapStyle));
+                    break;
+                case "Retro":
+                    googleMap.SetMapStyle(MapStyleOptions.LoadRawResourceStyle(this, Resource.Raw.RetroMapStyle));
+                    break;
+                case "Dark":
+                    googleMap.SetMapStyle(MapStyleOptions.LoadRawResourceStyle(this, Resource.Raw.DarkMapStyle));
+                    break;
+                case "Night":
+                    googleMap.SetMapStyle(MapStyleOptions.LoadRawResourceStyle(this, Resource.Raw.NightMapStyle));
+                    break;
+                case "Aubergine":
+                    googleMap.SetMapStyle(MapStyleOptions.LoadRawResourceStyle(this, Resource.Raw.AubergineMapStyle));
+                    break;
+            }
         }
     }
 }

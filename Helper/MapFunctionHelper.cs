@@ -40,7 +40,7 @@ namespace Helper
             var handler = new HttpClientHandler();
             HttpClient client = new HttpClient(handler);
             string result = await client.GetStringAsync(url);
-            return result;
+            return result.Contains("ZERO") ? null : result;
         }
         public async Task<string> FindCordinateAddress(LatLng position)
         {

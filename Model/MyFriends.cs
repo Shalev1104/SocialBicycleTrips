@@ -41,6 +41,7 @@ namespace Model
         {
             MyFriends myFriends = new MyFriends();
             List<MyFriend> myFriendsList = DbTable<MyFriend>.SelectAll();
+            myFriendsList.Remove(new MyFriend(userID, userID));
 
             for (int i = 0; i < myFriendsList.Count; i++)
             {
@@ -49,6 +50,39 @@ namespace Model
                     myFriendsList.RemoveAt(i);
                 }
             }
+
+            if (myFriendsList != null)
+            {
+                myFriends.AddRange(myFriendsList);
+            }
+
+            return myFriends;
+        }
+
+        public MyFriends GetAllMyUnFriends(int userID)
+        {
+            Users users = new Users().GetAllUsers();
+            users.Remove(users.GetUserByID(userID));
+            MyFriends myFriendsList = new MyFriends().GetAllMyFriends(userID);
+
+            for (int i = 0; i < myFriendsList.Count; i++)
+            {
+                    users.Remove(users.GetUserByID(myFriendsList[i].FriendID));
+            }
+
+            MyFriends myUnFriends = new MyFriends();
+            foreach(User unfriend in users)
+            {
+                myUnFriends.Add(new MyFriend(unfriend.Id, userID));
+            }
+
+            return myUnFriends;
+        }
+
+        public MyFriends GetAllMyFriends()
+        {
+            MyFriends myFriends = new MyFriends();
+            List<MyFriend> myFriendsList = DbTable<MyFriend>.SelectAll();
 
             if (myFriendsList != null)
             {

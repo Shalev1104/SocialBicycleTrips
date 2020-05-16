@@ -14,6 +14,8 @@ using Firebase.Auth;
 using Xamarin.Facebook;
 using Org.Apache.Http.Conn;
 using System.Runtime.CompilerServices;
+using Android.Graphics.Drawables;
+using Android.Graphics;
 
 namespace SocialBicycleTrips
 {
@@ -48,10 +50,8 @@ namespace SocialBicycleTrips
             if (Intent.HasExtra("user"))
             {
                 user = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("user")) as User;
-                //user.MyTrips.Delete
                 if (user.IsSocialMediaLogon())
                 {
-                    //firebaseAuth = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("firebase")) as FirebaseAuth;
                     MenuInflater.Inflate(Resource.Menu.socialMediaMenu, menu);
                 }
                 else
@@ -99,7 +99,7 @@ namespace SocialBicycleTrips
 
                 case Resource.Id.mnuMyFriends:
                     {
-                        getUser.SetClass(this, typeof(MainActivity));
+                        getUser.SetClass(this, typeof(Activities.MyFriendsActivity));
                         StartActivity(getUser);
                         item.SetChecked(true);
                         break;
@@ -130,7 +130,7 @@ namespace SocialBicycleTrips
 
                 case Resource.Id.mnuSettings:
                     {
-                        StartActivity(new Intent(this, typeof(MainActivity)));
+                        StartActivity(new Intent(this, typeof(Activities.SettingsActivity)));
                         item.SetChecked(true);
                         break;
                     }

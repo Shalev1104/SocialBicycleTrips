@@ -59,9 +59,16 @@ namespace SocialBicycleTrips.Adapters
 
             if (myFriend != null)
             {
-                User friend = users.GetUserByID(myFriend.Id);
-                myFriendsHolder.txtName.Text = friend.Name;
-                myFriendsHolder.profileImage.SetImageBitmap(BitMapHelper.Base64ToBitMap(friend.Image));
+                User friend = users.GetUserByID(myFriend.FriendID);
+                    myFriendsHolder.txtName.Text = friend.Name;
+                    try
+                    {
+                        myFriendsHolder.profileImage.SetImageBitmap(BitMapHelper.Base64ToBitMap(friend.Image));
+                    }
+                    catch
+                    {
+                        myFriendsHolder.profileImage.SetImageBitmap(BitMapHelper.DownloadImageByUrl(friend.Image));
+                    }
             }
 
             return convertView;

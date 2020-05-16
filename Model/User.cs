@@ -17,6 +17,8 @@ using SQLite;
 using Dal;
 using SQLiteNetExtensions.Attributes;
 using SQLiteNetExtensions;
+using Android.Content.Res;
+using System.Runtime.Remoting.Contexts;
 
 namespace Model
 {
@@ -45,21 +47,6 @@ namespace Model
             this.password = password;
             this.phoneNumber = phoneNumber;
             this.birthday = birthday;
-
-            completedTrips = 0;
-            upcomingTrips = 0;
-            myFriends = new MyFriends();
-            myTrips = new MyTrips();
-        }
-
-        public User(string name, string email, string password, DateTime birthday, string phoneNumber) : base("",name)
-        {
-            this.email    = email;
-            this.password = password;
-            this.phoneNumber = phoneNumber;
-            this.birthday = birthday;
-
-            //image = BitMapHelper.BitMapToBase64(((BitmapDrawable) Resource.Drawable.common_google_signin_btn_icon_dark).Bitmap);
 
             completedTrips = 0;
             upcomingTrips = 0;

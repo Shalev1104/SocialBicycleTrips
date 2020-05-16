@@ -29,12 +29,14 @@ namespace SocialBicycleTrips.Activities
         private TextView age;
         private User profile;
         private User userlogon;
+        private MyFriends myFriends;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_profile);
             SetViews();
+            myFriends = new MyFriends().GetAllMyFriends();
             GenerateUser();
             UploadUserDetails();
             if(userlogon != null)
@@ -109,7 +111,20 @@ namespace SocialBicycleTrips.Activities
                 return true;
 
             MyFriend isMyFriend = new MyFriend(profile.Id, userlogon.Id);
-            return userlogon.MyFriends.Exists(isMyFriend);
+            //return userlogon.MyFriends.Exists(isMyFriend);
+            return IsFriendExists();
+        }
+
+        public bool IsFriendExists()
+        {
+            foreach(MyFriend found in myFriends)
+            {
+                if (found.UserID.Equals(userlogon.Id) && found.FriendID.Equals(profile.Id))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         private void AddFriend_Click(object sender, EventArgs e)

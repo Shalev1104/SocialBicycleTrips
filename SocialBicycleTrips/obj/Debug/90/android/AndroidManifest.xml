@@ -28,12 +28,15 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
+    <activity android:label="AddFriendsActivity" android:name="crc646d513817d643a16d.AddFriendsActivity" />
     <activity android:label="CreateTripActivity" android:name="crc646d513817d643a16d.CreateTripActivity" />
     <activity android:label="LoginActivity" android:name="crc646d513817d643a16d.LoginActivity" />
     <activity android:label="MapActivity" android:name="crc646d513817d643a16d.MapActivity" />
+    <activity android:label="MyFriendsActivity" android:name="crc646d513817d643a16d.MyFriendsActivity" />
     <activity android:label="MyTripsActivity" android:name="crc646d513817d643a16d.MyTripsActivity" />
     <activity android:label="ProfileActivity" android:name="crc646d513817d643a16d.ProfileActivity" />
     <activity android:label="RegisterActivity" android:name="crc646d513817d643a16d.RegisterActivity" />
+    <activity android:label="SettingsActivity" android:name="crc646d513817d643a16d.SettingsActivity" />
     <activity android:label="TripDetailsActivity" android:name="crc646d513817d643a16d.TripDetailsActivity" />
     <service android:name="crc64a98abb514ffad9f1.KeepAliveService" />
     <receiver android:enabled="true" android:exported="false" android:label="Essentials Battery Broadcast Receiver" android:name="crc64a0e0a82d0db9a07d.BatteryBroadcastReceiver" />

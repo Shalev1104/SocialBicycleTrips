@@ -12,6 +12,7 @@
 {urn:oasis:names:tc:xliff:document:1.2}g;C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\lp\66\jl\res\values\values.xml
 adaptive-icon;obj\Debug\90\res\mipmap-anydpi-v26\ic_launcher.xml
 adaptive-icon;obj\Debug\90\res\mipmap-anydpi-v26\ic_launcher_round.xml
+android.support.design.widget.FloatingActionButton;obj\Debug\90\res\layout\activity_myfriends.xml
 android.support.v7.widget.AppCompatImageView;C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\lp\56\jl\res\layout\com_facebook_device_auth_dialog_fragment.xml
 android.support.v7.widget.AppCompatImageView;C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\lp\56\jl\res\layout\com_facebook_smart_device_dialog_fragment.xml
 android.support.v7.widget.AppCompatImageView;C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Helper\obj\Debug\90\lp\55\jl\res\layout\com_facebook_device_auth_dialog_fragment.xml
@@ -71,7 +72,6 @@ Button;C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj
 Button;obj\Debug\90\res\layout\activity_cameraoptions.xml
 Button;obj\Debug\90\res\layout\activity_createtrip.xml
 Button;obj\Debug\90\res\layout\activity_map.xml
-Button;obj\Debug\90\res\layout\activity_myfriends.xml
 Button;obj\Debug\90\res\layout\activity_signin.xml
 Button;obj\Debug\90\res\layout\activity_signup.xml
 Button;obj\Debug\90\res\layout\activity_tripdetails.xml
@@ -476,6 +476,7 @@ EditText;C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Model\obj\Debug\90\l
 EditText;C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Model\obj\Debug\90\lp\65\jl\res\layout\places_autocomplete_search_bar.xml
 EditText;C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\lp\66\jl\res\layout\places_autocomplete_fragment.xml
 EditText;C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\lp\66\jl\res\layout\places_autocomplete_search_bar.xml
+EditText;obj\Debug\90\res\layout\activity_addfriend.xml
 EditText;obj\Debug\90\res\layout\activity_createtrip.xml
 EditText;obj\Debug\90\res\layout\activity_myfriends.xml
 EditText;obj\Debug\90\res\layout\activity_signin.xml
@@ -548,6 +549,7 @@ ImageView;C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\
 ImageView;C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\lp\66\jl\res\layout\places_autocomplete_item_powered_by_google.xml
 ImageView;C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\lp\66\jl\res\layout\places_autocomplete_main_fullscreen.xml
 ImageView;C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\lp\66\jl\res\layout\places_autocomplete_main_overlay.xml
+ImageView;obj\Debug\90\res\layout\activity_addfriend.xml
 ImageView;obj\Debug\90\res\layout\activity_map.xml
 ImageView;obj\Debug\90\res\layout\activity_myfriends.xml
 ImageView;obj\Debug\90\res\layout\activity_singleitemtripdesign.xml
@@ -639,6 +641,7 @@ LinearLayout;C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTri
 LinearLayout;C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\lp\66\jl\res\layout\places_autocomplete_main_fullscreen.xml
 LinearLayout;C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\lp\66\jl\res\layout\places_autocomplete_main_overlay.xml
 LinearLayout;C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\lp\66\jl\res\layout\places_autocomplete_search_bar.xml
+LinearLayout;obj\Debug\90\res\layout\activity_addfriend.xml
 LinearLayout;obj\Debug\90\res\layout\activity_addparticipants.xml
 LinearLayout;obj\Debug\90\res\layout\activity_cameraoptions.xml
 LinearLayout;obj\Debug\90\res\layout\activity_createtrip.xml
@@ -648,10 +651,12 @@ LinearLayout;obj\Debug\90\res\layout\activity_myfriends.xml
 LinearLayout;obj\Debug\90\res\layout\activity_mytrips.xml
 LinearLayout;obj\Debug\90\res\layout\activity_peoplelist.xml
 LinearLayout;obj\Debug\90\res\layout\activity_profile.xml
+LinearLayout;obj\Debug\90\res\layout\activity_settings.xml
 LinearLayout;obj\Debug\90\res\layout\activity_signin.xml
 LinearLayout;obj\Debug\90\res\layout\activity_signup.xml
 LinearLayout;obj\Debug\90\res\layout\activity_singleitemtripdesign.xml
 LinearLayout;obj\Debug\90\res\layout\activity_tripdetails.xml
+ListView;obj\Debug\90\res\layout\activity_addfriend.xml
 ListView;obj\Debug\90\res\layout\activity_main.xml
 ListView;obj\Debug\90\res\layout\activity_myfriends.xml
 ListView;obj\Debug\90\res\layout\activity_mytrips.xml
@@ -736,6 +741,7 @@ RelativeLayout;C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleT
 RelativeLayout;C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\lp\66\jl\res\layout\places_autocomplete_main_fullscreen.xml
 RelativeLayout;obj\Debug\90\res\layout\activity_main.xml
 RelativeLayout;obj\Debug\90\res\layout\activity_map.xml
+RelativeLayout;obj\Debug\90\res\layout\activity_myfriends.xml
 requestFocus;C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\lp\56\jl\res\layout\com_facebook_device_auth_dialog_fragment.xml
 requestFocus;C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Helper\obj\Debug\90\lp\55\jl\res\layout\com_facebook_device_auth_dialog_fragment.xml
 requestFocus;C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Model\obj\Debug\90\lp\58\jl\res\layout\com_facebook_device_auth_dialog_fragment.xml
@@ -1514,6 +1520,7 @@ solid;C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\
 solid;obj\Debug\90\res\drawable\cornerlayer1.xml
 solid;obj\Debug\90\res\drawable\cornerlayer2.xml
 solid;obj\Debug\90\res\drawable\logincorners.xml
+Spinner;obj\Debug\90\res\layout\activity_settings.xml
 string;C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\lp\56\jl\res\values\values.xml
 string;C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\lp\56\jl\res\values-af\values-af.xml
 string;C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\lp\56\jl\res\values-ar\values-ar.xml
@@ -2256,6 +2263,7 @@ TextView;C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\o
 TextView;C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\lp\61\jl\res\layout\com_facebook_tooltip_bubble.xml
 TextView;C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\lp\66\jl\res\layout\places_autocomplete_error_text.xml
 TextView;C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\lp\66\jl\res\layout\places_autocomplete_item_prediction.xml
+TextView;obj\Debug\90\res\layout\activity_addfriend.xml
 TextView;obj\Debug\90\res\layout\activity_addparticipants.xml
 TextView;obj\Debug\90\res\layout\activity_cameraoptions.xml
 TextView;obj\Debug\90\res\layout\activity_createtrip.xml
@@ -2264,6 +2272,7 @@ TextView;obj\Debug\90\res\layout\activity_map.xml
 TextView;obj\Debug\90\res\layout\activity_mytrips.xml
 TextView;obj\Debug\90\res\layout\activity_peoplelist.xml
 TextView;obj\Debug\90\res\layout\activity_profile.xml
+TextView;obj\Debug\90\res\layout\activity_settings.xml
 TextView;obj\Debug\90\res\layout\activity_signin.xml
 TextView;obj\Debug\90\res\layout\activity_signup.xml
 TextView;obj\Debug\90\res\layout\activity_singleitemtripdesign.xml

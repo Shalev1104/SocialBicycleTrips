@@ -122,10 +122,16 @@ namespace SocialBicycleTrips.Activities
         private void ToProfileActivity_Click(object sender, EventArgs e)
         {
             Intent intent = new Intent(this, typeof(Activities.ProfileActivity));
-            intent.PutExtra("profile", Serializer.ObjectToByteArray(users.GetUserByID(tripManager.Id)));
+            User profile = users.GetUserByID(tripManager.Id);
+            intent.PutExtra("profile", Serializer.ObjectToByteArray(profile));
             if (Intent.HasExtra("user"))
             {
                 intent.PutExtra("user", Serializer.ObjectToByteArray(user));
+
+                if (profile.Equals(user))
+                {
+                    intent.PutExtra("myself", true);
+                }
             }
             StartActivity(intent);
         }
@@ -164,9 +170,34 @@ namespace SocialBicycleTrips.Activities
 
         public void OnMapReady(GoogleMap googleMap)
         {
+            SetMapStyle(googleMap);
             map = googleMap;
             mapHelper = new MapFunctionHelper("AIzaSyAH6n6XJq3ZCQSAKBSBNvQ12cBXltlOKvU", map);
             DrawTripOnMap();
+        }
+        public void SetMapStyle(GoogleMap googleMap)
+        {
+            switch (Settings.MapStyle)
+            {
+                case "Standard":
+                    googleMap.SetMapStyle(MapStyleOptions.LoadRawResourceStyle(this, Resource.Raw.StandardMapStyle));
+                    break;
+                case "Silver":
+                    googleMap.SetMapStyle(MapStyleOptions.LoadRawResourceStyle(this, Resource.Raw.SilverMapStyle));
+                    break;
+                case "Retro":
+                    googleMap.SetMapStyle(MapStyleOptions.LoadRawResourceStyle(this, Resource.Raw.RetroMapStyle));
+                    break;
+                case "Dark":
+                    googleMap.SetMapStyle(MapStyleOptions.LoadRawResourceStyle(this, Resource.Raw.DarkMapStyle));
+                    break;
+                case "Night":
+                    googleMap.SetMapStyle(MapStyleOptions.LoadRawResourceStyle(this, Resource.Raw.NightMapStyle));
+                    break;
+                case "Aubergine":
+                    googleMap.SetMapStyle(MapStyleOptions.LoadRawResourceStyle(this, Resource.Raw.AubergineMapStyle));
+                    break;
+            }
         }
     }
 }
