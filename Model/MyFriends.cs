@@ -71,9 +71,12 @@ namespace Model
             }
 
             MyFriends myUnFriends = new MyFriends();
-            foreach(User unfriend in users)
+            if(users != null)
             {
-                myUnFriends.Add(new MyFriend(unfriend.Id, userID));
+                foreach (User unfriend in users)
+                {
+                    myUnFriends.Add(new MyFriend(unfriend.Id, userID));
+                }
             }
 
             return myUnFriends;

@@ -72,6 +72,7 @@ Button;C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj
 Button;obj\Debug\90\res\layout\activity_cameraoptions.xml
 Button;obj\Debug\90\res\layout\activity_createtrip.xml
 Button;obj\Debug\90\res\layout\activity_map.xml
+Button;obj\Debug\90\res\layout\activity_selectparticipants.xml
 Button;obj\Debug\90\res\layout\activity_signin.xml
 Button;obj\Debug\90\res\layout\activity_signup.xml
 Button;obj\Debug\90\res\layout\activity_tripdetails.xml
@@ -651,6 +652,7 @@ LinearLayout;obj\Debug\90\res\layout\activity_myfriends.xml
 LinearLayout;obj\Debug\90\res\layout\activity_mytrips.xml
 LinearLayout;obj\Debug\90\res\layout\activity_peoplelist.xml
 LinearLayout;obj\Debug\90\res\layout\activity_profile.xml
+LinearLayout;obj\Debug\90\res\layout\activity_selectparticipants.xml
 LinearLayout;obj\Debug\90\res\layout\activity_settings.xml
 LinearLayout;obj\Debug\90\res\layout\activity_signin.xml
 LinearLayout;obj\Debug\90\res\layout\activity_signup.xml
@@ -660,6 +662,7 @@ ListView;obj\Debug\90\res\layout\activity_addfriend.xml
 ListView;obj\Debug\90\res\layout\activity_main.xml
 ListView;obj\Debug\90\res\layout\activity_myfriends.xml
 ListView;obj\Debug\90\res\layout\activity_mytrips.xml
+ListView;obj\Debug\90\res\layout\activity_selectparticipants.xml
 ListView;obj\Debug\90\res\layout\activity_tripdetails.xml
 menu;obj\Debug\90\res\menu\guestmenu.xml
 menu;obj\Debug\90\res\menu\socialmediamenu.xml
@@ -2272,6 +2275,7 @@ TextView;obj\Debug\90\res\layout\activity_map.xml
 TextView;obj\Debug\90\res\layout\activity_mytrips.xml
 TextView;obj\Debug\90\res\layout\activity_peoplelist.xml
 TextView;obj\Debug\90\res\layout\activity_profile.xml
+TextView;obj\Debug\90\res\layout\activity_selectparticipants.xml
 TextView;obj\Debug\90\res\layout\activity_settings.xml
 TextView;obj\Debug\90\res\layout\activity_signin.xml
 TextView;obj\Debug\90\res\layout\activity_signup.xml

@@ -70,10 +70,17 @@ namespace SocialBicycleTrips.Adapters
                 Model.Location startingLocation = Serializer.ByteArrayToObject(trip.StartingLocation) as Model.Location;
                 Model.Location destination = Serializer.ByteArrayToObject(trip.FinalLocation) as Model.Location;
                 myTripsHolder.txtName.Text = manager.Name;
-                myTripsHolder.profileImage.SetImageBitmap(BitMapHelper.Base64ToBitMap(manager.Image));
+                try
+                {
+                    myTripsHolder.profileImage.SetImageBitmap(BitMapHelper.Base64ToBitMap(manager.Image));
+                }
+                catch
+                {
+                    myTripsHolder.profileImage.SetImageBitmap(BitMapHelper.TransferMediaImages(manager.Image));
+                }
                 myTripsHolder.txtNotes.Text = trip.Notes;
-                myTripsHolder.dayTime.Text = trip.DateTime.DayOfWeek.ToString() + " " + trip.DateTime.TimeOfDay.ToString();
-                myTripsHolder.date.Text = trip.DateTime.Date.ToString();
+                myTripsHolder.dayTime.Text = trip.DateTime.DayOfWeek.ToString() + " , " + trip.DateTime.ToString("h: mm tt");
+                myTripsHolder.date.Text = trip.DateTime.ToString("MM/dd/yyyy");
                 if (startingLocation.Name != null)
                 {
                     myTripsHolder.txtStartup.Text = startingLocation.Name;
@@ -92,7 +99,7 @@ namespace SocialBicycleTrips.Adapters
                 }
                 try
                 {
-                    myTripsHolder.txtParticipants.Text = trip.Participants.Count().ToString();
+                    myTripsHolder.txtParticipants.Text = (trip.Participants.GetAllParticipants(trip.Id).Count() + 1).ToString();
                 }
                 catch
                 {

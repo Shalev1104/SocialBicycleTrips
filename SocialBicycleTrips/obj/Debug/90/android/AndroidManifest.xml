@@ -29,6 +29,7 @@
       </intent-filter>
     </activity>
     <activity android:label="AddFriendsActivity" android:name="crc646d513817d643a16d.AddFriendsActivity" />
+    <activity android:label="AddParticipantsActivity" android:name="crc646d513817d643a16d.AddParticipantsActivity" />
     <activity android:label="CreateTripActivity" android:name="crc646d513817d643a16d.CreateTripActivity" />
     <activity android:label="LoginActivity" android:name="crc646d513817d643a16d.LoginActivity" />
     <activity android:label="MapActivity" android:name="crc646d513817d643a16d.MapActivity" />

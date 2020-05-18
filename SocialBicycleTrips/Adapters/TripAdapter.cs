@@ -78,9 +78,9 @@ namespace SocialBicycleTrips.Adapters
                     tripsHolder.profileImage.SetImageBitmap(BitMapHelper.TransferMediaImages(manager.Image));
                 }
                 tripsHolder.txtNotes.Text = trip.Notes;
-                tripsHolder.dayTime.Text = trip.DateTime.DayOfWeek.ToString() + " " + trip.DateTime.TimeOfDay.ToString();
-                tripsHolder.date.Text = trip.DateTime.Date.ToString();
-                if(startingLocation.Name != null)
+                tripsHolder.dayTime.Text = trip.DateTime.DayOfWeek.ToString() + " , " + trip.DateTime.ToString("h: mm tt");
+                tripsHolder.date.Text = trip.DateTime.ToString("MM/dd/yyyy");
+                if (startingLocation.Name != null)
                 {
                     tripsHolder.txtStartup.Text = startingLocation.Name;
                 }
@@ -98,7 +98,7 @@ namespace SocialBicycleTrips.Adapters
                 }
                 try
                 {
-                    tripsHolder.txtParticipants.Text = trip.Participants.Count().ToString();
+                    tripsHolder.txtParticipants.Text = (trip.Participants.GetAllParticipants(trip.Id).Count() + 1).ToString();
                 }
                 catch
                 {

@@ -30,6 +30,19 @@ namespace Model
             this.userID = userID;
         }
 
+        public bool IsTripParticipant(int tripID)
+        {
+            MyTrips myTrips = new MyTrips().GetAllMyTrips(userID);
+            for (int i = 0; i < myTrips.Count; i++)
+            {
+                if (myTrips[i].TripID.Equals(tripID))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public int FriendID { get => friendID; set => friendID = value; }
         public int UserID { get => userID; set => userID = value; }
     }

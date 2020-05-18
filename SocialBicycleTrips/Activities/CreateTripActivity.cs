@@ -30,6 +30,8 @@ namespace SocialBicycleTrips.Activities
         private DateTime time;
         Model.Location firstLocation;
         Model.Location lastLocation;
+        private int hour;
+        private int minutes;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -78,7 +80,7 @@ namespace SocialBicycleTrips.Activities
         {
             if (IsValid())
             {
-                DateTime dateTime = new DateTime(date.Date.Year, date.Date.Month, date.Date.Day, time.Hour, time.Minute,0);
+                DateTime dateTime = new DateTime(date.Date.Year, date.Date.Month, date.Date.Day, hour, minutes,0);
                 byte[] first = Serializer.ObjectToByteArray(firstLocation);
                 byte[] last = Serializer.ObjectToByteArray(lastLocation);
                 TripManager tripManager = new TripManager(user.Image, user.Name);
@@ -122,9 +124,8 @@ namespace SocialBicycleTrips.Activities
 
         private void OnTimeClick(object sender, TimePickerDialog.TimeSetEventArgs e)
         {
-            time = new DateTime();
-            time.AddHours(e.HourOfDay);
-            time.AddMinutes(e.Minute);
+            hour = e.HourOfDay;
+            minutes = e.Minute;
             btnTime.Text = e.HourOfDay + ":" + e.Minute;
         }
 

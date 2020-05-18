@@ -70,6 +70,7 @@
   <ItemGroup>
     <Compile Include="Activities\ActivitySplash.cs" />
     <Compile Include="Activities\AddFriendsActivity.cs" />
+    <Compile Include="Activities\AddParticipantsActivity.cs" />
     <Compile Include="Activities\CreateTripActivity.cs" />
     <Compile Include="Activities\LoginActivity.cs" />
     <Compile Include="Activities\MapActivity.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Activities\RegisterActivity.cs" />
     <Compile Include="Activities\SettingsActivity.cs" />
     <Compile Include="Activities\TripDetailsActivity.cs" />
+    <Compile Include="Adapters\AddParticipantsAdapter.cs" />
     <Compile Include="Adapters\MyFriendsAdapter.cs" />
     <Compile Include="Adapters\MyTripsAdapter.cs" />
     <Compile Include="Adapters\PeopleAdapter.cs" />
@@ -348,6 +350,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\activity_addFriend.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\activity_selectParticipants.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

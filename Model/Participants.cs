@@ -35,10 +35,44 @@ namespace Model
         {
             base.Sort((item1, item2) => item1.UserID.CompareTo(item2.UserID));
         }
-        public Participants GetAllParticipants() // converts from list to a class(רבים)
+        public Participants GetAllMyFriendsParticipants(int userID,int tripID)
+        {
+            Participants participants = new Participants();
+            Users users = new Users().GetAllUsers();
+            MyFriends userFriends = users.GetUserByID(userID).MyFriends.GetAllMyFriends(userID);
+
+            for (int i = 0; i < userFriends.Count; i++)
+            {
+                if (userFriends[i].IsTripParticipant(tripID))
+                {
+                    userFriends.RemoveAt(i);
+                }
+            }
+            if (userFriends != null)
+            {
+                foreach (MyFriend found in userFriends)
+                {
+                    participants.Add(new Participant(found.FriendID, tripID));
+                }
+            }
+
+            return participants;
+        }
+
+        public Participants GetAllParticipants(int tripID)
         {
             Participants participants = new Participants();
             List<Participant> participantsList = DbTable<Participant>.SelectAll();
+            if (participantsList != null)
+            {
+                for (int i = 0; i < participantsList.Count; i++)
+                {
+                    if (!participantsList[i].TripID.Equals(tripID))
+                    {
+                        participantsList.RemoveAt(i);
+                    }
+                }
+            }
 
             if (participantsList != null)
             {
@@ -47,7 +81,6 @@ namespace Model
 
             return participants;
         }
-
         public int Insert(Participant participant)
         {
             return DbTable<Participant>.Insert(participant);

@@ -170,7 +170,6 @@ namespace SocialBicycleTrips
                 if(resultCode == Android.App.Result.Ok)
                 {
                     Trip trip = Serializer.ByteArrayToObject(data.GetByteArrayExtra("trip")) as Trip;
-                    trip.Participants = new Participants().GetAllParticipants();
                     trips.Insert(trip);
                     StartActivity(new Intent(this, typeof(MainActivity)).PutExtra("user", Serializer.ObjectToByteArray(user)).PutExtra("AddToMyTrips",true));
                 }

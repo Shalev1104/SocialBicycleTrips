@@ -88,7 +88,7 @@ namespace SocialBicycleTrips.Activities
         public void SetFields()
         {
             tripNotes.Text = trip.Notes;
-            dateTimeTrip.Text = trip.DateTime.Date.ToString() + trip.DateTime.Date.DayOfWeek + trip.DateTime.TimeOfDay;
+            dateTimeTrip.Text = trip.DateTime.ToString("dddd, dd MMMM yyyy HH:mm");
             tripManagerName.Text = tripManager.Name;
             try
             {
@@ -138,13 +138,17 @@ namespace SocialBicycleTrips.Activities
 
         private void UploadUpdatedList()
         {
-            trip.Participants = new Participants().GetAllParticipants();
+            trip.Participants = new Participants().GetAllParticipants(trip.Id);
             trip.Participants.Sort();
             participantsAdapter = new Adapters.PeopleAdapter(this, Resource.Layout.activity_peopleList, trip.Participants,users);
             lvParticipants.Adapter = participantsAdapter;
         }
         private void BtnJoinOrAddParticipant_Click(object sender, EventArgs e)
         {
+            Intent intent = new Intent(this, typeof(Activities.AddParticipantsActivity));
+            intent.PutExtra("user", Serializer.ObjectToByteArray(user));
+            intent.PutExtra("trip", Serializer.ObjectToByteArray(trip));
+            StartActivityForResult(intent, 1);
 
         }
         protected override void OnActivityResult(int requestCode, [GeneratedEnum] Android.App.Result resultCode, Intent data)
