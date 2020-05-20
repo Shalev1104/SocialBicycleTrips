@@ -133,9 +133,12 @@ namespace SocialBicycleTrips.Activities
         }
         private void UploadUpdatedList()
         {
-            trips.Sort();
-            myTripsAdapter = new Adapters.MyTripsAdapter(this, Resource.Layout.activity_singleItemTripDesign, user.MyTrips.GetAllMyTrips(user.Id),trips);
-            lvMyTrips.Adapter = myTripsAdapter;
+            if(trips != null)
+            {
+                trips.Sort();
+                myTripsAdapter = new Adapters.MyTripsAdapter(this, Resource.Layout.activity_singleItemTripDesign, user.MyTrips.GetAllMyTrips(user.Id), trips);
+                lvMyTrips.Adapter = myTripsAdapter;
+            }
         }
         public void SetViews()
         {
@@ -147,7 +150,7 @@ namespace SocialBicycleTrips.Activities
 
             Intent intent = new Intent(this, typeof(Activities.TripDetailsActivity));
 
-            intent.PutExtra("trip", Serializer.ObjectToByteArray(trips[e.Position]));
+            intent.PutExtra("trip", Serializer.ObjectToByteArray(trips.GetTripByID(user.MyTrips.GetAllMyTrips(user.Id)[e.Position].TripID)));
             intent.PutExtra("user", Serializer.ObjectToByteArray(user));
 
             StartActivity(intent);

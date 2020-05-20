@@ -96,14 +96,7 @@ namespace SocialBicycleTrips.Adapters
                 {
                     tripsHolder.txtEndup.Text = destination.Address;
                 }
-                try
-                {
-                    tripsHolder.txtParticipants.Text = (trip.Participants.GetAllParticipants(trip.Id).Count() + 1).ToString();
-                }
-                catch
-                {
-                    tripsHolder.txtParticipants.Text = "1";
-                }
+                tripsHolder.txtParticipants.Text = (new Participants().GetAllParticipants(trip.Id).Count() + 1).ToString();
                 
             }
 

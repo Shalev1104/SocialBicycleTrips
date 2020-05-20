@@ -7,6 +7,7 @@ C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Helper\bin\Debug\com.companyn
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Helper\obj\Debug\90\MonoAndroid,Version=v9.0.AssemblyAttributes.cs
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Helper\obj\Debug\90\build.props
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Helper\obj\Debug\90\adb.props
+C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Helper\obj\Debug\90\Helper.csprojAssemblyReference.cache
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Helper\obj\Debug\90\_VerifyXamarinAndroidSupportVersions.stamp
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Helper\obj\Debug\90\stamp\_BuildLibraryImportsCache.stamp
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Helper\obj\Debug\90\res.flag
@@ -484,4 +485,3 @@ C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Helper\obj\Debug\90\stamp\_Co
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Helper\obj\Debug\90\stamp\_GenerateJavaStubs.stamp
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Helper\obj\Debug\90\stamp\_GeneratePackageManagerJava.stamp
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Helper\obj\Debug\90\stamp\_ResolveLibraryProjectImports.stamp
-C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Helper\obj\Debug\90\Helper.csprojAssemblyReference.cache

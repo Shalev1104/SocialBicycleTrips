@@ -97,14 +97,7 @@ namespace SocialBicycleTrips.Adapters
                 {
                     myTripsHolder.txtEndup.Text = destination.Address;
                 }
-                try
-                {
-                    myTripsHolder.txtParticipants.Text = (trip.Participants.GetAllParticipants(trip.Id).Count() + 1).ToString();
-                }
-                catch
-                {
-                    myTripsHolder.txtParticipants.Text = "1";
-                }
+                myTripsHolder.txtParticipants.Text = (new Participants().GetAllParticipants(trip.Id).Count() + 1).ToString();
             }
 
             return convertView;

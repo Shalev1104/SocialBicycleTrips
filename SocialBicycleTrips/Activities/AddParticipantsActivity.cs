@@ -47,18 +47,15 @@ namespace SocialBicycleTrips.Activities
             Users selected = addParticipantsAdapter.GetSelectedUsers();
             if(selected != null)
             {
-                for (int i = 0; i < selected.Count; i++)
-                {
-                    trip.Participants.Insert(new Participant(selected[i].Id, trip.Id));
-                }
-                SetResult(Android.App.Result.Ok);
+                Intent intent = new Intent().PutExtra("selected", Serializer.ObjectToByteArray(selected));
+                SetResult(Android.App.Result.Ok, intent);
             }
             Finish();
         }
 
         public void UploadUpdatedList()
         {
-            addParticipantsAdapter = new Adapters.AddParticipantsAdapter(this, Resource.Layout.activity_addParticipants,trip.Participants.GetAllMyFriendsParticipants(user.Id,trip.Id), users);
+            addParticipantsAdapter = new Adapters.AddParticipantsAdapter(this, Resource.Layout.activity_addParticipants,new Participants().GetAllMyFriendsParticipants(user.Id,trip.Id), users);
             lvAddParticipants.Adapter = addParticipantsAdapter;
         }
     }

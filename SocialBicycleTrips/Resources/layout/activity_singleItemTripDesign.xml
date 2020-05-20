@@ -96,14 +96,14 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Rishon Lezion..."
                 android:id="@+id/txtStartupItem"
                 />
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Tel Aviv..."
@@ -123,7 +123,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="7"
+                android:text="17"
                 android:textColor="@android:color/black"
                 android:gravity="center"
                 android:id="@+id/txtParticipantsItem"

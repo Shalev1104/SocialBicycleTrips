@@ -45,7 +45,6 @@ int id light 0x1
 int id none 0x1
 int id standard 0x1
 int id wide 0x1
-int integer google_play_services_version 0x1
 int string common_google_play_services_enable_button 0x1
 int string common_google_play_services_enable_text 0x1
 int string common_google_play_services_enable_title 0x1
@@ -54,7 +53,6 @@ int string common_google_play_services_install_text 0x1
 int string common_google_play_services_install_title 0x1
 int string common_google_play_services_notification_channel_name 0x1
 int string common_google_play_services_notification_ticker 0x1
-int string common_google_play_services_unknown_issue 0x1
 int string common_google_play_services_unsupported_text 0x1
 int string common_google_play_services_update_button 0x1
 int string common_google_play_services_update_text 0x1

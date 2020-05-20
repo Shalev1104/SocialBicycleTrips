@@ -45,12 +45,15 @@ namespace Model
         {
             MyTrips myTrips = new MyTrips();
             List<MyTrip> myTripList = DbTable<MyTrip>.SelectAll();
-
-            for (int i = 0; i < myTripList.Count; i++)
+            if(myTripList != null)
             {
-                if (!myTripList[i].UserID.Equals(userID))
+                for (int i = 0; i < myTripList.Count; i++)
                 {
-                    myTripList.RemoveAt(i);
+                    if (!(myTripList[i].UserID == userID))
+                    {
+                        myTripList.RemoveAt(i);
+                        i--;
+                    }
                 }
             }
 

@@ -20,7 +20,6 @@ namespace SocialBicycleTrips.Activities
         private Button btnDate;
         private Button btnTime;
         private Button locationChooser;
-        private Button btnAddParticipants;
         private Button btnCreateTrip;
         private TimePickerDialog timePicker;
         private DatePickerDialog datePicker;
@@ -48,13 +47,11 @@ namespace SocialBicycleTrips.Activities
             btnDate = FindViewById<Button>(Resource.Id.btnDateTripCreator);
             btnTime = FindViewById<Button>(Resource.Id.btnTimeTripCreator);
             locationChooser = FindViewById<Button>(Resource.Id.btnLocationChooser);
-            btnAddParticipants = FindViewById<Button>(Resource.Id.btnaddParticipantsTripCreator);
             btnCreateTrip = FindViewById<Button>(Resource.Id.btnCreateTripCreator);
 
             btnDate.Click += BtnDate_Click;
             btnTime.Click += BtnTime_Click;
             locationChooser.Click += LocationChooser_Click;
-            btnAddParticipants.Click += BtnAddParticipants_Click;
             btnCreateTrip.Click += BtnCreateTrip_Click;
         }
 
@@ -102,11 +99,6 @@ namespace SocialBicycleTrips.Activities
         private bool IsValid()
         {
             return btnDate != null && !btnDate.Text.Equals("") && btnTime != null && !btnTime.Text.Equals("") && firstLocation != null && lastLocation != null;
-        }
-
-        private void BtnAddParticipants_Click(object sender, EventArgs e)
-        {
-            
         }
 
         private void BtnTime_Click(object sender, EventArgs e)

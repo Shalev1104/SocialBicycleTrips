@@ -16,6 +16,7 @@ using SQLiteNetExtensions.Attributes;
 
 namespace Model
 {
+    [Serializable]
     public class Users : BaseList<User>
     {
         public override bool Exists(User user, bool forChange = false)
@@ -24,11 +25,11 @@ namespace Model
 
             if(!forChange)
             {
-                userExists = base.Exists(item => item.Email.Equals(user.Email));
+                userExists = base.Exists(item => item.Email.Equals(user.Email) && !item.IsSocialMediaLogon());
             }
             else
             {
-                userExists = base.Exists(item => item.Email.Equals(user.Email) && item.Id != user.Id);
+                userExists = base.Exists(item => item.Email.Equals(user.Email) && !item.IsSocialMediaLogon() && item.Id != user.Id);
             }
             return userExists;
         }

@@ -32,10 +32,10 @@ namespace Model
 
         public bool IsTripParticipant(int tripID)
         {
-            MyTrips myTrips = new MyTrips().GetAllMyTrips(userID);
-            for (int i = 0; i < myTrips.Count; i++)
+            Participants p = new Participants().GetAllParticipants(tripID);
+            for(int i = 0; i < p.Count; i++)
             {
-                if (myTrips[i].TripID.Equals(tripID))
+                if (p[i].UserID.Equals(friendID))
                 {
                     return true;
                 }

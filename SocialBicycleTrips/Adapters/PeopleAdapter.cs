@@ -62,7 +62,7 @@ namespace SocialBicycleTrips.Adapters
             {
                 try
                 {
-                    User user = users.GetUserByID(participant.Id);
+                    User user = users.GetUserByID(participant.UserID);
                     peopleHolder.txtName.Text = user.Name;
                     peopleHolder.profileImage.SetImageBitmap(BitMapHelper.Base64ToBitMap(user.Image));
                 }

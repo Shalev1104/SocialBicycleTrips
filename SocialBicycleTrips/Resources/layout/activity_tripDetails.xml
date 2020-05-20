@@ -151,6 +151,7 @@
                 android:layout_gravity="center"
                 android:text="Add participants/Request to join"
                 android:id="@+id/btnAddParticipantsOrJoinOfTripDetails"
+                android:visibility="gone"
             />
             <TextView
                 android:layout_width="wrap_content"

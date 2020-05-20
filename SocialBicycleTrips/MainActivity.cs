@@ -37,6 +37,12 @@ namespace SocialBicycleTrips
             SetViews();
             trips = new Trips().GetAllTrips();
             users = new Users().GetAllUsers();
+            /*User u = new User();
+            MyTrips m = u.MyTrips.GetAllMyTrips();
+            MyFriends f = u.MyFriends.GetAllMyFriends();
+            Trip trip = new Trip();
+            Participants p = new Participants().GetAllParticipants(); clean db*/
+
             if (Intent.HasExtra("AddToMyTrips") && Intent.GetBooleanExtra("AddToMyTrips", false) == true)
             {
                 user = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("user")) as User;

@@ -46,6 +46,7 @@ namespace Model
                 if (userFriends[i].IsTripParticipant(tripID))
                 {
                     userFriends.RemoveAt(i);
+                    i--;
                 }
             }
             if (userFriends != null)
@@ -70,9 +71,23 @@ namespace Model
                     if (!participantsList[i].TripID.Equals(tripID))
                     {
                         participantsList.RemoveAt(i);
+                        i--;
                     }
                 }
             }
+
+            if (participantsList != null)
+            {
+                participants.AddRange(participantsList);
+            }
+
+            return participants;
+        }
+
+        public Participants GetAllParticipants()
+        {
+            Participants participants = new Participants();
+            List<Participant> participantsList = DbTable<Participant>.SelectAll();
 
             if (participantsList != null)
             {

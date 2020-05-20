@@ -48,6 +48,7 @@ namespace Model
                 if (!myFriendsList[i].UserID.Equals(userID))
                 {
                     myFriendsList.RemoveAt(i);
+                    i--;
                 }
             }
 
@@ -65,9 +66,12 @@ namespace Model
             users.Remove(users.GetUserByID(userID));
             MyFriends myFriendsList = new MyFriends().GetAllMyFriends(userID);
 
-            for (int i = 0; i < myFriendsList.Count; i++)
+            if(myFriendsList != null)
             {
+                for (int i = 0; i < myFriendsList.Count; i++)
+                {
                     users.Remove(users.GetUserByID(myFriendsList[i].FriendID));
+                }
             }
 
             MyFriends myUnFriends = new MyFriends();

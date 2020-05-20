@@ -33,6 +33,7 @@ namespace SocialBicycleTrips.Activities
         private Button register;
         private Bitmap bitmap;
         private User user;
+        private Users users;
 
         private Dialog dialog;
         private LinearLayout cameraFrame;
@@ -44,6 +45,7 @@ namespace SocialBicycleTrips.Activities
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_signup);
+            users = new Users().GetAllUsers();
             SetViews();
             // Create your application here
         }
@@ -78,10 +80,31 @@ namespace SocialBicycleTrips.Activities
                 {
                     user = new User(name.Text, email.Text, password.Text, BitMapHelper.BitMapToBase64(BitmapFactory.DecodeResource(Resources, Resource.Drawable.StandardProfileImage)), dateTime, phoneNumber.Text); ;
                 }
-                Intent intent = new Intent();
-                intent.PutExtra("user", Serializer.ObjectToByteArray(user));
-                SetResult(Android.App.Result.Ok,intent);
-                Finish();
+                if (users.Exists(user))
+                {
+                    Android.Support.V7.App.AlertDialog.Builder alertDiag = new Android.Support.V7.App.AlertDialog.Builder(this);
+
+                    alertDiag.SetTitle("Exists");
+                    alertDiag.SetMessage("Email already exists");
+
+                    alertDiag.SetCancelable(true);
+
+                    alertDiag.SetPositiveButton("OK", (senderAlert, args)
+                    => {
+                        alertDiag.Dispose();
+                    });
+
+                    Dialog diag = alertDiag.Create();
+                    diag.Show();
+
+                }
+                else
+                {
+                    Intent intent = new Intent();
+                    intent.PutExtra("user", Serializer.ObjectToByteArray(user));
+                    SetResult(Android.App.Result.Ok, intent);
+                    Finish();
+                }
             }
         }
 

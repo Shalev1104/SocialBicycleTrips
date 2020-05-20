@@ -1,10 +1,8 @@
 Bolts.AppLinks
 Bolts.Tasks
-Dal
 Google.ZXing.Core
 GoogleGson
 GoogleMapsUtilityBinding
-Helper
 Refractored.Controls.CircleImageView
 SQLitePCLRaw.batteries_green
 SQLitePCLRaw.batteries_v2
@@ -77,3 +75,5 @@ Xamarin.GooglePlayServices.Phenotype
 Xamarin.GooglePlayServices.Places
 Xamarin.GooglePlayServices.Places.PlaceReport
 Xamarin.GooglePlayServices.Tasks
+Dal
+Helper
