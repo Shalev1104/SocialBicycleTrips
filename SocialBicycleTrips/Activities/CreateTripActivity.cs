@@ -26,7 +26,6 @@ namespace SocialBicycleTrips.Activities
         private Trip trip;
         private User user;
         private DateTime date;
-        private DateTime time;
         Model.Location firstLocation;
         Model.Location lastLocation;
         private int hour;

@@ -41,14 +41,16 @@ namespace Model
         {
             MyFriends myFriends = new MyFriends();
             List<MyFriend> myFriendsList = DbTable<MyFriend>.SelectAll();
-            myFriendsList.Remove(new MyFriend(userID, userID));
 
-            for (int i = 0; i < myFriendsList.Count; i++)
+            if(myFriendsList != null)
             {
-                if (!myFriendsList[i].UserID.Equals(userID))
+                for (int i = 0; i < myFriendsList.Count; i++)
                 {
-                    myFriendsList.RemoveAt(i);
-                    i--;
+                    if (!myFriendsList[i].UserID.Equals(userID))
+                    {
+                        myFriendsList.RemoveAt(i);
+                        i--;
+                    }
                 }
             }
 

@@ -26,7 +26,6 @@ namespace SocialBicycleTrips.Activities
     {
         GoogleMap mainMap;
         readonly string[] permissionGroupLocation = { Manifest.Permission.AccessCoarseLocation, Manifest.Permission.AccessFineLocation };
-        const int requestLocationId = 0;
         SupportMapFragment mapFragment;
         LocationRequest locationRequest;
         FusedLocationProviderClient locationClient;
@@ -62,7 +61,7 @@ namespace SocialBicycleTrips.Activities
             SetViews();
             mapFragment = (SupportMapFragment)SupportFragmentManager.FindFragmentById(Resource.Id.map);
             mapFragment.GetMapAsync(this);
-            CheckLocationPermission();
+            //CheckLocationPermission();
             CreateLocationRequest();
             GetMyLocation();
             StartLocationUpdates();
@@ -170,32 +169,37 @@ namespace SocialBicycleTrips.Activities
             }
         }
 
-        bool CheckLocationPermission()
+        /*bool CheckLocationPermission()
         {
             bool permissionGranted = false;
             if(ActivityCompat.CheckSelfPermission(this,Manifest.Permission.AccessFineLocation) != Permission.Granted && ActivityCompat.CheckSelfPermission(this, Manifest.Permission.AccessCoarseLocation) != Permission.Granted)
             {
                 permissionGranted = false;
-                RequestPermissions(permissionGroupLocation, requestLocationId);
+                RequestPermissions(permissionGroupLocation,0);
             }
             else
             {
                 permissionGranted = true;
             }
             return permissionGranted;
-        }
-        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
+        }*/
+        /*public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {
-            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-            if(grantResults.Length > 1)
+            if (grantResults.Length > 0)
             {
-                return;
+                if (requestCode == 0)
+                {
+                    if (grantResults[0] == (int)Android.Content.PM.Permission.Granted)
+                    {
+                        Toast.MakeText(this, "Permission was granted", ToastLength.Long).Show();
+                    }
+                    else
+                    {
+                        Toast.MakeText(this, "Permission was denied", ToastLength.Long).Show();
+                    }
+                }
             }
-            if(grantResults[0] == (int)Permission.Granted)
-            {
-                StartLocationUpdates();
-            }
-        }
+        }*/
         protected override void OnActivityResult(int requestCode, [GeneratedEnum] Android.App.Result resultCode, Intent data)
         {
             if (requestCode == 1)
@@ -255,10 +259,10 @@ namespace SocialBicycleTrips.Activities
 
         private async void GetMyLocation()
         {
-            if (!CheckLocationPermission())
+            /*if (!CheckLocationPermission())
             {
                 return;
-            }
+            }*/
             lastLocation = await locationClient.GetLastLocationAsync();
             if(lastLocation != null)
             {
@@ -268,10 +272,10 @@ namespace SocialBicycleTrips.Activities
         }
         void StartLocationUpdates()
         {
-            if (CheckLocationPermission())
-            {
+            /*if (CheckLocationPermission())
+            {*/
                 locationClient.RequestLocationUpdates(locationRequest, locationCallback,null);
-            }
+            //}
         }
         void StopLocationUpdates()
         {
