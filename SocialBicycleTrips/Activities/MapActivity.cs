@@ -59,9 +59,13 @@ namespace SocialBicycleTrips.Activities
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_map);
             SetViews();
+            if (!PlacesApi.IsInitialized)
+            {
+                PlacesApi.Initialize(this, "AIzaSyAH6n6XJq3ZCQSAKBSBNvQ12cBXltlOKvU");
+            }
             mapFragment = (SupportMapFragment)SupportFragmentManager.FindFragmentById(Resource.Id.map);
             mapFragment.GetMapAsync(this);
-            //CheckLocationPermission();
+            CheckLocationPermission();
             CreateLocationRequest();
             GetMyLocation();
             StartLocationUpdates();
@@ -84,16 +88,14 @@ namespace SocialBicycleTrips.Activities
             startRadio.Click += StartRadio_Click;
             endRadio.Click += EndRadio_Click;
             layoutStart.Click += LayoutStart_Click;
-            layoutEnd.Click += LayoutEnd_Click;
-            if (!PlacesApi.IsInitialized)
-            {
-                PlacesApi.Initialize(this, "AIzaSyAH6n6XJq3ZCQSAKBSBNvQ12cBXltlOKvU");
-            }
+            layoutEnd.Click += LayoutEnd_Click;         
         }
 
         private void ReturnToMyLocation_Click(object sender, EventArgs e)
         {
+            CreateLocationRequest();
             GetMyLocation();
+            StartLocationUpdates();
         }
 
         private void BtnDone_Click(object sender, EventArgs e)
@@ -169,29 +171,32 @@ namespace SocialBicycleTrips.Activities
             }
         }
 
-        /*bool CheckLocationPermission()
+        bool CheckLocationPermission()
         {
             bool permissionGranted = false;
             if(ActivityCompat.CheckSelfPermission(this,Manifest.Permission.AccessFineLocation) != Permission.Granted && ActivityCompat.CheckSelfPermission(this, Manifest.Permission.AccessCoarseLocation) != Permission.Granted)
             {
                 permissionGranted = false;
-                RequestPermissions(permissionGroupLocation,0);
+                ActivityCompat.RequestPermissions(this,permissionGroupLocation,0);
             }
             else
             {
                 permissionGranted = true;
             }
             return permissionGranted;
-        }*/
-        /*public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
+        }
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {
-            if (grantResults.Length > 0)
+            if (requestCode == 0)
             {
-                if (requestCode == 0)
+                if (grantResults.Length == 1)
                 {
                     if (grantResults[0] == (int)Android.Content.PM.Permission.Granted)
                     {
                         Toast.MakeText(this, "Permission was granted", ToastLength.Long).Show();
+                        CreateLocationRequest();
+                        GetMyLocation();
+                        StartLocationUpdates();
                     }
                     else
                     {
@@ -199,7 +204,11 @@ namespace SocialBicycleTrips.Activities
                     }
                 }
             }
-        }*/
+            else
+            {
+                base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            }
+        }
         protected override void OnActivityResult(int requestCode, [GeneratedEnum] Android.App.Result resultCode, Intent data)
         {
             if (requestCode == 1)
@@ -259,10 +268,10 @@ namespace SocialBicycleTrips.Activities
 
         private async void GetMyLocation()
         {
-            /*if (!CheckLocationPermission())
+            if (!CheckLocationPermission())
             {
                 return;
-            }*/
+            }
             lastLocation = await locationClient.GetLastLocationAsync();
             if(lastLocation != null)
             {
@@ -272,10 +281,10 @@ namespace SocialBicycleTrips.Activities
         }
         void StartLocationUpdates()
         {
-            /*if (CheckLocationPermission())
-            {*/
+            if (CheckLocationPermission())
+            {
                 locationClient.RequestLocationUpdates(locationRequest, locationCallback,null);
-            //}
+            }
         }
         void StopLocationUpdates()
         {

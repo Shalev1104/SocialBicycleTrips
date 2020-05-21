@@ -12,6 +12,7 @@ public class MapActivity
 	static {
 		__md_methods = 
 			"n_onCreate:(Landroid/os/Bundle;)V:GetOnCreate_Landroid_os_Bundle_Handler\n" +
+			"n_onRequestPermissionsResult:(I[Ljava/lang/String;[I)V:GetOnRequestPermissionsResult_IarrayLjava_lang_String_arrayIHandler\n" +
 			"n_onActivityResult:(IILandroid/content/Intent;)V:GetOnActivityResult_IILandroid_content_Intent_Handler\n" +
 			"n_onMapReady:(Lcom/google/android/gms/maps/GoogleMap;)V:GetOnMapReady_Lcom_google_android_gms_maps_GoogleMap_Handler:Android.Gms.Maps.IOnMapReadyCallbackInvoker, Xamarin.GooglePlayServices.Maps\n" +
 			"";
@@ -33,6 +34,14 @@ public class MapActivity
 	}
 
 	private native void n_onCreate (android.os.Bundle p0);
+
+
+	public void onRequestPermissionsResult (int p0, java.lang.String[] p1, int[] p2)
+	{
+		n_onRequestPermissionsResult (p0, p1, p2);
+	}
+
+	private native void n_onRequestPermissionsResult (int p0, java.lang.String[] p1, int[] p2);
 
 
 	public void onActivityResult (int p0, int p1, android.content.Intent p2)

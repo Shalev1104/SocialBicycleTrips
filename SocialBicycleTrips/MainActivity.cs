@@ -122,15 +122,11 @@ namespace SocialBicycleTrips
 
                 case Resource.Id.mnuUpdateProfile:
                     {
-                        StartActivity(new Intent(this, typeof(MainActivity)));
-                        item.SetChecked(true);
                         break;
                     }
 
                 case Resource.Id.mnuChangePassword:
                     {
-                        StartActivity(new Intent(this, typeof(MainActivity)));
-                        item.SetChecked(true);
                         break;
                     }
 
@@ -160,8 +156,6 @@ namespace SocialBicycleTrips
                     }
                 case Resource.Id.mnuAddDate:
                     {
-                        StartActivity(new Intent(this, typeof(MainActivity)));
-                        item.SetChecked(true);
                         break;
                     }
             }
