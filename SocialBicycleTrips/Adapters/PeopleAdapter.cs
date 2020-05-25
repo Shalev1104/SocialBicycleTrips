@@ -12,6 +12,7 @@ using Android.Widget;
 using Model;
 using Helper;
 using Dal;
+using Bumptech.Glide;
 
 namespace SocialBicycleTrips.Adapters
 {
@@ -60,15 +61,15 @@ namespace SocialBicycleTrips.Adapters
 
             if (participant != null)
             {
-                try
+                User user = users.GetUserByID(participant.UserID);
+                peopleHolder.txtName.Text = user.Name;
+                if(!user.IsSocialMediaLogon())
                 {
-                    User user = users.GetUserByID(participant.UserID);
-                    peopleHolder.txtName.Text = user.Name;
                     peopleHolder.profileImage.SetImageBitmap(BitMapHelper.Base64ToBitMap(user.Image));
                 }
-                catch
+                else
                 {
-
+                    Glide.With(Context).Load(user.Image).Error(Resource.Drawable.StandardProfileImage).Into(peopleHolder.profileImage);
                 }
             }
 

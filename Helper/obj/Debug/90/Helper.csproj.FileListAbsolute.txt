@@ -484,3 +484,4 @@ C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Helper\obj\Debug\90\stamp\_Co
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Helper\obj\Debug\90\stamp\_GenerateJavaStubs.stamp
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Helper\obj\Debug\90\stamp\_GeneratePackageManagerJava.stamp
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Helper\obj\Debug\90\stamp\_ResolveLibraryProjectImports.stamp
+C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Helper\obj\Debug\90\Helper.csprojAssemblyReference.cache

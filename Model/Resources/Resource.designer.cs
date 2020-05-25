@@ -6055,7 +6055,10 @@ namespace Model
 			public const int amu_visibility_ground_overlay = 2131558419;
 			
 			// aapt resource value: 0x7F0D0014
-			public const int places_keep = 2131558420;
+			public const int Music = 2131558420;
+			
+			// aapt resource value: 0x7F0D0015
+			public const int places_keep = 2131558421;
 			
 			static Raw()
 			{

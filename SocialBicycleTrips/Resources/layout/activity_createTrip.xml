@@ -57,7 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="date"
+                android:hint="Date"
                 android:layout_marginBottom="5dp"
                 android:gravity="center"
                 android:textSize="14dp"
@@ -67,7 +67,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="time"
+                android:hint="Time"
                 android:gravity="center"
                 android:background="@android:color/transparent"
                 android:id="@+id/btnTimeTripCreator"/>
@@ -91,8 +91,7 @@
             android:layout_weight="3"
             android:text="Select Locations"
             android:textAllCaps="false"
-            android:id="@+id/btnLocationChooser"
-            android:background="@drawable/edgescorners"/>
+            android:id="@+id/btnLocationChooser"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"

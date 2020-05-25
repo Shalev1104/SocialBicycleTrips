@@ -77,6 +77,29 @@ namespace Model
             return myTrips;
         }
 
+        public int CountOnGoingTrips(int userID)
+        {
+            int count = 0;
+            MyTrips myTrips = new MyTrips().GetAllMyTrips(userID);
+            Trips trips = new Trips().GetAllTrips();
+            if (myTrips != null)
+            {
+                for (int i = 0; i < myTrips.Count; i++)
+                {
+                    if (trips.GetTripByID(myTrips[i].TripID).DateTime > DateTime.Today)
+                    {
+                        count++;
+                    }
+                }
+            }
+            return count;
+        }
+
+        public int CountCompletedTrips(int userID)
+        {
+            return (new MyTrips().GetAllMyTrips(userID).Count - CountOnGoingTrips(userID));
+        }
+
         public int Insert(MyTrip myTrip)
         {
             return DbTable<MyTrip>.Insert(myTrip);

@@ -5774,7 +5774,8 @@ public final class R {
     public static final int amu_unknwown_folder=0x7f0d0011;
     public static final int amu_unsupported=0x7f0d0012;
     public static final int amu_visibility_ground_overlay=0x7f0d0013;
-    public static final int places_keep=0x7f0d0014;
+    public static final int music=0x7f0d0014;
+    public static final int places_keep=0x7f0d0015;
   }
   public static final class string {
     public static final int abc_action_bar_home_description=0x7f0e0000;

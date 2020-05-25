@@ -43,6 +43,37 @@ namespace SocialBicycleTrips.Activities
             btnAddFriend.Click += BtnAddFriend_Click;
             searchManager.TextChanged += SearchManager_TextChanged;
             lvMyFriends.ItemClick += LvMyFriends_ItemClick;
+            lvMyFriends.ItemLongClick += LvMyFriends_ItemLongClick;
+        }
+
+        private void LvMyFriends_ItemLongClick(object sender, AdapterView.ItemLongClickEventArgs e)
+        {
+            Android.Support.V7.App.AlertDialog.Builder alertDiag = new Android.Support.V7.App.AlertDialog.Builder(this);
+
+            alertDiag.SetTitle("Confirm delete");
+            alertDiag.SetMessage("Once deleted the move cannot be undone");
+
+            alertDiag.SetCancelable(true);
+
+            alertDiag.SetPositiveButton("Delete", (senderAlert, args)
+                   => {
+                       MyFriend myFriend = user.MyFriends.GetAllMyFriends(user.Id)[e.Position];
+
+                       user.MyFriends.Delete(myFriend);
+                       Toast.MakeText(this, "Deleted", ToastLength.Long).Show();
+                       UploadUpdatedList();
+
+                       alertDiag.Dispose();
+                   });
+
+            alertDiag.SetNegativeButton("Cancel", (senderAlert, args)
+             => {
+                 alertDiag.Dispose();
+             });
+
+            Dialog diag = alertDiag.Create();
+            diag.Show();
+
         }
 
         private void LvMyFriends_ItemClick(object sender, AdapterView.ItemClickEventArgs e)

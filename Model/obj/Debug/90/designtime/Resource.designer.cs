@@ -6039,68 +6039,71 @@ namespace Model
 		public partial class Raw
 		{
 			
-			// aapt resource value: 0x7F0D0000
-			public const int amu_ballon_gx_prefix = 2131558400;
-			
 			// aapt resource value: 0x7F0D0001
-			public const int amu_basic_folder = 2131558401;
+			public const int amu_ballon_gx_prefix = 2131558401;
 			
 			// aapt resource value: 0x7F0D0002
-			public const int amu_basic_placemark = 2131558402;
+			public const int amu_basic_folder = 2131558402;
 			
 			// aapt resource value: 0x7F0D0003
-			public const int amu_cdata = 2131558403;
+			public const int amu_basic_placemark = 2131558403;
 			
 			// aapt resource value: 0x7F0D0004
-			public const int amu_default_balloon = 2131558404;
+			public const int amu_cdata = 2131558404;
 			
 			// aapt resource value: 0x7F0D0005
-			public const int amu_document_nest = 2131558405;
+			public const int amu_default_balloon = 2131558405;
 			
 			// aapt resource value: 0x7F0D0006
-			public const int amu_draw_order_ground_overlay = 2131558406;
+			public const int amu_document_nest = 2131558406;
 			
 			// aapt resource value: 0x7F0D0007
-			public const int amu_extended_data = 2131558407;
+			public const int amu_draw_order_ground_overlay = 2131558407;
 			
 			// aapt resource value: 0x7F0D0008
-			public const int amu_ground_overlay = 2131558408;
+			public const int amu_extended_data = 2131558408;
 			
 			// aapt resource value: 0x7F0D0009
-			public const int amu_ground_overlay_color = 2131558409;
+			public const int amu_ground_overlay = 2131558409;
 			
 			// aapt resource value: 0x7F0D000A
-			public const int amu_inline_style = 2131558410;
+			public const int amu_ground_overlay_color = 2131558410;
 			
 			// aapt resource value: 0x7F0D000B
-			public const int amu_multigeometry_placemarks = 2131558411;
+			public const int amu_inline_style = 2131558411;
 			
 			// aapt resource value: 0x7F0D000C
-			public const int amu_multiple_placemarks = 2131558412;
+			public const int amu_multigeometry_placemarks = 2131558412;
 			
 			// aapt resource value: 0x7F0D000D
-			public const int amu_nested_folders = 2131558413;
+			public const int amu_multiple_placemarks = 2131558413;
 			
 			// aapt resource value: 0x7F0D000E
-			public const int amu_nested_multigeometry = 2131558414;
+			public const int amu_nested_folders = 2131558414;
 			
 			// aapt resource value: 0x7F0D000F
-			public const int amu_poly_style_boolean_alpha = 2131558415;
+			public const int amu_nested_multigeometry = 2131558415;
 			
 			// aapt resource value: 0x7F0D0010
-			public const int amu_poly_style_boolean_numeric = 2131558416;
+			public const int amu_poly_style_boolean_alpha = 2131558416;
 			
 			// aapt resource value: 0x7F0D0011
-			public const int amu_unknwown_folder = 2131558417;
+			public const int amu_poly_style_boolean_numeric = 2131558417;
 			
 			// aapt resource value: 0x7F0D0012
-			public const int amu_unsupported = 2131558418;
+			public const int amu_unknwown_folder = 2131558418;
 			
 			// aapt resource value: 0x7F0D0013
-			public const int amu_visibility_ground_overlay = 2131558419;
+			public const int amu_unsupported = 2131558419;
 			
 			// aapt resource value: 0x7F0D0014
-			public const int places_keep = 2131558420;
+			public const int amu_visibility_ground_overlay = 2131558420;
+			
+			// aapt resource value: 0x7F0D0000
+			public const int Music = 2131558400;
+			
+			// aapt resource value: 0x7F0D0015
+			public const int places_keep = 2131558421;
 			
 			static Raw()
 			{

@@ -9,6 +9,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Bumptech.Glide;
 using Helper;
 using Model;
 
@@ -27,14 +28,16 @@ namespace SocialBicycleTrips.Adapters
         private MyTrip myTrip;
 
         private Trips trips;
+        private Users users;
 
 
-        public MyTripsAdapter(Context context, int resource, MyTrips myTrips,Trips trips) : base(context, resource, myTrips)
+        public MyTripsAdapter(Context context, int resource, MyTrips myTrips,Trips trips,Users users) : base(context, resource, myTrips)
         {
             this.context = context;
             this.resource = resource;
             this.myTrips = myTrips;
             this.trips = trips;
+            this.users = users;
             inflater = ((Activity)context).LayoutInflater;
         }
         public override View GetView(int position, View convertView, ViewGroup parent)
@@ -70,13 +73,13 @@ namespace SocialBicycleTrips.Adapters
                 Model.Location startingLocation = Serializer.ByteArrayToObject(trip.StartingLocation) as Model.Location;
                 Model.Location destination = Serializer.ByteArrayToObject(trip.FinalLocation) as Model.Location;
                 myTripsHolder.txtName.Text = manager.Name;
-                try
+                if(!users.GetUserByID(manager.Id).IsSocialMediaLogon())
                 {
                     myTripsHolder.profileImage.SetImageBitmap(BitMapHelper.Base64ToBitMap(manager.Image));
                 }
-                catch
+                else
                 {
-                    myTripsHolder.profileImage.SetImageBitmap(BitMapHelper.TransferMediaImages(manager.Image));
+                    Glide.With(Context).Load(manager.Image).Error(Resource.Drawable.StandardProfileImage).Into(myTripsHolder.profileImage);
                 }
                 myTripsHolder.txtNotes.Text = trip.Notes;
                 myTripsHolder.dayTime.Text = trip.DateTime.DayOfWeek.ToString() + " , " + trip.DateTime.ToString("h: mm tt");

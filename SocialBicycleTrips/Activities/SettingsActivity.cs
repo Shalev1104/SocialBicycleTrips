@@ -21,19 +21,49 @@ namespace SocialBicycleTrips.Activities
     {
         private Spinner mapstyle;
         private List<string> mapStyles;
+        private Switch music;
+        private Switch notification;
+        private Spinner tripRemind;
+        private List<string> tripReminds;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_settings);
             SetViews();
             GenerateMapStyles();
+            GenerateTripReminds();
             // Create your application here
         }
         public void SetViews()
         {
             mapstyle = FindViewById<Spinner>(Resource.Id.spnMapStyle);
+            music = FindViewById<Switch>(Resource.Id.switchMusic);
+            notification = FindViewById<Switch>(Resource.Id.switchNotification);
+            tripRemind = FindViewById<Spinner>(Resource.Id.spnTripReminder);
+
+            music.Click += Music_Click;
+            notification.Click += Notification_Click;
 
         }
+
+        private void Notification_Click(object sender, EventArgs e)
+        {
+            Model.Settings.Notification = !Model.Settings.Notification;
+        }
+
+        private void Music_Click(object sender, EventArgs e)
+        {
+            Model.Settings.Music = !Model.Settings.Music;
+            if (Model.Settings.Music)
+            {
+                StartService(new Intent(this, typeof(Model.MediaService)));
+            }
+            else
+            {
+                StopService(new Intent(this, typeof(Model.MediaService)));
+            }
+        }
+
         public void GenerateMapStyles()
         {
             mapStyles = new List<string>();
@@ -73,6 +103,56 @@ namespace SocialBicycleTrips.Activities
         private void Mapstyle_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
         {
             Model.Settings.MapStyle = mapStyles[e.Position];
+        }
+
+        public void GenerateTripReminds()
+        {
+            tripReminds = new List<string>();
+            tripReminds.Add(Model.Settings.TripRemind.ToString());
+            if (Model.Settings.TripRemind.ToString().Equals("0"))
+            {
+                tripReminds[0] = "When trip is started";
+            }
+
+            if (Model.Settings.TripRemind.ToString() != "When trip is started")
+            {
+                tripReminds.Add("When trip is started");
+            }
+            if (Model.Settings.TripRemind.ToString() != "5 minutes")
+            {
+                tripReminds.Add("5 minutes");
+            }
+            if (Model.Settings.TripRemind.ToString() != "15 minutes")
+            {
+                tripReminds.Add("15 minutes");
+            }
+            if (Model.Settings.TripRemind.ToString() != "30 minutes")
+            {
+                tripReminds.Add("30 minutes");
+            }
+            if (Model.Settings.TripRemind.ToString() != "60 minutes")
+            {
+                tripReminds.Add("60 minutes");
+            }
+
+            ArrayAdapter<string> dataAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, tripReminds);
+            dataAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
+            tripRemind.Adapter = dataAdapter;
+            tripRemind.ItemSelected += TripRemind_ItemSelected;
+        }
+
+        private void TripRemind_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
+        {
+            if (tripReminds[e.Position].Equals("When trip is started"))
+            {
+                Model.Settings.TripRemind = 0;
+            }
+            else
+            {
+                char[] ch = { tripReminds[e.Position][0], tripReminds[e.Position][1] };
+                string convertToNum = new string(ch);
+                Model.Settings.TripRemind = int.Parse(convertToNum);
+            }
         }
     }
 }

@@ -9,6 +9,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Bumptech.Glide;
 using Helper;
 using Model;
 
@@ -60,15 +61,15 @@ namespace SocialBicycleTrips.Adapters
             if (myFriend != null)
             {
                 User friend = users.GetUserByID(myFriend.FriendID);
-                    myFriendsHolder.txtName.Text = friend.Name;
-                    try
-                    {
-                        myFriendsHolder.profileImage.SetImageBitmap(BitMapHelper.Base64ToBitMap(friend.Image));
-                    }
-                    catch
-                    {
-                        myFriendsHolder.profileImage.SetImageBitmap(BitMapHelper.DownloadImageByUrl(friend.Image));
-                    }
+                myFriendsHolder.txtName.Text = friend.Name;
+                if(!friend.IsSocialMediaLogon())
+                {
+                    myFriendsHolder.profileImage.SetImageBitmap(BitMapHelper.Base64ToBitMap(friend.Image));
+                }
+                else
+                {
+                    Glide.With(Context).Load(friend.Image).Error(Resource.Drawable.StandardProfileImage).Into(myFriendsHolder.profileImage);
+                }
             }
 
             return convertView;

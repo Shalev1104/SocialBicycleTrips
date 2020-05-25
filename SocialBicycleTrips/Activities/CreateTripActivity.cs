@@ -10,6 +10,7 @@ using Android.Views;
 using Android.Widget;
 using Model;
 using Helper;
+using Android.Graphics;
 
 namespace SocialBicycleTrips.Activities
 {
@@ -62,9 +63,9 @@ namespace SocialBicycleTrips.Activities
         protected override void OnActivityResult(int requestCode, [GeneratedEnum] Android.App.Result resultCode, Intent data)
         {
             base.OnActivityResult(requestCode, resultCode, data);
-            if(requestCode == 0)
+            if (requestCode == 0)
             {
-                if(resultCode == Android.App.Result.Ok)
+                if (resultCode == Android.App.Result.Ok)
                 {
                     firstLocation = Serializer.ByteArrayToObject(data.GetByteArrayExtra("firstLocation")) as Model.Location;
                     lastLocation = Serializer.ByteArrayToObject(data.GetByteArrayExtra("lastLocation")) as Model.Location;
@@ -76,7 +77,7 @@ namespace SocialBicycleTrips.Activities
         {
             if (IsValid())
             {
-                DateTime dateTime = new DateTime(date.Date.Year, date.Date.Month, date.Date.Day, hour, minutes,0);
+                DateTime dateTime = new DateTime(date.Date.Year, date.Date.Month, date.Date.Day, hour, minutes, 0);
                 byte[] first = Serializer.ObjectToByteArray(firstLocation);
                 byte[] last = Serializer.ObjectToByteArray(lastLocation);
                 TripManager tripManager = new TripManager(user.Image, user.Name);
@@ -89,15 +90,44 @@ namespace SocialBicycleTrips.Activities
                 SetResult(Android.App.Result.Ok, intent);
                 Finish();
             }
-            else
-            {
-                Toast.MakeText(this, "please type all the requested fields", ToastLength.Long).Show();
-            }
         }
 
         private bool IsValid()
         {
-            return btnDate != null && !btnDate.Text.Equals("") && btnTime != null && !btnTime.Text.Equals("") && firstLocation != null && lastLocation != null;
+            edtNotes.Background.ClearColorFilter();
+            btnDate.Background.ClearColorFilter();
+            btnTime.Background.ClearColorFilter();
+            locationChooser.Background.ClearColorFilter();
+            if (!(edtNotes != null && !edtNotes.Text.Equals("")))
+            {
+                Toast.MakeText(this, "Type trip notes", ToastLength.Long).Show();
+                edtNotes.Background.SetColorFilter(new Color(Color.Red), PorterDuff.Mode.SrcIn);
+                return false;
+            }
+            if (btnDate.Text.Equals("Date"))
+            {
+                Toast.MakeText(this, "Enter the trip date", ToastLength.Long).Show();
+                btnDate.Background.SetColorFilter(new Color(Color.Red), PorterDuff.Mode.SrcIn);
+                return false;
+            }
+            if (btnTime.Text.Equals("Time"))
+            {
+                Toast.MakeText(this, "Enter the trip time", ToastLength.Long).Show();
+                btnTime.Background.SetColorFilter(new Color(Color.Red), PorterDuff.Mode.SrcIn);
+                return false;
+            }
+            if (date < DateTime.Now)
+            {
+                Toast.MakeText(this, "Invalid datetime", ToastLength.Long).Show();
+                return false;
+            }
+            if(!(firstLocation != null && lastLocation != null))
+            {
+                Toast.MakeText(this, "Enter trip route", ToastLength.Long).Show();
+                locationChooser.Background.SetColorFilter(new Color(Color.Red), PorterDuff.Mode.SrcIn);
+                return false;
+            }
+            return true;
         }
 
         private void BtnTime_Click(object sender, EventArgs e)

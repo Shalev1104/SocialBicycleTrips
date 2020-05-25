@@ -396,6 +396,7 @@ C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\src\crc646d513817d643a16d\AddFriendsActivity.java
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\src\crc646d513817d643a16d\AddParticipantsActivity.java
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\src\crc646d513817d643a16d\CreateTripActivity.java
+C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\src\crc646d513817d643a16d\LocationDetails.java
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\src\crc646d513817d643a16d\LoginActivity.java
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\src\crc646d513817d643a16d\MapActivity.java
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\src\crc646d513817d643a16d\MyFriendsActivity.java
@@ -437,6 +438,7 @@ C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\src\crc64b9ab4aad30612dbe\MainActivity.java
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\src\crc64e95e69e34d869711\LocationCallback.java
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\src\crc64e95e69e34d869711\LocationListener.java
+C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\src\crc64f74fed6382679c7b\MediaService.java
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\src\de\hdodenhof\circleimageview\R.java
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\src\mono\android\app\ApplicationRegistration.java
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\src\mono\android\support\design\chip\ChipGroup_OnCheckedChangeListenerImplementor.java
@@ -584,3 +586,4 @@ C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\stamp\_GeneratePackageManagerJava.stamp
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\stamp\_ResolveLibraryProjectImports.stamp
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\SocialBicycleTrips.csprojAssemblyReference.cache
+C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\src\crc64f74fed6382679c7b\PhoneCallReceiver.java

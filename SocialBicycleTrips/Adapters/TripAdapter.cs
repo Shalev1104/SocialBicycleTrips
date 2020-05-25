@@ -13,6 +13,7 @@ using Model;
 using Dal;
 using Helper;
 using System.Security.Cryptography;
+using Bumptech.Glide;
 
 namespace SocialBicycleTrips.Adapters
 {
@@ -30,12 +31,14 @@ namespace SocialBicycleTrips.Adapters
         TripManager manager;
         Model.Location startingLocation;
         Model.Location destination;
+        Users users;
 
-        public TripAdapter(Context context, int resource, Trips trips) : base(context, resource, trips)
+        public TripAdapter(Context context, int resource, Trips trips,Users users) : base(context, resource, trips)
         {
             this.context = context;
             this.resource = resource;
             this.trips = trips;
+            this.users = users;
             inflater = ((Activity)context).LayoutInflater;
         }
         public override View GetView(int position, View convertView, ViewGroup parent)
@@ -69,13 +72,13 @@ namespace SocialBicycleTrips.Adapters
                 startingLocation = Serializer.ByteArrayToObject(trip.StartingLocation) as Model.Location;
                 destination = Serializer.ByteArrayToObject(trip.FinalLocation) as Model.Location;
                 tripsHolder.txtName.Text = manager.Name;
-                try
+                if(!users.GetUserByID(manager.Id).IsSocialMediaLogon())
                 {
                     tripsHolder.profileImage.SetImageBitmap(BitMapHelper.Base64ToBitMap(manager.Image));
                 }
-                catch
+                else
                 {
-                    tripsHolder.profileImage.SetImageBitmap(BitMapHelper.TransferMediaImages(manager.Image));
+                    Glide.With(Context).Load(manager.Image).Error(Resource.Drawable.StandardProfileImage).Into(tripsHolder.profileImage);
                 }
                 tripsHolder.txtNotes.Text = trip.Notes;
                 tripsHolder.dayTime.Text = trip.DateTime.DayOfWeek.ToString() + " , " + trip.DateTime.ToString("h: mm tt");

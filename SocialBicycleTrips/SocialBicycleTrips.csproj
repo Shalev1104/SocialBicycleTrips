@@ -72,6 +72,7 @@
     <Compile Include="Activities\AddFriendsActivity.cs" />
     <Compile Include="Activities\AddParticipantsActivity.cs" />
     <Compile Include="Activities\CreateTripActivity.cs" />
+    <Compile Include="Activities\LocationDetails.cs" />
     <Compile Include="Activities\LoginActivity.cs" />
     <Compile Include="Activities\MapActivity.cs" />
     <Compile Include="Activities\MyFriendsActivity.cs" />

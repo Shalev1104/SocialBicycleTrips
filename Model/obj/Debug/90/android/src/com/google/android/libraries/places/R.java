@@ -549,7 +549,7 @@ public final class R {
 		public static final int places_autocomplete_search_bar = 0x7f0b0051;
 	}
 	public static final class raw {
-		public static final int places_keep = 0x7f0d0014;
+		public static final int places_keep = 0x7f0d0015;
 	}
 	public static final class string {
 		public static final int places_autocomplete_clear_button = 0x7f0e0061;

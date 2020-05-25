@@ -21,6 +21,7 @@ namespace SocialBicycleTrips.Activities
         private Trips trips;
         private Adapters.MyTripsAdapter myTripsAdapter;
         private User user;
+        private Users users;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -28,6 +29,7 @@ namespace SocialBicycleTrips.Activities
             SetViews();
             user = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("user")) as User;
             trips = new Trips().GetAllTrips();
+            users = new Users().GetAllUsers();
             UploadUpdatedList();
             // Create your application here
         }
@@ -136,7 +138,7 @@ namespace SocialBicycleTrips.Activities
             if(trips != null)
             {
                 trips.Sort();
-                myTripsAdapter = new Adapters.MyTripsAdapter(this, Resource.Layout.activity_singleItemTripDesign, user.MyTrips.GetAllMyTrips(user.Id), trips);
+                myTripsAdapter = new Adapters.MyTripsAdapter(this, Resource.Layout.activity_singleItemTripDesign, user.MyTrips.GetAllMyTrips(user.Id), trips,users);
                 lvMyTrips.Adapter = myTripsAdapter;
             }
         }

@@ -66,12 +66,14 @@
     <Compile Include="iChangeable.cs" />
     <Compile Include="Inviteable.cs" />
     <Compile Include="Location.cs" />
+    <Compile Include="MediaService.cs" />
     <Compile Include="MyFriend.cs" />
     <Compile Include="MyFriends.cs" />
     <Compile Include="MyTrip.cs" />
     <Compile Include="MyTrips.cs" />
     <Compile Include="Participant.cs" />
     <Compile Include="Participants.cs" />
+    <Compile Include="PhoneCallReceiver.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
@@ -112,7 +114,6 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher_foreground.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher_round.png" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Storage">
       <Version>3.0.11</Version>
@@ -179,6 +180,10 @@
       <Project>{f18643cb-3399-4363-8fff-9e9f259f4288}</Project>
       <Name>Helper</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <AndroidResource Include="Resources\raw\Music.mp3" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

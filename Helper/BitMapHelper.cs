@@ -42,59 +42,5 @@ namespace Helper
             Bitmap decodedImage = BitmapFactory.DecodeByteArray(imageBytes, 0, imageBytes.Length);
             return decodedImage;
         }
-        public static Bitmap TransferMediaImages(string url)
-        {
-            Bitmap mIcon11 = null;
-            try
-            {
-                mIcon11 = BitmapFactory.DecodeStream(new Java.Net.URL(url).OpenStream());
-            }
-            catch (Exception e)
-            {
-                
-            }
-            return mIcon11;
-        }
-
-        public static Bitmap DownloadImageByUrl(String src)
-        {
-            try
-            {
-                HttpWebRequest wreq;
-                HttpWebResponse wresp;
-                Stream mystream;
-                Bitmap bmp;
-
-                bmp = null;
-                mystream = null;
-                wresp = null;
-                try
-                {
-                    wreq = (HttpWebRequest)WebRequest.Create(src);
-                    wreq.AllowWriteStreamBuffering = true;
-
-                    wresp = (HttpWebResponse)wreq.GetResponse();
-
-                    if ((mystream = wresp.GetResponseStream()) != null)
-                    {
-                        //new bitmap
-                    }
-                }
-                finally
-                {
-                    if (mystream != null)
-                        mystream.Close();
-
-                    if (wresp != null)
-                        wresp.Close();
-                }
-                return (bmp);
-            }
-            catch
-            {
-                return null;
-            }
-        }
-
     }
 }

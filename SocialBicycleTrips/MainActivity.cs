@@ -16,6 +16,8 @@ using Org.Apache.Http.Conn;
 using System.Runtime.CompilerServices;
 using Android.Graphics.Drawables;
 using Android.Graphics;
+using Android.Gms.Tasks;
+using Android.Telephony;
 
 namespace SocialBicycleTrips
 {
@@ -37,12 +39,6 @@ namespace SocialBicycleTrips
             SetViews();
             trips = new Trips().GetAllTrips();
             users = new Users().GetAllUsers();
-            /*User u = new User();
-            MyTrips m = u.MyTrips.GetAllMyTrips();
-            MyFriends f = u.MyFriends.GetAllMyFriends();
-            Trip trip = new Trip();
-            Participants p = new Participants().GetAllParticipants(); clean db*/
-
             if (Intent.HasExtra("AddToMyTrips") && Intent.GetBooleanExtra("AddToMyTrips", false) == true)
             {
                 user = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("user")) as User;
@@ -150,7 +146,7 @@ namespace SocialBicycleTrips
                     }
                 case Resource.Id.mnuLogin:
                     {
-                        StartActivity(new Intent(this, typeof(Activities.LoginActivity)));
+                        StartActivityForResult(new Intent(this, typeof(Activities.LoginActivity)),2);
                         item.SetChecked(true);
                         break;
                     }
@@ -174,12 +170,24 @@ namespace SocialBicycleTrips
                     StartActivity(new Intent(this, typeof(MainActivity)).PutExtra("user", Serializer.ObjectToByteArray(user)).PutExtra("AddToMyTrips",true));
                 }
             }
+            if(requestCode == 2)
+            {
+                if(resultCode == Android.App.Result.Ok)
+                {
+                    User user = Serializer.ByteArrayToObject(data.GetByteArrayExtra("user")) as User;
+                    if (data.HasExtra("toAdd") && data.GetBooleanExtra("toAdd", false) == true)
+                    {
+                        users.Insert(user);
+                    }
+                    StartActivity(new Intent(this, typeof(MainActivity)).PutExtra("user", Serializer.ObjectToByteArray(user)));
+                }
+            }
         }
 
         private void UploadUpdatedList()
         {
             trips.Sort();
-            tripAdapter = new Adapters.TripAdapter(this, Resource.Layout.activity_singleItemTripDesign, trips);
+            tripAdapter = new Adapters.TripAdapter(this, Resource.Layout.activity_singleItemTripDesign, trips,users);
             lvTrips.Adapter = tripAdapter;
         }
 

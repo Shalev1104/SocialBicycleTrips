@@ -14,6 +14,7 @@ using Helper;
 using Android.Support.V4.App;
 using Model;
 using Android.Gms.Maps.Model;
+using Bumptech.Glide;
 
 namespace SocialBicycleTrips.Activities
 {
@@ -39,11 +40,6 @@ namespace SocialBicycleTrips.Activities
         TripManager tripManager;
         Model.Location start;
         Model.Location end;
-        private TextView locationAddress;
-        private TextView locationName;
-        private TextView locationCoordiante;
-        private Button dismissDialog;
-        private Dialog dialog;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -65,10 +61,14 @@ namespace SocialBicycleTrips.Activities
                     btnJoinOrAddParticipant.Visibility = ViewStates.Visible;
                     btnJoinOrAddParticipant.Text = "Add Participants";
                 }
-                else if(IsInTrip(user.Id,trip.Id))
+                else if(!IsInTrip(user.Id,trip.Id))
                 {
                     btnJoinOrAddParticipant.Visibility = ViewStates.Visible;
                     btnJoinOrAddParticipant.Text = "Join";
+                }
+                else
+                {
+                    btnJoinOrAddParticipant.Visibility = ViewStates.Gone;
                 }
             }
             else
@@ -113,13 +113,13 @@ namespace SocialBicycleTrips.Activities
             tripNotes.Text = trip.Notes;
             dateTimeTrip.Text = trip.DateTime.ToString("dddd, dd MMMM yyyy HH:mm");
             tripManagerName.Text = tripManager.Name;
-            try
+            if (!users.GetUserByID(tripManager.Id).IsSocialMediaLogon())
             {
                 tripManagerImage.SetImageBitmap(BitMapHelper.Base64ToBitMap(tripManager.Image));
             }
-            catch
+            else
             {
-                tripManagerImage.SetImageBitmap(BitMapHelper.TransferMediaImages(tripManager.Image));
+                Glide.With(this).Load(tripManager.Image).Error(Resource.Drawable.StandardProfileImage).Into(tripManagerImage);
             }
         }
         public void SetViews()
@@ -139,7 +139,61 @@ namespace SocialBicycleTrips.Activities
             btnJoinOrAddParticipant.Click += BtnJoinOrAddParticipant_Click;
             tripManagerName.Click += ToProfileActivity_Click;
             tripManagerImage.Click += ToProfileActivity_Click;
+            lvParticipants.ItemClick += LvParticipants_ItemClick;
+            lvParticipants.ItemLongClick += LvParticipants_ItemLongClick;
 
+        }
+
+        private void LvParticipants_ItemLongClick(object sender, AdapterView.ItemLongClickEventArgs e)
+        {
+            if (Intent.HasExtra("user"))
+            {
+                if (tripManager.Id == user.Id)
+                {
+                    Android.Support.V7.App.AlertDialog.Builder alertDiag = new Android.Support.V7.App.AlertDialog.Builder(this);
+
+                    alertDiag.SetTitle("Confirm delete");
+                    alertDiag.SetMessage("Once deleted the move cannot be undone");
+
+                    alertDiag.SetCancelable(true);
+
+                    alertDiag.SetPositiveButton("Delete", (senderAlert, args)
+                           => {
+                               Participant participant = new Participants().GetAllParticipants(trip.Id)[e.Position];
+
+                               trip.Participants.Delete(participant);
+                               Toast.MakeText(this, "Deleted", ToastLength.Long).Show();
+                               UploadUpdatedList();
+
+                               alertDiag.Dispose();
+                           });
+
+                    alertDiag.SetNegativeButton("Cancel", (senderAlert, args)
+                     => {
+                         alertDiag.Dispose();
+                     });
+
+                    Dialog diag = alertDiag.Create();
+                    diag.Show();
+                }
+            }
+        }
+
+        private void LvParticipants_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        {
+            Intent intent = new Intent(this, typeof(Activities.ProfileActivity));
+            User profile = users.GetUserByID(new Participants().GetAllParticipants(trip.Id)[e.Position].UserID);
+            intent.PutExtra("profile", Serializer.ObjectToByteArray(profile));
+            if (Intent.HasExtra("user"))
+            {
+                intent.PutExtra("user", Serializer.ObjectToByteArray(user));
+
+                if (profile.Equals(user))
+                {
+                    intent.PutExtra("myself", true);
+                }
+            }
+            StartActivity(intent);
         }
 
         private void ToProfileActivity_Click(object sender, EventArgs e)
@@ -181,8 +235,10 @@ namespace SocialBicycleTrips.Activities
             else if (btnJoinOrAddParticipant.Text.Equals("Join"))
             {
                 user.MyTrips.Insert(new MyTrip(trip.Id, user.Id));
+                trip.Participants.Insert(new Participant(user.Id, trip.Id));
                 Toast.MakeText(this, "Joined to the trip", ToastLength.Long).Show();
                 btnJoinOrAddParticipant.Visibility = ViewStates.Gone;
+                UploadUpdatedList();
             }
 
         }
@@ -197,49 +253,25 @@ namespace SocialBicycleTrips.Activities
                     for(int i = 0; i < usersToAdd.Count; i++)
                     {
                         trip.Participants.Insert(new Participant(usersToAdd[i].Id, trip.Id));
+                        user.MyTrips.Insert(new MyTrip(trip.Id, usersToAdd[i].Id));
                     }
                     Toast.MakeText(this, "participants has been added successfully", ToastLength.Long).Show();
+                    UploadUpdatedList();
                 }
             }
         }
         private void Destination_Click(object sender, EventArgs e)
         {
-            SetupCustomDialog();
-            SetLocationFields(end);
-            dialog.Show();
+            Intent intent = new Intent(this, typeof(Activities.LocationDetails));
+            intent.PutExtra("location", Serializer.ObjectToByteArray(end));
+            StartActivity(intent);
         }
 
         private void StartingLocation_Click(object sender, EventArgs e)
         {
-            SetupCustomDialog();
-            SetLocationFields(start);
-            dialog.Show();
-        }
-
-        public void SetupCustomDialog()
-        {
-            dialog = new Dialog(this);
-            dialog.SetContentView(Resource.Layout.activity_locationDetails);
-            dialog.SetCancelable(true);
-
-            locationAddress = dialog.FindViewById<TextView>(Resource.Id.txtPlaceAddress);
-            locationName = dialog.FindViewById<TextView>(Resource.Id.txtPlaceName);
-            locationCoordiante = dialog.FindViewById<TextView>(Resource.Id.txtPlaceCoordinate);
-            dismissDialog = dialog.FindViewById<Button>(Resource.Id.btnDismissLocationDetails);
-
-            dismissDialog.Click += DismissDialog_Click;
-        }
-
-        private void DismissDialog_Click(object sender, EventArgs e)
-        {
-            dialog.Dismiss();
-        }
-
-        public void SetLocationFields(Model.Location location)
-        {
-            locationAddress.Text = location.Address;
-            locationCoordiante.Text = location.Latitude.ToString() + "," + location.Longitude.ToString();
-            locationName.Text = location.Name;
+            Intent intent = new Intent(this, typeof(Activities.LocationDetails));
+            intent.PutExtra("location", Serializer.ObjectToByteArray(start));
+            StartActivity(intent);
         }
 
         public void OnMapReady(GoogleMap googleMap)

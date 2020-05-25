@@ -43,10 +43,17 @@ namespace SocialBicycleTrips.Activities
 
         private void LvAddFriends_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
-            Intent intent = new Intent(this, typeof(Activities.ProfileActivity));
-            intent.PutExtra("profile", Serializer.ObjectToByteArray(users.GetUserByID(user.MyFriends.GetAllMyUnFriends(user.Id)[e.Position].FriendID)));
-            intent.PutExtra("user", Serializer.ObjectToByteArray(user));
-            StartActivity(intent);
+            try
+            {
+                Intent intent = new Intent(this, typeof(Activities.ProfileActivity));
+                intent.PutExtra("profile", Serializer.ObjectToByteArray(users.GetUserByID(user.MyFriends.GetAllMyUnFriends(user.Id)[e.Position].FriendID)));
+                intent.PutExtra("user", Serializer.ObjectToByteArray(user));
+                StartActivity(intent);
+            }
+            catch
+            {
+                Toast.MakeText(this, "current friend has been added and cannot be clicked", ToastLength.Long).Show();
+            }
         }
 
         private void NonFriendSearchManager_TextChanged(object sender, Android.Text.TextChangedEventArgs e)

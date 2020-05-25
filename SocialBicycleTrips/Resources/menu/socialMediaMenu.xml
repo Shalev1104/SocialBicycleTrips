@@ -1,19 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
   <item android:id="@id/mnuBrowseTrips"
-        android:title="browse trips"/>
+        android:title="Browse trips"/>
 
   <item android:id="@id/mnuMyTrips"
-        android:title="my trips"/>
+        android:title="My trips"/>
 
   <item android:id="@id/mnuCreateTrip"
-        android:title="create a trip"/>
+        android:title="Create a trip"/>
 
   <item android:id="@id/mnuMyFriends"
-        android:title="my friends"/>
+        android:title="My friends"/>
 
   <item android:id="@id/mnuSettings"
-        android:title="settings"/>
+        android:title="Settings"/>
 
   <item android:id="@id/mnuAccount"
         android:title="Account">
@@ -22,13 +22,13 @@
       xmlns:HTMLCode="http://schemas.android.com/apk/res-auto" >
 
       <item android:id="@id/mnuMyProfile"
-            android:title="my profile"/>
+            android:title="My profile"/>
 
       <item android:id="@+id/mnuAddDate"
-            android:title="add birthday"/>
+            android:title="Add birthday"/>
 
       <item android:id="@id/mnuDisconnect"
-            android:title="disconnect"/>
+            android:title="Disconnect"/>
     </menu>
   </item>
 </menu>
