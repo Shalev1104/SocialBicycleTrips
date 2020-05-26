@@ -29,6 +29,7 @@ namespace SocialBicycleTrips
         private Adapters.TripAdapter tripAdapter;
         private User user;
         private Users users;
+        private IMenu menu;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -43,12 +44,21 @@ namespace SocialBicycleTrips
             {
                 user = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("user")) as User;
                 user.MyTrips.Insert(new MyTrip(trips[trips.Count - 1].Id, user.Id));
+                if (Settings.Notification)
+                {
+                    MyTrips myTrips = new MyTrips().GetAllMyTrips(user.Id);
+                    Intent intent = new Intent(this, typeof(Broadcast.ReminderBroadcast)).PutExtra("mytrip", Serializer.ObjectToByteArray(trips.GetTripByID(myTrips[trips.Count-1].TripID)));
+                    PendingIntent pendingIntent = PendingIntent.GetBroadcast(this, 0, intent, 0);
+                    AlarmManager alarmManager = (AlarmManager)GetSystemService(AlarmService);
+                    alarmManager.SetExact(AlarmType.RtcWakeup, trips.GetTripByID(myTrips[trips.Count - 1].TripID).DateTime.Millisecond + (Model.Settings.TripRemind / 60000), pendingIntent);
+                }
             }
             UploadUpdatedList();
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
+            this.menu = menu;
             if (Intent.HasExtra("user"))
             {
                 user = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("user")) as User;
@@ -116,19 +126,18 @@ namespace SocialBicycleTrips
                         break;
                     }
 
-                case Resource.Id.mnuUpdateProfile:
-                    {
-                        break;
-                    }
-
                 case Resource.Id.mnuChangePassword:
                     {
+                        getUser.SetClass(this, typeof(Activities.ChangePasswordActivity));
+                        StartActivity(getUser);
+                        item.SetChecked(true);
                         break;
                     }
 
                 case Resource.Id.mnuSettings:
                     {
-                        StartActivity(new Intent(this, typeof(Activities.SettingsActivity)));
+                        getUser.SetClass(this, typeof(Activities.SettingsActivity));
+                        StartActivity(getUser);
                         item.SetChecked(true);
                         break;
                     }
@@ -140,7 +149,12 @@ namespace SocialBicycleTrips
                             intent.PutExtra("social media disconnect", true);
                             StartActivityForResult(intent, 1);
                         }
-                        StartActivity(new Intent(this, typeof(MainActivity)));
+                        else
+                        {
+                            menu.Clear();
+                            MenuInflater.Inflate(Resource.Menu.guestMenu, menu);
+                        }
+                        Toast.MakeText(this, "disconnected", ToastLength.Long).Show();
                         item.SetChecked(true);
                         break;
                     }
@@ -167,8 +181,14 @@ namespace SocialBicycleTrips
                 {
                     Trip trip = Serializer.ByteArrayToObject(data.GetByteArrayExtra("trip")) as Trip;
                     trips.Insert(trip);
+                    user.MyTrips.Insert(new MyTrip(trips[trips.Count - 1].Id, user.Id));
                     StartActivity(new Intent(this, typeof(MainActivity)).PutExtra("user", Serializer.ObjectToByteArray(user)).PutExtra("AddToMyTrips",true));
                 }
+            }
+            if(requestCode == 1)
+            {
+                menu.Clear();
+                MenuInflater.Inflate(Resource.Menu.guestMenu, menu);
             }
             if(requestCode == 2)
             {

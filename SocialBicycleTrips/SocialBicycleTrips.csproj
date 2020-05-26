@@ -71,6 +71,7 @@
     <Compile Include="Activities\ActivitySplash.cs" />
     <Compile Include="Activities\AddFriendsActivity.cs" />
     <Compile Include="Activities\AddParticipantsActivity.cs" />
+    <Compile Include="Activities\ChangePasswordActivity.cs" />
     <Compile Include="Activities\CreateTripActivity.cs" />
     <Compile Include="Activities\LocationDetails.cs" />
     <Compile Include="Activities\LoginActivity.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Adapters\MyTripsAdapter.cs" />
     <Compile Include="Adapters\PeopleAdapter.cs" />
     <Compile Include="Adapters\TripAdapter.cs" />
+    <Compile Include="Broadcast\ReminderBroadcast.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -193,7 +195,6 @@
     <AndroidResource Include="Resources\layout\activity_profile.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Broadcast\" />
     <Folder Include="Notifications\" />
     <Folder Include="Services\" />
   </ItemGroup>
@@ -357,6 +358,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\activity_locationDetails.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\activity_changePassword.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

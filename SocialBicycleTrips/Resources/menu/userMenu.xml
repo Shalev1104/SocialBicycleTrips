@@ -30,8 +30,6 @@
              <menu
                  xmlns:android="http://schemas.android.com/apk/res/android"
                  xmlns:HTMLCode="http://schemas.android.com/apk/res-auto" >
-                 <item android:id="@+id/mnuUpdateProfile"
-                       android:title="Update profile"/>
                  <item android:id="@+id/mnuChangePassword"
                        android:title="Change password"/>
              </menu>

@@ -585,5 +585,8 @@ C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\stamp\_GenerateJavaStubs.stamp
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\stamp\_GeneratePackageManagerJava.stamp
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\stamp\_ResolveLibraryProjectImports.stamp
-C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\SocialBicycleTrips.csprojAssemblyReference.cache
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\src\crc64f74fed6382679c7b\PhoneCallReceiver.java
+C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\res\layout\activity_changepassword.xml
+C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\src\crc646d513817d643a16d\ChangePasswordActivity.java
+C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\src\crc640351b56f748fd233\ReminderBroadcast.java
+C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\SocialBicycleTrips.csprojAssemblyReference.cache

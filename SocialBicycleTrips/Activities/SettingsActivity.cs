@@ -11,6 +11,8 @@ using Android.Provider;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Dal;
+using Helper;
 using Java.Util;
 using Model;
 
@@ -25,30 +27,83 @@ namespace SocialBicycleTrips.Activities
         private Switch notification;
         private Spinner tripRemind;
         private List<string> tripReminds;
+        private User user;
+        private Trips trips;
+        private MyTrips myTrips;
+        private LinearLayout notificationLayout;
+        private LinearLayout notificationLayoutReminder;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_settings);
             SetViews();
+            if (Intent.HasExtra("user"))
+            {
+                user = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("user")) as User;
+                trips = new Trips().GetAllTrips();
+                myTrips = new MyTrips().GetAllMyTrips(user.Id);
+                CreateNotificationChannel();
+                notificationLayout.Visibility = ViewStates.Visible;
+            }
+            else
+            {
+                notificationLayout.Visibility = ViewStates.Gone;
+            }
             GenerateMapStyles();
             GenerateTripReminds();
             // Create your application here
         }
+
+        private void CreateNotificationChannel()
+        {
+            if(Build.VERSION.SdkInt >= Build.VERSION_CODES.O)
+            {
+                NotificationChannel channel = new NotificationChannel("notifyLemubit", "LemubitReminderChannel", NotificationManager.ImportanceDefault);
+                channel.Description = "Channel for Lemubit Reminder";
+                NotificationManager notificationManager = (NotificationManager)GetSystemService(NotificationService);
+                notificationManager.CreateNotificationChannel(channel);
+            }
+        }
+
         public void SetViews()
         {
             mapstyle = FindViewById<Spinner>(Resource.Id.spnMapStyle);
             music = FindViewById<Switch>(Resource.Id.switchMusic);
             notification = FindViewById<Switch>(Resource.Id.switchNotification);
             tripRemind = FindViewById<Spinner>(Resource.Id.spnTripReminder);
-
+            notificationLayout = FindViewById<LinearLayout>(Resource.Id.layoutNotificationVisibillity);
+            notificationLayoutReminder = FindViewById<LinearLayout>(Resource.Id.layoutNotificationReminder);
+            
             music.Click += Music_Click;
             notification.Click += Notification_Click;
 
         }
-
         private void Notification_Click(object sender, EventArgs e)
         {
             Model.Settings.Notification = !Model.Settings.Notification;
+            if (Model.Settings.Notification)
+            {
+                notificationLayoutReminder.Visibility = ViewStates.Visible;
+
+                for(int i = 0; i < myTrips.Count; i++)
+                {
+                    Intent intent = new Intent(this, typeof(Broadcast.ReminderBroadcast)).PutExtra("mytrip", Serializer.ObjectToByteArray(trips.GetTripByID(myTrips[i].TripID)));
+                    PendingIntent pendingIntent = PendingIntent.GetBroadcast(this, 0, intent, 0);
+                    AlarmManager alarmManager = (AlarmManager)GetSystemService(AlarmService);
+                    alarmManager.SetExact(AlarmType.RtcWakeup, trips.GetTripByID(myTrips[i].TripID).DateTime.Millisecond + (Model.Settings.TripRemind/60000), pendingIntent);
+                }
+            }
+            else
+            {
+                notificationLayoutReminder.Visibility = ViewStates.Gone;
+                for (int i = 0; i < myTrips.Count; i++)
+                {
+                    Intent intent = new Intent(this, typeof(Broadcast.ReminderBroadcast)).PutExtra("mytrip", Serializer.ObjectToByteArray(trips.GetTripByID(myTrips[i].TripID)));
+                    PendingIntent pendingIntent = PendingIntent.GetBroadcast(this, 0, intent, 0);
+                    AlarmManager alarmManager = (AlarmManager)GetSystemService(AlarmService);
+                    alarmManager.Cancel(pendingIntent);
+                }
+            }
         }
 
         private void Music_Click(object sender, EventArgs e)
@@ -114,23 +169,23 @@ namespace SocialBicycleTrips.Activities
                 tripReminds[0] = "When trip is started";
             }
 
-            if (Model.Settings.TripRemind.ToString() != "When trip is started")
+            if (!Model.Settings.TripRemind.ToString().Equals("When trip is started"))
             {
                 tripReminds.Add("When trip is started");
             }
-            if (Model.Settings.TripRemind.ToString() != "5 minutes")
+            if (!Model.Settings.TripRemind.ToString().Equals("5 minutes"))
             {
                 tripReminds.Add("5 minutes");
             }
-            if (Model.Settings.TripRemind.ToString() != "15 minutes")
+            if (!Model.Settings.TripRemind.ToString().Equals("15 minutes"))
             {
                 tripReminds.Add("15 minutes");
             }
-            if (Model.Settings.TripRemind.ToString() != "30 minutes")
+            if (!Model.Settings.TripRemind.ToString().Equals("30 minutes"))
             {
                 tripReminds.Add("30 minutes");
             }
-            if (Model.Settings.TripRemind.ToString() != "60 minutes")
+            if (!Model.Settings.TripRemind.ToString().Equals("60 minutes"))
             {
                 tripReminds.Add("60 minutes");
             }

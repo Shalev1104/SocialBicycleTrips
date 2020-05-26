@@ -24,6 +24,8 @@ using Xamarin.Facebook;
 using Xamarin.Facebook.Login;
 using System.Threading;
 using Java.Lang;
+using GoogleGson;
+using Java.Util;
 
 namespace SocialBicycleTrips.Activities
 {
@@ -46,7 +48,9 @@ namespace SocialBicycleTrips.Activities
         FirebaseAuth firebaseAuth;
         private bool usingFirebase;
         private bool googlePressed = false;
+        private CheckBox rememberUser;
 
+        private ISharedPreferences pref = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
         ICallbackManager callbackManager;
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -66,6 +70,7 @@ namespace SocialBicycleTrips.Activities
             signup = FindViewById<Button>(Resource.Id.btnSignup);
             googleLogin = FindViewById<SignInButton>(Resource.Id.btnGoogleLogin);
             facebookLogin = FindViewById<LoginButton>(Resource.Id.btnFacebookLogin);
+            rememberUser = FindViewById<CheckBox>(Resource.Id.chboxRememberMe);
 
             login.Click += Login_Click;
             signup.Click += Signup_Click;
@@ -75,7 +80,12 @@ namespace SocialBicycleTrips.Activities
             googleApiClient = new GoogleApiClient.Builder(this).AddApi(Auth.GOOGLE_SIGN_IN_API, gso).Build();
             googleApiClient.Connect();
 
-            facebookLogin.SetReadPermissions(new List<string> { "public_profile", "email" });
+            login.Enabled = true;
+            facebookLogin.Enabled = true;
+            googleLogin.Enabled = true;
+            signup.Enabled =true;
+
+            facebookLogin.SetReadPermissions(new List<string> { "public_profile"});
             callbackManager = CallbackManagerFactory.Create();
             facebookLogin.RegisterCallback(callbackManager, this);
             firebaseAuth = GetFirebaseAuth();
@@ -85,7 +95,7 @@ namespace SocialBicycleTrips.Activities
                 if (IsFacebookLogin())
                 {
                     LoginManager.Instance.LogOut();
-                    //facebookLogin.UnregisterCallback(callbackManager);
+                    facebookLogin.UnregisterCallback(callbackManager);
                 }
                 Finish();
             }
@@ -134,6 +144,11 @@ namespace SocialBicycleTrips.Activities
         }
         protected override void OnActivityResult(int requestCode, Android.App.Result resultCode, Intent data)
         {
+            login.Enabled = false;
+            facebookLogin.Enabled = false;
+            googleLogin.Enabled = false;
+            signup.Enabled = false;
+
             base.OnActivityResult(requestCode, resultCode, data);
                 if (requestCode == 0)
                 {
@@ -144,6 +159,13 @@ namespace SocialBicycleTrips.Activities
                         if (!users.Exists(user))
                         {
                             Toast.MakeText(this, "Registeration successfull", ToastLength.Long).Show();
+                            if (data.HasExtra("checked"))
+                            {
+                                if(data.GetBooleanExtra("checked",false) == true)
+                                {
+                                    RememberMe();
+                                }
+                            }
                             Navigate(user, true);
                         }
                         else
@@ -175,6 +197,13 @@ namespace SocialBicycleTrips.Activities
                 {
                     callbackManager.OnActivityResult(requestCode, (int)resultCode, data);
                 }
+        }
+
+        private void RememberMe()
+        {
+            ISharedPreferencesEditor editor = pref.Edit();
+            editor.PutString("user", Android.Util.Base64.EncodeToString(Serializer.ObjectToByteArray(user),Android.Util.Base64.Default));
+            editor.Apply();
         }
 
         private void LoginWithGoogleFirebase(GoogleSignInAccount account)
@@ -279,6 +308,10 @@ namespace SocialBicycleTrips.Activities
                             user = new User(firebaseAuth.CurrentUser.DisplayName, firebaseAuth.CurrentUser.Email, "https://graph.facebook.com/" + firebaseAuth.CurrentUser.PhotoUrl.Path + "?type=normal", firebaseAuth.CurrentUser.PhoneNumber);
                             isSocialFirstConnect = true;
                         }
+                        if (rememberUser.Checked)
+                        {
+                            RememberMe();
+                        }
                         Toast.MakeText(this, "login succesfull", ToastLength.Long).Show();
                         Navigate(user, isSocialFirstConnect);
                     }
@@ -291,6 +324,10 @@ namespace SocialBicycleTrips.Activities
                     {
                         user = new User(firebaseAuth.CurrentUser.DisplayName, firebaseAuth.CurrentUser.Email, "https://lh3.googleusercontent.com" + firebaseAuth.CurrentUser.PhotoUrl.Path, firebaseAuth.CurrentUser.PhoneNumber);
                         isSocialFirstConnect = true;
+                    }
+                    if (rememberUser.Checked)
+                    {
+                        RememberMe();
                     }
                     Toast.MakeText(this, "login succesfull", ToastLength.Long).Show();
                     Navigate(user, isSocialFirstConnect);

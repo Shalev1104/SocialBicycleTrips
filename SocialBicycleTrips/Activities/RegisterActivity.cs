@@ -32,6 +32,7 @@ namespace SocialBicycleTrips.Activities
         private EditText birthday;
         private EditText phoneNumber;
         private Button register;
+        private CheckBox registerationRememberMe;
         private Bitmap bitmap;
         private User user;
         private Users users;
@@ -60,6 +61,7 @@ namespace SocialBicycleTrips.Activities
             birthday             = FindViewById<EditText>(Resource.Id.edtBirthday);
             phoneNumber          = FindViewById<EditText>(Resource.Id.edtPhoneNumber);
             register             = FindViewById<Button>(Resource.Id.btnRegister);
+            registerationRememberMe = FindViewById<CheckBox>(Resource.Id.chboxRememberMeRegisteration);
 
             profile.Click += Profile_Click;
             register.Click += Register_Click;
@@ -103,6 +105,10 @@ namespace SocialBicycleTrips.Activities
                 {
                     Intent intent = new Intent();
                     intent.PutExtra("user", Serializer.ObjectToByteArray(user));
+                    if (registerationRememberMe.Checked)
+                    {
+                        intent.PutExtra("checked", true);
+                    }
                     SetResult(Android.App.Result.Ok, intent);
                     Finish();
                 }
@@ -207,7 +213,7 @@ namespace SocialBicycleTrips.Activities
             {
                 if (password.Text.Length < 8)
                 {
-                    Toast.MakeText(this, "Password must be over 7 digits", ToastLength.Long).Show();
+                    Toast.MakeText(this, "password must be at least 8 digits", ToastLength.Long).Show();
                     password.Background.SetColorFilter(new Color(Color.Red), PorterDuff.Mode.SrcIn);
                     return false;
                 }

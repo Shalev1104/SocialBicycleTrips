@@ -46,7 +46,6 @@ namespace SocialBicycleTrips.Activities
         private LinearLayout galleryFrame;
         private ImageButton btnGallery;
         private Button btnCancel;
-        private Bitmap bitmap;
         private Users users;
         private bool permissionGranted = false;
         readonly string[] permissionPhoneCall = { Manifest.Permission.CallPhone };
@@ -194,9 +193,9 @@ namespace SocialBicycleTrips.Activities
             {
                 if (resultCode == Android.App.Result.Ok)
                 {
-                    bitmap = (Bitmap)data.Extras.Get("data");
-                    profileImage.SetImageBitmap(bitmap);
-                    userlogon.Image = BitMapHelper.BitMapToBase64(bitmap);
+                    Bitmap newBitmap = (Bitmap)data.Extras.Get("data");
+                    profileImage.SetImageBitmap(newBitmap);
+                    userlogon.Image = BitMapHelper.BitMapToBase64(newBitmap);
                     users.Update(userlogon);
                     dialog.Dismiss();
                     Toast.MakeText(this, "Image has been updated", ToastLength.Long).Show();
@@ -206,9 +205,9 @@ namespace SocialBicycleTrips.Activities
             {
                 if (resultCode == Android.App.Result.Ok && data != null)
                 {
-                    bitmap = MediaStore.Images.Media.GetBitmap(ContentResolver, data.Data);
-                    profileImage.SetImageBitmap(bitmap);
-                    userlogon.Image = BitMapHelper.BitMapToBase64(bitmap);
+                    Bitmap newBitmap = MediaStore.Images.Media.GetBitmap(ContentResolver, data.Data);
+                    profileImage.SetImageBitmap(newBitmap);
+                    userlogon.Image = BitMapHelper.BitMapToBase64(newBitmap);
                     users.Update(userlogon);
                     dialog.Dismiss();
                     Toast.MakeText(this, "Image has been updated", ToastLength.Long).Show();

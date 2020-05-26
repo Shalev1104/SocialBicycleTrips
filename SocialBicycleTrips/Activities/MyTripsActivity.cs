@@ -85,14 +85,6 @@ namespace SocialBicycleTrips.Activities
                         item.SetChecked(true);
                         break;
                     }
-
-                case Resource.Id.mnuUpdateProfile:
-                    {
-                        StartActivity(new Intent(this, typeof(MainActivity)));
-                        item.SetChecked(true);
-                        break;
-                    }
-
                 case Resource.Id.mnuChangePassword:
                     {
                         StartActivity(new Intent(this, typeof(MainActivity)));

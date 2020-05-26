@@ -15,6 +15,7 @@
 				<data android:scheme="@string/fb_login_protocol_scheme" />
 			</intent-filter>
 		</activity>
+    <receiver android:name=".ReminderBroadcast"/>
 	</application>
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.INTERNET" />
