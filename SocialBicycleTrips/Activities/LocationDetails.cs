@@ -11,6 +11,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Helper;
+using Model;
 
 namespace SocialBicycleTrips.Activities
 {
@@ -21,11 +22,13 @@ namespace SocialBicycleTrips.Activities
         private TextView locationName;
         private TextView locationCoordiante;
         private Model.Location location;
+        private User user;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_locationDetails);
             location = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("location")) as Model.Location;
+            user = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("user")) as User;
             SetViews();
             SetFields();
             // Create your application here
@@ -47,6 +50,20 @@ namespace SocialBicycleTrips.Activities
             else
             {
                 locationName.Text = "unknown";
+            }
+        }
+        protected override void OnStop()
+        {
+            base.OnStop();
+            if (Intent.HasExtra("user") && Settings.RememberMe)
+            {
+                ISharedPreferences pref = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
+                ISharedPreferencesEditor editor = pref.Edit();
+                editor.PutString("user", Android.Util.Base64.EncodeToString(Serializer.ObjectToByteArray(user), Android.Util.Base64.Default));
+                editor.PutInt("userId", user.Id);
+                editor.PutInt("OngoingTrips", user.UpcomingTrips);
+                editor.PutInt("CompletedTrips", user.CompletedTrips);
+                editor.Apply();
             }
         }
     }

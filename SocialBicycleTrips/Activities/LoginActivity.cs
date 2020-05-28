@@ -61,6 +61,12 @@ namespace SocialBicycleTrips.Activities
             FacebookSdk.SdkInitialize(ApplicationContext);
             // Create your application here
             users = new Users().GetAllUsers();
+
+            Settings.RememberMe = rememberUser.Checked;
+            ISharedPreferences settings = Application.Context.GetSharedPreferences("Settings", FileCreationMode.Private);
+            ISharedPreferencesEditor settingsEditor = settings.Edit();
+            settingsEditor.PutBoolean("RememberMe", rememberUser.Checked);
+            settingsEditor.Apply();
         }
         public void SetViews()
         {
@@ -75,6 +81,7 @@ namespace SocialBicycleTrips.Activities
             login.Click += Login_Click;
             signup.Click += Signup_Click;
             googleLogin.Click += GoogleLogin_Click;
+            rememberUser.Click += RememberUser_Click;
 
             gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DefaultSignIn).RequestIdToken("994671586450-p7s56itpn9kcb2him4pf7cnkvkashhmf.apps.googleusercontent.com").RequestEmail().Build();
             googleApiClient = new GoogleApiClient.Builder(this).AddApi(Auth.GOOGLE_SIGN_IN_API, gso).Build();
@@ -97,8 +104,24 @@ namespace SocialBicycleTrips.Activities
                     LoginManager.Instance.LogOut();
                     facebookLogin.UnregisterCallback(callbackManager);
                 }
+                if(Intent.HasExtra("temporal disconnection"))
+                {
+                    if(Intent.GetBooleanExtra("temporal disconnection",false) == true)
+                    {
+                        Settings.FirebaseTempDisconnection = true;
+                    }
+                }
                 Finish();
             }
+        }
+
+        private void RememberUser_Click(object sender, EventArgs e)
+        {
+            Settings.RememberMe = rememberUser.Checked;
+            ISharedPreferences settings = Application.Context.GetSharedPreferences("Settings", FileCreationMode.Private);
+            ISharedPreferencesEditor settingsEditor = settings.Edit();
+            settingsEditor.PutBoolean("RememberMe", rememberUser.Checked);
+            settingsEditor.Apply();
         }
 
         public bool IsFacebookLogin()
@@ -144,10 +167,6 @@ namespace SocialBicycleTrips.Activities
         }
         protected override void OnActivityResult(int requestCode, Android.App.Result resultCode, Intent data)
         {
-            login.Enabled = false;
-            facebookLogin.Enabled = false;
-            googleLogin.Enabled = false;
-            signup.Enabled = false;
 
             base.OnActivityResult(requestCode, resultCode, data);
                 if (requestCode == 0)
@@ -158,6 +177,10 @@ namespace SocialBicycleTrips.Activities
                         user = Serializer.ByteArrayToObject(data.GetByteArrayExtra("user")) as User;
                         if (!users.Exists(user))
                         {
+                            login.Enabled = false;
+                            facebookLogin.Enabled = false;
+                            googleLogin.Enabled = false;
+                            signup.Enabled = false;
                             Toast.MakeText(this, "Registeration successfull", ToastLength.Long).Show();
                             if (data.HasExtra("checked"))
                             {
@@ -203,9 +226,11 @@ namespace SocialBicycleTrips.Activities
         {
             ISharedPreferencesEditor editor = pref.Edit();
             editor.PutString("user", Android.Util.Base64.EncodeToString(Serializer.ObjectToByteArray(user),Android.Util.Base64.Default));
+            editor.PutInt("userId", user.Id);
+            editor.PutInt("OngoingTrips", user.UpcomingTrips);
+            editor.PutInt("CompletedTrips", user.CompletedTrips);
             editor.Apply();
         }
-
         private void LoginWithGoogleFirebase(GoogleSignInAccount account)
         {
             var credentials = GoogleAuthProvider.GetCredential(account.IdToken, null);
@@ -291,7 +316,11 @@ namespace SocialBicycleTrips.Activities
         // Google & Facebook
         public void OnSuccess(Java.Lang.Object result)
         {
-                if (!googlePressed) // for facebook
+            login.Enabled = false;
+            facebookLogin.Enabled = false;
+            googleLogin.Enabled = false;
+            signup.Enabled = false;
+            if (!googlePressed) // for facebook
                 {
                     if (!usingFirebase)
                     {

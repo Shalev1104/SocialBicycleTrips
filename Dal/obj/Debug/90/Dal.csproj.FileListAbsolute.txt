@@ -9,6 +9,7 @@ C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\bin\Debug\Helper.pdb
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\MonoAndroid,Version=v9.0.AssemblyAttributes.cs
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\build.props
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\adb.props
+C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\Dal.csprojAssemblyReference.cache
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\_VerifyXamarinAndroidSupportVersions.stamp
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\stamp\_BuildLibraryImportsCache.stamp
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\res.flag

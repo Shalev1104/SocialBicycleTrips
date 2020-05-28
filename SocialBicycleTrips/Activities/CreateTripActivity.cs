@@ -57,7 +57,7 @@ namespace SocialBicycleTrips.Activities
 
         private void LocationChooser_Click(object sender, EventArgs e)
         {
-            Intent intent = new Intent(this, typeof(Activities.MapActivity));
+            Intent intent = new Intent(this, typeof(Activities.MapActivity)).PutExtra("user",Serializer.ObjectToByteArray(user));
             StartActivityForResult(intent, 0);
         }
         protected override void OnActivityResult(int requestCode, [GeneratedEnum] Android.App.Result resultCode, Intent data)
@@ -116,7 +116,7 @@ namespace SocialBicycleTrips.Activities
                 btnTime.Background.SetColorFilter(new Color(Color.Red), PorterDuff.Mode.SrcIn);
                 return false;
             }
-            if (date < DateTime.Now)
+            if (new DateTime(date.Date.Year, date.Date.Month, date.Date.Day, hour, minutes, 0) < DateTime.Now)
             {
                 Toast.MakeText(this, "Invalid datetime", ToastLength.Long).Show();
                 return false;
@@ -168,6 +168,21 @@ namespace SocialBicycleTrips.Activities
         {
             date = new DateTime(e.Date.Year, e.Date.Month, e.Date.Day);
             btnDate.Text = e.Date.Day + "/" + e.Date.Month + "/" + e.Date.Year;
+        }
+
+        protected override void OnStop()
+        {
+            base.OnStop();
+            if (Intent.HasExtra("user") && Settings.RememberMe)
+            {
+                ISharedPreferences pref = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
+                ISharedPreferencesEditor editor = pref.Edit();
+                editor.PutString("user", Android.Util.Base64.EncodeToString(Serializer.ObjectToByteArray(user), Android.Util.Base64.Default));
+                editor.PutInt("userId", user.Id);
+                editor.PutInt("OngoingTrips", user.UpcomingTrips);
+                editor.PutInt("CompletedTrips", user.CompletedTrips);
+                editor.Apply();
+            }
         }
 
     }

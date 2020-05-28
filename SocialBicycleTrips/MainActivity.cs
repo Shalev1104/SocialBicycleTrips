@@ -18,6 +18,7 @@ using Android.Graphics.Drawables;
 using Android.Graphics;
 using Android.Gms.Tasks;
 using Android.Telephony;
+using Android.Text.Format;
 
 namespace SocialBicycleTrips
 {
@@ -38,22 +39,29 @@ namespace SocialBicycleTrips
             SetContentView(Resource.Layout.activity_main);
             FacebookSdk.SdkInitialize(ApplicationContext);
             SetViews();
-            trips = new Trips().GetAllTrips();
+            trips = new Trips().GetAllCurrentTrips();
             users = new Users().GetAllUsers();
-            if (Intent.HasExtra("AddToMyTrips") && Intent.GetBooleanExtra("AddToMyTrips", false) == true)
+            Participants p = new Participants().GetAllParticipants();
+            MyTrips t = new MyTrips().GetAllMyTrips();
+            MyFriends f = new MyFriends().GetAllMyFriends();
+            UploadUpdatedList();
+        }
+
+        private void CheckForFirebaseTempDisconnection()
+        {
+            if (Intent.HasExtra("user"))
             {
-                user = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("user")) as User;
-                user.MyTrips.Insert(new MyTrip(trips[trips.Count - 1].Id, user.Id));
-                if (Settings.Notification)
+                if (user.IsSocialMediaLogon() && !Settings.RememberMe)
                 {
-                    MyTrips myTrips = new MyTrips().GetAllMyTrips(user.Id);
-                    Intent intent = new Intent(this, typeof(Broadcast.ReminderBroadcast)).PutExtra("mytrip", Serializer.ObjectToByteArray(trips.GetTripByID(myTrips[trips.Count-1].TripID)));
-                    PendingIntent pendingIntent = PendingIntent.GetBroadcast(this, 0, intent, 0);
-                    AlarmManager alarmManager = (AlarmManager)GetSystemService(AlarmService);
-                    alarmManager.SetExact(AlarmType.RtcWakeup, trips.GetTripByID(myTrips[trips.Count - 1].TripID).DateTime.Millisecond + (Model.Settings.TripRemind / 60000), pendingIntent);
+                    if (!Settings.FirebaseTempDisconnection)
+                    {
+                        Intent intent = new Intent(this, typeof(Activities.LoginActivity));
+                        intent.PutExtra("social media disconnect", true);
+                        intent.PutExtra("temporal disconnection", true);
+                        StartActivityForResult(intent, 3);
+                    }
                 }
             }
-            UploadUpdatedList();
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -62,6 +70,9 @@ namespace SocialBicycleTrips
             if (Intent.HasExtra("user"))
             {
                 user = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("user")) as User;
+
+                CheckForFirebaseTempDisconnection();
+
                 if (user.IsSocialMediaLogon())
                 {
                     MenuInflater.Inflate(Resource.Menu.socialMediaMenu, menu);
@@ -143,6 +154,10 @@ namespace SocialBicycleTrips
                     }
                 case Resource.Id.mnuDisconnect:
                     {
+                        ISharedPreferences pref = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
+                        ISharedPreferencesEditor editor = pref.Edit();
+                        editor.Clear();
+                        editor.Apply();
                         if (user.IsSocialMediaLogon())
                         {
                             Intent intent = new Intent(this, typeof(Activities.LoginActivity));
@@ -181,8 +196,17 @@ namespace SocialBicycleTrips
                 {
                     Trip trip = Serializer.ByteArrayToObject(data.GetByteArrayExtra("trip")) as Trip;
                     trips.Insert(trip);
-                    user.MyTrips.Insert(new MyTrip(trips[trips.Count - 1].Id, user.Id));
-                    StartActivity(new Intent(this, typeof(MainActivity)).PutExtra("user", Serializer.ObjectToByteArray(user)).PutExtra("AddToMyTrips",true));
+                    user.MyTrips.Insert(new MyTrip(trip.Id, user.Id));
+                    if (Settings.Notification)
+                    {
+                        Intent intent = new Intent(this, typeof(Broadcast.ReminderBroadcast)).PutExtra("mytrip", Serializer.ObjectToByteArray(trip));
+                        PendingIntent pendingIntent = PendingIntent.GetBroadcast(this, 0, intent, 0);
+                        AlarmManager alarmManager = (AlarmManager)GetSystemService(AlarmService);
+                        TimeSpan timespan = trip.DateTime - DateTime.Now;
+                        int totalMilliseconds = (int)timespan.TotalMilliseconds;
+                        alarmManager.SetExact(AlarmType.RtcWakeup, totalMilliseconds - (Model.Settings.TripRemind * 60000), pendingIntent);
+                    }
+                    StartActivity(new Intent(this, typeof(MainActivity)).PutExtra("user", Serializer.ObjectToByteArray(user)));
                 }
             }
             if(requestCode == 1)
@@ -233,6 +257,20 @@ namespace SocialBicycleTrips
                 intent.PutExtra("user", Serializer.ObjectToByteArray(user));
 
             StartActivity(intent);
+        }
+        protected override void OnStop()
+        {
+            base.OnStop();
+            if (Intent.HasExtra("user") && Settings.RememberMe)
+            {
+                ISharedPreferences pref = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
+                ISharedPreferencesEditor editor = pref.Edit();
+                editor.PutString("user", Android.Util.Base64.EncodeToString(Serializer.ObjectToByteArray(user), Android.Util.Base64.Default));
+                editor.PutInt("userId", user.Id);
+                editor.PutInt("OngoingTrips", user.UpcomingTrips);
+                editor.PutInt("CompletedTrips", user.CompletedTrips);
+                editor.Apply();
+            }
         }
     }
 }

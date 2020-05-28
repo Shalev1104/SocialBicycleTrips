@@ -35,7 +35,7 @@ namespace Model
             base.Sort((item1, item2) => item1.DateTime.CompareTo(item2.DateTime));
         }
 
-        public Trips GetAllTrips() // converts from list to a class(רבים)
+        public Trips GetAllCurrentTrips() // converts from list to a class(רבים)
         {
             Trips trips = new Trips();
             List<Trip> tripsList = DbTable<Trip>.SelectAll();

@@ -53,11 +53,13 @@ namespace SocialBicycleTrips.Activities
         bool takeAddressFromSearch;
         Model.Location first;
         Model.Location last;
+        User user;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_map);
+            user = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("user")) as User;
             SetViews();
             if (!PlacesApi.IsInitialized)
             {
@@ -128,13 +130,20 @@ namespace SocialBicycleTrips.Activities
 
         private void LayoutEnd_Click(object sender, EventArgs e)
         {
-            List<Place.Field> fields = new List<Place.Field>();
-            fields.Add(Place.Field.Id);
-            fields.Add(Place.Field.Name);
-            fields.Add(Place.Field.LatLng);
-            fields.Add(Place.Field.Address);
-            Intent intent = new Autocomplete.IntentBuilder(AutocompleteActivityMode.Overlay, fields).Build(this);
-            StartActivityForResult(intent, 2);
+            if (endRadio.Checked)
+            {
+                List<Place.Field> fields = new List<Place.Field>();
+                fields.Add(Place.Field.Id);
+                fields.Add(Place.Field.Name);
+                fields.Add(Place.Field.LatLng);
+                fields.Add(Place.Field.Address);
+                Intent intent = new Autocomplete.IntentBuilder(AutocompleteActivityMode.Overlay, fields).Build(this);
+                StartActivityForResult(intent, 2);
+            }
+            else
+            {
+                Toast.MakeText(this, "please mark the destination radio first", ToastLength.Long).Show();
+            }
         }
 
         private void LayoutStart_Click(object sender, EventArgs e)
@@ -259,6 +268,20 @@ namespace SocialBicycleTrips.Activities
             locationCallback.MyLocation += LocationCallback_MyLocation;
         }
 
+        protected override void OnStop()
+        {
+            base.OnStop();
+            if (Intent.HasExtra("user") && Settings.RememberMe)
+            {
+                ISharedPreferences pref = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
+                ISharedPreferencesEditor editor = pref.Edit();
+                editor.PutString("user", Android.Util.Base64.EncodeToString(Serializer.ObjectToByteArray(user), Android.Util.Base64.Default));
+                editor.PutInt("userId", user.Id);
+                editor.PutInt("OngoingTrips", user.UpcomingTrips);
+                editor.PutInt("CompletedTrips", user.CompletedTrips);
+                editor.Apply();
+            }
+        }
         private void LocationCallback_MyLocation(object sender, LocationCallbackHelper.OnLocationCapturedEventArgs e)
         {
             lastLocation = e.Location;

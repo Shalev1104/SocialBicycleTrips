@@ -28,7 +28,7 @@ namespace SocialBicycleTrips.Activities
             SetContentView(Resource.Layout.activity_myTrips);
             SetViews();
             user = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("user")) as User;
-            trips = new Trips().GetAllTrips();
+            trips = new Trips().GetAllCurrentTrips();
             users = new Users().GetAllUsers();
             UploadUpdatedList();
             // Create your application here
@@ -37,6 +37,21 @@ namespace SocialBicycleTrips.Activities
         {
             MenuInflater.Inflate(Resource.Menu.userMenu, menu);
             return base.OnCreateOptionsMenu(menu);
+        }
+
+        protected override void OnStop()
+        {
+            base.OnStop();
+            if (Intent.HasExtra("user") && Settings.RememberMe)
+            {
+                ISharedPreferences pref = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
+                ISharedPreferencesEditor editor = pref.Edit();
+                editor.PutString("user", Android.Util.Base64.EncodeToString(Serializer.ObjectToByteArray(user), Android.Util.Base64.Default));
+                editor.PutInt("userId", user.Id);
+                editor.PutInt("OngoingTrips", user.UpcomingTrips);
+                editor.PutInt("CompletedTrips", user.CompletedTrips);
+                editor.Apply();
+            }
         }
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
@@ -130,7 +145,7 @@ namespace SocialBicycleTrips.Activities
             if(trips != null)
             {
                 trips.Sort();
-                myTripsAdapter = new Adapters.MyTripsAdapter(this, Resource.Layout.activity_singleItemTripDesign, user.MyTrips.GetAllMyTrips(user.Id), trips,users);
+                myTripsAdapter = new Adapters.MyTripsAdapter(this, Resource.Layout.activity_singleItemTripDesign, user.MyTrips.GetAllMyCurrentTrips(user.Id), trips,users);
                 lvMyTrips.Adapter = myTripsAdapter;
             }
         }
@@ -144,7 +159,7 @@ namespace SocialBicycleTrips.Activities
 
             Intent intent = new Intent(this, typeof(Activities.TripDetailsActivity));
 
-            intent.PutExtra("trip", Serializer.ObjectToByteArray(trips.GetTripByID(user.MyTrips.GetAllMyTrips(user.Id)[e.Position].TripID)));
+            intent.PutExtra("trip", Serializer.ObjectToByteArray(trips.GetTripByID(user.MyTrips.GetAllMyCurrentTrips(user.Id)[e.Position].TripID)));
             intent.PutExtra("user", Serializer.ObjectToByteArray(user));
 
             StartActivity(intent);

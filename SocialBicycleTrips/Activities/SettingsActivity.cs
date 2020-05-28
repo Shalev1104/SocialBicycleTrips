@@ -32,6 +32,7 @@ namespace SocialBicycleTrips.Activities
         private MyTrips myTrips;
         private LinearLayout notificationLayout;
         private LinearLayout notificationLayoutReminder;
+        private ISharedPreferences pref = Application.Context.GetSharedPreferences("Settings", FileCreationMode.Private);
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -40,14 +41,23 @@ namespace SocialBicycleTrips.Activities
             if (Intent.HasExtra("user"))
             {
                 user = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("user")) as User;
-                trips = new Trips().GetAllTrips();
-                myTrips = new MyTrips().GetAllMyTrips(user.Id);
+                trips = new Trips().GetAllCurrentTrips();
+                myTrips = new MyTrips().GetAllMyCurrentTrips(user.Id);
                 CreateNotificationChannel();
                 notificationLayout.Visibility = ViewStates.Visible;
+                if (Model.Settings.Notification)
+                {
+                    notification.Checked = true;
+                    notificationLayoutReminder.Visibility = ViewStates.Visible;
+                }
             }
             else
             {
                 notificationLayout.Visibility = ViewStates.Gone;
+            }
+            if (Model.Settings.Music)
+            {
+                music.Checked = true;
             }
             GenerateMapStyles();
             GenerateTripReminds();
@@ -81,6 +91,10 @@ namespace SocialBicycleTrips.Activities
         private void Notification_Click(object sender, EventArgs e)
         {
             Model.Settings.Notification = !Model.Settings.Notification;
+            ISharedPreferencesEditor editor = pref.Edit();
+            editor.PutBoolean("NotificationSwitcher", notification.Checked);
+            editor.Apply();
+
             if (Model.Settings.Notification)
             {
                 notificationLayoutReminder.Visibility = ViewStates.Visible;
@@ -90,7 +104,9 @@ namespace SocialBicycleTrips.Activities
                     Intent intent = new Intent(this, typeof(Broadcast.ReminderBroadcast)).PutExtra("mytrip", Serializer.ObjectToByteArray(trips.GetTripByID(myTrips[i].TripID)));
                     PendingIntent pendingIntent = PendingIntent.GetBroadcast(this, 0, intent, 0);
                     AlarmManager alarmManager = (AlarmManager)GetSystemService(AlarmService);
-                    alarmManager.SetExact(AlarmType.RtcWakeup, trips.GetTripByID(myTrips[i].TripID).DateTime.Millisecond + (Model.Settings.TripRemind/60000), pendingIntent);
+                    TimeSpan timespan = trips.GetTripByID(myTrips[i].TripID).DateTime - DateTime.Now;
+                    int totalMilliseconds = (int)timespan.TotalMilliseconds;
+                    alarmManager.SetExact(AlarmType.RtcWakeup, totalMilliseconds - (Model.Settings.TripRemind * 60000), pendingIntent);
                 }
             }
             else
@@ -108,14 +124,32 @@ namespace SocialBicycleTrips.Activities
 
         private void Music_Click(object sender, EventArgs e)
         {
+            ISharedPreferencesEditor editor = pref.Edit();
+            editor.PutBoolean("MusicSwitcher", music.Checked);
+            editor.Apply();
             Model.Settings.Music = !Model.Settings.Music;
             if (Model.Settings.Music)
             {
-                StartService(new Intent(this, typeof(Model.MediaService)));
+                StartService(new Intent(this, typeof(Services.MediaService)));
             }
             else
             {
-                StopService(new Intent(this, typeof(Model.MediaService)));
+                StopService(new Intent(this, typeof(Services.MediaService)));
+            }
+        }
+
+        protected override void OnStop()
+        {
+            base.OnStop();
+            if (Intent.HasExtra("user") && Model.Settings.RememberMe)
+            {
+                ISharedPreferences pref = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
+                ISharedPreferencesEditor editor = pref.Edit();
+                editor.PutString("user", Android.Util.Base64.EncodeToString(Serializer.ObjectToByteArray(user), Android.Util.Base64.Default));
+                editor.PutInt("userId", user.Id);
+                editor.PutInt("OngoingTrips", user.UpcomingTrips);
+                editor.PutInt("CompletedTrips", user.CompletedTrips);
+                editor.Apply();
             }
         }
 
@@ -157,6 +191,9 @@ namespace SocialBicycleTrips.Activities
 
         private void Mapstyle_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
         {
+            ISharedPreferencesEditor editor = pref.Edit();
+            editor.PutString("MapStyle", mapStyles[e.Position]);
+            editor.Apply();
             Model.Settings.MapStyle = mapStyles[e.Position];
         }
 
@@ -164,12 +201,29 @@ namespace SocialBicycleTrips.Activities
         {
             tripReminds = new List<string>();
             tripReminds.Add(Model.Settings.TripRemind.ToString());
+
             if (Model.Settings.TripRemind.ToString().Equals("0"))
             {
                 tripReminds[0] = "When trip is started";
             }
+            if (Model.Settings.TripRemind.ToString().Equals("5"))
+            {
+                tripReminds[0] = "5 minutes";
+            }
+            if (Model.Settings.TripRemind.ToString().Equals("15"))
+            {
+                tripReminds[0] = "15 minutes";
+            }
+            if (Model.Settings.TripRemind.ToString().Equals("30"))
+            {
+                tripReminds[0] = "30 minutes";
+            }
+            if (Model.Settings.TripRemind.ToString().Equals("60"))
+            {
+                tripReminds[0] = "60 minutes";
+            }
 
-            if (!Model.Settings.TripRemind.ToString().Equals("When trip is started"))
+            if (!Model.Settings.TripRemind.ToString().Equals("0"))
             {
                 tripReminds.Add("When trip is started");
             }
@@ -198,6 +252,7 @@ namespace SocialBicycleTrips.Activities
 
         private void TripRemind_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
         {
+            ISharedPreferencesEditor editor = pref.Edit();
             if (tripReminds[e.Position].Equals("When trip is started"))
             {
                 Model.Settings.TripRemind = 0;
@@ -207,6 +262,8 @@ namespace SocialBicycleTrips.Activities
                 char[] ch = { tripReminds[e.Position][0], tripReminds[e.Position][1] };
                 string convertToNum = new string(ch);
                 Model.Settings.TripRemind = int.Parse(convertToNum);
+                editor.PutInt("TripRemind", int.Parse(convertToNum));
+                editor.Apply();
             }
         }
     }

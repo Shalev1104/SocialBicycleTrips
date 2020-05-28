@@ -81,7 +81,7 @@ namespace SocialBicycleTrips.Activities
 
         private bool IsInTrip(int userID, int tripID)
         {
-            MyTrips myTrips = user.MyTrips.GetAllMyTrips(userID);
+            MyTrips myTrips = user.MyTrips.GetAllMyCurrentTrips(userID);
             if(myTrips != null)
             {
                 for(int i = 0; i < myTrips.Count; i++)
@@ -105,6 +105,11 @@ namespace SocialBicycleTrips.Activities
             {
                 mapHelper.DrawTripOnMap(json);
                 txtDistance.Text = mapHelper.distance.ToString();
+            }
+            else
+            {
+                txtDistance.Text = "Unable to draw route";
+                Toast.MakeText(this, txtDistance.Text, ToastLength.Long).Show();
             }
         }
 
@@ -176,6 +181,21 @@ namespace SocialBicycleTrips.Activities
                     Dialog diag = alertDiag.Create();
                     diag.Show();
                 }
+            }
+        }
+
+        protected override void OnStop()
+        {
+            base.OnStop();
+            if (Intent.HasExtra("user") && Settings.RememberMe)
+            {
+                ISharedPreferences pref = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
+                ISharedPreferencesEditor editor = pref.Edit();
+                editor.PutString("user", Android.Util.Base64.EncodeToString(Serializer.ObjectToByteArray(user), Android.Util.Base64.Default));
+                editor.PutInt("userId", user.Id);
+                editor.PutInt("OngoingTrips", user.UpcomingTrips);
+                editor.PutInt("CompletedTrips", user.CompletedTrips);
+                editor.Apply();
             }
         }
 
@@ -264,6 +284,7 @@ namespace SocialBicycleTrips.Activities
         {
             Intent intent = new Intent(this, typeof(Activities.LocationDetails));
             intent.PutExtra("location", Serializer.ObjectToByteArray(end));
+            intent.PutExtra("user", Serializer.ObjectToByteArray(user));
             StartActivity(intent);
         }
 

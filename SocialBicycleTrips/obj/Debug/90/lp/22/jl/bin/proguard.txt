@@ -1,16 +1,9 @@
--keepattributes *Annotation*
-
--keepclassmembers enum android.arch.lifecycle.Lifecycle$Event {
-    <fields>;
+-keep public class * implements com.bumptech.glide.module.GlideModule
+-keep public class * extends com.bumptech.glide.module.AppGlideModule
+-keep public enum com.bumptech.glide.load.ImageHeaderParser$** {
+  **[] $VALUES;
+  public *;
 }
 
--keep class * implements android.arch.lifecycle.LifecycleObserver {
-}
-
--keep class * implements android.arch.lifecycle.GeneratedAdapter {
-    <init>(...);
-}
-
--keepclassmembers class ** {
-    @android.arch.lifecycle.OnLifecycleEvent *;
-}
+# Uncomment for DexGuard only
+#-keepresourcexmlelements manifest/application/meta-data@value=GlideModule

@@ -41,10 +41,11 @@ namespace Model
             return myTrip;
         }
 
-        public MyTrips GetAllMyTrips(int userID) // converts from list to a class(רבים)
+        public MyTrips GetAllMyCurrentTrips(int userID) // converts from list to a class(רבים)
         {
             MyTrips myTrips = new MyTrips();
             List<MyTrip> myTripList = DbTable<MyTrip>.SelectAll();
+            Trips trips = new Trips().GetAllCurrentTrips();
             if(myTripList != null)
             {
                 for (int i = 0; i < myTripList.Count; i++)
@@ -80,8 +81,8 @@ namespace Model
         public int CountOnGoingTrips(int userID)
         {
             int count = 0;
-            MyTrips myTrips = new MyTrips().GetAllMyTrips(userID);
-            Trips trips = new Trips().GetAllTrips();
+            MyTrips myTrips = new MyTrips().GetAllMyCurrentTrips(userID);
+            Trips trips = new Trips().GetAllCurrentTrips();
             if (myTrips != null)
             {
                 for (int i = 0; i < myTrips.Count; i++)
@@ -97,7 +98,7 @@ namespace Model
 
         public int CountCompletedTrips(int userID)
         {
-            return (new MyTrips().GetAllMyTrips(userID).Count - CountOnGoingTrips(userID));
+            return (new MyTrips().GetAllMyCurrentTrips(userID).Count - CountOnGoingTrips(userID));
         }
 
         public int Insert(MyTrip myTrip)

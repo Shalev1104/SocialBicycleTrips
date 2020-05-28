@@ -4864,46 +4864,49 @@ namespace SocialBicycleTrips
 			public const int places_powered_by_google_light = 2131165371;
 			
 			// aapt resource value: 0x7F0700BC
-			public const int plusIcon = 2131165372;
+			public const int plus = 2131165372;
 			
 			// aapt resource value: 0x7F0700BD
-			public const int powered_by_google_dark = 2131165373;
+			public const int plusIcon = 2131165373;
 			
 			// aapt resource value: 0x7F0700BE
-			public const int powered_by_google_light = 2131165374;
+			public const int powered_by_google_dark = 2131165374;
 			
 			// aapt resource value: 0x7F0700BF
-			public const int ProjectIcon = 2131165375;
+			public const int powered_by_google_light = 2131165375;
 			
 			// aapt resource value: 0x7F0700C0
-			public const int quantum_ic_arrow_back_grey600_24 = 2131165376;
+			public const int ProjectIcon = 2131165376;
 			
 			// aapt resource value: 0x7F0700C1
-			public const int quantum_ic_clear_grey600_24 = 2131165377;
+			public const int quantum_ic_arrow_back_grey600_24 = 2131165377;
 			
 			// aapt resource value: 0x7F0700C2
-			public const int quantum_ic_cloud_off_vd_theme_24 = 2131165378;
+			public const int quantum_ic_clear_grey600_24 = 2131165378;
 			
 			// aapt resource value: 0x7F0700C3
-			public const int quantum_ic_search_grey600_24 = 2131165379;
+			public const int quantum_ic_cloud_off_vd_theme_24 = 2131165379;
 			
 			// aapt resource value: 0x7F0700C4
-			public const int reddot = 2131165380;
+			public const int quantum_ic_search_grey600_24 = 2131165380;
 			
 			// aapt resource value: 0x7F0700C5
-			public const int SplashImg = 2131165381;
+			public const int reddot = 2131165381;
 			
 			// aapt resource value: 0x7F0700C6
-			public const int StandardProfileImage = 2131165382;
+			public const int SplashImg = 2131165382;
 			
 			// aapt resource value: 0x7F0700C7
-			public const int tooltip_frame_dark = 2131165383;
+			public const int StandardProfileImage = 2131165383;
 			
 			// aapt resource value: 0x7F0700C8
-			public const int tooltip_frame_light = 2131165384;
+			public const int tooltip_frame_dark = 2131165384;
 			
 			// aapt resource value: 0x7F0700C9
-			public const int userSearchIcon = 2131165385;
+			public const int tooltip_frame_light = 2131165385;
+			
+			// aapt resource value: 0x7F0700CA
+			public const int userSearchIcon = 2131165386;
 			
 			static Drawable()
 			{
@@ -6530,19 +6533,22 @@ namespace SocialBicycleTrips
 			public const int DarkMapStyle = 2131623957;
 			
 			// aapt resource value: 0x7F0E0016
-			public const int NightMapStyle = 2131623958;
+			public const int Music = 2131623958;
 			
 			// aapt resource value: 0x7F0E0017
-			public const int places_keep = 2131623959;
+			public const int NightMapStyle = 2131623959;
 			
 			// aapt resource value: 0x7F0E0018
-			public const int RetroMapStyle = 2131623960;
+			public const int places_keep = 2131623960;
 			
 			// aapt resource value: 0x7F0E0019
-			public const int SilverMapStyle = 2131623961;
+			public const int RetroMapStyle = 2131623961;
 			
 			// aapt resource value: 0x7F0E001A
-			public const int StandardMapStyle = 2131623962;
+			public const int SilverMapStyle = 2131623962;
+			
+			// aapt resource value: 0x7F0E001B
+			public const int StandardMapStyle = 2131623963;
 			
 			static Raw()
 			{

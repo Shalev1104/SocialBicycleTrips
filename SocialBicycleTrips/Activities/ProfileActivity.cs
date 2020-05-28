@@ -47,9 +47,10 @@ namespace SocialBicycleTrips.Activities
         private ImageButton btnGallery;
         private Button btnCancel;
         private Users users;
+        private Bitmap bitmap;
         private bool permissionGranted = false;
         readonly string[] permissionPhoneCall = { Manifest.Permission.CallPhone };
-        private Model.PhoneCallReceiver callReceiver;
+        private Broadcast.PhoneCallReceiver callReceiver;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -57,7 +58,7 @@ namespace SocialBicycleTrips.Activities
             SetViews();
             myFriends = new MyFriends().GetAllMyFriends();
             users = new Users().GetAllUsers();
-            callReceiver = new Model.PhoneCallReceiver();
+            callReceiver = new Broadcast.PhoneCallReceiver();
             GenerateUser();
             UploadUserDetails();
             if(userlogon != null)
@@ -93,6 +94,20 @@ namespace SocialBicycleTrips.Activities
             RegisterReceiver(callReceiver, callIntentFilter);
         }
 
+        protected override void OnStop()
+        {
+            base.OnStop();
+            if (Intent.HasExtra("user") && Model.Settings.RememberMe)
+            {
+                ISharedPreferences pref = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
+                ISharedPreferencesEditor editor = pref.Edit();
+                editor.PutString("user", Android.Util.Base64.EncodeToString(Serializer.ObjectToByteArray(userlogon), Android.Util.Base64.Default));
+                editor.PutInt("userId", userlogon.Id);
+                editor.PutInt("OngoingTrips", userlogon.UpcomingTrips);
+                editor.PutInt("CompletedTrips", userlogon.CompletedTrips);
+                editor.Apply();
+            }
+        }
 
         protected override void OnPause()
         {
@@ -119,7 +134,7 @@ namespace SocialBicycleTrips.Activities
             {
                 permissionGranted = true;
                 StartActivity(new Intent(Intent.ActionCall, Android.Net.Uri.Parse("tel:" + phoneNumber.Text)));
-                SendBroadcast(new Intent(ApplicationContext, typeof(Model.PhoneCallReceiver)));
+                SendBroadcast(new Intent(ApplicationContext, typeof(Broadcast.PhoneCallReceiver)));
             }
             return permissionGranted;
         }
@@ -143,7 +158,7 @@ namespace SocialBicycleTrips.Activities
         }
         private void ProfileImage_LongClick(object sender, View.LongClickEventArgs e)
         {
-            if (Intent.HasExtra("myself"))
+            if (Intent.HasExtra("myself") && !userlogon.IsSocialMediaLogon())
             {
                 PerformCustomDialog();
             }
@@ -193,9 +208,9 @@ namespace SocialBicycleTrips.Activities
             {
                 if (resultCode == Android.App.Result.Ok)
                 {
-                    Bitmap newBitmap = (Bitmap)data.Extras.Get("data");
-                    profileImage.SetImageBitmap(newBitmap);
-                    userlogon.Image = BitMapHelper.BitMapToBase64(newBitmap);
+                    bitmap = (Bitmap)data.Extras.Get("data");
+                    profileImage.SetImageBitmap(bitmap);
+                    userlogon.Image = BitMapHelper.BitMapToBase64(bitmap);
                     users.Update(userlogon);
                     dialog.Dismiss();
                     Toast.MakeText(this, "Image has been updated", ToastLength.Long).Show();
@@ -205,9 +220,9 @@ namespace SocialBicycleTrips.Activities
             {
                 if (resultCode == Android.App.Result.Ok && data != null)
                 {
-                    Bitmap newBitmap = MediaStore.Images.Media.GetBitmap(ContentResolver, data.Data);
-                    profileImage.SetImageBitmap(newBitmap);
-                    userlogon.Image = BitMapHelper.BitMapToBase64(newBitmap);
+                    bitmap = MediaStore.Images.Media.GetBitmap(ContentResolver, data.Data);
+                    profileImage.SetImageBitmap(bitmap);
+                    userlogon.Image = BitMapHelper.BitMapToBase64(bitmap);
                     users.Update(userlogon);
                     dialog.Dismiss();
                     Toast.MakeText(this, "Image has been updated", ToastLength.Long).Show();

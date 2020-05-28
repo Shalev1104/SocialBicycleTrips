@@ -26,6 +26,12 @@
     </activity>
     <receiver android:name=".ReminderBroadcast" />
     <activity android:label="@string/app_name" android:theme="@style/AppTheme" android:name="crc64b9ab4aad30612dbe.MainActivity" />
+    <service android:name="crc642834bf4599b5dd05.MediaService" />
+    <receiver android:enabled="true" android:name="crc640351b56f748fd233.PhoneCallReceiver">
+      <intent-filter>
+        <action android:name="android.intent.action.PHONE_STATE" />
+      </intent-filter>
+    </receiver>
     <receiver android:name="crc640351b56f748fd233.ReminderBroadcast" />
     <activity android:icon="@drawable/projecticon" android:noHistory="true" android:theme="@style/Theme.Splash" android:name="crc646d513817d643a16d.ActivitySplash">
       <intent-filter>
@@ -46,12 +52,6 @@
     <activity android:label="RegisterActivity" android:name="crc646d513817d643a16d.RegisterActivity" />
     <activity android:label="SettingsActivity" android:name="crc646d513817d643a16d.SettingsActivity" />
     <activity android:label="TripDetailsActivity" android:name="crc646d513817d643a16d.TripDetailsActivity" />
-    <service android:name="crc64f74fed6382679c7b.MediaService" />
-    <receiver android:enabled="true" android:name="crc64f74fed6382679c7b.PhoneCallReceiver">
-      <intent-filter>
-        <action android:name="android.intent.action.PHONE_STATE" />
-      </intent-filter>
-    </receiver>
     <service android:name="crc64a98abb514ffad9f1.KeepAliveService" />
     <receiver android:enabled="true" android:exported="false" android:label="Essentials Battery Broadcast Receiver" android:name="crc64a0e0a82d0db9a07d.BatteryBroadcastReceiver" />
     <receiver android:enabled="true" android:exported="false" android:label="Essentials Energy Saver Broadcast Receiver" android:name="crc64a0e0a82d0db9a07d.EnergySaverBroadcastReceiver" />
