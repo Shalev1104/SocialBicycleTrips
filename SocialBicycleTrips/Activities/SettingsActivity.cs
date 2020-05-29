@@ -71,7 +71,7 @@ namespace SocialBicycleTrips.Activities
             tripRemind = FindViewById<Spinner>(Resource.Id.spnTripReminder);
             notificationLayout = FindViewById<LinearLayout>(Resource.Id.layoutNotificationVisibillity);
             notificationLayoutReminder = FindViewById<LinearLayout>(Resource.Id.layoutNotificationReminder);
-            
+
             music.Click += Music_Click;
             notification.Click += Notification_Click;
 
@@ -86,31 +86,40 @@ namespace SocialBicycleTrips.Activities
             if (Model.Settings.Notification)
             {
                 notificationLayoutReminder.Visibility = ViewStates.Visible;
-
-                for(int i = 0; i < myTrips.Count; i++)
-                {
-                    Intent intent = new Intent(this, typeof(Broadcast.ReminderBroadcast)).PutExtra("mytrip", Serializer.ObjectToByteArray(trips.GetTripByID(myTrips[i].TripID)));
-                    PendingIntent pendingIntent = PendingIntent.GetBroadcast(this, 1, intent, PendingIntentFlags.Immutable);
-                    AlarmManager alarmManager = (AlarmManager)GetSystemService(AlarmService);
-                    TimeSpan timespan = trips.GetTripByID(myTrips[i].TripID).DateTime - DateTime.Now;
-                    int totalMilliseconds = (int)timespan.TotalMilliseconds;
-                    alarmManager.Set(AlarmType.ElapsedRealtimeWakeup, SystemClock.ElapsedRealtime() + totalMilliseconds - (Model.Settings.TripRemind * 60000), pendingIntent);
-                }
+                StartAlarm();
+                Toast.MakeText(this, "Alarm has been added", ToastLength.Long).Show();
             }
             else
             {
                 notificationLayoutReminder.Visibility = ViewStates.Gone;
-                for (int i = 0; i < myTrips.Count; i++)
-                {
-                    Intent intent = new Intent(this, typeof(Broadcast.ReminderBroadcast)).PutExtra("mytrip", Serializer.ObjectToByteArray(trips.GetTripByID(myTrips[i].TripID)));
-                    PendingIntent pendingIntent = PendingIntent.GetBroadcast(this, 1, intent, 0);
-                    AlarmManager alarmManager = (AlarmManager)GetSystemService(AlarmService);
-                    alarmManager.Cancel(pendingIntent);
-                }
+                CancelAlarm();
                 Toast.MakeText(this, "Alarm Canceled", ToastLength.Long).Show();
             }
         }
-
+        public void StartAlarm()
+        {
+            for (int i = 0; i < myTrips.Count; i++)
+            {
+                Intent intent = new Intent(this, typeof(Broadcast.ReminderBroadcast)).PutExtra("mytrip", Serializer.ObjectToByteArray(trips.GetTripByID(myTrips[i].TripID)));
+                PendingIntent pendingIntent = PendingIntent.GetBroadcast(this, 1, intent, 0);
+                AlarmManager alarmManager = (AlarmManager)GetSystemService(AlarmService);
+                long totalMilliseconds = (long)(trips.GetTripByID(myTrips[i].TripID).DateTime - DateTime.Now).TotalMilliseconds;
+                if (totalMilliseconds > 0)
+                {
+                    alarmManager.Set(AlarmType.ElapsedRealtimeWakeup, SystemClock.ElapsedRealtime() + totalMilliseconds - (Model.Settings.TripRemind * 60000), pendingIntent);
+                }
+            }
+        }
+        public void CancelAlarm()
+        {
+            for (int i = 0; i < myTrips.Count; i++)
+            {
+                Intent intent = new Intent(this, typeof(Broadcast.ReminderBroadcast)).PutExtra("mytrip", Serializer.ObjectToByteArray(trips.GetTripByID(myTrips[i].TripID)));
+                PendingIntent pendingIntent = PendingIntent.GetBroadcast(this, 1, intent, 0);
+                AlarmManager alarmManager = (AlarmManager)GetSystemService(AlarmService);
+                alarmManager.Cancel(pendingIntent);
+            }
+        }
         private void Music_Click(object sender, EventArgs e)
         {
             ISharedPreferencesEditor editor = pref.Edit();
@@ -203,21 +212,9 @@ namespace SocialBicycleTrips.Activities
             {
                 tripReminds[0] = "When trip is started";
             }
-            if (Model.Settings.TripRemind.ToString().Equals("5"))
+            else
             {
-                tripReminds[0] = "5 minutes";
-            }
-            if (Model.Settings.TripRemind.ToString().Equals("15"))
-            {
-                tripReminds[0] = "15 minutes";
-            }
-            if (Model.Settings.TripRemind.ToString().Equals("30"))
-            {
-                tripReminds[0] = "30 minutes";
-            }
-            if (Model.Settings.TripRemind.ToString().Equals("60"))
-            {
-                tripReminds[0] = "60 minutes";
+                tripReminds[0] = Model.Settings.TripRemind.ToString() + " minutes before";
             }
 
             if (!Model.Settings.TripRemind.ToString().Equals("0"))
@@ -226,19 +223,19 @@ namespace SocialBicycleTrips.Activities
             }
             if (!Model.Settings.TripRemind.ToString().Equals("5 minutes"))
             {
-                tripReminds.Add("5 minutes");
+                tripReminds.Add("5 minutes before");
             }
             if (!Model.Settings.TripRemind.ToString().Equals("15 minutes"))
             {
-                tripReminds.Add("15 minutes");
+                tripReminds.Add("15 minutes before");
             }
             if (!Model.Settings.TripRemind.ToString().Equals("30 minutes"))
             {
-                tripReminds.Add("30 minutes");
+                tripReminds.Add("30 minutes before");
             }
             if (!Model.Settings.TripRemind.ToString().Equals("60 minutes"))
             {
-                tripReminds.Add("60 minutes");
+                tripReminds.Add("60 minutes before");
             }
 
             ArrayAdapter<string> dataAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, tripReminds);
@@ -249,10 +246,14 @@ namespace SocialBicycleTrips.Activities
 
         private void TripRemind_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
         {
+            CancelAlarm();
+            StartAlarm();
             ISharedPreferencesEditor editor = pref.Edit();
             if (tripReminds[e.Position].Equals("When trip is started"))
             {
                 Model.Settings.TripRemind = 0;
+                editor.PutInt("TripRemind", 0);
+                editor.Apply();
             }
             else
             {

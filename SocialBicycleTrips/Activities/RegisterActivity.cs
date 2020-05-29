@@ -107,12 +107,23 @@ namespace SocialBicycleTrips.Activities
                     intent.PutExtra("user", Serializer.ObjectToByteArray(user));
                     if (registerationRememberMe.Checked)
                     {
-                        intent.PutExtra("checked", true);
+                        RememberMe();
                     }
                     SetResult(Android.App.Result.Ok, intent);
                     Finish();
                 }
             }
+        }
+
+        private void RememberMe()
+        {
+            ISharedPreferences pref = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
+            ISharedPreferencesEditor editor = pref.Edit();
+            editor.PutString("user", Android.Util.Base64.EncodeToString(Serializer.ObjectToByteArray(user), Android.Util.Base64.Default));
+            editor.PutInt("userId", user.Id);
+            editor.PutInt("OngoingTrips", user.UpcomingTrips);
+            editor.PutInt("CompletedTrips", user.CompletedTrips);
+            editor.Apply();
         }
 
         private void Profile_Click(object sender, EventArgs e)
@@ -175,7 +186,7 @@ namespace SocialBicycleTrips.Activities
             }
             if (requestCode == 2)
             {
-                if (resultCode == Android.App.Result.Ok && data != null)
+                if (resultCode == Android.App.Result.Ok)
                 {
                     bitmap = MediaStore.Images.Media.GetBitmap(ContentResolver, data.Data);
 

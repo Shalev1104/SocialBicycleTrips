@@ -182,13 +182,6 @@ namespace SocialBicycleTrips.Activities
                             googleLogin.Enabled = false;
                             signup.Enabled = false;
                             Toast.MakeText(this, "Registeration successfull", ToastLength.Long).Show();
-                            if (data.HasExtra("checked"))
-                            {
-                                if(data.GetBooleanExtra("checked",false) == true)
-                                {
-                                    RememberMe();
-                                }
-                            }
                             Navigate(user, true);
                         }
                         else

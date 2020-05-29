@@ -21,7 +21,15 @@ namespace SocialBicycleTrips.Notifications
         public static void ShowNotification(Trip trip,Context context)
         {
             NotificationHelper notificationHelper = new NotificationHelper(context,"channelID","tripReminder");
-            NotificationCompat.Builder builder = new NotificationCompat.Builder(context, notificationHelper.ChannelID).SetContentTitle("Your trip").SetContentText(trip.Notes + " Is About to start in " + Settings.TripRemind + " minutes").SetPriority(NotificationCompat.PriorityDefault).SetSound(RingtoneManager.GetDefaultUri(RingtoneType.Notification)).SetTicker("SocialBicycleTrips").SetSmallIcon(Resource.Drawable.ProjectIcon);
+            NotificationCompat.Builder builder;
+            if(Model.Settings.TripRemind != 0)
+            {
+                builder = new NotificationCompat.Builder(context, notificationHelper.ChannelID).SetContentTitle("Your trip").SetContentText(trip.Notes + " Is About to start in " + Settings.TripRemind + " minutes").SetPriority(NotificationCompat.PriorityDefault).SetSound(RingtoneManager.GetDefaultUri(RingtoneType.Notification)).SetTicker("SocialBicycleTrips").SetSmallIcon(Resource.Drawable.ProjectIcon);
+            }
+            else
+            {
+                builder = new NotificationCompat.Builder(context, notificationHelper.ChannelID).SetContentTitle("Your trip").SetContentText(trip.Notes + " Is starting right now").SetPriority(NotificationCompat.PriorityDefault).SetSound(RingtoneManager.GetDefaultUri(RingtoneType.Notification)).SetTicker("SocialBicycleTrips").SetSmallIcon(Resource.Drawable.ProjectIcon);
+            }
             notificationHelper.GetManager().Notify(1, builder.Build());
         }
     }

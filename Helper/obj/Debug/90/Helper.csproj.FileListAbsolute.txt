@@ -337,6 +337,7 @@ C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Helper\obj\Debug\90\android\s
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Helper\obj\Debug\90\android\src\crc64a98abb514ffad9f1\CustomTabsServiceConnectionImpl.java
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Helper\obj\Debug\90\android\src\crc64a98abb514ffad9f1\KeepAliveService.java
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Helper\obj\Debug\90\android\src\crc64ac215617748f9b25\LocationCallbackHelper.java
+C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Helper\obj\Debug\90\android\src\crc64ac215617748f9b25\NotificationHelper.java
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Helper\obj\Debug\90\android\src\crc64e95e69e34d869711\LocationCallback.java
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Helper\obj\Debug\90\android\src\crc64e95e69e34d869711\LocationListener.java
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Helper\obj\Debug\90\android\src\mono\android\app\ApplicationRegistration.java
@@ -485,4 +486,3 @@ C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Helper\obj\Debug\90\stamp\_Ge
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Helper\obj\Debug\90\stamp\_GeneratePackageManagerJava.stamp
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Helper\obj\Debug\90\stamp\_ResolveLibraryProjectImports.stamp
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Helper\obj\Debug\90\Helper.csprojAssemblyReference.cache
-C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Helper\obj\Debug\90\android\src\crc64ac215617748f9b25\NotificationHelper.java

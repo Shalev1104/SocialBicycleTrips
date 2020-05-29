@@ -19,6 +19,7 @@ using Android.Graphics;
 using Android.Gms.Tasks;
 using Android.Telephony;
 using Android.Text.Format;
+using Java.Util;
 
 namespace SocialBicycleTrips
 {
@@ -202,9 +203,11 @@ namespace SocialBicycleTrips
                         Intent intent = new Intent(this, typeof(Broadcast.ReminderBroadcast)).PutExtra("mytrip", Serializer.ObjectToByteArray(trip));
                         PendingIntent pendingIntent = PendingIntent.GetBroadcast(this, 1, intent, 0);
                         AlarmManager alarmManager = (AlarmManager)GetSystemService(AlarmService);
-                        TimeSpan timespan = trip.DateTime - DateTime.Now;
-                        int totalMilliseconds = (int)timespan.TotalMilliseconds;
-                        alarmManager.Set(AlarmType.ElapsedRealtimeWakeup, SystemClock.ElapsedRealtime() + totalMilliseconds - (Model.Settings.TripRemind * 60000), pendingIntent);
+                        long totalMilliseconds = (long)(trip.DateTime - DateTime.Now).TotalMilliseconds;
+                        if (totalMilliseconds > 0)
+                        {
+                            alarmManager.Set(AlarmType.ElapsedRealtimeWakeup, SystemClock.ElapsedRealtime() + totalMilliseconds - (Model.Settings.TripRemind * 60000), pendingIntent);
+                        }
                     }
                     StartActivity(new Intent(this, typeof(MainActivity)).PutExtra("user", Serializer.ObjectToByteArray(user)));
                 }
