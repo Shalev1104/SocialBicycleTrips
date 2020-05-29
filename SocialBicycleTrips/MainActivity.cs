@@ -200,11 +200,11 @@ namespace SocialBicycleTrips
                     if (Settings.Notification)
                     {
                         Intent intent = new Intent(this, typeof(Broadcast.ReminderBroadcast)).PutExtra("mytrip", Serializer.ObjectToByteArray(trip));
-                        PendingIntent pendingIntent = PendingIntent.GetBroadcast(this, 0, intent, 0);
+                        PendingIntent pendingIntent = PendingIntent.GetBroadcast(this, 1, intent, 0);
                         AlarmManager alarmManager = (AlarmManager)GetSystemService(AlarmService);
                         TimeSpan timespan = trip.DateTime - DateTime.Now;
                         int totalMilliseconds = (int)timespan.TotalMilliseconds;
-                        alarmManager.SetExact(AlarmType.RtcWakeup, totalMilliseconds - (Model.Settings.TripRemind * 60000), pendingIntent);
+                        alarmManager.Set(AlarmType.ElapsedRealtimeWakeup, SystemClock.ElapsedRealtime() + totalMilliseconds - (Model.Settings.TripRemind * 60000), pendingIntent);
                     }
                     StartActivity(new Intent(this, typeof(MainActivity)).PutExtra("user", Serializer.ObjectToByteArray(user)));
                 }

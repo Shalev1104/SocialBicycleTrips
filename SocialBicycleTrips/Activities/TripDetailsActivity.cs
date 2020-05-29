@@ -324,6 +324,12 @@ namespace SocialBicycleTrips.Activities
                 case "Aubergine":
                     googleMap.SetMapStyle(MapStyleOptions.LoadRawResourceStyle(this, Resource.Raw.AubergineMapStyle));
                     break;
+                case "Hybrid":
+                    googleMap.MapType = GoogleMap.MapTypeHybrid;
+                    break;
+                case "Terrain":
+                    googleMap.MapType = GoogleMap.MapTypeTerrain;
+                    break;
             }
         }
     }

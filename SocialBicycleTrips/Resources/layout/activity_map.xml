@@ -118,7 +118,6 @@
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:clickable="true"
-            android:id="@+id/currentLocation"
             android:layout_gravity="center|right"
             android:background="@android:color/white"
             android:layout_marginRight="16dp">
@@ -126,8 +125,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
+                android:id="@+id/currentLocation"
                 android:background="@android:drawable/ic_menu_mylocation"
-               android:backgroundTint="@android:color/holo_orange_dark"/>
+                android:backgroundTint="@android:color/holo_orange_dark"/>
         </RelativeLayout>
         <Button
             android:layout_width="wrap_content"

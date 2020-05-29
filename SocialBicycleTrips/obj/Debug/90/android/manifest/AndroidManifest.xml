@@ -25,6 +25,7 @@
       </intent-filter>
     </activity>
     <receiver android:name=".ReminderBroadcast" />
+    <receiver android:name=".PhoneCallReceiver" />
     <activity android:label="@string/app_name" android:theme="@style/AppTheme" android:name="crc64b9ab4aad30612dbe.MainActivity" />
     <service android:name="crc642834bf4599b5dd05.MediaService" />
     <receiver android:enabled="true" android:name="crc640351b56f748fd233.PhoneCallReceiver">

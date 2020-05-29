@@ -43,7 +43,6 @@ namespace SocialBicycleTrips.Activities
                 user = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("user")) as User;
                 trips = new Trips().GetAllCurrentTrips();
                 myTrips = new MyTrips().GetAllMyCurrentTrips(user.Id);
-                CreateNotificationChannel();
                 notificationLayout.Visibility = ViewStates.Visible;
                 if (Model.Settings.Notification)
                 {
@@ -62,17 +61,6 @@ namespace SocialBicycleTrips.Activities
             GenerateMapStyles();
             GenerateTripReminds();
             // Create your application here
-        }
-
-        private void CreateNotificationChannel()
-        {
-            if(Build.VERSION.SdkInt >= Build.VERSION_CODES.O)
-            {
-                NotificationChannel channel = new NotificationChannel("notifyLemubit", "LemubitReminderChannel", NotificationManager.ImportanceDefault);
-                channel.Description = "Channel for Lemubit Reminder";
-                NotificationManager notificationManager = (NotificationManager)GetSystemService(NotificationService);
-                notificationManager.CreateNotificationChannel(channel);
-            }
         }
 
         public void SetViews()
@@ -102,11 +90,11 @@ namespace SocialBicycleTrips.Activities
                 for(int i = 0; i < myTrips.Count; i++)
                 {
                     Intent intent = new Intent(this, typeof(Broadcast.ReminderBroadcast)).PutExtra("mytrip", Serializer.ObjectToByteArray(trips.GetTripByID(myTrips[i].TripID)));
-                    PendingIntent pendingIntent = PendingIntent.GetBroadcast(this, 0, intent, 0);
+                    PendingIntent pendingIntent = PendingIntent.GetBroadcast(this, 1, intent, PendingIntentFlags.Immutable);
                     AlarmManager alarmManager = (AlarmManager)GetSystemService(AlarmService);
                     TimeSpan timespan = trips.GetTripByID(myTrips[i].TripID).DateTime - DateTime.Now;
                     int totalMilliseconds = (int)timespan.TotalMilliseconds;
-                    alarmManager.SetExact(AlarmType.RtcWakeup, totalMilliseconds - (Model.Settings.TripRemind * 60000), pendingIntent);
+                    alarmManager.Set(AlarmType.ElapsedRealtimeWakeup, SystemClock.ElapsedRealtime() + totalMilliseconds - (Model.Settings.TripRemind * 60000), pendingIntent);
                 }
             }
             else
@@ -115,10 +103,11 @@ namespace SocialBicycleTrips.Activities
                 for (int i = 0; i < myTrips.Count; i++)
                 {
                     Intent intent = new Intent(this, typeof(Broadcast.ReminderBroadcast)).PutExtra("mytrip", Serializer.ObjectToByteArray(trips.GetTripByID(myTrips[i].TripID)));
-                    PendingIntent pendingIntent = PendingIntent.GetBroadcast(this, 0, intent, 0);
+                    PendingIntent pendingIntent = PendingIntent.GetBroadcast(this, 1, intent, 0);
                     AlarmManager alarmManager = (AlarmManager)GetSystemService(AlarmService);
                     alarmManager.Cancel(pendingIntent);
                 }
+                Toast.MakeText(this, "Alarm Canceled", ToastLength.Long).Show();
             }
         }
 
@@ -181,6 +170,14 @@ namespace SocialBicycleTrips.Activities
             if (Model.Settings.MapStyle != "Aubergine")
             {
                 mapStyles.Add("Aubergine");
+            }
+            if(Model.Settings.MapStyle != "Hybrid")
+            {
+                mapStyles.Add("Hybrid");
+            }
+            if(Model.Settings.MapStyle != "Terrain")
+            {
+                mapStyles.Add("Terrain");
             }
 
             ArrayAdapter<string> dataAdapter = new ArrayAdapter<string>(this,Android.Resource.Layout.SimpleSpinnerItem, mapStyles);

@@ -39,7 +39,7 @@ namespace SocialBicycleTrips.Activities
         private RadioButton endRadio;
         private ImageView centerMarker;
         private Button btnDone;
-        private RelativeLayout returnToMyLocation;
+        private ImageButton returnToMyLocation;
 
         static int update_interval = 5;//seconds
         static int fastest_interval = 5;
@@ -83,7 +83,7 @@ namespace SocialBicycleTrips.Activities
             endRadio = FindViewById<RadioButton>(Resource.Id.endRadio);
             centerMarker = FindViewById<ImageView>(Resource.Id.centerMarker);
             btnDone = FindViewById<Button>(Resource.Id.btnFinished);
-            returnToMyLocation = FindViewById<RelativeLayout>(Resource.Id.currentLocation);
+            returnToMyLocation = FindViewById<ImageButton>(Resource.Id.currentLocation);
 
             returnToMyLocation.Click += ReturnToMyLocation_Click;
             btnDone.Click += BtnDone_Click;
@@ -95,7 +95,6 @@ namespace SocialBicycleTrips.Activities
 
         private void ReturnToMyLocation_Click(object sender, EventArgs e)
         {
-            CreateLocationRequest();
             GetMyLocation();
             StartLocationUpdates();
         }
@@ -347,6 +346,12 @@ namespace SocialBicycleTrips.Activities
                     break;
                 case "Aubergine":
                     googleMap.SetMapStyle(MapStyleOptions.LoadRawResourceStyle(this, Resource.Raw.AubergineMapStyle));
+                    break;
+                case "Hybrid":
+                    googleMap.MapType = GoogleMap.MapTypeHybrid;
+                    break;
+                case "Terrain":
+                    googleMap.MapType = GoogleMap.MapTypeTerrain;
                     break;
             }
         }
