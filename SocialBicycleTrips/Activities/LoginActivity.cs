@@ -52,6 +52,7 @@ namespace SocialBicycleTrips.Activities
 
         private ISharedPreferences pref = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
         ICallbackManager callbackManager;
+        private ProgressDialog loadingDialog;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -61,7 +62,7 @@ namespace SocialBicycleTrips.Activities
             FacebookSdk.SdkInitialize(ApplicationContext);
             // Create your application here
             users = new Users().GetAllUsers();
-
+            loadingDialog = new ProgressDialog(this);
             Settings.RememberMe = rememberUser.Checked;
             ISharedPreferences settings = Application.Context.GetSharedPreferences("Settings", FileCreationMode.Private);
             ISharedPreferencesEditor settingsEditor = settings.Edit();
@@ -205,12 +206,20 @@ namespace SocialBicycleTrips.Activities
                     GoogleSignInResult result = Auth.GoogleSignInApi.GetSignInResultFromIntent(data);
                     if (result.IsSuccess)
                     {
+                        loadingDialog.SetTitle("Login With Google");
+                        loadingDialog.SetMessage("Please wait");
+                        loadingDialog.SetCanceledOnTouchOutside(false); 
+                        loadingDialog.Show();
                         GoogleSignInAccount account = result.SignInAccount;
                         LoginWithGoogleFirebase(account);
                     }
                 }
                 else
                 {
+                    loadingDialog.SetTitle("Login With Facebook");
+                    loadingDialog.SetMessage("Please wait");
+                    loadingDialog.SetCanceledOnTouchOutside(false);
+                    loadingDialog.Show();
                     callbackManager.OnActivityResult(requestCode, (int)resultCode, data);
                 }
         }
@@ -335,6 +344,7 @@ namespace SocialBicycleTrips.Activities
                             RememberMe();
                         }
                         Toast.MakeText(this, "login succesfull", ToastLength.Long).Show();
+                        loadingDialog.Dismiss();
                         Navigate(user, isSocialFirstConnect);
                     }
                 }
@@ -352,22 +362,25 @@ namespace SocialBicycleTrips.Activities
                         RememberMe();
                     }
                     Toast.MakeText(this, "login succesfull", ToastLength.Long).Show();
+                    loadingDialog.Dismiss();
                     Navigate(user, isSocialFirstConnect);
                 }
         }
         public void OnFailure(Java.Lang.Exception e)
         {
+            loadingDialog.Dismiss();
             Toast.MakeText(this, "login failed", ToastLength.Long).Show();
         }
 
         // Facebook :
         public void OnCancel()
         {
-            
+            loadingDialog.Dismiss();
         }
 
         public void OnError(FacebookException error)
         {
+            loadingDialog.Dismiss();
             Toast.MakeText(this, "error,try again", ToastLength.Long).Show();
         }
     }

@@ -71,6 +71,7 @@
     <Compile Include="Activities\ActivitySplash.cs" />
     <Compile Include="Activities\AddFriendsActivity.cs" />
     <Compile Include="Activities\AddParticipantsActivity.cs" />
+    <Compile Include="Activities\AddPhoneAndBirthdayActivity.cs" />
     <Compile Include="Activities\ChangePasswordActivity.cs" />
     <Compile Include="Activities\CreateTripActivity.cs" />
     <Compile Include="Activities\LocationDetails.cs" />
@@ -87,7 +88,6 @@
     <Compile Include="Adapters\MyTripsAdapter.cs" />
     <Compile Include="Adapters\PeopleAdapter.cs" />
     <Compile Include="Adapters\TripAdapter.cs" />
-    <Compile Include="Broadcast\PhoneCallReceiver.cs" />
     <Compile Include="Broadcast\ReminderBroadcast.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Notifications\RemindNotification.cs" />
@@ -154,6 +154,9 @@
     <PackageReference Include="Square.Picasso">
       <Version>2.5.2.2</Version>
     </PackageReference>
+    <PackageReference Include="Xam.Plugin.Media">
+      <Version>5.0.1</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Android.Maps.Utils">
       <Version>0.5.0</Version>
     </PackageReference>
@@ -197,7 +200,6 @@
   <ItemGroup>
     <AndroidResource Include="Resources\layout\activity_profile.xml" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Dal\Dal.csproj">
       <Project>{94346e94-f446-4dc7-b4df-c66b8e829dba}</Project>
@@ -327,12 +329,6 @@
     <AndroidResource Include="Resources\drawable\locationmarkericon.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\greendot.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\reddot.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\layout\activity_peopleList.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -370,6 +366,15 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\plus.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\activity_addPhoneAndBirthday.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\greendot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\reddot.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

@@ -256,6 +256,7 @@ namespace SocialBicycleTrips.Activities
             {
                 user.MyTrips.Insert(new MyTrip(trip.Id, user.Id));
                 trip.Participants.Insert(new Participant(user.Id, trip.Id));
+                OnStop();
                 Toast.MakeText(this, "Joined to the trip", ToastLength.Long).Show();
                 btnJoinOrAddParticipant.Visibility = ViewStates.Gone;
                 UploadUpdatedList();
@@ -275,6 +276,7 @@ namespace SocialBicycleTrips.Activities
                         trip.Participants.Insert(new Participant(usersToAdd[i].Id, trip.Id));
                         user.MyTrips.Insert(new MyTrip(trip.Id, usersToAdd[i].Id));
                     }
+                    OnStop();
                     Toast.MakeText(this, "participants has been added successfully", ToastLength.Long).Show();
                     UploadUpdatedList();
                 }
@@ -284,7 +286,10 @@ namespace SocialBicycleTrips.Activities
         {
             Intent intent = new Intent(this, typeof(Activities.LocationDetails));
             intent.PutExtra("location", Serializer.ObjectToByteArray(end));
-            intent.PutExtra("user", Serializer.ObjectToByteArray(user));
+            if (user != null)
+            {
+                intent.PutExtra("user", Serializer.ObjectToByteArray(user));
+            }
             StartActivity(intent);
         }
 
@@ -292,6 +297,10 @@ namespace SocialBicycleTrips.Activities
         {
             Intent intent = new Intent(this, typeof(Activities.LocationDetails));
             intent.PutExtra("location", Serializer.ObjectToByteArray(start));
+            if(user != null)
+            {
+                intent.PutExtra("user", Serializer.ObjectToByteArray(user));
+            }
             StartActivity(intent);
         }
 

@@ -18,6 +18,7 @@ using Android.Graphics.Drawables;
 using Java.Sql;
 using System.Net.Mail;
 using System.Threading.Tasks;
+using Plugin.Media;
 
 namespace SocialBicycleTrips.Activities
 {
@@ -158,9 +159,24 @@ namespace SocialBicycleTrips.Activities
             dialog.Dismiss();
         }
 
-        private void Gallery_Click(object sender, EventArgs e)
+        private async void Gallery_Click(object sender, EventArgs e)
         {
-            StartActivityForResult(new Intent(Intent.ActionPick, MediaStore.Images.Media.ExternalContentUri), 2);
+            await CrossMedia.Current.Initialize();
+            if (!CrossMedia.Current.IsPickPhotoSupported)
+            {
+                Toast.MakeText(this, "Upload not supported on this device", ToastLength.Long).Show();
+                return;
+            }
+            var file = await CrossMedia.Current.PickPhotoAsync(new Plugin.Media.Abstractions.PickMediaOptions
+            {
+                PhotoSize = Plugin.Media.Abstractions.PhotoSize.Full,
+                CompressionQuality = 40
+
+            });
+            byte[] imageArray = System.IO.File.ReadAllBytes(file.Path);
+            bitmap = BitmapFactory.DecodeByteArray(imageArray, 0, imageArray.Length);
+            profile.SetImageBitmap(bitmap);
+            dialog.Dismiss();
         }
 
         private void Camera_Click(object sender, EventArgs e)
@@ -178,17 +194,6 @@ namespace SocialBicycleTrips.Activities
                 if (resultCode == Android.App.Result.Ok)
                 {
                     bitmap = (Bitmap)data.Extras.Get("data");
-
-                    profile.SetImageBitmap(bitmap);
-
-                    dialog.Dismiss();
-                }
-            }
-            if (requestCode == 2)
-            {
-                if (resultCode == Android.App.Result.Ok)
-                {
-                    bitmap = MediaStore.Images.Media.GetBitmap(ContentResolver, data.Data);
 
                     profile.SetImageBitmap(bitmap);
 

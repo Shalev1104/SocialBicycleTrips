@@ -28,7 +28,6 @@ namespace SocialBicycleTrips.Activities
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_locationDetails);
             location = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("location")) as Model.Location;
-            user = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("user")) as User;
             SetViews();
             SetFields();
             // Create your application here
@@ -57,6 +56,7 @@ namespace SocialBicycleTrips.Activities
             base.OnStop();
             if (Intent.HasExtra("user") && Settings.RememberMe)
             {
+                user = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("user")) as User;
                 ISharedPreferences pref = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
                 ISharedPreferencesEditor editor = pref.Edit();
                 editor.PutString("user", Android.Util.Base64.EncodeToString(Serializer.ObjectToByteArray(user), Android.Util.Base64.Default));

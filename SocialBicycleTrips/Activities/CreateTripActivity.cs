@@ -69,6 +69,7 @@ namespace SocialBicycleTrips.Activities
                 {
                     firstLocation = Serializer.ByteArrayToObject(data.GetByteArrayExtra("firstLocation")) as Model.Location;
                     lastLocation = Serializer.ByteArrayToObject(data.GetByteArrayExtra("lastLocation")) as Model.Location;
+                    locationChooser.Text = "Select Diffrent Locations";
                 }
             }
         }

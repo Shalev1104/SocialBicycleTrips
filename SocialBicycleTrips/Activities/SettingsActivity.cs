@@ -247,7 +247,6 @@ namespace SocialBicycleTrips.Activities
         private void TripRemind_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
         {
             CancelAlarm();
-            StartAlarm();
             ISharedPreferencesEditor editor = pref.Edit();
             if (tripReminds[e.Position].Equals("When trip is started"))
             {
@@ -263,6 +262,7 @@ namespace SocialBicycleTrips.Activities
                 editor.PutInt("TripRemind", int.Parse(convertToNum));
                 editor.Apply();
             }
+            StartAlarm();
         }
     }
 }

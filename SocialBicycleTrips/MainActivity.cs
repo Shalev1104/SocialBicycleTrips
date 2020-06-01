@@ -77,6 +77,10 @@ namespace SocialBicycleTrips
                 if (user.IsSocialMediaLogon())
                 {
                     MenuInflater.Inflate(Resource.Menu.socialMediaMenu, menu);
+                    if(user.PhoneNumber != null && !user.CalculateAge().ToString().Equals("2019"))
+                    {
+                        menu.FindItem(Resource.Id.mnuAddDateOrphoneNumber).SetVisible(false);
+                    }
                 }
                 else
                 {
@@ -180,8 +184,11 @@ namespace SocialBicycleTrips
                         item.SetChecked(true);
                         break;
                     }
-                case Resource.Id.mnuAddDate:
+                case Resource.Id.mnuAddDateOrphoneNumber:
                     {
+                        getUser.SetClass(this, typeof(Activities.AddPhoneAndBirthdayActivity));
+                        StartActivity(getUser);
+                        item.SetChecked(true);
                         break;
                     }
             }
@@ -209,6 +216,7 @@ namespace SocialBicycleTrips
                             alarmManager.Set(AlarmType.ElapsedRealtimeWakeup, SystemClock.ElapsedRealtime() + totalMilliseconds - (Model.Settings.TripRemind * 60000), pendingIntent);
                         }
                     }
+                    OnStop();
                     StartActivity(new Intent(this, typeof(MainActivity)).PutExtra("user", Serializer.ObjectToByteArray(user)));
                 }
             }
@@ -226,6 +234,7 @@ namespace SocialBicycleTrips
                     {
                         users.Insert(user);
                     }
+                    OnStop();
                     StartActivity(new Intent(this, typeof(MainActivity)).PutExtra("user", Serializer.ObjectToByteArray(user)));
                 }
             }

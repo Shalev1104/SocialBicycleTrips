@@ -24,6 +24,7 @@ using Android;
 using Android.Content.PM;
 using Android.Support.V4.App;
 using Android.Telephony;
+using Plugin.Media;
 
 namespace SocialBicycleTrips.Activities
 {
@@ -50,7 +51,6 @@ namespace SocialBicycleTrips.Activities
         private Bitmap bitmap;
         private bool permissionGranted = false;
         readonly string[] permissionPhoneCall = { Manifest.Permission.CallPhone };
-        private Broadcast.PhoneCallReceiver callReceiver;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -58,7 +58,6 @@ namespace SocialBicycleTrips.Activities
             SetViews();
             myFriends = new MyFriends().GetAllMyFriends();
             users = new Users().GetAllUsers();
-            callReceiver = new Broadcast.PhoneCallReceiver();
             GenerateUser();
             UploadUserDetails();
             if(userlogon != null)
@@ -84,16 +83,6 @@ namespace SocialBicycleTrips.Activities
             profileImage.LongClick += ProfileImage_LongClick;
             phoneNumber.Click += PhoneNumber_Click;
         }
-
-        protected override void OnResume()
-        {
-            base.OnResume();
-
-            IntentFilter callIntentFilter = new IntentFilter(TelephonyManager.ActionPhoneStateChanged);
-
-            RegisterReceiver(callReceiver, callIntentFilter);
-        }
-
         protected override void OnStop()
         {
             base.OnStop();
@@ -107,12 +96,6 @@ namespace SocialBicycleTrips.Activities
                 editor.PutInt("CompletedTrips", userlogon.CompletedTrips);
                 editor.Apply();
             }
-        }
-
-        protected override void OnPause()
-        {
-            UnregisterReceiver(callReceiver);
-            base.OnPause();
         }
 
         private void PhoneNumber_Click(object sender, EventArgs e)
@@ -134,7 +117,6 @@ namespace SocialBicycleTrips.Activities
             {
                 permissionGranted = true;
                 StartActivity(new Intent(Intent.ActionCall, Android.Net.Uri.Parse("tel:" + phoneNumber.Text)));
-                SendBroadcast(new Intent(ApplicationContext, typeof(Broadcast.PhoneCallReceiver)));
             }
             return permissionGranted;
         }
@@ -191,9 +173,28 @@ namespace SocialBicycleTrips.Activities
             dialog.Dismiss();
         }
 
-        private void Gallery_Click(object sender, EventArgs e)
+        private async void Gallery_Click(object sender, EventArgs e)
         {
-            StartActivityForResult(new Intent(Intent.ActionPick, MediaStore.Images.Media.ExternalContentUri), 2);
+            await CrossMedia.Current.Initialize();
+            if (!CrossMedia.Current.IsPickPhotoSupported)
+            {
+                Toast.MakeText(this, "Upload not supported on this device", ToastLength.Long).Show();
+                return;
+            }
+            var file = await CrossMedia.Current.PickPhotoAsync(new Plugin.Media.Abstractions.PickMediaOptions
+            {
+                PhotoSize = Plugin.Media.Abstractions.PhotoSize.Full,
+                CompressionQuality = 40
+
+            });
+            byte[] imageArray = System.IO.File.ReadAllBytes(file.Path);
+            bitmap = BitmapFactory.DecodeByteArray(imageArray, 0, imageArray.Length);
+            profileImage.SetImageBitmap(bitmap);
+            userlogon.Image = BitMapHelper.BitMapToBase64(bitmap);
+            users.Update(userlogon);
+            OnStop();
+            dialog.Dismiss();
+            Toast.MakeText(this, "Image has been updated", ToastLength.Long).Show();
         }
 
         private void Camera_Click(object sender, EventArgs e)
@@ -212,18 +213,7 @@ namespace SocialBicycleTrips.Activities
                     profileImage.SetImageBitmap(bitmap);
                     userlogon.Image = BitMapHelper.BitMapToBase64(bitmap);
                     users.Update(userlogon);
-                    dialog.Dismiss();
-                    Toast.MakeText(this, "Image has been updated", ToastLength.Long).Show();
-                }
-            }
-            else if (requestCode == 2)
-            {
-                if (resultCode == Android.App.Result.Ok && data != null)
-                {
-                    bitmap = MediaStore.Images.Media.GetBitmap(ContentResolver, data.Data);
-                    profileImage.SetImageBitmap(bitmap);
-                    userlogon.Image = BitMapHelper.BitMapToBase64(bitmap);
-                    users.Update(userlogon);
+                    OnStop();
                     dialog.Dismiss();
                     Toast.MakeText(this, "Image has been updated", ToastLength.Long).Show();
                 }
@@ -251,7 +241,7 @@ namespace SocialBicycleTrips.Activities
                 phoneNumber.Text = "not added";
             }
 
-            if (profile.DateTime.Date == null)
+            if (profile.CalculateAge().ToString().Equals("2019") && profile.IsSocialMediaLogon())
             {
                 age.Text = "not added";
             }
@@ -309,6 +299,7 @@ namespace SocialBicycleTrips.Activities
             userlogon.MyFriends.Insert(new MyFriend(profile.Id,userlogon.Id));
             Toast.MakeText(this, "Friend has been added succesfully", ToastLength.Long).Show();
             addFriend.Visibility = ViewStates.Invisible;
+            OnStop();
         }
     }
 }

@@ -136,7 +136,7 @@
             android:textColor="@android:color/black"
             />
         <TextView
-            android:layout_width="?android:attr/windowTitleSize"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="34"
             android:layout_margin="10dp"

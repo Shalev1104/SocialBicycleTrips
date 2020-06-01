@@ -131,7 +131,7 @@ namespace SocialBicycleTrips.Activities
                         item.SetChecked(true);
                         break;
                     }
-                case Resource.Id.mnuAddDate:
+                case Resource.Id.mnuAddDateOrphoneNumber:
                     {
                         StartActivity(new Intent(this, typeof(MainActivity)));
                         item.SetChecked(true);

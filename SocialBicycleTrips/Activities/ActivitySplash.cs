@@ -27,7 +27,9 @@ namespace SocialBicycleTrips.Activities
             base.OnCreate(savedInstanceState);
             pref = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
             settings = Application.Context.GetSharedPreferences("Settings", FileCreationMode.Private);
-
+            ISharedPreferencesEditor editor = pref.Edit();
+            editor.Clear();
+            editor.Apply();
             if (pref.Contains("user"))
             {
                 userArray = Android.Util.Base64.Decode(pref.GetString("user", null), Android.Util.Base64.Default);

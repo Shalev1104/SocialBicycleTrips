@@ -24,8 +24,8 @@
       <item android:id="@id/mnuMyProfile"
             android:title="My profile"/>
 
-      <item android:id="@+id/mnuAddDate"
-            android:title="Add birthday"/>
+      <item android:id="@+id/mnuAddDateOrphoneNumber"
+            android:title="Add birthday and phone number"/>
 
       <item android:id="@id/mnuDisconnect"
             android:title="Disconnect"/>

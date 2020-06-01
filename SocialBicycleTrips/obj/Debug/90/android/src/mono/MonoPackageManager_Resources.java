@@ -35,6 +35,7 @@ public class MonoPackageManager_Resources {
 		"Microsoft.WindowsAzure.Storage.dll",
 		"Model.dll",
 		"Newtonsoft.Json.dll",
+		"Plugin.Media.dll",
 		"Refractored.Controls.CircleImageView.dll",
 		"SQLite-net.dll",
 		"SQLiteNetExtensions.dll",

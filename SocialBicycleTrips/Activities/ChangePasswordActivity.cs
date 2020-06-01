@@ -50,6 +50,7 @@ namespace SocialBicycleTrips.Activities
                 Toast.MakeText(this, "password has been changed", ToastLength.Long).Show();
                 user.Password = newPW.Text;
                 users.Update(user);
+                OnStop();
                 StartActivity(new Intent(this, typeof(MainActivity)).PutExtra("user", Serializer.ObjectToByteArray(user)));
             }
             
