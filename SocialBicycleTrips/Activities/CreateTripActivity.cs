@@ -171,20 +171,5 @@ namespace SocialBicycleTrips.Activities
             btnDate.Text = e.Date.Day + "/" + e.Date.Month + "/" + e.Date.Year;
         }
 
-        protected override void OnStop()
-        {
-            base.OnStop();
-            if (Intent.HasExtra("user") && Settings.RememberMe)
-            {
-                ISharedPreferences pref = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
-                ISharedPreferencesEditor editor = pref.Edit();
-                editor.PutString("user", Android.Util.Base64.EncodeToString(Serializer.ObjectToByteArray(user), Android.Util.Base64.Default));
-                editor.PutInt("userId", user.Id);
-                editor.PutInt("OngoingTrips", user.UpcomingTrips);
-                editor.PutInt("CompletedTrips", user.CompletedTrips);
-                editor.Apply();
-            }
-        }
-
     }
 }

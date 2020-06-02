@@ -9,6 +9,7 @@ using Android.Media;
 using Android.OS;
 using Android.Provider;
 using Android.Runtime;
+using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
 using Dal;
@@ -19,7 +20,7 @@ using Model;
 namespace SocialBicycleTrips.Activities
 {
     [Activity(Label = "SettingsActivity")]
-    public class SettingsActivity : Activity
+    public class SettingsActivity : AppCompatActivity
     {
         private Spinner mapstyle;
         private List<string> mapStyles;
@@ -37,6 +38,7 @@ namespace SocialBicycleTrips.Activities
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_settings);
+            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             SetViews();
             if (Intent.HasExtra("user"))
             {
@@ -133,21 +135,6 @@ namespace SocialBicycleTrips.Activities
             else
             {
                 StopService(new Intent(this, typeof(Services.MediaService)));
-            }
-        }
-
-        protected override void OnStop()
-        {
-            base.OnStop();
-            if (Intent.HasExtra("user") && Model.Settings.RememberMe)
-            {
-                ISharedPreferences pref = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
-                ISharedPreferencesEditor editor = pref.Edit();
-                editor.PutString("user", Android.Util.Base64.EncodeToString(Serializer.ObjectToByteArray(user), Android.Util.Base64.Default));
-                editor.PutInt("userId", user.Id);
-                editor.PutInt("OngoingTrips", user.UpcomingTrips);
-                editor.PutInt("CompletedTrips", user.CompletedTrips);
-                editor.Apply();
             }
         }
 

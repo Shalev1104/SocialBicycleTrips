@@ -76,7 +76,6 @@ namespace SocialBicycleTrips.Activities
                 Toast.MakeText(this, "Added Successfully", ToastLength.Long).Show();
                 phoneField.Visibility = ViewStates.Gone;
                 users.Update(user);
-                OnStop();
                 bool1 = true;
             }
             if(!btnBirthday.Text.Equals("Pick birthday") && birthday < DateTime.Today)
@@ -85,7 +84,6 @@ namespace SocialBicycleTrips.Activities
                 Toast.MakeText(this, "Added Successfully", ToastLength.Long).Show();
                 btnBirthday.Visibility = ViewStates.Gone;
                 users.Update(user);
-                OnStop();
                 bool1 = true;
             }
             if(bool1 && bool2)
@@ -108,20 +106,6 @@ namespace SocialBicycleTrips.Activities
         {
             birthday = new DateTime(e.Date.Year, e.Date.Month, e.Date.Day);
             btnBirthday.Text = e.Date.Day + "/" + e.Date.Month + "/" + e.Date.Year;
-        }
-        protected override void OnStop()
-        {
-            base.OnStop();
-            if (Intent.HasExtra("user") && Settings.RememberMe)
-            {
-                ISharedPreferences pref = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
-                ISharedPreferencesEditor editor = pref.Edit();
-                editor.PutString("user", Android.Util.Base64.EncodeToString(Serializer.ObjectToByteArray(user), Android.Util.Base64.Default));
-                editor.PutInt("userId", user.Id);
-                editor.PutInt("OngoingTrips", user.UpcomingTrips);
-                editor.PutInt("CompletedTrips", user.CompletedTrips);
-                editor.Apply();
-            }
         }
     }
 }

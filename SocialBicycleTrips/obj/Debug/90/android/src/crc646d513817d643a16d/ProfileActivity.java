@@ -11,7 +11,6 @@ public class ProfileActivity
 	static {
 		__md_methods = 
 			"n_onCreate:(Landroid/os/Bundle;)V:GetOnCreate_Landroid_os_Bundle_Handler\n" +
-			"n_onStop:()V:GetOnStopHandler\n" +
 			"n_onRequestPermissionsResult:(I[Ljava/lang/String;[I)V:GetOnRequestPermissionsResult_IarrayLjava_lang_String_arrayIHandler\n" +
 			"n_onActivityResult:(IILandroid/content/Intent;)V:GetOnActivityResult_IILandroid_content_Intent_Handler\n" +
 			"";
@@ -33,14 +32,6 @@ public class ProfileActivity
 	}
 
 	private native void n_onCreate (android.os.Bundle p0);
-
-
-	public void onStop ()
-	{
-		n_onStop ();
-	}
-
-	private native void n_onStop ();
 
 
 	public void onRequestPermissionsResult (int p0, java.lang.String[] p1, int[] p2)

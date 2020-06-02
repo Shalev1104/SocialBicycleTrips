@@ -396,6 +396,7 @@ C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\src\com\squareup\picasso\RequestCreator_ActionCallback.java
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\src\crc640351b56f748fd233\ReminderBroadcast.java
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\src\crc642834bf4599b5dd05\MediaService.java
+C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\src\crc642834bf4599b5dd05\MediaServiceBinder.java
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\src\crc6434af9c19aa01b597\GoogleApiClientConnectionCallbacksImpl.java
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\src\crc6434af9c19aa01b597\GoogleApiClientOnConnectionFailedListenerImpl.java
 C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\android\src\crc6450e07d0e82e86181\AwaitableResultCallback_1.java

@@ -16,52 +16,49 @@ namespace SocialBicycleTrips.Services
     [Service]
     public class MediaService : Service
     {
-        private MediaPlayer player;
+        IBinder binder;
+        MediaPlayer player;
+        public override StartCommandResult OnStartCommand(Android.Content.Intent intent, StartCommandFlags flags, int startId)
+        {
+            player = MediaPlayer.Create(this, Resource.Raw.Music);
+            player.Looping = true;
+            player.Start();
 
-        private const int Mp3 = Resource.Raw.Music;
+            return StartCommandResult.NotSticky;
+        }
 
         public override IBinder OnBind(Intent intent)
         {
-            return null;	// חובה להחזיר 
-        }
-
-        // Serviceהמטודה המבצעת את פעילות ה-
-        [return: GeneratedEnum]
-        public override StartCommandResult OnStartCommand(Intent intent, [GeneratedEnum] StartCommandFlags flags, int startId)
-        {
-            base.OnStartCommand(intent, flags, startId);
-
-            // Thread הפעלת 
-            // טעינת הקובץ
-            Task.Run(() =>
-            {
-                Toast.MakeText(this, "Loading..", ToastLength.Long).Show();
-                // טעינת הקובץ
-                player = MediaPlayer.Create(this, Mp3);
-
-                // הגדרה שהמנגינה תחזור על עצמה
-                player.Looping = true;
-
-                // הפעלת הנגן
-                player.Start();
-
-            });
-
-
-            // ראה הסבר בהמשך
-            return StartCommandResult.Sticky;
+            binder = new MediaServiceBinder(this);
+            return binder;
         }
 
         public override void OnDestroy()
         {
-            try
+            base.OnDestroy();
+            if (player != null)
             {
                 player.Stop();
+                player.Release();
+                player = null;
             }
-            catch
-            {
-                Toast.MakeText(this, "media error", ToastLength.Short).Show();
-            }
+
+        }
+    }
+
+
+    public class MediaServiceBinder : Binder
+    {
+        readonly MediaService service;
+
+        public MediaServiceBinder(MediaService service)
+        {
+            this.service = service;
+        }
+
+        public MediaService GetFirstService()
+        {
+            return service;
         }
     }
 }

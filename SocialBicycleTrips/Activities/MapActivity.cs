@@ -266,21 +266,6 @@ namespace SocialBicycleTrips.Activities
             locationCallback = new LocationCallbackHelper();
             locationCallback.MyLocation += LocationCallback_MyLocation;
         }
-
-        protected override void OnStop()
-        {
-            base.OnStop();
-            if (Intent.HasExtra("user") && Settings.RememberMe)
-            {
-                ISharedPreferences pref = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
-                ISharedPreferencesEditor editor = pref.Edit();
-                editor.PutString("user", Android.Util.Base64.EncodeToString(Serializer.ObjectToByteArray(user), Android.Util.Base64.Default));
-                editor.PutInt("userId", user.Id);
-                editor.PutInt("OngoingTrips", user.UpcomingTrips);
-                editor.PutInt("CompletedTrips", user.CompletedTrips);
-                editor.Apply();
-            }
-        }
         private void LocationCallback_MyLocation(object sender, LocationCallbackHelper.OnLocationCapturedEventArgs e)
         {
             lastLocation = e.Location;

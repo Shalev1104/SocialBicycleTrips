@@ -50,25 +50,9 @@ namespace SocialBicycleTrips.Activities
                 Toast.MakeText(this, "password has been changed", ToastLength.Long).Show();
                 user.Password = newPW.Text;
                 users.Update(user);
-                OnStop();
                 StartActivity(new Intent(this, typeof(MainActivity)).PutExtra("user", Serializer.ObjectToByteArray(user)));
             }
             
-        }
-
-        protected override void OnStop()
-        {
-            base.OnStop();
-            if (Intent.HasExtra("user") && Settings.RememberMe)
-            {
-                ISharedPreferences pref = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
-                ISharedPreferencesEditor editor = pref.Edit();
-                editor.PutString("user", Android.Util.Base64.EncodeToString(Serializer.ObjectToByteArray(user), Android.Util.Base64.Default));
-                editor.PutInt("userId", user.Id);
-                editor.PutInt("OngoingTrips", user.UpcomingTrips);
-                editor.PutInt("CompletedTrips", user.CompletedTrips);
-                editor.Apply();
-            }
         }
         public bool IsOK()
         {

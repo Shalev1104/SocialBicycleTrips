@@ -184,21 +184,6 @@ namespace SocialBicycleTrips.Activities
             }
         }
 
-        protected override void OnStop()
-        {
-            base.OnStop();
-            if (Intent.HasExtra("user") && Settings.RememberMe)
-            {
-                ISharedPreferences pref = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
-                ISharedPreferencesEditor editor = pref.Edit();
-                editor.PutString("user", Android.Util.Base64.EncodeToString(Serializer.ObjectToByteArray(user), Android.Util.Base64.Default));
-                editor.PutInt("userId", user.Id);
-                editor.PutInt("OngoingTrips", user.UpcomingTrips);
-                editor.PutInt("CompletedTrips", user.CompletedTrips);
-                editor.Apply();
-            }
-        }
-
         private void LvParticipants_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
             Intent intent = new Intent(this, typeof(Activities.ProfileActivity));
@@ -256,7 +241,6 @@ namespace SocialBicycleTrips.Activities
             {
                 user.MyTrips.Insert(new MyTrip(trip.Id, user.Id));
                 trip.Participants.Insert(new Participant(user.Id, trip.Id));
-                OnStop();
                 Toast.MakeText(this, "Joined to the trip", ToastLength.Long).Show();
                 btnJoinOrAddParticipant.Visibility = ViewStates.Gone;
                 UploadUpdatedList();
@@ -276,7 +260,6 @@ namespace SocialBicycleTrips.Activities
                         trip.Participants.Insert(new Participant(usersToAdd[i].Id, trip.Id));
                         user.MyTrips.Insert(new MyTrip(trip.Id, usersToAdd[i].Id));
                     }
-                    OnStop();
                     Toast.MakeText(this, "participants has been added successfully", ToastLength.Long).Show();
                     UploadUpdatedList();
                 }

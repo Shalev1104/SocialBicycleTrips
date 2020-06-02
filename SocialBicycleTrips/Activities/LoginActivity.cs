@@ -48,9 +48,7 @@ namespace SocialBicycleTrips.Activities
         FirebaseAuth firebaseAuth;
         private bool usingFirebase;
         private bool googlePressed = false;
-        private CheckBox rememberUser;
 
-        private ISharedPreferences pref = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
         ICallbackManager callbackManager;
         private ProgressDialog loadingDialog;
 
@@ -63,11 +61,8 @@ namespace SocialBicycleTrips.Activities
             // Create your application here
             users = new Users().GetAllUsers();
             loadingDialog = new ProgressDialog(this);
-            Settings.RememberMe = rememberUser.Checked;
             ISharedPreferences settings = Application.Context.GetSharedPreferences("Settings", FileCreationMode.Private);
             ISharedPreferencesEditor settingsEditor = settings.Edit();
-            settingsEditor.PutBoolean("RememberMe", rememberUser.Checked);
-            settingsEditor.Apply();
         }
         public void SetViews()
         {
@@ -77,12 +72,10 @@ namespace SocialBicycleTrips.Activities
             signup = FindViewById<Button>(Resource.Id.btnSignup);
             googleLogin = FindViewById<SignInButton>(Resource.Id.btnGoogleLogin);
             facebookLogin = FindViewById<LoginButton>(Resource.Id.btnFacebookLogin);
-            rememberUser = FindViewById<CheckBox>(Resource.Id.chboxRememberMe);
 
             login.Click += Login_Click;
             signup.Click += Signup_Click;
             googleLogin.Click += GoogleLogin_Click;
-            rememberUser.Click += RememberUser_Click;
 
             gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DefaultSignIn).RequestIdToken("994671586450-p7s56itpn9kcb2him4pf7cnkvkashhmf.apps.googleusercontent.com").RequestEmail().Build();
             googleApiClient = new GoogleApiClient.Builder(this).AddApi(Auth.GOOGLE_SIGN_IN_API, gso).Build();
@@ -105,24 +98,8 @@ namespace SocialBicycleTrips.Activities
                     LoginManager.Instance.LogOut();
                     facebookLogin.UnregisterCallback(callbackManager);
                 }
-                if(Intent.HasExtra("temporal disconnection"))
-                {
-                    if(Intent.GetBooleanExtra("temporal disconnection",false) == true)
-                    {
-                        Settings.FirebaseTempDisconnection = true;
-                    }
-                }
                 Finish();
             }
-        }
-
-        private void RememberUser_Click(object sender, EventArgs e)
-        {
-            Settings.RememberMe = rememberUser.Checked;
-            ISharedPreferences settings = Application.Context.GetSharedPreferences("Settings", FileCreationMode.Private);
-            ISharedPreferencesEditor settingsEditor = settings.Edit();
-            settingsEditor.PutBoolean("RememberMe", rememberUser.Checked);
-            settingsEditor.Apply();
         }
 
         public bool IsFacebookLogin()
@@ -222,16 +199,6 @@ namespace SocialBicycleTrips.Activities
                     loadingDialog.Show();
                     callbackManager.OnActivityResult(requestCode, (int)resultCode, data);
                 }
-        }
-
-        private void RememberMe()
-        {
-            ISharedPreferencesEditor editor = pref.Edit();
-            editor.PutString("user", Android.Util.Base64.EncodeToString(Serializer.ObjectToByteArray(user),Android.Util.Base64.Default));
-            editor.PutInt("userId", user.Id);
-            editor.PutInt("OngoingTrips", user.UpcomingTrips);
-            editor.PutInt("CompletedTrips", user.CompletedTrips);
-            editor.Apply();
         }
         private void LoginWithGoogleFirebase(GoogleSignInAccount account)
         {
@@ -339,10 +306,6 @@ namespace SocialBicycleTrips.Activities
                             user = new User(firebaseAuth.CurrentUser.DisplayName, firebaseAuth.CurrentUser.Email, "https://graph.facebook.com/" + firebaseAuth.CurrentUser.PhotoUrl.Path + "?type=normal", firebaseAuth.CurrentUser.PhoneNumber);
                             isSocialFirstConnect = true;
                         }
-                        if (rememberUser.Checked)
-                        {
-                            RememberMe();
-                        }
                         Toast.MakeText(this, "login succesfull", ToastLength.Long).Show();
                         loadingDialog.Dismiss();
                         Navigate(user, isSocialFirstConnect);
@@ -356,10 +319,6 @@ namespace SocialBicycleTrips.Activities
                     {
                         user = new User(firebaseAuth.CurrentUser.DisplayName, firebaseAuth.CurrentUser.Email, "https://lh3.googleusercontent.com" + firebaseAuth.CurrentUser.PhotoUrl.Path, firebaseAuth.CurrentUser.PhoneNumber);
                         isSocialFirstConnect = true;
-                    }
-                    if (rememberUser.Checked)
-                    {
-                        RememberMe();
                     }
                     Toast.MakeText(this, "login succesfull", ToastLength.Long).Show();
                     loadingDialog.Dismiss();

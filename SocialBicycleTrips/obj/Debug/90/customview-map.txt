@@ -89,8 +89,6 @@ cache-path;C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Helper\obj\Debug\9
 cache-path;C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Model\obj\Debug\90\lp\57\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
 cache-path;C:\Users\shale\Documents\GitHub\SocialBicycleTrips\SocialBicycleTrips\obj\Debug\90\lp\59\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
 CheckBox;obj\Debug\90\res\layout\activity_addparticipants.xml
-CheckBox;obj\Debug\90\res\layout\activity_signin.xml
-CheckBox;obj\Debug\90\res\layout\activity_signup.xml
 color;C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\lp\56\jl\res\values\values.xml
 color;C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Dal\obj\Debug\90\lp\63\jl\res\values\values.xml
 color;C:\Users\shale\Documents\GitHub\SocialBicycleTrips\Helper\obj\Debug\90\lp\55\jl\res\values\values.xml

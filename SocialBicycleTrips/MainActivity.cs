@@ -32,6 +32,7 @@ namespace SocialBicycleTrips
         private User user;
         private Users users;
         private IMenu menu;
+        private bool disconnection = false;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -48,31 +49,12 @@ namespace SocialBicycleTrips
             UploadUpdatedList();
         }
 
-        private void CheckForFirebaseTempDisconnection()
-        {
-            if (Intent.HasExtra("user"))
-            {
-                if (user.IsSocialMediaLogon() && !Settings.RememberMe)
-                {
-                    if (!Settings.FirebaseTempDisconnection)
-                    {
-                        Intent intent = new Intent(this, typeof(Activities.LoginActivity));
-                        intent.PutExtra("social media disconnect", true);
-                        intent.PutExtra("temporal disconnection", true);
-                        StartActivityForResult(intent, 3);
-                    }
-                }
-            }
-        }
-
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
             this.menu = menu;
             if (Intent.HasExtra("user"))
             {
                 user = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("user")) as User;
-
-                CheckForFirebaseTempDisconnection();
 
                 if (user.IsSocialMediaLogon())
                 {
@@ -103,8 +85,10 @@ namespace SocialBicycleTrips
             {
                 case Resource.Id.mnuBrowseTrips:
                     {
-                        getUser.SetClass(this, typeof(MainActivity));
-                        StartActivity(getUser);
+                        Intent intent = new Intent(this, typeof(MainActivity));
+                        if (Intent.HasExtra("user") && !disconnection)
+                            intent.PutExtra("user", Serializer.ObjectToByteArray(user));
+                        StartActivity(intent);
                         item.SetChecked(true);
                         break;
                     }
@@ -159,21 +143,15 @@ namespace SocialBicycleTrips
                     }
                 case Resource.Id.mnuDisconnect:
                     {
-                        ISharedPreferences pref = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
-                        ISharedPreferencesEditor editor = pref.Edit();
-                        editor.Clear();
-                        editor.Apply();
                         if (user.IsSocialMediaLogon())
                         {
                             Intent intent = new Intent(this, typeof(Activities.LoginActivity));
                             intent.PutExtra("social media disconnect", true);
                             StartActivityForResult(intent, 1);
                         }
-                        else
-                        {
-                            menu.Clear();
-                            MenuInflater.Inflate(Resource.Menu.guestMenu, menu);
-                        }
+                        menu.Clear();
+                        MenuInflater.Inflate(Resource.Menu.guestMenu, menu);
+                        disconnection = true;
                         Toast.MakeText(this, "disconnected", ToastLength.Long).Show();
                         item.SetChecked(true);
                         break;
@@ -216,14 +194,8 @@ namespace SocialBicycleTrips
                             alarmManager.Set(AlarmType.ElapsedRealtimeWakeup, SystemClock.ElapsedRealtime() + totalMilliseconds - (Model.Settings.TripRemind * 60000), pendingIntent);
                         }
                     }
-                    OnStop();
                     StartActivity(new Intent(this, typeof(MainActivity)).PutExtra("user", Serializer.ObjectToByteArray(user)));
                 }
-            }
-            if(requestCode == 1)
-            {
-                menu.Clear();
-                MenuInflater.Inflate(Resource.Menu.guestMenu, menu);
             }
             if(requestCode == 2)
             {
@@ -234,7 +206,6 @@ namespace SocialBicycleTrips
                     {
                         users.Insert(user);
                     }
-                    OnStop();
                     StartActivity(new Intent(this, typeof(MainActivity)).PutExtra("user", Serializer.ObjectToByteArray(user)));
                 }
             }
@@ -269,20 +240,6 @@ namespace SocialBicycleTrips
                 intent.PutExtra("user", Serializer.ObjectToByteArray(user));
 
             StartActivity(intent);
-        }
-        protected override void OnStop()
-        {
-            base.OnStop();
-            if (Intent.HasExtra("user") && Settings.RememberMe)
-            {
-                ISharedPreferences pref = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
-                ISharedPreferencesEditor editor = pref.Edit();
-                editor.PutString("user", Android.Util.Base64.EncodeToString(Serializer.ObjectToByteArray(user), Android.Util.Base64.Default));
-                editor.PutInt("userId", user.Id);
-                editor.PutInt("OngoingTrips", user.UpcomingTrips);
-                editor.PutInt("CompletedTrips", user.CompletedTrips);
-                editor.Apply();
-            }
         }
     }
 }

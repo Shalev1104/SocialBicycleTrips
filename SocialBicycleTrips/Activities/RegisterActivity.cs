@@ -33,7 +33,6 @@ namespace SocialBicycleTrips.Activities
         private EditText birthday;
         private EditText phoneNumber;
         private Button register;
-        private CheckBox registerationRememberMe;
         private Bitmap bitmap;
         private User user;
         private Users users;
@@ -62,7 +61,6 @@ namespace SocialBicycleTrips.Activities
             birthday             = FindViewById<EditText>(Resource.Id.edtBirthday);
             phoneNumber          = FindViewById<EditText>(Resource.Id.edtPhoneNumber);
             register             = FindViewById<Button>(Resource.Id.btnRegister);
-            registerationRememberMe = FindViewById<CheckBox>(Resource.Id.chboxRememberMeRegisteration);
 
             profile.Click += Profile_Click;
             register.Click += Register_Click;
@@ -106,25 +104,10 @@ namespace SocialBicycleTrips.Activities
                 {
                     Intent intent = new Intent();
                     intent.PutExtra("user", Serializer.ObjectToByteArray(user));
-                    if (registerationRememberMe.Checked)
-                    {
-                        RememberMe();
-                    }
                     SetResult(Android.App.Result.Ok, intent);
                     Finish();
                 }
             }
-        }
-
-        private void RememberMe()
-        {
-            ISharedPreferences pref = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
-            ISharedPreferencesEditor editor = pref.Edit();
-            editor.PutString("user", Android.Util.Base64.EncodeToString(Serializer.ObjectToByteArray(user), Android.Util.Base64.Default));
-            editor.PutInt("userId", user.Id);
-            editor.PutInt("OngoingTrips", user.UpcomingTrips);
-            editor.PutInt("CompletedTrips", user.CompletedTrips);
-            editor.Apply();
         }
 
         private void Profile_Click(object sender, EventArgs e)
@@ -255,6 +238,17 @@ namespace SocialBicycleTrips.Activities
             if (!(birthday != null && !birthday.Text.Equals("")))
             {
                 Toast.MakeText(this, "Type a date", ToastLength.Long).Show();
+                birthday.Background.SetColorFilter(new Color(Color.Red), PorterDuff.Mode.SrcIn);
+                return false;
+            }
+            try
+            {
+                string[] dateParts = birthday.Text.Split(new char[] { '/', '.', '-', ' ' });
+                DateTime dateTime = new DateTime(Convert.ToInt32((dateParts[2])), Convert.ToInt32((dateParts[1])), Convert.ToInt32((dateParts[0])));
+            }
+            catch
+            {
+                Toast.MakeText(this, "invalid datetime", ToastLength.Long).Show();
                 birthday.Background.SetColorFilter(new Color(Color.Red), PorterDuff.Mode.SrcIn);
                 return false;
             }

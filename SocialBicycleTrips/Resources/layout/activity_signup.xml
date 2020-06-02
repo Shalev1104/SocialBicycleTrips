@@ -157,13 +157,6 @@
                     android:id="@+id/edtPhoneNumber"/>
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Remember me"
-            android:textSize="15sp"
-            android:id="@+id/chboxRememberMeRegisteration"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -18,34 +18,11 @@ namespace SocialBicycleTrips.Activities
     [Activity(Theme ="@style/Theme.Splash", MainLauncher = true, NoHistory = true, Icon = "@drawable/ProjectIcon")]
     public class ActivitySplash : Activity
     {
-        private User toNavigate;
-        private ISharedPreferences pref;
         private ISharedPreferences settings;
-        private byte[] userArray;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            pref = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
             settings = Application.Context.GetSharedPreferences("Settings", FileCreationMode.Private);
-            ISharedPreferencesEditor editor = pref.Edit();
-            editor.Clear();
-            editor.Apply();
-            if (pref.Contains("user"))
-            {
-                userArray = Android.Util.Base64.Decode(pref.GetString("user", null), Android.Util.Base64.Default);
-            }
-            if(userArray != null)
-            {
-                toNavigate = Serializer.ByteArrayToObject(userArray) as User;
-                toNavigate.Id = pref.GetInt("userId", 0);
-                toNavigate.UpcomingTrips = pref.GetInt("OngoingTrips", 0);
-                toNavigate.CompletedTrips = pref.GetInt("CompletedTrips", 0);
-            }
-
-            if (settings.Contains("RememberMe"))
-            {
-                Settings.RememberMe = settings.GetBoolean("RememberMe", false);
-            }
 
             if (settings.Contains("NotificationSwitcher"))
             {
@@ -54,6 +31,10 @@ namespace SocialBicycleTrips.Activities
             if (settings.Contains("MusicSwitcher"))
             {
                 Settings.Music = settings.GetBoolean("MusicSwitcher", false);
+                if (Settings.Music)
+                {
+                    StartService(new Intent(this, typeof(Services.MediaService)));
+                }
             }
             if (settings.Contains("MapStyle"))
             {
@@ -73,17 +54,7 @@ namespace SocialBicycleTrips.Activities
         async void SimulateStartup()
         {
             await Task.Delay(1000);
-            if (toNavigate != null)
-            {
-                StartActivity(new Intent(Application.Context, typeof(MainActivity)).PutExtra("user",Serializer.ObjectToByteArray(toNavigate)));
-            }
-            else
-            {
-                ISharedPreferencesEditor editor = pref.Edit();
-                editor.Clear();
-                editor.Apply();
-                StartActivity(new Intent(Application.Context, typeof(MainActivity)));
-            }
+            StartActivity(new Intent(Application.Context, typeof(MainActivity)));
         }
     }
 }

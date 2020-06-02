@@ -83,20 +83,6 @@ namespace SocialBicycleTrips.Activities
             profileImage.LongClick += ProfileImage_LongClick;
             phoneNumber.Click += PhoneNumber_Click;
         }
-        protected override void OnStop()
-        {
-            base.OnStop();
-            if (Intent.HasExtra("user") && Model.Settings.RememberMe)
-            {
-                ISharedPreferences pref = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
-                ISharedPreferencesEditor editor = pref.Edit();
-                editor.PutString("user", Android.Util.Base64.EncodeToString(Serializer.ObjectToByteArray(userlogon), Android.Util.Base64.Default));
-                editor.PutInt("userId", userlogon.Id);
-                editor.PutInt("OngoingTrips", userlogon.UpcomingTrips);
-                editor.PutInt("CompletedTrips", userlogon.CompletedTrips);
-                editor.Apply();
-            }
-        }
 
         private void PhoneNumber_Click(object sender, EventArgs e)
         {
@@ -192,7 +178,6 @@ namespace SocialBicycleTrips.Activities
             profileImage.SetImageBitmap(bitmap);
             userlogon.Image = BitMapHelper.BitMapToBase64(bitmap);
             users.Update(userlogon);
-            OnStop();
             dialog.Dismiss();
             Toast.MakeText(this, "Image has been updated", ToastLength.Long).Show();
         }
@@ -213,7 +198,6 @@ namespace SocialBicycleTrips.Activities
                     profileImage.SetImageBitmap(bitmap);
                     userlogon.Image = BitMapHelper.BitMapToBase64(bitmap);
                     users.Update(userlogon);
-                    OnStop();
                     dialog.Dismiss();
                     Toast.MakeText(this, "Image has been updated", ToastLength.Long).Show();
                 }
@@ -299,7 +283,6 @@ namespace SocialBicycleTrips.Activities
             userlogon.MyFriends.Insert(new MyFriend(profile.Id,userlogon.Id));
             Toast.MakeText(this, "Friend has been added succesfully", ToastLength.Long).Show();
             addFriend.Visibility = ViewStates.Invisible;
-            OnStop();
         }
     }
 }

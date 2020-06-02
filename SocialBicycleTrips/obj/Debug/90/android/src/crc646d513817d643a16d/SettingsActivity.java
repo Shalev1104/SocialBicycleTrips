@@ -2,7 +2,7 @@ package crc646d513817d643a16d;
 
 
 public class SettingsActivity
-	extends android.app.Activity
+	extends android.support.v7.app.AppCompatActivity
 	implements
 		mono.android.IGCUserPeer
 {
@@ -11,7 +11,6 @@ public class SettingsActivity
 	static {
 		__md_methods = 
 			"n_onCreate:(Landroid/os/Bundle;)V:GetOnCreate_Landroid_os_Bundle_Handler\n" +
-			"n_onStop:()V:GetOnStopHandler\n" +
 			"";
 		mono.android.Runtime.register ("SocialBicycleTrips.Activities.SettingsActivity, SocialBicycleTrips", SettingsActivity.class, __md_methods);
 	}
@@ -31,14 +30,6 @@ public class SettingsActivity
 	}
 
 	private native void n_onCreate (android.os.Bundle p0);
-
-
-	public void onStop ()
-	{
-		n_onStop ();
-	}
-
-	private native void n_onStop ();
 
 	private java.util.ArrayList refList;
 	public void monodroidAddReference (java.lang.Object obj)
