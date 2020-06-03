@@ -143,12 +143,6 @@ namespace SocialBicycleTrips
                     }
                 case Resource.Id.mnuDisconnect:
                     {
-                        if (user.IsSocialMediaLogon())
-                        {
-                            Intent intent = new Intent(this, typeof(Activities.LoginActivity));
-                            intent.PutExtra("social media disconnect", true);
-                            StartActivityForResult(intent, 1);
-                        }
                         menu.Clear();
                         MenuInflater.Inflate(Resource.Menu.guestMenu, menu);
                         disconnection = true;
@@ -205,6 +199,12 @@ namespace SocialBicycleTrips
                     if (data.HasExtra("toAdd") && data.GetBooleanExtra("toAdd", false) == true)
                     {
                         users.Insert(user);
+                    }
+                    if (user.IsSocialMediaLogon())
+                    {
+                        Intent intent = new Intent(this, typeof(Activities.LoginActivity));
+                        intent.PutExtra("social media disconnect", true);
+                        StartActivityForResult(intent, 1);
                     }
                     StartActivity(new Intent(this, typeof(MainActivity)).PutExtra("user", Serializer.ObjectToByteArray(user)));
                 }

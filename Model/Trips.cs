@@ -39,6 +39,28 @@ namespace Model
         {
             Trips trips = new Trips();
             List<Trip> tripsList = DbTable<Trip>.SelectAll();
+            if (tripsList != null)
+            {
+                for (int i = 0; i < tripsList.Count; i++)
+                {
+                    if (tripsList[i].DateTime <= DateTime.Now)
+                    {
+                        tripsList.RemoveAt(i);
+                        i--;
+                    }
+                }
+            }
+            if (tripsList != null)
+            {
+                trips.AddRange(tripsList);
+            }
+
+            return trips;
+        }
+        public Trips GetAllTrips() // converts from list to a class(רבים)
+        {
+            Trips trips = new Trips();
+            List<Trip> tripsList = DbTable<Trip>.SelectAll();
 
             if (tripsList != null)
             {

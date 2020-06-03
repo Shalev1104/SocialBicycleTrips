@@ -45,12 +45,36 @@ namespace Model
         {
             MyTrips myTrips = new MyTrips();
             List<MyTrip> myTripList = DbTable<MyTrip>.SelectAll();
-            Trips trips = new Trips().GetAllCurrentTrips();
-            if(myTripList != null)
+            Trips trips = new Trips().GetAllTrips();
+            if (myTripList != null)
             {
                 for (int i = 0; i < myTripList.Count; i++)
                 {
-                    if (!(myTripList[i].UserID == userID))
+                    if (myTripList[i].UserID != userID || trips.GetTripByID(myTripList[i].TripID).DateTime <= DateTime.Now)
+                    {
+                        myTripList.RemoveAt(i);
+                        i--;
+                    }
+                }
+            }
+
+            if (myTripList != null)
+            {
+                myTrips.AddRange(myTripList);
+            }
+
+            return myTrips;
+        }
+        public MyTrips GetAllMyTrips(int userID) // converts from list to a class(רבים)
+        {
+            MyTrips myTrips = new MyTrips();
+            List<MyTrip> myTripList = DbTable<MyTrip>.SelectAll();
+            Trips trips = new Trips().GetAllTrips();
+            if (myTripList != null)
+            {
+                for (int i = 0; i < myTripList.Count; i++)
+                {
+                    if (myTripList[i].UserID != userID)
                     {
                         myTripList.RemoveAt(i);
                         i--;
@@ -80,25 +104,12 @@ namespace Model
 
         public int CountOnGoingTrips(int userID)
         {
-            int count = 0;
-            MyTrips myTrips = new MyTrips().GetAllMyCurrentTrips(userID);
-            Trips trips = new Trips().GetAllCurrentTrips();
-            if (myTrips != null)
-            {
-                for (int i = 0; i < myTrips.Count; i++)
-                {
-                    if (trips.GetTripByID(myTrips[i].TripID).DateTime > DateTime.Today)
-                    {
-                        count++;
-                    }
-                }
-            }
-            return count;
+            return new MyTrips().GetAllMyCurrentTrips(userID).Count;
         }
 
         public int CountCompletedTrips(int userID)
         {
-            return (new MyTrips().GetAllMyCurrentTrips(userID).Count - CountOnGoingTrips(userID));
+            return (new MyTrips().GetAllMyTrips(userID).Count - CountOnGoingTrips(userID));
         }
 
         public int Insert(MyTrip myTrip)

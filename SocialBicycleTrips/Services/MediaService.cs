@@ -20,6 +20,7 @@ namespace SocialBicycleTrips.Services
         MediaPlayer player;
         public override StartCommandResult OnStartCommand(Android.Content.Intent intent, StartCommandFlags flags, int startId)
         {
+            Toast.MakeText(this, "Loading...", ToastLength.Short).Show();
             player = MediaPlayer.Create(this, Resource.Raw.Music);
             player.Looping = true;
             player.Start();

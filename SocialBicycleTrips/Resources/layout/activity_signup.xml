@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/LoginRegisterBackground">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,6 +16,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:fontFamily="casual"
+            android:textColor="@android:color/white"
             android:textSize="20dp"/>
         <Refractored.Controls.CircleImageView
             android:layout_width="70dp"
@@ -40,6 +42,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Full Name"
+                    android:textColor="@android:color/white"
                     android:id="@+id/edtName"/>
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
@@ -60,6 +63,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Email"
+                    android:textColor="@android:color/white"
                     android:inputType="textEmailAddress"
                     android:id="@+id/edtEmail"/>
             </android.support.design.widget.TextInputLayout>
@@ -84,6 +88,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Password"
+                    android:textColor="@android:color/white"
                     android:maxLines="1"
                     android:inputType="textPassword"
                     android:id="@+id/edtPW"/>
@@ -111,6 +116,7 @@
                     android:layout_height="wrap_content"
                     android:hint="Re-type Password"
                     android:maxLines="1"
+                    android:textColor="@android:color/white"
                     android:inputType="textPassword"
                     android:id="@+id/edtPWConfirmation"/>
 
@@ -133,6 +139,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Date Of Birth"
+                    android:textColor="@android:color/white"
                     android:id="@+id/edtBirthday"/>
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
@@ -153,6 +160,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Phone Number"
+                    android:textColor="@android:color/white"
                     android:phoneNumber="true"
                     android:id="@+id/edtPhoneNumber"/>
             </android.support.design.widget.TextInputLayout>

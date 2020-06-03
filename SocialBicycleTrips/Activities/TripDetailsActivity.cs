@@ -40,10 +40,15 @@ namespace SocialBicycleTrips.Activities
         TripManager tripManager;
         Model.Location start;
         Model.Location end;
+        private ProgressDialog loadingDialog;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_tripDetails);
+            loadingDialog = new ProgressDialog(this);
+            loadingDialog.SetTitle("Loading");
+            loadingDialog.SetCanceledOnTouchOutside(false);
+            loadingDialog.Show();
             mapFragment = (SupportMapFragment)SupportFragmentManager.FindFragmentById(Resource.Id.mapDistanceCalculator);
             mapFragment.GetMapAsync(this);
             trip = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("trip")) as Trip;
@@ -111,6 +116,7 @@ namespace SocialBicycleTrips.Activities
                 txtDistance.Text = "Unable to draw route";
                 Toast.MakeText(this, txtDistance.Text, ToastLength.Long).Show();
             }
+            loadingDialog.Dismiss();
         }
 
         public void SetFields()
@@ -269,10 +275,6 @@ namespace SocialBicycleTrips.Activities
         {
             Intent intent = new Intent(this, typeof(Activities.LocationDetails));
             intent.PutExtra("location", Serializer.ObjectToByteArray(end));
-            if (user != null)
-            {
-                intent.PutExtra("user", Serializer.ObjectToByteArray(user));
-            }
             StartActivity(intent);
         }
 
@@ -280,10 +282,6 @@ namespace SocialBicycleTrips.Activities
         {
             Intent intent = new Intent(this, typeof(Activities.LocationDetails));
             intent.PutExtra("location", Serializer.ObjectToByteArray(start));
-            if(user != null)
-            {
-                intent.PutExtra("user", Serializer.ObjectToByteArray(user));
-            }
             StartActivity(intent);
         }
 

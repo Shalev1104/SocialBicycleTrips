@@ -30,6 +30,7 @@
                 android:text="Israel Israeli"
                 android:gravity="center"
                 android:textSize="17dp"
+                android:textStyle="bold"
                 android:textColor="@android:color/black"
                 android:maxLines="1"
                 android:id="@+id/txtNameItem"
@@ -41,6 +42,7 @@
                 android:text="Heading to a long trip"
                 android:maxLines="2"
                 android:id="@+id/txtNotesItem"
+                android:textColor="@android:color/black"
                 />
         </LinearLayout>
         <LinearLayout
@@ -57,6 +59,7 @@
                 android:gravity="center"
                 android:textColor="@android:color/black"
                 android:textSize="14dp"
+                android:textStyle="bold"
                 android:id="@+id/txtDayTimeItem"
                 />
             <TextView
@@ -66,6 +69,7 @@
                 android:text="1.1.2020"
                 android:textColor="@android:color/black"
                 android:textSize="14dp"
+                android:textStyle="bold"
                 android:id="@+id/txtDateItem"
                 />
         </LinearLayout>
@@ -82,12 +86,14 @@
             <ImageView
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:src="@drawable/destinationicon"/>
+                android:src="@drawable/destinationicon"
+                android:tint="@android:color/black"/>
             <ImageView
                 android:layout_width="25dp"
                 android:layout_marginTop="5dp"
                 android:layout_height="25dp"
                 android:src="@drawable/finishicon"
+                android:tint="@android:color/black"
                 />
         </LinearLayout>
         <LinearLayout
@@ -100,14 +106,18 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Rishon Lezion..."
+                android:textStyle="bold"
                 android:id="@+id/txtStartupItem"
+                android:textColor="@android:color/black"
                 />
             <TextView
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Tel Aviv..."
+                android:textStyle="bold"
                 android:id="@+id/txtEndupItem"
+                android:textColor="@android:color/black"
                 />
         </LinearLayout>
         <LinearLayout
@@ -119,7 +129,8 @@
                  android:layout_width="30dp"
                  android:layout_height="30dp"
                  android:layout_gravity="center"
-                 android:src="@drawable/bicycleIcon"/>
+                 android:src="@drawable/bicycleIcon"
+                 android:tint="@android:color/black"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

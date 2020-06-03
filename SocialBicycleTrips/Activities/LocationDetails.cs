@@ -22,7 +22,6 @@ namespace SocialBicycleTrips.Activities
         private TextView locationName;
         private TextView locationCoordiante;
         private Model.Location location;
-        private User user;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);

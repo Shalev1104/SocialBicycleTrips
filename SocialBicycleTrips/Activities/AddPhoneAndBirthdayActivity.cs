@@ -5,11 +5,13 @@ using System.Text;
 
 using Android.App;
 using Android.Content;
+using Android.Graphics;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Helper;
+using Java.Sql;
 using Model;
 
 namespace SocialBicycleTrips.Activities
@@ -70,21 +72,39 @@ namespace SocialBicycleTrips.Activities
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            if(phoneField != null && !phoneField.Text.Equals("") && phoneField.Text.Length == 10)
+            if(phoneField != null && !phoneField.Text.Equals(""))
             {
-                user.PhoneNumber = phoneField.Text;
-                Toast.MakeText(this, "Added Successfully", ToastLength.Long).Show();
-                phoneField.Visibility = ViewStates.Gone;
-                users.Update(user);
-                bool1 = true;
+                if(phoneField.Text.Length == 10)
+                {
+                    user.PhoneNumber = phoneField.Text;
+                    Toast.MakeText(this, "Added Successfully", ToastLength.Long).Show();
+                    phoneField.Visibility = ViewStates.Gone;
+                    users.Update(user);
+                    bool1 = true;
+                }
+                else
+                {
+                    bool1 = false;
+                    Toast.MakeText(this, "invaild phone number", ToastLength.Long).Show();
+                    phoneField.Background.SetColorFilter(new Color(Color.Red), PorterDuff.Mode.SrcIn);
+                }
             }
             if(!btnBirthday.Text.Equals("Pick birthday") && birthday < DateTime.Today)
             {
-                user.DateTime = birthday;
-                Toast.MakeText(this, "Added Successfully", ToastLength.Long).Show();
-                btnBirthday.Visibility = ViewStates.Gone;
-                users.Update(user);
-                bool1 = true;
+                if(birthday < DateTime.Today)
+                {
+                    user.DateTime = birthday;
+                    Toast.MakeText(this, "Added Successfully", ToastLength.Long).Show();
+                    btnBirthday.Visibility = ViewStates.Gone;
+                    users.Update(user);
+                    bool2 = true;
+                }
+                else
+                {
+                    bool2 = false;
+                    Toast.MakeText(this, "invaild birthday", ToastLength.Long).Show();
+                    btnBirthday.Background.SetColorFilter(new Color(Color.Red), PorterDuff.Mode.SrcIn);
+                }
             }
             if(bool1 && bool2)
             {

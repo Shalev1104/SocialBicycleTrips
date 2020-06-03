@@ -53,13 +53,11 @@ namespace SocialBicycleTrips.Activities
         bool takeAddressFromSearch;
         Model.Location first;
         Model.Location last;
-        User user;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_map);
-            user = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("user")) as User;
             SetViews();
             if (!PlacesApi.IsInitialized)
             {

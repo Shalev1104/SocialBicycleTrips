@@ -57,7 +57,7 @@ namespace SocialBicycleTrips.Activities
 
         private void LocationChooser_Click(object sender, EventArgs e)
         {
-            Intent intent = new Intent(this, typeof(Activities.MapActivity)).PutExtra("user",Serializer.ObjectToByteArray(user));
+            Intent intent = new Intent(this, typeof(Activities.MapActivity));
             StartActivityForResult(intent, 0);
         }
         protected override void OnActivityResult(int requestCode, [GeneratedEnum] Android.App.Result resultCode, Intent data)
