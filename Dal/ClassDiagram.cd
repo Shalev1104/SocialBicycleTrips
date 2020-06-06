@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Dal.BaseDB">
+    <Position X="38.75" Y="19" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAgEABAABAAAAAABAAACQQAAAAAAAAAA=</HashCode>
+      <FileName>BaseDB.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dal.DbTable&lt;T&gt;">
+    <Position X="40.5" Y="19" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAwAAMAAACAQIAQARAAAAAQAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DbTable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

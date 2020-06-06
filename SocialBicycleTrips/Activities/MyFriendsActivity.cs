@@ -51,7 +51,7 @@ namespace SocialBicycleTrips.Activities
             Android.Support.V7.App.AlertDialog.Builder alertDiag = new Android.Support.V7.App.AlertDialog.Builder(this);
 
             alertDiag.SetTitle("Confirm delete");
-            alertDiag.SetMessage("Once deleted the move cannot be undone");
+            alertDiag.SetMessage("Are you sure you want to delete your friend?");
 
             alertDiag.SetCancelable(true);
 
@@ -94,100 +94,6 @@ namespace SocialBicycleTrips.Activities
             users.Sort();
             friendsAdapter = new Adapters.MyFriendsAdapter(this, Resource.Layout.activity_peopleList, myFriends, users);
             lvMyFriends.Adapter = friendsAdapter;
-        }
-
-        public override bool OnCreateOptionsMenu(IMenu menu)
-        {
-            MenuInflater.Inflate(Resource.Menu.userMenu, menu);
-            return base.OnCreateOptionsMenu(menu);
-        }
-        public override bool OnOptionsItemSelected(IMenuItem item)
-        {
-            Intent getUser = new Intent();
-            getUser.PutExtra("user", Serializer.ObjectToByteArray(user));
-
-            switch (item.ItemId)
-            {
-                case Resource.Id.mnuBrowseTrips:
-                    {
-                        getUser.SetClass(this, typeof(MainActivity));
-                        StartActivity(getUser);
-                        item.SetChecked(true);
-                        break;
-                    }
-
-                case Resource.Id.mnuMyTrips:
-                    {
-                        getUser.SetClass(this, typeof(Activities.MyTripsActivity));
-                        StartActivity(getUser);
-                        item.SetChecked(true);
-                        break;
-                    }
-
-                case Resource.Id.mnuCreateTrip:
-                    {
-                        getUser.SetClass(this, typeof(Activities.CreateTripActivity));
-                        StartActivityForResult(getUser, 0);
-                        item.SetChecked(true);
-                        break;
-                    }
-
-                case Resource.Id.mnuMyFriends:
-                    {
-                        getUser.SetClass(this, typeof(MainActivity));
-                        StartActivity(getUser);
-                        item.SetChecked(true);
-                        break;
-                    }
-
-                case Resource.Id.mnuMyProfile:
-                    {
-                        getUser.SetClass(this, typeof(Activities.ProfileActivity));
-                        getUser.PutExtra("myself", true);
-                        StartActivity(getUser);
-                        item.SetChecked(true);
-                        break;
-                    }
-
-                case Resource.Id.mnuChangePassword:
-                    {
-                        StartActivity(new Intent(this, typeof(MainActivity)));
-                        item.SetChecked(true);
-                        break;
-                    }
-
-                case Resource.Id.mnuSettings:
-                    {
-                        StartActivity(new Intent(this, typeof(MainActivity)));
-                        item.SetChecked(true);
-                        break;
-                    }
-                case Resource.Id.mnuDisconnect:
-                    {
-                        if (user.IsSocialMediaLogon())
-                        {
-                            Intent intent = new Intent(this, typeof(Activities.LoginActivity));
-                            intent.PutExtra("social media disconnect", true);
-                            StartActivityForResult(intent, 1);
-                        }
-                        StartActivity(new Intent(this, typeof(MainActivity)));
-                        item.SetChecked(true);
-                        break;
-                    }
-                case Resource.Id.mnuLogin:
-                    {
-                        StartActivity(new Intent(this, typeof(Activities.LoginActivity)));
-                        item.SetChecked(true);
-                        break;
-                    }
-                case Resource.Id.mnuAddDateOrphoneNumber:
-                    {
-                        StartActivity(new Intent(this, typeof(MainActivity)));
-                        item.SetChecked(true);
-                        break;
-                    }
-            }
-            return base.OnOptionsItemSelected(item);
         }
         private void UploadUpdatedList()
         {

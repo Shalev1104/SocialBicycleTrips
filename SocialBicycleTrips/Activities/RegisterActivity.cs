@@ -150,16 +150,23 @@ namespace SocialBicycleTrips.Activities
                 Toast.MakeText(this, "Upload not supported on this device", ToastLength.Long).Show();
                 return;
             }
-            var file = await CrossMedia.Current.PickPhotoAsync(new Plugin.Media.Abstractions.PickMediaOptions
+            try
             {
-                PhotoSize = Plugin.Media.Abstractions.PhotoSize.Full,
-                CompressionQuality = 40
+                var file = await CrossMedia.Current.PickPhotoAsync(new Plugin.Media.Abstractions.PickMediaOptions
+                {
+                    PhotoSize = Plugin.Media.Abstractions.PhotoSize.Full,
+                    CompressionQuality = 40
 
-            });
-            byte[] imageArray = System.IO.File.ReadAllBytes(file.Path);
-            bitmap = BitmapFactory.DecodeByteArray(imageArray, 0, imageArray.Length);
-            profile.SetImageBitmap(bitmap);
-            dialog.Dismiss();
+                });
+                byte[] imageArray = System.IO.File.ReadAllBytes(file.Path);
+                bitmap = BitmapFactory.DecodeByteArray(imageArray, 0, imageArray.Length);
+                profile.SetImageBitmap(bitmap);
+                dialog.Dismiss();
+            }
+            catch
+            {
+
+            }
         }
 
         private void Camera_Click(object sender, EventArgs e)

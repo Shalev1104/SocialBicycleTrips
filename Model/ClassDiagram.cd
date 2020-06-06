@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Model.BaseEntity">
+    <Position X="17.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAQAAAAgAAAAAAAAAAAAAAAAAAAABAAAgA=</HashCode>
+      <FileName>BaseEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.BaseList&lt;T&gt;">
+    <Position X="5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAEAAAAAAIAAAAYAEAAAQAAAAAAAgAAAAEAAAA=</HashCode>
+      <FileName>BaseList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.Location">
+    <Position X="2.25" Y="7.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAEAAAAAAAAAIAAQACAIEAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Location.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.MyFriend">
+    <Position X="12.75" Y="3.75" Width="2" />
+    <InheritanceLine Type="Model.BaseEntity" FixedFromPoint="true">
+      <Path>
+        <Point X="18.375" Y="3.084" />
+        <Point X="18.375" Y="3.375" />
+        <Point X="13.75" Y="3.375" />
+        <Point X="13.75" Y="3.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAGAAAAAgAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>MyFriend.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.MyFriends">
+    <Position X="0.5" Y="4.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAEAABAAAAAAAAQAAAAAAEAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>MyFriends.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.MyTrip">
+    <Position X="19.75" Y="3.75" Width="1.75" />
+    <InheritanceLine Type="Model.BaseEntity" FixedFromPoint="true">
+      <Path>
+        <Point X="18.375" Y="3.084" />
+        <Point X="18.375" Y="3.375" />
+        <Point X="20.625" Y="3.375" />
+        <Point X="20.625" Y="3.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAACAIAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MyTrip.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.MyTrips">
+    <Position X="8.25" Y="4.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAACEAAAAAAAQAQAAAAEgBAAAAAAAAAEAAAA=</HashCode>
+      <FileName>MyTrips.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.Participant">
+    <Position X="15" Y="3.75" Width="2" />
+    <InheritanceLine Type="Model.BaseEntity" FixedFromPoint="true">
+      <Path>
+        <Point X="18.375" Y="3.084" />
+        <Point X="18.375" Y="3.375" />
+        <Point X="16" Y="3.375" />
+        <Point X="16" Y="3.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAACAIAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Participant.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.Participants">
+    <Position X="3.5" Y="4.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAwAAEEAAAAAAAAAAAAQAAAAAAEAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Participants.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.Settings">
+    <Position X="0.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAABEAAAARAAAAAAAAAABAAAAAQAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Settings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.Trip">
+    <Position X="21.75" Y="3.75" Width="1.75" />
+    <InheritanceLine Type="Model.BaseEntity" FixedFromPoint="true">
+      <Path>
+        <Point X="18.375" Y="3.084" />
+        <Point X="18.375" Y="3.375" />
+        <Point X="22.625" Y="3.375" />
+        <Point X="22.625" Y="3.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AACgAAAAAAAAAAACAAAAAAAABAAAIIQAgCCAAAAAoAA=</HashCode>
+      <FileName>Trip.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.TripManager">
+    <Position X="17.25" Y="3.75" Width="2.25" />
+    <InheritanceLine Type="Model.BaseEntity" FixedFromPoint="true">
+      <Path>
+        <Point X="18.375" Y="3.084" />
+        <Point X="18.375" Y="3.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAEAAEABAAAAAAAAAAAAA=</HashCode>
+      <FileName>TripManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.Trips">
+    <Position X="6.25" Y="4.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>gAQAAEAAAAAAAAAAACAQAAAAAAEAAAAAAAAAAAEAAAE=</HashCode>
+      <FileName>Trips.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.User">
+    <Position X="17.5" Y="6.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAACAAAAEgAECBQAhAgEAAgAQCAAAAAgQCAAA=</HashCode>
+      <FileName>User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.Users">
+    <Position X="10.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAAAAAAAAAAAwAAAAAAEAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Users.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Model.EntityStatus">
+    <Position X="20" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAEAAAAAAEAAAAABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BaseEntity.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

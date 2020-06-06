@@ -63,7 +63,7 @@ namespace SocialBicycleTrips.Adapters
             {
                 User user = users.GetUserByID(participant.UserID);
                 peopleHolder.txtName.Text = user.Name;
-                if(!user.IsSocialMediaLogon())
+                if(!user.IsSocialNetworkLogon())
                 {
                     peopleHolder.profileImage.SetImageBitmap(BitMapHelper.Base64ToBitMap(user.Image));
                 }

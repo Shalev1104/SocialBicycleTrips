@@ -124,7 +124,7 @@ namespace SocialBicycleTrips.Activities
             tripNotes.Text = trip.Notes;
             dateTimeTrip.Text = trip.DateTime.ToString("dddd, dd MMMM yyyy HH:mm");
             tripManagerName.Text = tripManager.Name;
-            if (!users.GetUserByID(tripManager.Id).IsSocialMediaLogon())
+            if (!users.GetUserByID(tripManager.Id).IsSocialNetworkLogon())
             {
                 tripManagerImage.SetImageBitmap(BitMapHelper.Base64ToBitMap(tripManager.Image));
             }
@@ -164,7 +164,7 @@ namespace SocialBicycleTrips.Activities
                     Android.Support.V7.App.AlertDialog.Builder alertDiag = new Android.Support.V7.App.AlertDialog.Builder(this);
 
                     alertDiag.SetTitle("Confirm delete");
-                    alertDiag.SetMessage("Once deleted the move cannot be undone");
+                    alertDiag.SetMessage("Are you sure you want to delete the participant?");
 
                     alertDiag.SetCancelable(true);
 

@@ -73,7 +73,7 @@ namespace SocialBicycleTrips.Adapters
                 Model.Location startingLocation = Serializer.ByteArrayToObject(trip.StartingLocation) as Model.Location;
                 Model.Location destination = Serializer.ByteArrayToObject(trip.FinalLocation) as Model.Location;
                 myTripsHolder.txtName.Text = manager.Name;
-                if(!users.GetUserByID(manager.Id).IsSocialMediaLogon())
+                if(!users.GetUserByID(manager.Id).IsSocialNetworkLogon())
                 {
                     myTripsHolder.profileImage.SetImageBitmap(BitMapHelper.Base64ToBitMap(manager.Image));
                 }

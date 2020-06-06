@@ -24,7 +24,7 @@ namespace Model
 {
     [Serializable]
     [Table("Users")]
-    public class User : TripManager, iChangeable.UserChangeable
+    public class User : TripManager
     {
         private string email;
         private string password;
@@ -83,34 +83,10 @@ namespace Model
 
             return age;
         }
-
-        public void AddFriend()
-        {
-            //myFriends.Add(friend);
-        }
         
-        public bool IsSocialMediaLogon()
+        public bool IsSocialNetworkLogon()
         {
             return password == null;
-        }
-        public void InviteFriendToTrip(MyFriend myFriend)
-        {
-            //
-        }
-
-        public void ChangeName(string name)
-        {
-            this.name = name;
-        }
-
-        public void ChangePassword(string newPassword)
-        {
-            password = newPassword;
-        }
-
-        public void ChangeProfilePicture(string image)
-        {
-            this.image = image;
         }
     }
 }

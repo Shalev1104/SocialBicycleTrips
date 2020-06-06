@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Helper.BitMapHelper">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>BitMapHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Helper.AddressComponent">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>GeocodingAndDirectionParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Helper.Location">
+    <Position X="2.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GeocodingAndDirectionParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Helper.Northeast">
+    <Position X="7.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GeocodingAndDirectionParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Helper.Southwest">
+    <Position X="11" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GeocodingAndDirectionParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Helper.Viewport">
+    <Position X="16.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GeocodingAndDirectionParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Helper.Geometry">
+    <Position X="7.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgBAAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GeocodingAndDirectionParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Helper.Result">
+    <Position X="14.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAgIAAAA=</HashCode>
+      <FileName>GeocodingAndDirectionParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Helper.GeocodingParser">
+    <Position X="5.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>GeocodingAndDirectionParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Helper.GeocodedWaypoint">
+    <Position X="4" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAAIAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>GeocodingAndDirectionParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Helper.Bounds">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GeocodingAndDirectionParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Helper.Distance">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAIAAAAAAAAAAA=</HashCode>
+      <FileName>GeocodingAndDirectionParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Helper.Duration">
+    <Position X="0.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAIAAAAAAAAAAA=</HashCode>
+      <FileName>GeocodingAndDirectionParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Helper.EndLocation">
+    <Position X="2.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GeocodingAndDirectionParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Helper.StartLocation">
+    <Position X="12.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GeocodingAndDirectionParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Helper.Polyline">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GeocodingAndDirectionParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Helper.Step">
+    <Position X="14.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgIAAAIAAAAAAAIABAAAAAAAAEAAAAAABAAAAAAAQAA=</HashCode>
+      <FileName>GeocodingAndDirectionParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Helper.Leg">
+    <Position X="0.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAiAAAIAAQAAAAABBAAAAAAAAEAAAAAAAAAAgAAAQAA=</HashCode>
+      <FileName>GeocodingAndDirectionParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Helper.OverviewPolyline">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GeocodingAndDirectionParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Helper.Route">
+    <Position X="16.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAIAAAAQAAABAAAAAAAACACAAgAA=</HashCode>
+      <FileName>GeocodingAndDirectionParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Helper.DirectionParser">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAQABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GeocodingAndDirectionParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Helper.LocationCallbackHelper">
+    <Position X="4" Y="4" Width="1.5" />
+    <NestedTypes>
+      <Class Name="Helper.LocationCallbackHelper.OnLocationCapturedEventArgs" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>LocationCallbackHelper.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAAAAAAQAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>LocationCallbackHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Helper.MapFunctionHelper">
+    <Position X="5.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAEAABAABAAAAAgEAACCAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapFunctionHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Helper.NotificationHelper">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAIAAAAAAAAAAAQAAAAAAgAAAAIAAAQAAAAEAAA=</HashCode>
+      <FileName>NotificationHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Helper.Serializer">
+    <Position X="9.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Serializer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

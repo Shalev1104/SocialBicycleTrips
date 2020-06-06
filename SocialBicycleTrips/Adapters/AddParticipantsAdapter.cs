@@ -71,7 +71,7 @@ namespace SocialBicycleTrips.Adapters
             {
                 User friendHasntJoinedToTrip = users.GetUserByID(participant.UserID);
                 addParticipantsHolder.txtName.Text = friendHasntJoinedToTrip.Name;
-                if(!friendHasntJoinedToTrip.IsSocialMediaLogon())
+                if(!friendHasntJoinedToTrip.IsSocialNetworkLogon())
                 {
                     addParticipantsHolder.profileImage.SetImageBitmap(BitMapHelper.Base64ToBitMap(friendHasntJoinedToTrip.Image));
                 }

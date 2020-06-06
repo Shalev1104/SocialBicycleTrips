@@ -15,7 +15,7 @@ namespace Model
 {
     [Serializable]
     [Table("Trips")]
-    public class Trip : BaseEntity, iChangeable.TripChangeable
+    public class Trip : BaseEntity
     {
 
         private byte[] startingLocation;
@@ -47,20 +47,5 @@ namespace Model
         [Ignore]
         public Participants Participants { get => participants; set => participants = value; }
         public byte[] TripManager { get => tripManager; set => tripManager = value; }
-
-        public void ChangeDateAndTime(DateTime dateTime)
-        {
-            this.dateTime = dateTime;
-        }
-
-        public void UpdateDetails(string updatedDetails)
-        {
-            notes = updatedDetails;
-        }
-
-        public void UpdateLocation(string startup, string endup)
-        {
-            
-        }
     }
 }

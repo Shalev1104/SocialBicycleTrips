@@ -126,7 +126,7 @@ namespace SocialBicycleTrips.Activities
         }
         private void ProfileImage_LongClick(object sender, View.LongClickEventArgs e)
         {
-            if (Intent.HasExtra("myself") && !userlogon.IsSocialMediaLogon())
+            if (Intent.HasExtra("myself") && !userlogon.IsSocialNetworkLogon())
             {
                 PerformCustomDialog();
             }
@@ -207,7 +207,7 @@ namespace SocialBicycleTrips.Activities
         public void UploadUserDetails()
         {
             name.Text = profile.Name;
-            if (!profile.IsSocialMediaLogon()) {
+            if (!profile.IsSocialNetworkLogon()) {
                 profileImage.SetImageBitmap(BitMapHelper.Base64ToBitMap(profile.Image));
             }
             else
@@ -225,7 +225,7 @@ namespace SocialBicycleTrips.Activities
                 phoneNumber.Text = "not added";
             }
 
-            if (profile.CalculateAge().ToString().Equals("2019") && profile.IsSocialMediaLogon())
+            if (profile.CalculateAge().ToString().Equals("2019") && profile.IsSocialNetworkLogon())
             {
                 age.Text = "not added";
             }

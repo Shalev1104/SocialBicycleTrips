@@ -43,9 +43,6 @@ namespace SocialBicycleTrips
             SetViews();
             trips = new Trips().GetAllCurrentTrips();
             users = new Users().GetAllUsers();
-            Participants p = new Participants().GetAllParticipants();
-            MyTrips t = new MyTrips().GetAllMyTrips();
-            MyFriends f = new MyFriends().GetAllMyFriends();
             UploadUpdatedList();
         }
 
@@ -56,7 +53,7 @@ namespace SocialBicycleTrips
             {
                 user = Serializer.ByteArrayToObject(Intent.GetByteArrayExtra("user")) as User;
 
-                if (user.IsSocialMediaLogon())
+                if (user.IsSocialNetworkLogon())
                 {
                     MenuInflater.Inflate(Resource.Menu.socialMediaMenu, menu);
                     if(user.PhoneNumber != null && !user.CalculateAge().ToString().Equals("2019"))
@@ -200,13 +197,18 @@ namespace SocialBicycleTrips
                     {
                         users.Insert(user);
                     }
-                    if (user.IsSocialMediaLogon())
+                    menu.Clear();
+                    if (user.IsSocialNetworkLogon())
                     {
                         Intent intent = new Intent(this, typeof(Activities.LoginActivity));
                         intent.PutExtra("social media disconnect", true);
                         StartActivityForResult(intent, 1);
+                        MenuInflater.Inflate(Resource.Menu.socialMediaMenu, menu);
                     }
-                    StartActivity(new Intent(this, typeof(MainActivity)).PutExtra("user", Serializer.ObjectToByteArray(user)));
+                    else
+                    {
+                        MenuInflater.Inflate(Resource.Menu.userMenu, menu);
+                    }
                 }
             }
         }
@@ -229,6 +231,7 @@ namespace SocialBicycleTrips
         {
             lvTrips = FindViewById<ListView>(Resource.Id.lvTrips);
             lvTrips.ItemClick += LvTrips_ItemClick;
+
         }
         private void LvTrips_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {

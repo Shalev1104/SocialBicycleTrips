@@ -242,7 +242,7 @@ namespace SocialBicycleTrips.Activities
             user = null;
             foreach (User found in users)
             {
-                if (!found.IsSocialMediaLogon())
+                if (!found.IsSocialNetworkLogon())
                 {
                     if (found.Email.Equals(email.Text) && found.Password.Equals(password.Text))
                     {
@@ -258,7 +258,7 @@ namespace SocialBicycleTrips.Activities
             user = null;
             foreach (User found in users)
             {
-                if (found.IsSocialMediaLogon())
+                if (found.IsSocialNetworkLogon())
                 {
                     if (found.Email.Equals(firebaseAuth.CurrentUser.Email))
                     {

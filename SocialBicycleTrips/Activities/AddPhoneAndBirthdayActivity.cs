@@ -89,7 +89,7 @@ namespace SocialBicycleTrips.Activities
                     phoneField.Background.SetColorFilter(new Color(Color.Red), PorterDuff.Mode.SrcIn);
                 }
             }
-            if(!btnBirthday.Text.Equals("Pick birthday") && birthday < DateTime.Today)
+            if(!btnBirthday.Text.Equals("Pick birthday"))
             {
                 if(birthday < DateTime.Today)
                 {

@@ -25,11 +25,11 @@ namespace Model
 
             if(!forChange)
             {
-                userExists = base.Exists(item => item.Email.Equals(user.Email) && !item.IsSocialMediaLogon());
+                userExists = base.Exists(item => item.Email.Equals(user.Email) && !item.IsSocialNetworkLogon());
             }
             else
             {
-                userExists = base.Exists(item => item.Email.Equals(user.Email) && !item.IsSocialMediaLogon() && item.Id != user.Id);
+                userExists = base.Exists(item => item.Email.Equals(user.Email) && !item.IsSocialNetworkLogon() && item.Id != user.Id);
             }
             return userExists;
         }

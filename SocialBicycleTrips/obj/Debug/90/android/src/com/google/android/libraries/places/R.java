@@ -388,13 +388,13 @@ public final class R {
 		public static final int places_autocomplete_vertical_dropdown = 0x7f0600fa;
 	}
 	public static final class drawable {
-		public static final int places_autocomplete_toolbar_shadow = 0x7f0700b9;
-		public static final int places_powered_by_google_dark = 0x7f0700bc;
-		public static final int places_powered_by_google_light = 0x7f0700bd;
-		public static final int quantum_ic_arrow_back_grey600_24 = 0x7f0700c3;
-		public static final int quantum_ic_clear_grey600_24 = 0x7f0700c4;
-		public static final int quantum_ic_cloud_off_vd_theme_24 = 0x7f0700c5;
-		public static final int quantum_ic_search_grey600_24 = 0x7f0700c6;
+		public static final int places_autocomplete_toolbar_shadow = 0x7f0700b3;
+		public static final int places_powered_by_google_dark = 0x7f0700b6;
+		public static final int places_powered_by_google_light = 0x7f0700b7;
+		public static final int quantum_ic_arrow_back_grey600_24 = 0x7f0700bd;
+		public static final int quantum_ic_clear_grey600_24 = 0x7f0700be;
+		public static final int quantum_ic_cloud_off_vd_theme_24 = 0x7f0700bf;
+		public static final int quantum_ic_search_grey600_24 = 0x7f0700c0;
 	}
 	public static final class id {
 		public static final int ALT = 0x7f080000;

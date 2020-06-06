@@ -62,7 +62,7 @@ namespace SocialBicycleTrips.Adapters
             {
                 User friend = users.GetUserByID(myFriend.FriendID);
                 myFriendsHolder.txtName.Text = friend.Name;
-                if(!friend.IsSocialMediaLogon())
+                if(!friend.IsSocialNetworkLogon())
                 {
                     myFriendsHolder.profileImage.SetImageBitmap(BitMapHelper.Base64ToBitMap(friend.Image));
                 }

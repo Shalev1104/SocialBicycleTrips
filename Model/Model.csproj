@@ -63,8 +63,6 @@
   <ItemGroup>
     <Compile Include="BaseEntity.cs" />
     <Compile Include="BaseList.cs" />
-    <Compile Include="iChangeable.cs" />
-    <Compile Include="Inviteable.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="MyFriend.cs" />
     <Compile Include="MyFriends.cs" />
@@ -82,6 +80,7 @@
     <Compile Include="Users.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram.cd" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="Assets\AboutAssets.txt" />
